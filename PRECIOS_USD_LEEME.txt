@@ -1,0 +1,57 @@
+GRUT | Catálogo 50 productos en USD
+
+20 originales: aumento del 30%, redondeado al múltiplo de USD 10 más cercano.
+30 nuevos: precios de lanzamiento sugeridos, no precios anteriores incrementados.
+Todos los importes son precios de catálogo propuestos, no cotizaciones de producción.
+El checkout de la web es una demostración, no cobra ni envía pedidos.
+
+ID 01: anterior 2450 -> USD 3180
+ID 02: anterior 2980 -> USD 3870
+ID 03: anterior 2850 -> USD 3700
+ID 04: anterior 1650 -> USD 2140
+ID 05: anterior 2980 -> USD 3870
+ID 06: anterior 1890 -> USD 2460
+ID 07: anterior 3750 -> USD 4880
+ID 08: anterior 3250 -> USD 4220
+ID 09: anterior 2350 -> USD 3060
+ID 10: anterior 1750 -> USD 2280
+ID 11: anterior 1290 -> USD 1680
+ID 12: anterior 3420 -> USD 4450
+ID 13: anterior 2680 -> USD 3480
+ID 14: anterior 3990 -> USD 5190
+ID 15: anterior 1550 -> USD 2020
+ID 16: anterior 1820 -> USD 2370
+ID 17: anterior 3150 -> USD 4100
+ID 18: anterior 3650 -> USD 4740
+ID 19: anterior 1850 -> USD 2400
+ID 20: anterior 2590 -> USD 3370
+ID 21: anterior null -> USD 1950
+ID 22: anterior null -> USD 1850
+ID 23: anterior null -> USD 3450
+ID 24: anterior null -> USD 2350
+ID 25: anterior null -> USD 1750
+ID 26: anterior null -> USD 1450
+ID 27: anterior null -> USD 1690
+ID 28: anterior null -> USD 2100
+ID 29: anterior null -> USD 1890
+ID 30: anterior null -> USD 2250
+ID 31: anterior null -> USD 690
+ID 32: anterior null -> USD 1150
+ID 33: anterior null -> USD 1850
+ID 34: anterior null -> USD 1890
+ID 35: anterior null -> USD 990
+ID 36: anterior null -> USD 1450
+ID 37: anterior null -> USD 1790
+ID 38: anterior null -> USD 1750
+ID 39: anterior null -> USD 1850
+ID 40: anterior null -> USD 1290
+ID 41: anterior null -> USD 650
+ID 42: anterior null -> USD 1190
+ID 43: anterior null -> USD 1350
+ID 44: anterior null -> USD 1590
+ID 45: anterior null -> USD 1650
+ID 46: anterior null -> USD 2450
+ID 47: anterior null -> USD 2950
+ID 48: anterior null -> USD 3290
+ID 49: anterior null -> USD 3150
+ID 50: anterior null -> USD 2790

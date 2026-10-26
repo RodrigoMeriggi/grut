@@ -1,0 +1,9 @@
+GRUT · 30 NUEVOS PRODUCTOS CONCEPTUALES
+
+10 Resort, 10 Day, 10 Night añadidos al catálogo existente (total 50).
+Cada look se recortó individualmente de los 3 collages aprobados, sin inventar fotografías adicionales.
+Imágenes reescaladas 3x con interpolación Lanczos y enfoque suave; no recuperan detalle fotográfico que no exista en la fuente.
+Las imágenes originales son collages de 1536 x 1024 y contienen rótulos superpuestos en el centro: algunos recortes pueden conservar fragmentos de letras.
+Los 30 looks nuevos figuran con precio a consultar y como diseños en desarrollo: no hay precios ni disponibilidad confirmados.
+El sitio sigue siendo una demostración sin pagos reales.
+Abrir index.html o subir carpeta completa a hosting estático.

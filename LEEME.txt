@@ -1,0 +1,22 @@
+GRUT BUENOS AIRES — WEB CONCEPTUAL 2026
+
+Abrir index.html en Chrome, Safari o Firefox.
+Para publicar: subir index.html y la carpeta assets/ manteniendo su estructura.
+No requiere React, Node ni compilación. HTML + CSS + JavaScript puro.
+
+FUNCIONES:
+- Responsive escritorio y móvil
+- Colecciones DAY / NIGHT / RESORT / ESSENTIALS
+- Catálogo con 20 productos, filtros, búsqueda y orden por precio
+- Ficha de producto, talles, favoritos y carrito con persistencia local
+- Checkout de demostración SIN pagos, backend ni envío de pedidos
+- Newsletter demostrativo SIN almacenamiento remoto
+- Editorial con las dos modelos y las imágenes aportadas
+
+IMPORTANTE ANTES DE VENDER:
+- Confirmar catálogo, precios, materiales, talles, inventario y fotos finales.
+- Conectar pasarela de pago y backend seguro para pedidos.
+- Conectar formulario de newsletter a servicio con consentimiento y privacidad.
+- Configurar dominio, correo real, políticas de cambios/devoluciones, impuestos y envíos.
+- Los precios son ilustrativos y están expresados en USD.
+- Se recomienda verificar derechos de uso comercial de las imágenes.

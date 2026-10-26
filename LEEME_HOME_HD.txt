@@ -1,0 +1,7 @@
+GRUT - sitio completo actualizado
+
+Home: nueva imagen grut_home_nueva_hd.webp. Imagen PNG separada: GRUT_Home_Nueva_HD.png.
+Se mantienen 50 fichas de producto (20 previas y 30 looks nuevos), colecciones y funcionalidades originales.
+El texto GRUT y el boton EXPLORAR estan integrados en la imagen generada. Se añadió una zona clicable transparente sobre el boton para conservar su funcionamiento.
+No es una restauracion fiel del archivo original: es una recreacion visual.
+Abrir index.html o subir la carpeta completa al hosting.
