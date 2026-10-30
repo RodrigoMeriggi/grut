@@ -158,6 +158,7 @@ const SYSTEMS={
   shirt:{title:'Shirt System',label:'Camisería'},
   blazer:{title:'Tailoring System',label:'Sastrería'},
   dress:{title:'Dress System',label:'Vestido'},
+  slip:{title:'Slip System',label:'Slip / Cowl'},
   trousers:{title:'Trouser System',label:'Pantalón'},
   knit:{title:'Knit System',label:'Punto'},
   swim:{title:'Swim System',label:'Baño'},
@@ -244,8 +245,10 @@ function boardsFor(p){
   if(/\bshort\b/.test(t)&&!/short de baño/.test(t)) multi.push({sys:'short',label:'Short'});
   if(/\bvestido\b/.test(t)) multi.push({sys:'dress',label:'Vestido'});
   if(multi.length>=2) return multi;
-  const sys=classifyPrimary(p);
-  return [{sys,label:SYSTEMS[sys].label}];
+  let sys=classifyPrimary(p);
+  if(sys==='dress' && dressVariant(p)==='slip') sys='slip';
+  if(sys==='dress' && dressVariant(p)==='halter') sys='halter';
+  return [{sys,label:(SYSTEMS[sys]||SYSTEMS.dress).label}];
 }
 
 /* ---------- SVG helpers ---------- */
@@ -274,13 +277,208 @@ function dimV(x,y1,y2,val,side='left'){
   return line(x,y1,x,y2)+meas(x+ox,mid+4,round1(val),ax);
 }
 
+function dressVariant(p){
+  const t=((p&&p.name)||'')+' '+((p&&p.desc)||'');
+  const s=t.toLowerCase();
+  // Slip champagne / cowl / abertura / breteles — Vestido Sirena y similares
+  if(/cowl|slip|abertura lateral|falda cruzada|escote drapeado|breteles finos.*abertura|abertura.*breteles|sirena|slip champagne|frunce lateral/.test(s))
+    return 'slip';
+  if(/halter|gargantilla|un solo hombro|un hombro|strapless|corsé|corsetería/.test(s))
+    return /halter|gargantilla/.test(s)?'halter':'dress';
+  return 'dress';
+}
+
 function renderSystem(sys,p){
   const b=base(p);
+  let use=sys;
+  if(sys==='dress'){
+    const v=dressVariant(p);
+    if(v==='slip') use='slip';
+    else if(v==='halter') use='halter';
+  }
   const fn={
-    shirt:drawShirt,blazer:drawBlazer,dress:drawDress,trousers:drawTrousers,
+    shirt:drawShirt,blazer:drawBlazer,dress:drawDress,slip:drawSlipCowl,trousers:drawTrousers,
     knit:drawKnit,swim:drawSwim,accessory:drawAccessory,halter:drawHalter,short:drawShort
-  }[sys]||drawDress;
+  }[use]||drawDress;
   return fn(b,p);
+}
+
+
+/* ---- Slip / Cowl / falda cruzada con abertura (Vestido Sirena) ---- */
+function drawSlipCowl(b){
+  const bust=round1(b.chest/4+1.5);     // 1/2 delantero aprox al busto
+  const waist=round1(b.waist/4+1.5);
+  const hip=round1(b.hip/4+2);
+  const bodiceH=round1(38);             // escote a cintura
+  const cowlDrop=round1(16);            // caída del cowl
+  const skirtL=round1(102);             // cintura a piso
+  const slitH=round1(72);               // alto abertura desde ruedo
+  const strapW=1, strapL=round1(42);
+  const wrapExtra=round1(18);           // extensión del cruce
+  const rows=[], pieces=[];
+  const pad=26;
+
+  // DIA.1 FRONT BODICE — escote cowl (línea de doblez del drapeado)
+  {
+    const ox=40, oy=pad;
+    const xB=u(bust), xW=u(waist);
+    const yCowl=u(cowlDrop), yBust=u(cowlDrop+8), yWaist=u(bodiceH);
+    // Contorno: puntos de bretel arriba, cowl profundo (guía), costados al busto/cintura
+    const d=[
+      `M${u(2)},0`,                         // punto bretel izq
+      `L${xB-u(2)},0`,                      // punto bretel der
+      `C${xB+u(1)},${u(6)} ${xB+u(2)},${yBust*0.55} ${xB},${yBust}`,
+      `C${xB},${(yBust+yWaist)/2} ${xW+u(1)},${yWaist-u(3)} ${xW},${yWaist}`,
+      `L0,${yWaist}`,
+      `C${u(-0.5)},${(yBust+yWaist)/2} ${u(-1)},${yBust*0.55} ${u(1)},${yBust}`,
+      `C${u(2)},${yCowl*0.5} ${u(2)},${u(4)} ${u(2)},0`,
+      'Z'
+    ].join(' ');
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(d)}
+      ${guide(`M${u(3)},${yCowl*0.35} Q${xB/2},${yCowl+u(2)} ${xB-u(3)},${yCowl*0.35}`)}
+      ${guide(`M${xB*0.35},0 L${xB*0.32},${yWaist}`)}
+      ${guide(`M${xB*0.65},0 L${xB*0.68},${yWaist}`)}
+      ${line(0,yBust,xB,yBust)}${line(0,yWaist,xW,yWaist)}
+      ${circ(u(2),0,3)}${circ(xB-u(2),0,3)}
+      ${label(xB*0.48,yWaist*0.62,'Front',1)}
+      ${textAnno(xB*0.48,yCowl+u(5),'cowl')}
+      ${dimH(u(2),xB-u(2),-10,round1(bust-2))}
+      ${dimH(0,xB,yBust-8,bust)}
+      ${dimH(0,xW,yWaist+14,waist)}
+      ${dimV(-12,0,yWaist,bodiceH,'left')}
+      ${dimV(xB+10,0,yCowl,cowlDrop,'right')}
+    </g>`);
+    rows.push(
+      ['Front','Ancho entre breteles',round1(bust-2)],
+      ['Front','Busto (1/2)',bust],
+      ['Front','Cintura (1/2)',waist],
+      ['Front','Alto cuerpo',bodiceH],
+      ['Front','Caída cowl',cowlDrop]
+    );
+  }
+
+  // DIA.2 BACK BODICE — escote bajo + puntos de bretel
+  {
+    const ox=280, oy=pad;
+    const xB=u(round1(bust+0.5)), xW=u(round1(waist+0.5));
+    const backH=round1(bodiceH-2), neckD=round1(8);
+    const yNeck=u(neckD), yWaist=u(backH);
+    const d=[
+      `M${u(2)},0 L${xB-u(2)},0`,
+      `C${xB+u(1)},${u(5)} ${xB+u(1.5)},${yNeck+u(4)} ${xB},${yNeck+u(6)}`,
+      `L${xW},${yWaist} L0,${yWaist}`,
+      `L${u(0.5)},${yNeck+u(6)} C${u(0)},${yNeck+u(2)} ${u(1)},${u(4)} ${u(2)},0 Z`
+    ].join(' ');
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(d)}
+      ${guide(`M${u(3)},${yNeck} Q${xB/2},${yNeck+u(3)} ${xB-u(3)},${yNeck}`)}
+      ${circ(u(2),0,3)}${circ(xB-u(2),0,3)}
+      ${line(0,yWaist,xW,yWaist)}
+      ${label(xB*0.48,yWaist*0.58,'Back',2)}
+      ${dimH(u(2),xB-u(2),-10,round1(bust-1.5))}
+      ${dimH(0,xW,yWaist+14,round1(waist+0.5))}
+      ${dimV(-12,0,yWaist,backH,'left')}
+      ${dimV(xB+10,0,yNeck,neckD,'right')}
+    </g>`);
+    rows.push(
+      ['Back','Ancho entre breteles',round1(bust-1.5)],
+      ['Back','Cintura (1/2)',round1(waist+0.5)],
+      ['Back','Alto cuerpo',backH],
+      ['Back','Prof. escote espalda',neckD]
+    );
+  }
+
+  // DIA.5 STRAP (arriba a la derecha)
+  {
+    const ox=520, oy=pad;
+    const ww=u(strapL), hh=u(strapW+0.5);
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(`M0,0 L${ww},0 L${ww},${hh} L0,${hh} Z`)}
+      ${label(ww/2,hh+u(4),'Strap',5)}
+      ${dimH(0,ww,-8,strapL)}
+      ${dimV(-10,0,hh,round1(strapW+0.5),'left')}
+      ${meas(ww/2,hh+u(9),'×2','middle')}
+    </g>`);
+    rows.push(['Strap','Largo (c/u)',strapL],['Strap','Ancho',round1(strapW+0.5)],['Strap','Cantidad',2]);
+  }
+
+  // DIA.3 SKIRT FRONT WRAP — frunce a un lado + abertura alta
+  {
+    const ox=40, oy=pad+u(bodiceH+10);
+    const xW=u(waist), xH=u(hip), xWrap=u(hip+wrapExtra), xHem=u(hip+wrapExtra+4);
+    const yHip=u(18), ySlit=u(skirtL-slitH), yHem=u(skirtL);
+    // lado izquierdo = costado con abertura; derecha = cruce/wrap
+    const d=[
+      `M0,0 L${xW},0`,
+      // cintura con marcas de frunce hacia la derecha
+      `L${xWrap},${u(2)}`,
+      `C${xWrap+u(2)},${yHip*0.5} ${xHem},${yHip} ${xHem},${yHip}`,
+      `L${xHem},${yHem}`,
+      `L${u(4)},${yHem}`,           // ruedo hasta la abertura
+      `L${u(2)},${ySlit}`,          // sube la abertura
+      `L0,${yHip}`,                 // costado hasta cadera
+      'Z'
+    ].join(' ');
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(d)}
+      ${guide(`M${xW*0.55},0 L${xW*0.7},${yHip}`)}
+      ${guide(`M${xW*0.7},0 L${xW*0.85},${yHip}`)}
+      ${guide(`M${xW*0.85},0 L${xWrap*0.95},${yHip}`)}
+      ${guide(`M${u(2)},${ySlit} L${u(2)},${yHem}`)}
+      ${line(0,0,xW,0)}
+      ${label(xHem*0.42,yHem*0.45,'Skirt Front',3)}
+      ${textAnno(xWrap*0.75,yHip*0.55,'frunce')}
+      ${textAnno(u(8),ySlit+u(10),'abertura')}
+      ${dimH(0,xW,-8,waist)}
+      ${dimH(0,xHem,yHip-8,round1(hip+wrapExtra+4))}
+      ${dimH(u(4),xHem,yHem+14,round1(hip+wrapExtra))}
+      ${dimV(-12,0,yHem,skirtL,'left')}
+      ${dimV(xHem+10,ySlit,yHem,slitH,'right')}
+    </g>`);
+    rows.push(
+      ['Skirt Front','Cintura (1/2)',waist],
+      ['Skirt Front','Ancho con cruce',round1(hip+wrapExtra+4)],
+      ['Skirt Front','Largo falda',skirtL],
+      ['Skirt Front','Alto abertura',slitH],
+      ['Skirt Front','Extensión cruce',wrapExtra]
+    );
+  }
+
+  // DIA.4 SKIRT BACK
+  {
+    const ox=480, oy=pad+u(bodiceH+10);
+    const xW=u(round1(waist+0.5)), xH=u(round1(hip+1)), xHem=u(round1(hip+3));
+    const yHip=u(18), yHem=u(skirtL);
+    const d=[
+      `M0,0 L${xW},0`,
+      `C${xH},${u(6)} ${xH+u(1)},${yHip} ${xH},${yHip}`,
+      `L${xHem},${yHem} L0,${yHem} Z`
+    ].join(' ');
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(d)}
+      ${guide(`M${xW/2},0 L${xHem/2},${yHem}`)}
+      ${line(0,0,xW,0)}
+      ${label(xHem*0.42,yHem*0.45,'Skirt Back',4)}
+      ${dimH(0,xW,-8,round1(waist+0.5))}
+      ${dimH(0,xH,yHip-8,round1(hip+1))}
+      ${dimH(0,xHem,yHem+14,round1(hip+3))}
+      ${dimV(-12,0,yHem,skirtL,'left')}
+    </g>`);
+    rows.push(
+      ['Skirt Back','Cintura (1/2)',round1(waist+0.5)],
+      ['Skirt Back','Cadera (1/2)',round1(hip+1)],
+      ['Skirt Back','Ruedo (1/2)',round1(hip+3)],
+      ['Skirt Back','Largo falda',skirtL]
+    );
+  }
+
+  const h=Math.ceil(pad*2+u(bodiceH+10+skirtL+8));
+  return {svg:wrapSVG(920,h,pieces.join('')), rows, title:'TheSlip System'};
+}
+
+function textAnno(x,y,t){
+  return `<text class="label-dia" x="${x}" y="${y}" text-anchor="middle" font-style="italic">${t}</text>`;
 }
 
 /* ---- Vestido columna / barco (como el look marfil) ---- */
