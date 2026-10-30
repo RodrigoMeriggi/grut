@@ -147,7 +147,7 @@ td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums}
   <span class="eyebrow">Tabla de cotas</span>
   <h2 style="font:36px var(--serif);font-weight:400;margin:8px 0 12px">Medidas del sistema</h2>
   <div class="table-wrap"><table><thead><tr><th>Pieza</th><th>Cota</th><th>cm</th></tr></thead><tbody id="measBody"></tbody></table></div>
-  <p class="notice">Documento interno de moldería conceptual. Las formas y cotas siguen el lenguaje visual de un sistema técnico de camisería (piezas numeradas DIA., ejes azules, guías rojas) adaptado a cada tipología GRUT. No sustituyen un patrón CAD de producción: costuras, holguras, entretelas y escalado a otros talles deben cerrarse en el atelier con prueba en tela. Unidades en centímetros para talle M (mujer o hombre según el modelo).</p>
+  <p class="notice">Documento interno de moldería. Las piezas se dibujan a escala proporcional (misma escala en cm para contorno y cotas): el largo va en el pliegue o costura vertical; el ruedo, busto y cintura van en sus anchos. Formato técnico con DIA., guías rojas y ejes azules. No sustituyen un patrón CAD de producción: márgenes de costura, entretelas y prueba en tela se cierran en el atelier. Talle M · cm.</p>
 </section>
 </main>
 <script>
@@ -249,6 +249,8 @@ function boardsFor(p){
 }
 
 /* ---------- SVG helpers ---------- */
+const PX=2.35; // px por cm — geometría y cotas comparten la misma escala
+function u(cm){return cm*PX}
 function path(d){return `<path class="piece" d="${d}"/>`}
 function guide(d,cls='guide-red'){return `<path class="${cls}" d="${d}"/>`}
 function label(x,y,name,dia){
@@ -258,371 +260,625 @@ function label(x,y,name,dia){
 function meas(x,y,t,anchor='middle'){
   return `<text class="meas" x="${x}" y="${y}" text-anchor="${anchor}">${t}</text>`;
 }
-function circ(x,y,r=4){return `<circle class="btn" cx="${x}" cy="${y}" r="${r}"/>`}
+function circ(x,y,r=3.5){return `<circle class="btn" cx="${x}" cy="${y}" r="${r}"/>`}
 function line(x1,y1,x2,y2,cls='guide-blue'){return `<line class="${cls}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`}
 
-function renderSystem(sys,p,titleOverride){
+/** Cota horizontal entre dos x, a altura y (etiqueta arriba o abajo). */
+function dimH(x1,x2,y,val,side='up'){
+  const mid=(x1+x2)/2, gap=side==='up'?-10:14;
+  return line(x1,y,x2,y)+meas(mid,y+gap,round1(val));
+}
+/** Cota vertical entre dos y, a abscisa x (etiqueta a izq o der). */
+function dimV(x,y1,y2,val,side='left'){
+  const mid=(y1+y2)/2, ax=side==='left'?'end':'start', ox=side==='left'?-8:8;
+  return line(x,y1,x,y2)+meas(x+ox,mid+4,round1(val),ax);
+}
+
+function renderSystem(sys,p){
   const b=base(p);
   const fn={
     shirt:drawShirt,blazer:drawBlazer,dress:drawDress,trousers:drawTrousers,
     knit:drawKnit,swim:drawSwim,accessory:drawAccessory,halter:drawHalter,short:drawShort
   }[sys]||drawDress;
-  return fn(b,p,titleOverride||SYSTEMS[sys].title);
+  return fn(b,p);
 }
 
-function drawShirt(b){
-  const L=round1(b.front+22);
-  const W=round1(b.chest/4+3);
-  const pieces=[];
-  const rows=[];
-  // Front
-  pieces.push(`
-    <g transform="translate(620,40)">
-      ${path('M40,18 C70,8 110,6 150,14 L168,70 C175,110 178,160 176,210 L174,340 C172,400 168,460 155,520 L40,520 L40,210 C40,150 38,90 40,18 Z')}
-      ${guide('M40,18 L40,520')}
-      ${guide('M92,70 L92,200')}
-      ${circ(92,120)}${circ(92,160)}
-      ${line(40,70,176,70)}${line(40,210,176,210)}
-      ${label(108,300,'Front',1)}
-      ${meas(108,12,round1(b.shoulder))}${meas(188,90,round1(b.neck/2), 'start')}
-      ${meas(188,210,W,'start')}${meas(188,400,round1(W+1),'start')}
-      ${meas(108,538,L)}${meas(28,270,round1(b.front),'end')}
-    </g>`);
-  rows.push(['Front','Ancho pecho (1/2)',W],['Front','Largo delantero',L],['Front','Caída de hombro',round1(b.shoulder)]);
-  // Back
-  pieces.push(`
-    <g transform="translate(40,40)">
-      ${path('M30,30 C70,10 120,8 160,22 L178,80 C182,130 184,190 182,250 L176,400 C170,470 160,520 140,540 L30,540 L30,250 C28,180 26,100 30,30 Z')}
-      ${guide('M95,30 L95,90')}${guide('M110,30 L110,85')}${guide('M125,30 L125,90')}
-      ${line(30,80,178,80)}${line(30,250,182,250)}
-      ${label(100,300,'Back',3)}
-      ${meas(100,16,round1(b.shoulder+1))}${meas(190,80,round1(b.yoke/2),'start')}
-      ${meas(100,558,round1(L+2))}${meas(100,556,'' )}
-      ${meas(18,300,round1(b.back),'end')}
-    </g>`);
-  rows.push(['Back','Ancho espalda (1/2)',round1(b.chest/4+2)],['Back','Largo espalda',round1(L+2)],['Back','Alto sisa',round1(b.yoke+4)]);
-  // Yoke
-  pieces.push(`
-    <g transform="translate(280,30)">
-      ${path('M20,40 C60,10 140,8 200,28 L210,70 L20,78 Z')}
-      ${guide('M115,20 L115,75')}
-      ${label(115,55,'Yoke',2)}
-      ${meas(115,8,round1(b.yoke+2))}${meas(220,55,round1(b.yoke/2),'start')}${meas(10,60,round1(7),'end')}
-    </g>`);
-  rows.push(['Yoke','Ancho canesú',round1(b.yoke+2)],['Yoke','Alto canesú',7]);
-  // Sleeve
-  pieces.push(`
-    <g transform="translate(300,140)">
-      ${path('M40,20 C80,0 140,0 180,22 L200,80 L170,360 L50,360 L20,80 Z')}
-      ${guide('M110,20 L110,360')}
-      ${line(30,80,190,80)}${line(50,360,170,360)}
-      ${label(110,200,'Sleeve',4)}
-      ${meas(110,8,round1(b.sleeveW/2))}${meas(210,80,round1(b.sleeveW/2),'start')}
-      ${meas(110,378,round1(b.cuff))}${meas(10,220,round1(b.sleeve),'end')}
-    </g>`);
-  rows.push(['Sleeve','Largo manga',b.sleeve],['Sleeve','Ancho sisa',round1(b.sleeveW/2)],['Sleeve','Ancho puño',b.cuff]);
-  // Cuff
-  pieces.push(`
-    <g transform="translate(40,300)">
-      ${path('M20,20 L140,20 L155,45 L140,70 L20,70 Z')}
-      ${guide('M80,20 L80,70')}${circ(125,45,3.5)}
-      ${label(75,50,'Cuff',5)}
-      ${meas(80,12,round1(b.cuff+2))}${meas(12,48,round1(6.5),'end')}${meas(160,48,round1(b.cuff/2),'start')}
-    </g>`);
-  rows.push(['Cuff','Largo puño',round1(b.cuff+2)],['Cuff','Alto puño',6.5]);
-  // Collar
-  pieces.push(`
-    <g transform="translate(220,540)">
-      ${path('M20,40 C80,10 220,8 360,35 L365,70 L20,78 Z')}
-      ${guide('M190,20 L190,75')}${circ(190,55,3.5)}
-      ${label(190,55,'Collar',6)}
-      ${meas(190,6,b.collar)}${meas(10,60,round1(8),'end')}${meas(375,55,round1(b.collar/2),'start')}
-    </g>`);
-  rows.push(['Collar','Largo cuello',b.collar],['Collar','Alto cuello',8]);
-  return {svg:wrapSVG(900,660,pieces.join('')),rows,title:'TheShirt System'};
-}
-
-function drawBlazer(b){
-  const L=round1(b.front+28);
-  const W=round1(b.chest/4+4);
-  const pieces=[];
-  const rows=[];
-  pieces.push(`
-    <g transform="translate(560,30)">
-      ${path('M50,20 C90,6 130,8 165,22 L185,85 C195,140 200,210 198,300 L190,520 L50,520 L50,300 C48,200 46,100 50,20 Z')}
-      ${guide('M50,20 L50,520')}${guide('M95,90 L70,300 L95,520')}
-      ${line(50,90,185,90)}${line(50,300,198,300)}
-      ${label(120,280,'Front',1)}${circ(78,220)}${circ(78,280)}
-      ${meas(120,10,round1(b.shoulder+1))}${meas(210,150,W,'start')}${meas(120,540,L)}${meas(38,280,round1(b.front+4),'end')}
-    </g>`);
-  rows.push(['Front','Ancho pecho (1/2)',W],['Front','Largo saco',L],['Front','Solapa (ancho)',9]);
-  pieces.push(`
-    <g transform="translate(40,30)">
-      ${path('M40,25 C90,8 150,8 195,28 L210,95 C215,160 216,240 212,330 L200,520 L40,520 L40,300 C38,190 36,100 40,25 Z')}
-      ${guide('M120,25 L120,100')}${line(40,95,210,95)}${line(40,330,212,330)}
-      ${label(120,290,'Back',2)}
-      ${meas(120,12,round1(b.shoulder+2))}${meas(220,160,round1(W+1),'start')}${meas(120,540,round1(L+1))}${meas(28,280,round1(b.back+2),'end')}
-    </g>`);
-  rows.push(['Back','Ancho espalda (1/2)',round1(W+1)],['Back','Largo espalda',round1(L+1)]);
-  pieces.push(`
-    <g transform="translate(300,80)">
-      ${path('M50,30 C95,5 155,5 200,32 L220,100 L185,420 L65,420 L30,100 Z')}
-      ${guide('M125,30 L125,420')}${line(40,100,210,100)}
-      ${label(125,230,'Sleeve',3)}
-      ${meas(125,16,round1(b.sleeveW/2+2))}${meas(125,438,round1(b.cuff+4))}${meas(18,250,round1(b.sleeve-2),'end')}
-    </g>`);
-  rows.push(['Sleeve','Largo manga',round1(b.sleeve-2)],['Sleeve','Boca manga',round1(b.cuff+4)]);
-  pieces.push(`
-    <g transform="translate(280,480)">
-      ${path('M30,40 C90,12 200,10 300,32 L305,75 L30,85 Z')}
-      ${guide('M165,20 L165,80')}
-      ${label(165,58,'Collar',4)}
-      ${meas(165,8,round1(b.collar+4))}${meas(18,65,round1(9),'end')}
-    </g>`);
-  rows.push(['Collar','Largo cuello',round1(b.collar+4)],['Collar','Alto cuello / solapa',9]);
-  pieces.push(`
-    <g transform="translate(40,420)">
-      ${path('M20,20 L120,20 L130,120 L20,160 Z')}
-      ${guide('M70,20 L70,140')}
-      ${label(70,90,'Facing',5)}
-      ${meas(70,12,14)}${meas(10,95,28,'end')}
-    </g>`);
-  rows.push(['Facing','Ancho vista',14],['Facing','Largo vista',28]);
-  return {svg:wrapSVG(900,620,pieces.join('')),rows,title:'TheTailoring System'};
-}
-
+/* ---- Vestido columna / barco (como el look marfil) ---- */
 function drawDress(b){
-  const L=round1(b.front+70);
-  const W=round1(b.chest/4+2);
-  const pieces=[];
+  // Mitad delantera sobre pliegue. Escala real en cm.
+  const bust=round1(b.chest/4+2);      // ~25 W / ~27 M
+  const waist=round1(b.waist/4+2);     // ~20.5
+  const hip=round1(b.hip/4+3);         // ~27.5
+  const hem=round1(hip+2);
+  const len=round1((b.g==='M'?b.front:b.front)+96); // piso ~140 mujer
+  const neckW=round1(b.neck/2+1);      // barco: ancho medio escote
+  const neckD=4;                       // profundidad escote barco
+  const sh=round1(bust-2);             // hombro a sisa (barco casi horizontal)
+  const armD=round1(b.yoke+5);         // profundidad sisa
+  const pad=28;
   const rows=[];
-  pieces.push(`
-    <g transform="translate(480,30)">
-      ${path('M80,40 C110,10 150,8 175,35 L195,90 C205,150 208,220 200,300 C195,400 205,500 220,600 L80,600 L70,300 C65,200 68,110 80,40 Z')}
-      ${guide('M80,40 L80,600')}${guide('M130,300 L200,300')}
-      ${line(75,90,195,90)}${line(70,300,200,300)}
-      ${label(135,360,'Front',1)}
-      ${meas(135,8,round1(b.shoulder-1))}${meas(215,160,W,'start')}${meas(215,300,round1(b.waist/4+2),'start')}${meas(230,500,round1(b.hip/4+3),'start')}${meas(150,618,L)}
+  const pieces=[];
+
+  // FRONT — CF a la izquierda (pliegue)
+  {
+    const ox=520, oy=pad;
+    const cf=0;
+    const xNeck=u(neckW), xSh=u(sh), xBust=u(bust), xWaist=u(waist), xHip=u(hip), xHem=u(hem);
+    const yNeck=u(neckD), yArm=u(armD), yBust=u(armD+2), yWaist=u(armD+18), yHip=u(armD+38), yHem=u(len);
+    const d=[
+      `M${cf},${yNeck}`,
+      `L${xNeck},${yNeck*0.35}`,
+      `L${xSh},${u(1)}`,
+      `C${xSh+u(2)},${u(6)} ${xBust+u(1)},${yArm*0.55} ${xBust},${yArm}`,
+      `C${xBust+u(0.5)},${(yArm+yWaist)/2} ${xWaist+u(1)},${yWaist-u(4)} ${xWaist},${yWaist}`,
+      `C${xWaist+u(0.5)},${(yWaist+yHip)/2} ${xHip},${yHip-u(4)} ${xHip},${yHip}`,
+      `L${xHem},${yHem}`,
+      `L${cf},${yHem}`,
+      'Z'
+    ].join(' ');
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(d)}
+      ${guide(`M${cf},${yNeck} L${cf},${yHem}`)}
+      ${line(cf,yBust,xBust,yBust)}${line(cf,yWaist,xWaist,yWaist)}${line(cf,yHip,xHip,yHip)}
+      ${label(u(bust*0.45),u(len*0.55),'Front',1)}
+      ${dimH(cf,xSh, -6, sh)}
+      ${dimH(cf,xNeck, yNeck+14, neckW)}
+      ${dimV(xBust+10, yArm*0.15, yArm, armD, 'right')}
+      ${dimH(cf,xBust, yBust-8, bust)}
+      ${dimH(cf,xWaist, yWaist-8, waist)}
+      ${dimH(cf,xHip, yHip-8, hip)}
+      ${dimH(cf,xHem, yHem+16, hem)}
+      ${dimV(-12, yNeck, yHem, len, 'left')}
     </g>`);
-  rows.push(['Front','Ancho busto (1/2)',W],['Front','Cintura (1/2)',round1(b.waist/4+2)],['Front','Cadera (1/2)',round1(b.hip/4+3)],['Front','Largo',L]);
-  pieces.push(`
-    <g transform="translate(80,30)">
-      ${path('M70,35 C110,8 160,8 195,32 L215,95 C220,170 222,250 215,330 C210,430 220,520 230,600 L70,600 L60,330 C55,220 58,120 70,35 Z')}
-      ${guide('M140,35 L140,120')}${line(65,95,215,95)}${line(60,330,215,330)}
-      ${label(140,360,'Back',2)}
-      ${meas(140,8,round1(b.shoulder))}${meas(230,170,round1(W+1),'start')}${meas(150,618,round1(L+1))}${meas(48,300,round1(b.back),'end')}
+    rows.push(
+      ['Front','Ancho hombro (1/2)',sh],
+      ['Front','Escote barco (1/2)',neckW],
+      ['Front','Prof. sisa',armD],
+      ['Front','Busto (1/4 + holgura)',bust],
+      ['Front','Cintura (1/4 + holgura)',waist],
+      ['Front','Cadera (1/4 + holgura)',hip],
+      ['Front','Ruedo (1/4)',hem],
+      ['Front','Largo CF (pliegue)',len]
+    );
+  }
+
+  // BACK — CB a la izquierda (costura / cierre)
+  {
+    const ox=40, oy=pad;
+    const bustB=round1(bust+0.5), waistB=round1(waist+0.5), hipB=round1(hip+0.5), hemB=round1(hem+0.5);
+    const neckWB=round1(neckW-0.5), neckDB=3, shB=round1(sh+0.5), armDB=round1(armD+0.5), lenB=round1(len+1);
+    const cf=0;
+    const xNeck=u(neckWB), xSh=u(shB), xBust=u(bustB), xWaist=u(waistB), xHip=u(hipB), xHem=u(hemB);
+    const yNeck=u(neckDB), yArm=u(armDB), yBust=u(armDB+2), yWaist=u(armDB+18), yHip=u(armDB+38), yHem=u(lenB);
+    const d=[
+      `M${cf},${yNeck}`,
+      `L${xNeck},${yNeck*0.4}`,
+      `L${xSh},${u(0.8)}`,
+      `C${xSh+u(2)},${u(6)} ${xBust+u(1)},${yArm*0.55} ${xBust},${yArm}`,
+      `C${xBust},${(yArm+yWaist)/2} ${xWaist+u(0.8)},${yWaist-u(3)} ${xWaist},${yWaist}`,
+      `C${xWaist},${(yWaist+yHip)/2} ${xHip},${yHip-u(3)} ${xHip},${yHip}`,
+      `L${xHem},${yHem}`,
+      `L${cf},${yHem}`,
+      'Z'
+    ].join(' ');
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(d)}
+      ${guide(`M${cf},${yNeck} L${cf},${yHem}`)}
+      ${guide(`M${cf+u(1.2)},${yNeck} L${cf+u(1.2)},${u(armDB+22)}`)}
+      ${line(cf,yBust,xBust,yBust)}${line(cf,yWaist,xWaist,yWaist)}${line(cf,yHip,xHip,yHip)}
+      ${label(u(bustB*0.45),u(lenB*0.55),'Back',2)}
+      ${dimH(cf,xSh, -6, shB)}
+      ${dimH(cf,xBust, yBust-8, bustB)}
+      ${dimH(cf,xWaist, yWaist-8, waistB)}
+      ${dimH(cf,xHip, yHip-8, hipB)}
+      ${dimH(cf,xHem, yHem+16, hemB)}
+      ${dimV(-12, yNeck, yHem, lenB, 'left')}
+      ${dimV(xBust+10, yArm*0.15, yArm, armDB, 'right')}
     </g>`);
-  rows.push(['Back','Ancho espalda (1/2)',round1(W+1)],['Back','Largo',round1(L+1)]);
-  pieces.push(`
-    <g transform="translate(300,80)">
-      ${path('M40,30 L160,30 L155,220 L45,220 Z')}
-      ${guide('M100,30 L100,220')}
-      ${label(100,130,'Facing',3)}
-      ${meas(100,18,18)}${meas(30,130,28,'end')}
+    rows.push(
+      ['Back','Ancho hombro (1/2)',shB],
+      ['Back','Busto (1/4)',bustB],
+      ['Back','Cintura (1/4)',waistB],
+      ['Back','Cadera (1/4)',hipB],
+      ['Back','Ruedo (1/4)',hemB],
+      ['Back','Largo CB',lenB],
+      ['Back','Prof. sisa',armDB]
+    );
+  }
+
+  // NECK FACING — sigue el escote barco
+  {
+    const ox=300, oy=pad;
+    const w=round1(neckW*2+sh*0.35), h=7;
+    const ww=u(w), hh=u(h), inner=u(h-3.5);
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(`M0,${u(2)} Q${ww/2},0 ${ww},${u(2)} L${ww},${hh} Q${ww/2},${hh+u(1)} 0,${hh} Z`)}
+      ${guide(`M0,${inner} Q${ww/2},${inner-u(1.2)} ${ww},${inner}`)}
+      ${guide(`M${ww/2},${u(1)} L${ww/2},${hh}`)}
+      ${label(ww/2, hh*0.62,'Facing',3)}
+      ${dimH(0,ww,-8,w)}
+      ${dimV(-10,u(2),hh,h,'left')}
     </g>`);
-  rows.push(['Facing','Ancho',18],['Facing','Largo escote',28]);
-  pieces.push(`
-    <g transform="translate(280,360)">
-      ${path('M30,40 C70,10 150,10 200,40 L200,70 L30,70 Z')}
-      ${label(115,60,'Bias',4)}
-      ${meas(115,20,round1(b.neck+8))}${meas(20,58,3.5,'end')}
+    rows.push(['Facing','Largo vista escote',w],['Facing','Alto vista',h]);
+  }
+
+  // ARMHOLE FACING
+  {
+    const ox=310, oy=pad+u(18);
+    const w=round1(armD+2), h=4;
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(`M${u(2)},0 C${u(w*0.4)},${u(1)} ${u(w*0.7)},${u(h*0.2)} ${u(w)},${u(h*0.9)} L${u(w-1)},${u(h+3)} C${u(w*0.6)},${u(h+1)} ${u(w*0.3)},${u(h)} 0,${u(h+2)} Z`)}
+      ${label(u(w*0.45),u(h+0.5),'Armhole',4)}
+      ${dimH(0,u(w),-8,w)}
+      ${dimV(u(w)+8,0,u(h+3),round1(h+3),'right')}
     </g>`);
-  rows.push(['Bias','Largo bies / bretel',round1(b.neck+8)],['Bias','Ancho',3.5]);
-  return {svg:wrapSVG(900,680,pieces.join('')),rows,title:'TheDress System'};
+    rows.push(['Armhole','Largo vista sisa',w],['Armhole','Ancho vista',round1(h+3)]);
+  }
+
+  const boardH=Math.ceil(pad*2+u(len+8));
+  return {svg:wrapSVG(920, Math.max(boardH,520), pieces.join('')), rows, title:'TheDress System'};
 }
 
-function drawTrousers(b){
-  const pieces=[];
-  const rows=[];
-  pieces.push(`
-    <g transform="translate(120,30)">
-      ${path('M80,20 L200,20 L210,80 C220,140 230,200 225,300 L210,560 L70,560 L55,300 C50,200 55,100 80,20 Z')}
-      ${guide('M140,20 L140,560')}${guide('M80,20 C100,90 110,150 100,220')}
-      ${line(80,20,200,20)}${line(70,560,210,560)}
-      ${label(140,300,'Front',1)}
-      ${meas(140,10,round1(b.waist/4+2))}${meas(235,200,round1(b.thigh/2),'start')}${meas(140,578,round1(b.hem))}${meas(42,300,b.inseam,'end')}${meas(70,100,b.rise)}
+/* ---- Camisa ---- */
+function drawShirt(b){
+  const bust=round1(b.chest/4+3);
+  const waist=round1(b.chest/4+2);
+  const hem=round1(b.chest/4+3.5);
+  const len=round1(b.front+26);
+  const sh=round1(b.shoulder);
+  const neckW=round1(b.neck/2);
+  const armD=round1(b.yoke+5);
+  const sleeveL=b.sleeve;
+  const sleeveCap=round1(b.sleeveW/2);
+  const cuffW=b.cuff;
+  const cuffH=6.5;
+  const collarL=b.collar;
+  const yokeW=round1(b.yoke+4);
+  const yokeH=7;
+  const rows=[], pieces=[];
+  const pad=30;
+
+  // FRONT
+  {
+    const ox=560, oy=pad;
+    const xSh=u(sh), xBust=u(bust), xHem=u(hem), xNeck=u(neckW);
+    const yArm=u(armD), yHem=u(len), yNeck=u(3);
+    const d=`M0,${yNeck} L${xNeck},0 L${xSh},0 C${xSh+u(2)},${u(5)} ${xBust},${yArm*0.5} ${xBust},${yArm} L${xHem},${yHem} L0,${yHem} Z`;
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(d)}
+      ${guide(`M0,${yNeck} L0,${yHem}`)}
+      ${guide(`M${u(3)},${yArm} L${u(3)},${u(len*0.55)}`)}
+      ${circ(u(3),u(armD+8))}${circ(u(3),u(armD+16))}
+      ${line(0,yArm,xBust,yArm)}
+      ${label(u(bust*0.45),u(len*0.5),'Front',1)}
+      ${dimH(0,xSh,-8,sh)}
+      ${dimH(0,xBust,yArm-8,bust)}
+      ${dimH(0,xHem,yHem+14,hem)}
+      ${dimV(-12,yNeck,yHem,len,'left')}
+      ${dimV(xBust+10,0,yArm,armD,'right')}
     </g>`);
-  rows.push(['Front','Cintura (1/4)',round1(b.waist/4+2)],['Front','Muslo',round1(b.thigh/2)],['Front','Tiro',b.rise],['Front','Entrepierna',b.inseam],['Front','Ruedo',b.hem]);
-  pieces.push(`
-    <g transform="translate(480,30)">
-      ${path('M70,20 L210,20 L225,90 C240,160 250,230 245,320 L225,560 L60,560 L45,320 C40,220 45,110 70,20 Z')}
-      ${guide('M145,20 L145,560')}${guide('M70,20 C95,100 110,170 95,240')}
-      ${line(70,20,210,20)}${line(60,560,225,560)}
-      ${label(145,300,'Back',2)}
-      ${meas(145,10,round1(b.waist/4+3))}${meas(255,220,round1(b.thigh/2+2),'start')}${meas(145,578,round1(b.hem+1))}${meas(32,300,round1(b.inseam-1),'end')}
+    rows.push(['Front','Hombro',sh],['Front','Pecho (1/2)',bust],['Front','Ruedo (1/2)',hem],['Front','Largo',len],['Front','Prof. sisa',armD]);
+  }
+  // BACK
+  {
+    const ox=40, oy=pad;
+    const bustB=round1(bust+1), hemB=round1(hem+1), lenB=round1(len+2), shB=round1(sh+1), armDB=armD;
+    const xSh=u(shB), xBust=u(bustB), xHem=u(hemB);
+    const yArm=u(armDB), yHem=u(lenB);
+    const d=`M0,${u(2)} L${u(neckW+0.5)},0 L${xSh},0 C${xSh+u(2)},${u(5)} ${xBust},${yArm*0.5} ${xBust},${yArm} L${xHem},${yHem} L0,${yHem} Z`;
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(d)}
+      ${guide('M'+u(8)+',0 L'+u(8)+','+u(6))}${guide('M'+u(12)+',0 L'+u(12)+','+u(6))}${guide('M'+u(16)+',0 L'+u(16)+','+u(6))}
+      ${guide(`M0,${u(2)} L0,${yHem}`)}
+      ${line(0,yArm,xBust,yArm)}
+      ${label(u(bustB*0.45),u(lenB*0.5),'Back',3)}
+      ${dimH(0,xSh,-8,shB)}
+      ${dimH(0,xBust,yArm-8,bustB)}
+      ${dimH(0,xHem,yHem+14,hemB)}
+      ${dimV(-12,0,yHem,lenB,'left')}
     </g>`);
-  rows.push(['Back','Cintura (1/4)',round1(b.waist/4+3)],['Back','Muslo',round1(b.thigh/2+2)],['Back','Entrepierna',round1(b.inseam-1)]);
-  pieces.push(`
-    <g transform="translate(300,520)">
-      ${path('M20,20 L260,20 L260,55 L20,55 Z')}
-      ${guide('M140,20 L140,55')}
-      ${label(140,42,'Waistband',3)}
-      ${meas(140,12,round1(b.waist+4))}${meas(10,42,4,'end')}
+    rows.push(['Back','Hombro',shB],['Back','Espalda (1/2)',bustB],['Back','Largo',lenB]);
+  }
+  // YOKE
+  {
+    const ox=300, oy=pad;
+    const ww=u(yokeW), hh=u(yokeH);
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(`M0,${u(3)} Q${ww/2},0 ${ww},${u(2)} L${ww},${hh} L0,${hh} Z`)}
+      ${guide(`M${ww/2},0 L${ww/2},${hh}`)}
+      ${label(ww/2,hh*0.65,'Yoke',2)}
+      ${dimH(0,ww,-8,yokeW)}
+      ${dimV(-10,u(2),hh,yokeH,'left')}
     </g>`);
-  rows.push(['Waistband','Largo pretina',round1(b.waist+4)],['Waistband','Alto',4]);
-  return {svg:wrapSVG(900,620,pieces.join('')),rows,title:'TheTrouser System'};
+    rows.push(['Yoke','Ancho',yokeW],['Yoke','Alto',yokeH]);
+  }
+  // SLEEVE
+  {
+    const ox=300, oy=pad+u(14);
+    const cap=u(sleeveCap), lenS=u(sleeveL), cuff=u(cuffW/2);
+    const d=`M${cap*0.15},0 C${cap*0.4},${-u(2)} ${cap*0.7},${-u(2)} ${cap*0.95},0 L${cap+u(2)},${u(10)} L${cuff+u(4)},${lenS} L${-u(2)},${lenS} L${-u(4)},${u(10)} Z`;
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(d)}
+      ${guide(`M${cap/2},0 L${cap/2},${lenS}`)}
+      ${line(-u(2),u(10),cap+u(2),u(10))}
+      ${label(cap/2,lenS*0.45,'Sleeve',4)}
+      ${dimH(0,cap,-10,sleeveCap)}
+      ${dimH(-u(2),cuff+u(4),lenS+14,cuffW)}
+      ${dimV(-14,0,lenS,sleeveL,'left')}
+    </g>`);
+    rows.push(['Sleeve','Cabeza (1/2)',sleeveCap],['Sleeve','Largo',sleeveL],['Sleeve','Boca (ancho)',cuffW]);
+  }
+  // CUFF
+  {
+    const ox=40, oy=pad+u(len+6);
+    const ww=u(cuffW+2), hh=u(cuffH);
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(`M0,0 L${ww},0 L${ww+u(1.5)},${hh/2} L${ww},${hh} L0,${hh} Z`)}
+      ${guide(`M${ww/2},0 L${ww/2},${hh}`)}${circ(ww-u(2),hh/2,3)}
+      ${label(ww/2,hh*0.65,'Cuff',5)}
+      ${dimH(0,ww,-8,cuffW+2)}
+      ${dimV(-10,0,hh,cuffH,'left')}
+    </g>`);
+    rows.push(['Cuff','Largo',round1(cuffW+2)],['Cuff','Alto',cuffH]);
+  }
+  // COLLAR
+  {
+    const ox=220, oy=pad+u(len+6);
+    const ww=u(collarL), hh=u(8);
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(`M0,${u(3)} Q${ww/2},0 ${ww},${u(2.5)} L${ww},${hh} L0,${hh} Z`)}
+      ${guide(`M${ww/2},0 L${ww/2},${hh}`)}${circ(ww/2,hh*0.55,3)}
+      ${label(ww/2,hh*0.65,'Collar',6)}
+      ${dimH(0,ww,-8,collarL)}
+      ${dimV(-10,u(2),hh,8,'left')}
+    </g>`);
+    rows.push(['Collar','Largo',collarL],['Collar','Alto',8]);
+  }
+
+  return {svg:wrapSVG(920, Math.ceil(pad*2+u(len)+u(20)), pieces.join('')), rows, title:'TheShirt System'};
+}
+
+/* ---- Sastrería / blazer ---- */
+function drawBlazer(b){
+  const bust=round1(b.chest/4+4);
+  const waist=round1(b.waist/4+4);
+  const hem=round1(b.hip/4+3);
+  const len=round1(b.front+30);
+  const sh=round1(b.shoulder+1);
+  const armD=round1(b.yoke+6);
+  const sleeveL=round1(b.sleeve-2);
+  const sleeveCap=round1(b.sleeveW/2+2);
+  const cuff=round1(b.cuff+4);
+  const collarL=round1(b.collar+4);
+  const rows=[], pieces=[];
+  const pad=28;
+
+  {
+    const ox=540, oy=pad;
+    const xSh=u(sh), xBust=u(bust), xWaist=u(waist), xHem=u(hem);
+    const yArm=u(armD), yWaist=u(armD+16), yHem=u(len);
+    const d=`M${u(2)},${u(4)} L${u(6)},0 L${xSh},0 C${xSh+u(3)},${u(6)} ${xBust},${yArm*0.5} ${xBust},${yArm} C${xBust},${(yArm+yWaist)/2} ${xWaist+u(1)},${yWaist} ${xWaist},${yWaist} L${xHem},${yHem} L0,${yHem} L0,${u(8)} Z`;
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(d)}
+      ${guide(`M0,${u(8)} L0,${yHem}`)}
+      ${guide(`M${u(5)},${u(10)} L${u(3)},${yWaist} L${u(6)},${yHem}`)}
+      ${circ(u(4),u(armD+10))}${circ(u(4),u(armD+18))}
+      ${line(0,yArm,xBust,yArm)}${line(0,yWaist,xWaist,yWaist)}
+      ${label(u(bust*0.42),u(len*0.48),'Front',1)}
+      ${dimH(0,xSh,-8,sh)}
+      ${dimH(0,xBust,yArm-8,bust)}
+      ${dimH(0,xWaist,yWaist-8,waist)}
+      ${dimH(0,xHem,yHem+14,hem)}
+      ${dimV(-12,0,yHem,len,'left')}
+    </g>`);
+    rows.push(['Front','Hombro',sh],['Front','Pecho (1/2)',bust],['Front','Cintura (1/2)',waist],['Front','Ruedo (1/2)',hem],['Front','Largo',len]);
+  }
+  {
+    const ox=40, oy=pad;
+    const bustB=round1(bust+1), hemB=round1(hem+1), lenB=round1(len+1), shB=round1(sh+1);
+    const xSh=u(shB), xBust=u(bustB), xHem=u(hemB);
+    const yArm=u(armD), yHem=u(lenB);
+    const d=`M0,${u(3)} L${u(7)},0 L${xSh},0 C${xSh+u(3)},${u(6)} ${xBust},${yArm*0.5} ${xBust},${yArm} L${xHem},${yHem} L0,${yHem} Z`;
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(d)}
+      ${guide(`M0,${u(3)} L0,${yHem}`)}
+      ${guide(`M${u(12)},0 L${u(12)},${u(8)}`)}
+      ${line(0,yArm,xBust,yArm)}
+      ${label(u(bustB*0.42),u(lenB*0.48),'Back',2)}
+      ${dimH(0,xSh,-8,shB)}
+      ${dimH(0,xBust,yArm-8,bustB)}
+      ${dimH(0,xHem,yHem+14,hemB)}
+      ${dimV(-12,0,yHem,lenB,'left')}
+    </g>`);
+    rows.push(['Back','Hombro',shB],['Back','Espalda (1/2)',bustB],['Back','Largo',lenB]);
+  }
+  {
+    const ox=300, oy=pad+u(8);
+    const cap=u(sleeveCap), lenS=u(sleeveL), c=u(cuff/2);
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(`M${cap*0.1},0 C${cap*0.35},${-u(2)} ${cap*0.7},${-u(2)} ${cap},0 L${cap+u(3)},${u(12)} L${c+u(3)},${lenS} L${-u(2)},${lenS} L${-u(4)},${u(12)} Z`)}
+      ${guide(`M${cap/2},0 L${cap/2},${lenS}`)}
+      ${label(cap/2,lenS*0.42,'Sleeve',3)}
+      ${dimH(0,cap,-10,sleeveCap)}
+      ${dimH(-u(2),c+u(3),lenS+14,cuff)}
+      ${dimV(-14,0,lenS,sleeveL,'left')}
+    </g>`);
+    rows.push(['Sleeve','Cabeza (1/2)',sleeveCap],['Sleeve','Largo',sleeveL],['Sleeve','Boca',cuff]);
+  }
+  {
+    const ox=280, oy=pad+u(len-4);
+    const ww=u(collarL), hh=u(9);
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(`M0,${u(4)} Q${ww/2},0 ${ww},${u(3)} L${ww},${hh} L0,${hh} Z`)}
+      ${guide(`M${ww/2},0 L${ww/2},${hh}`)}
+      ${label(ww/2,hh*0.65,'Collar',4)}
+      ${dimH(0,ww,-8,collarL)}
+      ${dimV(-10,u(3),hh,9,'left')}
+    </g>`);
+    rows.push(['Collar','Largo',collarL],['Collar','Alto / solapa',9]);
+  }
+  {
+    const ox=40, oy=pad+u(len-2);
+    const ww=u(14), hh=u(28);
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(`M0,0 L${ww},0 L${ww+u(1)},${hh*0.7} L${ww},${hh} L0,${hh} Z`)}
+      ${guide(`M${ww/2},0 L${ww/2},${hh}`)}
+      ${label(ww/2,hh*0.5,'Facing',5)}
+      ${dimH(0,ww,-8,14)}
+      ${dimV(-10,0,hh,28,'left')}
+    </g>`);
+    rows.push(['Facing','Ancho',14],['Facing','Largo',28]);
+  }
+  return {svg:wrapSVG(920, Math.ceil(pad*2+u(len)+u(32)), pieces.join('')), rows, title:'TheTailoring System'};
+}
+
+/* ---- Pantalón ---- */
+function drawTrousers(b, opts={}){
+  const rise=opts.rise||b.rise;
+  const inseam=opts.inseam||b.inseam;
+  const hem=opts.hem||b.hem;
+  const waist=round1(b.waist/4+2);
+  const hip=round1(b.hip/4+2);
+  const thigh=round1(b.thigh/2);
+  const outseam=round1(rise+inseam);
+  const rows=[], pieces=[];
+  const pad=28;
+
+  function pantPiece(ox, isBack, dia, name){
+    const wAdj=isBack?1.5:0, tAdj=isBack?2:0, iAdj=isBack?-1:0;
+    const W=round1(waist+wAdj), H=round1(hip+wAdj), T=round1(thigh+tAdj), Hem=round1(hem+(isBack?1:0)), Ins=round1(inseam+iAdj), Rise=round1(rise+(isBack?2:0));
+    const xW=u(W), xH=u(H), xT=u(T), xHem=u(Hem/2);
+    const yRise=u(Rise), yHem=u(Rise+Ins);
+    // crotch curve then outseam down
+    const d=`M0,0 L${xW},0 C${xH},${u(4)} ${xT},${yRise*0.55} ${xT},${yRise} L${xHem},${yHem} L${-u(isBack?3:1)},${yHem} C${-u(isBack?6:2)},${yRise*0.7} ${-u(isBack?4:1)},${yRise*0.35} 0,${u(2)} Z`;
+    pieces.push(`<g transform="translate(${ox},${pad})">
+      ${path(d)}
+      ${guide(`M${xW/2},0 L${xHem/2},${yHem}`)}
+      ${guide(`M0,0 C${u(2)},${yRise*0.4} ${u(1)},${yRise*0.7} ${-u(isBack?2:0.5)},${yRise}`)}
+      ${line(0,0,xW,0)}
+      ${label(u(T*0.35),u((Rise+Ins)*0.45),name,dia)}
+      ${dimH(0,xW,-8,W)}
+      ${dimH(-u(1),xT,yRise-8,T)}
+      ${dimH(-u(1),xHem,yHem+14,Hem)}
+      ${dimV(-16,0,yRise,Rise,'left')}
+      ${dimV(xT+12,yRise,yHem,Ins,'right')}
+    </g>`);
+    rows.push([name,'Cintura (1/4)',W],[name,'Muslo',T],[name,'Tiro',Rise],[name,'Entrepierna',Ins],[name,'Ruedo',Hem]);
+  }
+  pantPiece(140,false,1,'Front');
+  pantPiece(520,true,2,'Back');
+  {
+    const ww=u(b.waist+4), hh=u(4);
+    pieces.push(`<g transform="translate(300,${pad+u(outseam)+20})">
+      ${path(`M0,0 L${ww},0 L${ww},${hh} L0,${hh} Z`)}
+      ${guide(`M${ww/2},0 L${ww/2},${hh}`)}
+      ${label(ww/2,hh*0.75,'Waistband',3)}
+      ${dimH(0,ww,-8,b.waist+4)}
+      ${dimV(-10,0,hh,4,'left')}
+    </g>`);
+    rows.push(['Waistband','Largo',round1(b.waist+4)],['Waistband','Alto',4]);
+  }
+  return {svg:wrapSVG(920, Math.ceil(pad*2+u(outseam)+u(16)), pieces.join('')), rows, title: opts.title||'TheTrouser System'};
 }
 
 function drawShort(b){
-  const d=drawTrousers({...b,inseam:round1(b.inseam*0.28),hem:round1(b.hem+4)});
-  d.title='TheShort System';
-  d.rows=d.rows.map(r=>r[0]==='Front'&&r[1]==='Entrepierna'?['Front','Entrepierna (short)',round1(b.inseam*0.28)]:r);
-  return d;
+  return drawTrousers(b,{inseam:round1(b.inseam*0.28),hem:round1(b.hem+4),title:'TheShort System'});
 }
 
+/* ---- Punto ---- */
 function drawKnit(b){
-  const L=round1(b.front+18);
-  const W=round1(b.chest/4+2);
-  const pieces=[];
-  const rows=[];
-  pieces.push(`
-    <g transform="translate(480,40)">
-      ${path('M70,50 C110,15 160,15 200,50 L215,100 L210,360 L60,360 L55,100 Z')}
-      ${guide('M70,50 L70,360')}${line(55,100,215,100)}
-      ${label(135,220,'Front',1)}
-      ${meas(135,20,round1(b.shoulder))}${meas(225,120,W,'start')}${meas(135,378,L)}
+  const bust=round1(b.chest/4+2);
+  const hem=round1(b.chest/4+1.5);
+  const len=round1(b.front+18);
+  const sh=round1(b.shoulder);
+  const armD=round1(b.yoke+3);
+  const sleeveL=round1(b.sleeve*0.4);
+  const sleeveCap=round1(b.sleeveW/2-2);
+  const cuff=round1(b.cuff-2);
+  const rows=[], pieces=[];
+  const pad=28;
+
+  function body(ox, name, dia, adj){
+    const B=round1(bust+adj), H=round1(hem+adj), L=round1(len+adj), S=round1(sh+adj);
+    const xSh=u(S), xB=u(B), xH=u(H), yArm=u(armD), yHem=u(L);
+    pieces.push(`<g transform="translate(${ox},${pad})">
+      ${path(`M0,${u(4)} L${u(6)},0 L${xSh},0 C${xSh+u(2)},${u(4)} ${xB},${yArm*0.45} ${xB},${yArm} L${xH},${yHem} L0,${yHem} Z`)}
+      ${guide(`M0,${u(4)} L0,${yHem}`)}
+      ${line(0,yArm,xB,yArm)}
+      ${label(u(B*0.42),u(L*0.5),name,dia)}
+      ${dimH(0,xSh,-8,S)}
+      ${dimH(0,xB,yArm-8,B)}
+      ${dimH(0,xH,yHem+14,H)}
+      ${dimV(-12,0,yHem,L,'left')}
     </g>`);
-  rows.push(['Front','Ancho (1/2)',W],['Front','Largo',L]);
-  pieces.push(`
-    <g transform="translate(80,40)">
-      ${path('M60,50 C110,12 170,12 215,48 L230,100 L220,360 L55,360 L50,100 Z')}
-      ${guide('M140,50 L140,120')}${line(50,100,230,100)}
-      ${label(140,220,'Back',2)}
-      ${meas(140,18,round1(b.shoulder+1))}${meas(240,120,round1(W+1),'start')}${meas(140,378,round1(L+1))}
+    rows.push([name,'Hombro',S],[name,'Ancho (1/2)',B],[name,'Largo',L]);
+  }
+  body(500, 'Front', 1, 0);
+  body(60, 'Back', 2, 1);
+  {
+    const cap=u(sleeveCap), lenS=u(sleeveL), c=u(cuff/2);
+    pieces.push(`<g transform="translate(300,${pad+u(10)})">
+      ${path(`M${cap*0.1},0 C${cap*0.4},${-u(1.5)} ${cap*0.75},${-u(1.5)} ${cap},0 L${cap+u(2)},${u(8)} L${c+u(2)},${lenS} L0,${lenS} L${-u(2)},${u(8)} Z`)}
+      ${guide(`M${cap/2},0 L${cap/2},${lenS}`)}
+      ${label(cap/2,lenS*0.45,'Sleeve',3)}
+      ${dimH(0,cap,-10,sleeveCap)}
+      ${dimH(0,c+u(2),lenS+14,cuff)}
+      ${dimV(-14,0,lenS,sleeveL,'left')}
     </g>`);
-  rows.push(['Back','Ancho (1/2)',round1(W+1)],['Back','Largo',round1(L+1)]);
-  pieces.push(`
-    <g transform="translate(280,120)">
-      ${path('M40,40 C80,15 130,15 170,40 L185,90 L160,280 L50,280 L25,90 Z')}
-      ${guide('M105,40 L105,280')}
-      ${label(105,170,'Sleeve',3)}
-      ${meas(105,22,round1(b.sleeveW/2-2))}${meas(105,298,round1(b.cuff-2))}${meas(14,170,round1(b.sleeve*0.4),'end')}
+    rows.push(['Sleeve','Cabeza (1/2)',sleeveCap],['Sleeve','Largo',sleeveL],['Sleeve','Puño',cuff]);
+  }
+  {
+    const ww=u(b.neck+4), hh=u(4);
+    pieces.push(`<g transform="translate(300,${pad+u(len-6)})">
+      ${path(`M0,0 L${ww},0 L${ww},${hh} L0,${hh} Z`)}
+      ${label(ww/2,hh*0.75,'Rib',4)}
+      ${dimH(0,ww,-8,b.neck+4)}
+      ${dimV(-10,0,hh,4,'left')}
     </g>`);
-  rows.push(['Sleeve','Largo manga (corta)',round1(b.sleeve*0.4)],['Sleeve','Ancho sisa',round1(b.sleeveW/2-2)]);
-  pieces.push(`
-    <g transform="translate(300,440)">
-      ${path('M40,30 L200,30 L200,70 L40,70 Z')}
-      ${label(120,55,'Rib',4)}
-      ${meas(120,20,round1(b.neck+4))}${meas(30,55,4,'end')}
-    </g>`);
-  rows.push(['Rib','Cuello / pretina',round1(b.neck+4)],['Rib','Alto canalé',4]);
-  return {svg:wrapSVG(900,560,pieces.join('')),rows,title:'TheKnit System'};
+    rows.push(['Rib','Cuello',round1(b.neck+4)],['Rib','Alto',4]);
+  }
+  return {svg:wrapSVG(900, Math.ceil(pad*2+u(len)+u(12)), pieces.join('')), rows, title:'TheKnit System'};
 }
 
+/* ---- Halter ---- */
 function drawHalter(b){
-  const pieces=[];
-  const rows=[];
-  pieces.push(`
-    <g transform="translate(420,40)">
-      ${path('M120,20 C140,80 150,140 145,200 L200,280 L200,420 L60,420 L60,280 L115,200 C110,140 100,80 120,20 Z')}
-      ${guide('M120,20 L120,200')}${line(60,280,200,280)}
-      ${label(130,340,'Front',1)}
-      ${meas(130,12,round1(8))}${meas(215,300,round1(b.chest/4+1),'start')}${meas(130,438,round1(b.waist/4+3))}
+  const bust=round1(b.chest/4+1);
+  const waist=round1(b.waist/4+2);
+  const bodyH=36;
+  const tieL=round1(b.neck+40);
+  const rows=[], pieces=[];
+  const pad=30;
+  {
+    const ox=480, oy=pad;
+    const xB=u(bust), xW=u(waist), yMid=u(22), yHem=u(bodyH);
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(`M${u(8)},0 C${u(10)},${u(10)} ${u(11)},${u(18)} ${u(10)},${yMid} L${xB},${yMid+u(4)} L${xW},${yHem} L0,${yHem} L0,${yMid+u(4)} L${u(6)},${yMid} Z`)}
+      ${guide(`M${u(8)},0 L${u(8)},${yMid}`)}
+      ${line(0,yMid+u(4),xB,yMid+u(4))}
+      ${label(u(bust*0.4),u(bodyH*0.72),'Front',1)}
+      ${dimH(0,xB,yMid-4,bust)}
+      ${dimH(0,xW,yHem+14,waist)}
+      ${dimV(-12,0,yHem,bodyH,'left')}
     </g>`);
-  rows.push(['Front','Ancho busto (1/2)',round1(b.chest/4+1)],['Front','Alto cuerpo',round1(36)]);
-  pieces.push(`
-    <g transform="translate(80,80)">
-      ${path('M80,40 L200,40 L210,200 L70,200 Z')}
-      ${guide('M140,40 L140,200')}
-      ${label(140,130,'Back',2)}
-      ${meas(140,28,round1(b.chest/4))}${meas(60,130,22,'end')}
+    rows.push(['Front','Busto (1/2)',bust],['Front','Cintura (1/2)',waist],['Front','Alto cuerpo',bodyH]);
+  }
+  {
+    const ox=80, oy=pad+u(4);
+    const w=round1(b.chest/4), h=22;
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(`M0,0 L${u(w)},0 L${u(w+1)},${u(h)} L${u(-0.5)},${u(h)} Z`)}
+      ${guide(`M${u(w/2)},0 L${u(w/2)},${u(h)}`)}
+      ${label(u(w/2),u(h*0.55),'Back',2)}
+      ${dimH(0,u(w),-8,w)}
+      ${dimV(-12,0,u(h),h,'left')}
     </g>`);
-  rows.push(['Back','Ancho',round1(b.chest/4)],['Back','Alto',22]);
-  pieces.push(`
-    <g transform="translate(100,360)">
-      ${path('M20,30 L320,30 L320,55 L20,55 Z')}
-      ${label(170,48,'Tie',3)}
-      ${meas(170,20,round1(b.neck+40))}${meas(10,48,2.5,'end')}
+    rows.push(['Back','Ancho',w],['Back','Alto',h]);
+  }
+  {
+    const ox=80, oy=pad+u(32);
+    pieces.push(`<g transform="translate(${ox},${oy})">
+      ${path(`M0,0 L${u(tieL)},0 L${u(tieL)},${u(2.5)} L0,${u(2.5)} Z`)}
+      ${label(u(tieL/2),u(1.9),'Tie',3)}
+      ${dimH(0,u(tieL),-8,tieL)}
+      ${dimV(-10,0,u(2.5),2.5,'left')}
     </g>`);
-  rows.push(['Tie','Largo lazo / halter',round1(b.neck+40)],['Tie','Ancho',2.5]);
-  return {svg:wrapSVG(900,520,pieces.join('')),rows,title:'TheHalter System'};
+    rows.push(['Tie','Largo',tieL],['Tie','Ancho',2.5]);
+  }
+  return {svg:wrapSVG(900, 420, pieces.join('')), rows, title:'TheHalter System'};
 }
 
+/* ---- Baño ---- */
 function drawSwim(b){
-  const pieces=[];
-  const rows=[];
-  pieces.push(`
-    <g transform="translate(420,60)">
-      ${path('M90,40 C120,20 160,20 190,45 L200,120 C190,160 170,190 140,200 C110,190 90,160 80,120 Z')}
-      ${guide('M140,40 L140,200')}
-      ${label(140,130,'Front',1)}
-      ${meas(140,24,round1(b.chest/4-2))}${meas(140,218,round1(18))}
-    </g>`);
-  rows.push(['Front','Ancho copa / delantero',round1(b.chest/4-2)],['Front','Alto',18]);
-  pieces.push(`
-    <g transform="translate(100,60)">
-      ${path('M80,50 L200,50 L210,160 L70,160 Z')}
-      ${guide('M140,50 L140,160')}
-      ${label(140,115,'Back',2)}
-      ${meas(140,38,round1(b.chest/4-3))}${meas(60,115,16,'end')}
-    </g>`);
-  rows.push(['Back','Ancho',round1(b.chest/4-3)],['Back','Alto',16]);
-  pieces.push(`
-    <g transform="translate(120,320)">
-      ${path('M30,30 L300,30 L300,50 L30,50 Z')}
-      ${label(165,45,'Tie',3)}
-      ${meas(165,20,90)}${meas(20,45,2,'end')}
-    </g>`);
-  rows.push(['Tie','Largo lazos',90],['Tie','Ancho',2]);
-  pieces.push(`
-    <g transform="translate(480,300)">
-      ${path('M40,20 L180,20 L200,80 L160,160 L60,160 L20,80 Z')}
-      ${label(110,100,'Bottom',4)}
-      ${meas(110,12,round1(b.hip/4))}${meas(10,100,18,'end')}
-    </g>`);
-  rows.push(['Bottom','Cadera (1/4)',round1(b.hip/4)],['Bottom','Alto bombacha',18]);
-  return {svg:wrapSVG(900,520,pieces.join('')),rows,title:'TheSwim System'};
+  const cup=round1(b.chest/4-2);
+  const backW=round1(b.chest/4-3);
+  const bottom=round1(b.hip/4);
+  const rows=[], pieces=[];
+  pieces.push(`<g transform="translate(480,50)">
+    ${path(`M${u(4)},0 C${u(cup*0.4)},${-u(1)} ${u(cup*0.8)},${u(1)} ${u(cup)},${u(4)} C${u(cup+1)},${u(10)} ${u(cup*0.7)},${u(16)} ${u(cup/2)},${u(18)} C${u(cup*0.25)},${u(16)} ${u(1)},${u(10)} ${u(4)},0 Z`)}
+    ${guide(`M${u(cup/2)},0 L${u(cup/2)},${u(18)}`)}
+    ${label(u(cup/2),u(10),'Front',1)}
+    ${dimH(u(4),u(cup),-10,cup)}
+    ${dimV(-10,0,u(18),18,'left')}
+  </g>`);
+  rows.push(['Front','Ancho copa',cup],['Front','Alto',18]);
+  pieces.push(`<g transform="translate(80,50)">
+    ${path(`M0,0 L${u(backW)},0 L${u(backW+1)},${u(16)} L${u(-0.5)},${u(16)} Z`)}
+    ${guide(`M${u(backW/2)},0 L${u(backW/2)},${u(16)}`)}
+    ${label(u(backW/2),u(9),'Back',2)}
+    ${dimH(0,u(backW),-8,backW)}
+    ${dimV(-12,0,u(16),16,'left')}
+  </g>`);
+  rows.push(['Back','Ancho',backW],['Back','Alto',16]);
+  pieces.push(`<g transform="translate(80,280)">
+    ${path(`M0,0 L${u(90)},0 L${u(90)},${u(2)} L0,${u(2)} Z`)}
+    ${label(u(45),u(1.6),'Tie',3)}
+    ${dimH(0,u(90),-8,90)}
+  </g>`);
+  rows.push(['Tie','Largo',90],['Tie','Ancho',2]);
+  pieces.push(`<g transform="translate(480,260)">
+    ${path(`M${u(2)},0 L${u(bottom)},0 L${u(bottom+2)},${u(6)} L${u(bottom*0.85)},${u(18)} L${u(bottom*0.15)},${u(18)} L0,${u(6)} Z`)}
+    ${label(u(bottom/2),u(10),'Bottom',4)}
+    ${dimH(u(2),u(bottom),-8,bottom)}
+    ${dimV(-12,0,u(18),18,'left')}
+  </g>`);
+  rows.push(['Bottom','Cadera (1/4)',bottom],['Bottom','Alto',18]);
+  return {svg:wrapSVG(900, 480, pieces.join('')), rows, title:'TheSwim System'};
 }
 
+/* ---- Accesorio ---- */
 function drawAccessory(b,p){
-  const name=p.name.toLowerCase();
-  const pieces=[];
-  const rows=[];
-  if(/scarf|shawl|pañuelo|estola|foulard/.test(name+' '+p.desc)){
+  const name=(p.name+' '+p.desc).toLowerCase();
+  const rows=[], pieces=[];
+  if(/scarf|shawl|pañuelo|estola|foulard/.test(name)){
     const w=/shawl|estola/.test(name)?70:90;
     const h=/shawl|estola/.test(name)?200:90;
-    pieces.push(`
-      <g transform="translate(200,80)">
-        ${path(`M40,40 L${40+h*2},40 L${40+h*2},${40+w*1.2} L40,${40+w*1.2} Z`)}
-        ${guide(`M${40+h},40 L${40+h},${40+w*1.2}`)}
-        ${label(40+h,40+w*0.6,'Panel',1)}
-        ${meas(40+h,28,h)}${meas(28,40+w*0.6,w,'end')}
-      </g>`);
+    // dibujar a escala reducida visualmente pero cotas reales
+    const sx=1.1, sy=1.1;
+    pieces.push(`<g transform="translate(180,60)">
+      ${path(`M0,0 L${u(h)*sx/2.2},0 L${u(h)*sx/2.2},${u(w)*sy/2.2} L0,${u(w)*sy/2.2} Z`)}
+      ${guide(`M${u(h)*sx/4.4},0 L${u(h)*sx/4.4},${u(w)*sy/2.2}`)}
+      ${label(u(h)*sx/4.4,u(w)*sy/4.4,'Panel',1)}
+      ${dimH(0,u(h)*sx/2.2,-8,h)}
+      ${dimV(-12,0,u(w)*sy/2.2,w,'left')}
+    </g>`);
     rows.push(['Panel','Largo',h],['Panel','Ancho',w]);
-  } else if(/belt|cinturón/.test(name+' '+p.desc)){
-    pieces.push(`
-      <g transform="translate(120,180)">
-        ${path('M40,40 L520,40 L520,85 L40,85 Z')}
-        ${guide('M280,40 L280,85')}${circ(500,62,6)}
-        ${label(280,68,'Belt',1)}
-        ${meas(280,28,round1(b.waist+20))}${meas(28,68,4,'end')}
-      </g>`);
-    rows.push(['Belt','Largo',round1(b.waist+20)],['Belt','Ancho',4]);
-  } else if(/bag|cartera|signature/.test(name+' '+p.desc)){
-    pieces.push(`
-      <g transform="translate(250,80)">
-        ${path('M80,60 L280,60 L300,280 L60,280 Z')}
-        ${path('M100,40 L260,40 L260,60 L100,60 Z')}
-        ${label(180,180,'Body',1)}
-        ${meas(180,48,28)}${meas(180,298,32)}${meas(48,180,26,'end')}
-      </g>`);
+  } else if(/belt|cinturón/.test(name)){
+    const L=round1(b.waist+20);
+    pieces.push(`<g transform="translate(80,160)">
+      ${path(`M0,0 L${u(L)*0.55},0 L${u(L)*0.55},${u(4)} L0,${u(4)} Z`)}
+      ${guide(`M${u(L)*0.275},0 L${u(L)*0.275},${u(4)}`)}${circ(u(L)*0.55-u(2),u(2),4)}
+      ${label(u(L)*0.275,u(2.8),'Belt',1)}
+      ${dimH(0,u(L)*0.55,-8,L)}
+      ${dimV(-10,0,u(4),4,'left')}
+    </g>`);
+    rows.push(['Belt','Largo',L],['Belt','Ancho',4]);
+  } else if(/bag|cartera|signature/.test(name)){
+    pieces.push(`<g transform="translate(280,80)">
+      ${path(`M${u(2)},${u(4)} L${u(30)},${u(4)} L${u(32)},${u(30)} L0,${u(30)} Z`)}
+      ${path(`M${u(4)},0 L${u(28)},0 L${u(28)},${u(4)} L${u(4)},${u(4)} Z`)}
+      ${label(u(16),u(18),'Body',1)}
+      ${dimH(u(2),u(30),u(30)+14,32)}
+      ${dimV(-12,u(4),u(30),26,'left')}
+      ${dimH(u(4),u(28),-8,28)}
+    </g>`);
     rows.push(['Body','Ancho',32],['Body','Alto',26],['Flap','Ancho',28]);
   } else {
-    pieces.push(`
-      <g transform="translate(250,100)">
-        ${path('M60,80 L300,80 L300,160 L60,160 Z')}
-        ${path('M80,40 C120,20 160,20 200,40 L220,80 L60,80 Z')}
-        ${label(180,130,'Frame',1)}
-        ${meas(180,70,14)}${meas(180,178,16)}
-      </g>`);
-    rows.push(['Frame','Ancho frente',14],['Frame','Alto',4]);
+    pieces.push(`<g transform="translate(300,120)">
+      ${path(`M0,${u(6)} L${u(14)},${u(6)} L${u(14)},${u(10)} L0,${u(10)} Z`)}
+      ${path(`M${u(1)},0 C${u(5)},${-u(1)} ${u(9)},${-u(1)} ${u(13)},0 L${u(13)},${u(6)} L${u(1)},${u(6)} Z`)}
+      ${label(u(7),u(8.5),'Frame',1)}
+      ${dimH(0,u(14),u(10)+14,14)}
+      ${dimV(-10,0,u(6),4,'left')}
+    </g>`);
+    rows.push(['Frame','Ancho',14],['Frame','Alto frente',4]);
   }
-  return {svg:wrapSVG(900,420,pieces.join('')),rows,title:'TheAccessory System'};
+  return {svg:wrapSVG(900, 420, pieces.join('')), rows, title:'TheAccessory System'};
 }
 
 function wrapSVG(w,h,inner){
   return `<svg class="board" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama de moldes">${inner}</svg>`;
 }
+/* escala fija: PX px = 1 cm en todas las piezas */
 
 /* ---------- UI ---------- */
 let currentFilter='ALL';
