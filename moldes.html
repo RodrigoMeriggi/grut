@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#ebe6dc">
+<title>GRUT — Moldes · Talle M</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=Libre+Baskerville:wght@400;700&display=swap');
+:root{
+  --ink:#1c1a17;--muted:#7a736a;--paper:#ebe6dc;--sheet:#f4f0e8;--line:#d4cdc2;
+  --red:#b23a2f;--blue:#3a5f8a;--serif:'Instrument Serif',Georgia,serif;
+  --label:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:13px}
+button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+img{display:block;object-fit:cover}
+.topline{height:29px;background:#272420;color:#f6f1e9;display:flex;align-items:center;justify-content:center;letter-spacing:2px;font-size:9px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 4.4%;border-bottom:1px solid var(--line);background:rgba(235,230,220,.97);position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}
+.logo{font:44px/1 var(--serif);letter-spacing:6px;text-align:center}.logo small{display:block;font:9px var(--sans);letter-spacing:5px;margin-top:4px}
+.back{letter-spacing:2px;font-size:10px;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:3px}
+main{padding:48px 4.4% 90px}
+.eyebrow{letter-spacing:3px;font-size:10px;text-transform:uppercase;color:var(--muted)}
+h1{font:clamp(44px,6vw,84px)/.95 var(--serif);font-weight:400;margin:10px 0 14px}
+.intro{max-width:720px;color:var(--muted);line-height:1.8;margin:0}
+.controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin:34px 0 18px;padding-top:22px;border-top:1px solid var(--line)}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{background:none;border:1px solid var(--line);padding:8px 13px;letter-spacing:1.5px;font-size:10px;text-transform:uppercase}
+.filters button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.controls input,.controls select{border:1px solid var(--line);background:var(--sheet);padding:9px 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.card{background:var(--sheet);border:1px solid var(--line);cursor:pointer;overflow:hidden;transition:border-color .2s}
+.card:hover{border-color:var(--ink)}
+.card img{width:100%;aspect-ratio:3/4;background:#ddd}
+.card img[src*="mediterranea/"],.card img[src*="men/"],.card img[src*="cocktail/"]{object-position:center 28%}
+.card>div{padding:14px 14px 16px}
+.card span{font-size:9px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase}
+.card h3{font:26px/1.1 var(--serif);font-weight:400;margin:8px 0 6px}
+.card p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+.card em{display:block;margin-top:10px;font-style:normal;letter-spacing:1.5px;font-size:10px;text-transform:uppercase;border-bottom:1px solid currentColor;width:max-content;padding-bottom:2px}
+
+.detail-head{display:grid;grid-template-columns:140px 1fr auto;gap:28px;align-items:end;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.detail-head img{width:140px;aspect-ratio:3/4;border:1px solid var(--line);background:#ddd}
+.detail-head img[src*="mediterranea/"],.detail-head img[src*="men/"],.detail-head img[src*="cocktail/"]{object-position:center 28%}
+.detail-head h1{margin:8px 0 10px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.badge{border:1px solid var(--ink);padding:6px 10px;letter-spacing:1.6px;font-size:9px;text-transform:uppercase}
+.badge.soft{border-color:var(--line);color:var(--muted)}
+.actions{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.actions button,.actions a{background:none;border:1px solid var(--ink);padding:11px 16px;letter-spacing:1.5px;font-size:10px;text-transform:uppercase}
+.actions a{display:inline-block}
+.actions .ghost{border-color:var(--line);color:var(--muted)}
+
+.board-wrap{background:var(--sheet);border:1px solid var(--line);padding:18px;margin:22px 0 10px;overflow:auto}
+.board-title{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0 0 8px;padding:0 4px}
+.board-title h2{font:36px var(--serif);font-weight:400;margin:0}
+.board-title span{letter-spacing:2px;font-size:10px;text-transform:uppercase;color:var(--muted)}
+svg.board{width:100%;min-width:860px;height:auto;display:block;background:
+  linear-gradient(90deg,#00000008 1px,transparent 1px),
+  linear-gradient(#00000008 1px,transparent 1px);
+  background-size:28px 28px;background-position:-1px -1px}
+svg.board .piece{fill:#f7f3eb;stroke:#1c1a17;stroke-width:1.6}
+svg.board .guide-red{fill:none;stroke:var(--red);stroke-width:1;stroke-dasharray:3 3}
+svg.board .guide-blue{fill:none;stroke:var(--blue);stroke-width:1;stroke-dasharray:2 4;opacity:.85}
+svg.board .label-name{font-family:var(--label);font-size:15px;font-weight:700;fill:var(--ink);text-anchor:middle}
+svg.board .label-dia{font-family:var(--sans);font-size:9px;letter-spacing:1.5px;fill:var(--muted);text-anchor:middle}
+svg.board .meas{font-family:var(--sans);font-size:11px;fill:var(--ink);font-variant-numeric:tabular-nums}
+svg.board .btn{fill:none;stroke:#1c1a17;stroke-width:1.2}
+svg.board .grain{stroke:var(--muted);stroke-width:1;stroke-dasharray:1 3;opacity:.5}
+
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin:14px 0 28px;color:var(--muted);font-size:11px}
+.legend i{display:inline-block;width:28px;height:0;border-top:2px solid;vertical-align:middle;margin-right:7px}
+.legend .r{border-color:var(--red);border-style:dashed;border-width:0;border-top-style:dashed;border-top-width:2px}
+.legend .b{border-color:var(--blue);border-top-style:dashed}
+
+.table-wrap{overflow:auto;border:1px solid var(--line);background:var(--sheet);margin-top:8px}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th,td{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left}
+th{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:500;background:#faf7f1}
+td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.notice{color:var(--muted);font-size:11px;line-height:1.7;margin-top:28px;max-width:860px}
+.empty{padding:60px 0;text-align:center;color:var(--muted)}
+#listView[hidden],#detailView[hidden]{display:none!important}
+@media(max-width:800px){
+  header{padding:14px 18px}.logo{font-size:34px}main{padding:36px 18px 70px}
+  .detail-head{grid-template-columns:96px 1fr;gap:16px}
+  .actions{grid-column:1/-1;flex-direction:row;justify-content:flex-start;flex-wrap:wrap;align-items:center}
+  .board-wrap{padding:10px}
+}
+@media print{
+  .topline,header,.controls,.actions,.filters{display:none!important}
+  body,main{background:#fff;padding:0}
+  .board-wrap{break-inside:avoid;border:0;padding:0}
+  svg.board{background:none;min-width:0}
+}
+</style>
+</head>
+<body>
+<div class="topline">GRUT BUENOS AIRES · DOCUMENTO INTERNO · MOLDERÍA TALLE M</div>
+<header>
+  <a class="back" id="backLink" href="index.html">← Volver a la tienda</a>
+  <div class="logo">GRUT<small>BUENOS AIRES</small></div>
+  <a class="back" href="costos.html" style="justify-self:end">Costos →</a>
+</header>
+<main>
+<section id="listView">
+  <span class="eyebrow">Atelier · Moldería técnica</span>
+  <h1>Moldes · Talle M</h1>
+  <p class="intro">Cada modelo GRUT tiene su ficha de moldes con las piezas de corte, cotas en centímetros y diagrama numerado, en el formato de sistema técnico de la maison. Base de construcción: talle M. Las medidas son estimaciones de atelier a partir de la silueta; validar con muestra antes de producción.</p>
+  <div class="controls">
+    <div class="filters" id="filters"></div>
+    <div>
+      <input id="search" type="search" placeholder="Buscar un modelo" oninput="renderList()">
+      <select id="sort" onchange="renderList()">
+        <option value="id">Orden del catálogo</option>
+        <option value="name">Nombre</option>
+        <option value="system">Tipo de molde</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section id="detailView" hidden>
+  <div class="detail-head">
+    <img id="dImg" alt="">
+    <div>
+      <span class="eyebrow" id="dCat"></span>
+      <h1 id="dName"></h1>
+      <p class="intro" id="dDesc"></p>
+      <div class="meta" id="dMeta"></div>
+    </div>
+    <div class="actions">
+      <button onclick="window.print()">Imprimir / PDF</button>
+      <button class="ghost" onclick="showList()">← Todos los moldes</button>
+      <a class="ghost" id="dShop" href="index.html">Ver en tienda</a>
+    </div>
+  </div>
+  <div id="boards"></div>
+  <div class="legend">
+    <span><i class="r"></i> Línea de construcción / pliegue</span>
+    <span><i class="b"></i> Eje de medida</span>
+    <span>Contorno = corte · cotas en cm · talle M</span>
+  </div>
+  <span class="eyebrow">Tabla de cotas</span>
+  <h2 style="font:36px var(--serif);font-weight:400;margin:8px 0 12px">Medidas del sistema</h2>
+  <div class="table-wrap"><table><thead><tr><th>Pieza</th><th>Cota</th><th>cm</th></tr></thead><tbody id="measBody"></tbody></table></div>
+  <p class="notice">Documento interno de moldería conceptual. Las formas y cotas siguen el lenguaje visual de un sistema técnico de camisería (piezas numeradas DIA., ejes azules, guías rojas) adaptado a cada tipología GRUT. No sustituyen un patrón CAD de producción: costuras, holguras, entretelas y escalado a otros talles deben cerrarse en el atelier con prueba en tela. Unidades en centímetros para talle M (mujer o hombre según el modelo).</p>
+</section>
+</main>
+<script>
+const A='assets/';
+const PRODUCTS=[{"id":1,"name":"Blazer Milano","cat":"DAY","g":"W","img":"bd1.webp","desc":"Blazer marfil de sastrería relajada, con top tejido crema y pantalón amplio de tiro alto al tono.","accessory":false},{"id":2,"name":"Vestido Sirena","cat":"NIGHT","g":"W","img":"bn2.webp","desc":"Vestido slip de satén champagne con escote cowl, breteles finos y abertura lateral.","accessory":false},{"id":3,"name":"Vestido Noir","cat":"NIGHT","g":"W","img":"bn1.webp","desc":"Minivestido negro de lentejuelas con escote halter drapeado y profundo.","accessory":false},{"id":4,"name":"Camisa Portofino","cat":"RESORT","g":"W","img":"bd3.webp","desc":"Camisa oversize a rayas celeste y blanco, llevada abierta con short marfil y cinturón de cuero.","accessory":false},{"id":5,"name":"Vestido Alba","cat":"NIGHT","g":"W","img":"ln1.webp","desc":"Vestido largo negro satinado, escote halter profundo, cintura drapeada y abertura frontal.","accessory":false},{"id":6,"name":"Set Cashmere","cat":"ESSENTIALS","g":"W","img":"bd10.webp","desc":"Conjunto de punto gris piedra: cárdigan con cuello polo y short con cordón al tono.","accessory":false},{"id":7,"name":"Vestido Étoile","cat":"NIGHT","g":"W","img":"ln2.webp","desc":"Vestido champagne bordado con cristales y flecos, breteles finos y espalda descubierta.","accessory":false},{"id":8,"name":"Vestido Rubí","cat":"NIGHT","g":"W","img":"ln3.webp","desc":"Vestido strapless de satén borgoña con corsetería, falda drapeada y abertura lateral.","accessory":false},{"id":9,"name":"Linen Riviera","cat":"DAY","g":"W","img":"ld1.webp","desc":"Traje marfil de blazer y pantalón con pinzas, combinado con top corto al tono.","accessory":false},{"id":10,"name":"Crochet Amalfi","cat":"RESORT","g":"W","img":"ld3.webp","desc":"Vestido largo de crochet marfil, cuello halter y espalda descubierta.","accessory":false},{"id":11,"name":"Black Riviera","cat":"RESORT","g":"W","img":"ld4.webp","desc":"Bikini negro de corpiño triangular y bombacha con lazos laterales.","accessory":false},{"id":12,"name":"Vestido Eclipse","cat":"NIGHT","g":"W","img":"bn3.webp","desc":"Vestido negro con cuello halter tipo gargantilla, escote profundo, recortes laterales y falda cruzada con abertura.","accessory":false},{"id":13,"name":"Noir Tailoring","cat":"DAY","g":"W","img":"bd7.webp","desc":"Blazer negro oversize, top corto y pantalón de tiro alto con cinturón de cuero.","accessory":false},{"id":14,"name":"Golden Hour","cat":"NIGHT","g":"W","img":"bn8.webp","desc":"Vestido largo champagne dorado, completamente bordado con cristales, cuello halter y espalda descubierta.","accessory":false},{"id":15,"name":"Linen Escape","cat":"RESORT","g":"W","img":"bd9.webp","desc":"Camisa de lino blanco semitransparente con lazo al frente, sobre short al tono.","accessory":false},{"id":16,"name":"Soft Stone","cat":"ESSENTIALS","g":"W","img":"ld15.webp","desc":"Conjunto de punto gris piedra: sweater corto con escote en V y pantalón al tono.","accessory":false},{"id":17,"name":"Ivory Ceremony","cat":"NIGHT","g":"W","img":"ln9.webp","desc":"Vestido de satén marfil con cuello halter alto y hombros descubiertos.","accessory":false},{"id":18,"name":"Midnight Lace","cat":"NIGHT","g":"W","img":"ln4.webp","desc":"Vestido negro de encaje floral transparente, mangas largas y espalda descubierta.","accessory":false},{"id":19,"name":"Silk Retreat","cat":"RESORT","g":"W","img":"ld7.webp","desc":"Top halter marfil con nudo al frente, escote calado y lazo en la cintura.","accessory":false},{"id":20,"name":"Urban Black","cat":"DAY","g":"W","img":"ld6.webp","desc":"Blazer negro, top corto y pantalón negro con cinturón; sastrería urbana total black.","accessory":false},{"id":21,"name":"Crochet Costa","cat":"RESORT","g":"W","img":"grut_resort_01.webp","desc":"Minivestido de crochet marfil con cuello halter, escote en V y abotonadura al frente.","accessory":false},{"id":22,"name":"Lino Mare","cat":"RESORT","g":"W","img":"grut_resort_02.webp","desc":"Camisa de lino blanca abierta, corpiño triangular blanco y short de lino con cordón.","accessory":false},{"id":23,"name":"Rojo Riviera","cat":"RESORT","g":"W","img":"grut_resort_03.webp","desc":"Vestido rojo con cuello halter, escote profundo, nudo y recorte en la cintura, y falda cruzada con abertura.","accessory":false},{"id":24,"name":"Noir Crochet","cat":"RESORT","g":"W","img":"grut_resort_04.webp","desc":"Enterizo de crochet negro con breteles finos, aro central y recortes laterales.","accessory":false},{"id":25,"name":"Azul Capri","cat":"RESORT","g":"W","img":"grut_resort_05.webp","desc":"Bikini triangular con estampado floral azul y blanco, con pareo anudado al tono.","accessory":false},{"id":26,"name":"Bandeau Onyx","cat":"RESORT","g":"W","img":"grut_resort_06.webp","desc":"Top bandeau negro con pareo largo negro anudado a la cadera y abertura lateral.","accessory":false},{"id":27,"name":"Lino Sol","cat":"RESORT","g":"W","img":"grut_resort_07.webp","desc":"Camisa y pantalón amplio de lino crudo, con lazo al frente.","accessory":false},{"id":28,"name":"Crochet Perla","cat":"RESORT","g":"W","img":"grut_resort_08.webp","desc":"Salida de baño de crochet marfil calado, mangas largas y escote en V.","accessory":false},{"id":29,"name":"Halter Marina","cat":"RESORT","g":"W","img":"grut_resort_09.webp","desc":"Top negro de cuello halter cruzado con recorte al frente y falda larga negra.","accessory":false},{"id":30,"name":"Encaje Brisa","cat":"RESORT","g":"W","img":"grut_resort_10.webp","desc":"Camisa kimono de encaje blanco transparente sobre bikini color arena.","accessory":false},{"id":31,"name":"Riviera Tank","cat":"DAY","g":"W","img":"grut_day_01.webp","desc":"Musculosa blanca acanalada con pantalón marfil con pinzas y cinturón de cuero marrón.","accessory":false},{"id":32,"name":"Camisa Azure","cat":"DAY","g":"W","img":"grut_day_02.webp","desc":"Camisa oversize a rayas azul y blanco con short blanco de lino con cordón.","accessory":false},{"id":33,"name":"Bordado Alba","cat":"DAY","g":"W","img":"grut_day_03.webp","desc":"Túnica corta blanca con bordado calado, mangas largas y lazo en el escote.","accessory":false},{"id":34,"name":"Lino Arena","cat":"DAY","g":"W","img":"grut_day_04.webp","desc":"Chaleco de lino color arena con escote en V y pantalón amplio al tono.","accessory":false},{"id":35,"name":"Pareó Cala","cat":"DAY","g":"W","img":"grut_day_05.webp","desc":"Bikini de crochet marfil con pareo de crochet con flecos.","accessory":false},{"id":36,"name":"Denim Costa","cat":"DAY","g":"W","img":"grut_day_06.webp","desc":"Camisa de lino blanca anudada, short de jean claro desflecado y bolso de fibra natural.","accessory":false},{"id":37,"name":"Negro Minimal","cat":"DAY","g":"W","img":"grut_day_07.webp","desc":"Musculosa negra acanalada de cuello alto con pantalón amplio de lino marfil.","accessory":false},{"id":38,"name":"Lino Relax","cat":"DAY","g":"W","img":"grut_day_08.webp","desc":"Camisa de lino marfil abierta sobre corpiño triangular rojo, con short de lino blanco.","accessory":false},{"id":39,"name":"Rayas Amalfi","cat":"DAY","g":"W","img":"grut_day_09.webp","desc":"Sweater de punto marfil a rayas negras con short blanco.","accessory":false},{"id":40,"name":"Vestido Sombra","cat":"DAY","g":"W","img":"grut_day_10.webp","desc":"Vestido midi negro de breteles finos, nudo lateral y abertura.","accessory":false},{"id":41,"name":"Noir Cowl","cat":"NIGHT","g":"W","img":"grut_night_01.webp","desc":"Vestido negro de satén con cuello halter, escote cowl y laterales descubiertos.","accessory":false},{"id":42,"name":"Oro Disco","cat":"NIGHT","g":"W","img":"grut_night_02.webp","desc":"Minivestido de lentejuelas doradas con cuello halter y escote profundo.","accessory":false},{"id":43,"name":"Corsé Carmesí","cat":"NIGHT","g":"W","img":"grut_night_03.webp","desc":"Vestido strapless de satén carmesí con corsetería, drapeado y abertura.","accessory":false},{"id":44,"name":"Halter Ébano","cat":"NIGHT","g":"W","img":"grut_night_04.webp","desc":"Vestido negro de cuello halter cruzado, cintura descubierta, aro dorado en la cadera y abertura lateral.","accessory":false},{"id":45,"name":"Cristal Champagne","cat":"NIGHT","g":"W","img":"grut_night_05.webp","desc":"Vestido nude de malla transparente bordado con red de cristales, breteles finos.","accessory":false},{"id":46,"name":"Espalda Infinita","cat":"NIGHT","g":"W","img":"grut_night_06.webp","desc":"Minivestido negro de mangas largas y cuello alto, con espalda profundamente descubierta.","accessory":false},{"id":47,"name":"Marfil Nudo","cat":"NIGHT","g":"W","img":"grut_night_07.webp","desc":"Vestido largo de satén marfil con cuello halter alto, escote profundo y nudo en la cintura.","accessory":false},{"id":48,"name":"Encaje Medianoche","cat":"NIGHT","g":"W","img":"grut_night_08.webp","desc":"Vestido negro de encaje con corsé, breteles finos y falda de encaje transparente.","accessory":false},{"id":49,"name":"Azul Profundo","cat":"NIGHT","g":"W","img":"grut_night_09.webp","desc":"Vestido largo de satén azul noche con breteles finos y espalda cowl descubierta.","accessory":false},{"id":50,"name":"Blazer Nuit","cat":"NIGHT","g":"W","img":"grut_night_10.webp","desc":"Blazer negro entallado usado como vestido, cruzado con botón dorado y escote profundo.","accessory":false},{"id":51,"name":"Silk Scarf","cat":"ACCESSORIES","g":"W","img":"grut_accessory_silk_scarf.webp","desc":"Pañuelo de seda marfil con ribete negro y logo GRUT. Diseño conceptual; materiales y disponibilidad sujetos a validación.","accessory":true},{"id":52,"name":"Signature Bag","cat":"ACCESSORIES","g":"W","img":"grut_accessory_signature_bag.webp","desc":"Cartera de hombro de cuero granulado gris topo, con herrajes dorados y logo GRUT. Diseño conceptual; materiales y disponibilidad sujetos a validación.","accessory":true},{"id":53,"name":"Leather Belt","cat":"ACCESSORIES","g":"W","img":"grut_accessory_leather_belt.webp","desc":"Cinturón de cuero negro con hebilla dorada escultórica grabada GRUT. Diseño conceptual; materiales y disponibilidad sujetos a validación.","accessory":true},{"id":54,"name":"Sunglasses","cat":"ACCESSORIES","g":"W","img":"grut_accessory_sunglasses.webp","desc":"Anteojos de sol de acetato carey con lentes oscuras y logo GRUT en la patilla. Protección UV y fabricación pendientes de certificación.","accessory":true},{"id":55,"name":"Silk Shawl","cat":"ACCESSORIES","g":"W","img":"grut_accessory_silk_shawl.webp","desc":"Estola de seda marfil con textura jacquard, flecos y logo GRUT bordado. Diseño conceptual; materiales y disponibilidad sujetos a validación.","accessory":true},{"id":56,"name":"Base","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_01.webp","desc":"Musculosa blanca acanalada con pantalón amplio blanco de tiro alto con pinzas.","accessory":false},{"id":57,"name":"Urba","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_02.webp","desc":"Musculosa negra de cuello alto con pantalón amplio negro de tiro alto con pinzas.","accessory":false},{"id":58,"name":"Livia","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_03.webp","desc":"Camisa blanca de lino arremangada con short blanco de lino al tono.","accessory":false},{"id":59,"name":"Palma","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_04.webp","desc":"Chaleco de lino color arena con botones y escote en V, con pantalón amplio al tono.","accessory":false},{"id":60,"name":"Nero","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_05.webp","desc":"Vestido midi negro de breteles finos, escote en V y abertura en el ruedo.","accessory":false},{"id":61,"name":"Alma","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_06.webp","desc":"Musculosa corta blanca con falda larga cruzada blanca y abertura alta.","accessory":false},{"id":62,"name":"Tao","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_07.webp","desc":"Top corto negro sin mangas con falda larga cruzada negra y abertura lateral.","accessory":false},{"id":63,"name":"Duna","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_08.webp","desc":"Conjunto color arena de camisa utilitaria con bolsillos y short al tono.","accessory":false},{"id":64,"name":"Brisa","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_09.webp","desc":"Musculosa blanca acanalada con jean celeste de pierna ancha y tiro alto.","accessory":false},{"id":65,"name":"Arena","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_10.webp","desc":"Camisa negra de manga corta arremangada con pantalón amplio negro con pinzas, llevado con cinturón.","accessory":false},{"id":66,"name":"Porto","cat":"DAY","g":"W","img":"mediterranea/day_01.webp","desc":"Camisa blanca de lino arremangada con pantalón amplio blanco de tiro alto.","accessory":false},{"id":67,"name":"Santorini","cat":"DAY","g":"W","img":"mediterranea/day_02.webp","desc":"Vestido midi negro sin mangas, escote redondo y ruedo asimétrico con abertura lateral.","accessory":false},{"id":68,"name":"Capri","cat":"DAY","g":"W","img":"mediterranea/day_03.webp","desc":"Chaleco marfil con botones y escote en V, con pantalón amplio al tono con pinzas.","accessory":false},{"id":69,"name":"Niza","cat":"DAY","g":"W","img":"mediterranea/day_04.webp","desc":"Minivestido marfil de breteles finos, corsage ajustado y falda con vuelo.","accessory":false},{"id":70,"name":"Ibiza","cat":"DAY","g":"W","img":"mediterranea/day_05.webp","desc":"Top corto negro de escote recto con short marfil de sastrería de tiro alto.","accessory":false},{"id":71,"name":"Costa","cat":"DAY","g":"W","img":"mediterranea/day_06.webp","desc":"Camisa a rayas azul y blanco con short blanco de tiro alto.","accessory":false},{"id":72,"name":"Bahía","cat":"DAY","g":"W","img":"mediterranea/day_07.webp","desc":"Vestido largo cruzado color arena, cuello camisero, mangas amplias, lazo en la cintura y abertura.","accessory":false},{"id":73,"name":"Riviera","cat":"DAY","g":"W","img":"mediterranea/day_08.webp","desc":"Top negro de escote recto y breteles anchos con pantalón amplio marfil de tiro alto.","accessory":false},{"id":74,"name":"Lago","cat":"DAY","g":"W","img":"mediterranea/day_09.webp","desc":"Vestido midi de satén bordó, breteles finos, escote en V y ruedo asimétrico.","accessory":false},{"id":75,"name":"Atenas","cat":"DAY","g":"W","img":"mediterranea/day_10.webp","desc":"Camisa blanca abierta sobre top corto blanco, con pantalón amplio blanco con pinzas.","accessory":false},{"id":76,"name":"Nova","cat":"NIGHT","g":"W","img":"mediterranea/night_01.webp","desc":"Vestido largo de satén negro, breteles finos, escote en V y abertura frontal alta.","accessory":false},{"id":77,"name":"Luna","cat":"NIGHT","g":"W","img":"mediterranea/night_02.webp","desc":"Vestido largo de satén marfil, breteles finos y espalda descubierta con lazo.","accessory":false},{"id":78,"name":"Aria","cat":"NIGHT","g":"W","img":"mediterranea/night_03.webp","desc":"Vestido largo de satén bordó de un solo hombro, drapeado en la cintura y abertura.","accessory":false},{"id":79,"name":"Kaia","cat":"NIGHT","g":"W","img":"mediterranea/night_04.webp","desc":"Vestido largo negro con cuello halter, recorte lateral en la cintura y espalda descubierta.","accessory":false},{"id":80,"name":"Siena","cat":"NIGHT","g":"W","img":"mediterranea/night_05.webp","desc":"Vestido largo de satén champagne, escote cruzado en V, breteles finos y abertura frontal.","accessory":false},{"id":81,"name":"Noir","cat":"NIGHT","g":"W","img":"mediterranea/night_06.webp","desc":"Vestido largo negro con cuello halter, espalda descubierta con drapeado cowl y panel de caída.","accessory":false},{"id":82,"name":"Celine","cat":"NIGHT","g":"W","img":"mediterranea/night_07.webp","desc":"Vestido largo de satén bronce, cuello halter cruzado, recorte en el abdomen, falda fruncida con abertura y panel de caída.","accessory":false},{"id":83,"name":"Mara","cat":"NIGHT","g":"W","img":"mediterranea/night_08.webp","desc":"Vestido largo de satén marfil, cuello halter con pañuelo anudado y caída fluida.","accessory":false},{"id":84,"name":"Elle","cat":"NIGHT","g":"W","img":"mediterranea/night_09.webp","desc":"Vestido largo de satén negro, escote en V profundo, breteles finos y falda cruzada con abertura.","accessory":false},{"id":85,"name":"Véra","cat":"NIGHT","g":"W","img":"mediterranea/night_10.webp","desc":"Vestido largo de satén bordó, cuello halter, espalda descubierta y pañuelo largo desde el cuello.","accessory":false},{"id":86,"name":"Alba","cat":"RESORT","g":"W","img":"mediterranea/resort_01.webp","desc":"Vestido largo de gasa blanca, cuello halter con escote calado, lazo en la cintura y abertura.","accessory":false},{"id":87,"name":"Nomad","cat":"RESORT","g":"W","img":"mediterranea/resort_02.webp","desc":"Caftán largo de gasa negra transparente, escote en V profundo, mangas amplias y abertura.","accessory":false},{"id":88,"name":"Oasis","cat":"RESORT","g":"W","img":"mediterranea/resort_03.webp","desc":"Vestido largo de crochet marfil, breteles finos, escote en V y tejido calado.","accessory":false},{"id":89,"name":"Solé","cat":"RESORT","g":"W","img":"mediterranea/resort_04.webp","desc":"Vestido largo terracota con cuello halter, aro en el escote, recorte en la cintura y falda cruzada con abertura.","accessory":false},{"id":90,"name":"Brisa","cat":"RESORT","g":"W","img":"mediterranea/resort_05.webp","desc":"Camisa vestido blanca, abierta y anudada en la cintura, con ruedo asimétrico.","accessory":false},{"id":91,"name":"Terra","cat":"RESORT","g":"W","img":"mediterranea/resort_06.webp","desc":"Vestido largo verde oliva con cuello halter, recorte en la cintura con aro y falda cruzada con abertura.","accessory":false},{"id":92,"name":"Mare","cat":"RESORT","g":"W","img":"mediterranea/resort_07.webp","desc":"Vestido largo marfil con cuello halter anudado y estampado de trazos negros.","accessory":false},{"id":93,"name":"Riviera","cat":"RESORT","g":"W","img":"mediterranea/resort_08.webp","desc":"Malla enteriza negra de escote en V profundo con pareo largo de gasa negra transparente.","accessory":false},{"id":94,"name":"Duna","cat":"RESORT","g":"W","img":"mediterranea/resort_09.webp","desc":"Vestido largo de crochet marfil, breteles finos, escote en V y flecos en el ruedo.","accessory":false},{"id":95,"name":"Azur","cat":"RESORT","g":"W","img":"mediterranea/resort_10.webp","desc":"Camisa vestido celeste de lino con mangas arremangadas, escote profundo y lazo en la cintura.","accessory":false},{"id":96,"name":"Smoking Medianoche","cat":"NIGHT","g":"M","img":"men/night_01.webp","desc":"Saco cruzado negro de lana grain de poudre con solapa en pico y seis botones, camisa negra de crepé de seda de cuello clásico que se lleva abierta y pantalón negro de lana de tiro alto con doble pinza y pierna amplia. Incluye saco, camisa y pantalón.","accessory":false},{"id":97,"name":"Traje Marfil Amalfi","cat":"NIGHT","g":"M","img":"men/night_02.webp","desc":"Traje marfil de lana fría y seda: saco de una fila con solapa ancha, que se lleva abierto, y pantalón de tiro alto con pinzas y pierna amplia. Camisa marfil de voile de seda semitransparente, abierta en el cuello. Incluye saco, pantalón y camisa.","accessory":false},{"id":98,"name":"Camisa Nocturne","cat":"NIGHT","g":"M","img":"men/night_03.webp","desc":"Camisa negra de georgette de seda bordada con microlentejuelas, cuello clásico y botones forrados; se lleva abierta. Pantalón negro de lana de tiro alto con pinzas y cinturón de cuero negro con hebilla plateada. Incluye camisa, pantalón y cinturón.","accessory":false},{"id":99,"name":"Traje Cacao","cat":"NIGHT","g":"M","img":"men/night_04.webp","desc":"Traje monocromo color chocolate de lana: saco de solapa en pico y pantalón de tiro alto con pinzas y pierna recta amplia. Camisa al tono de crepé de seda, abierta en el cuello. Incluye saco, pantalón y camisa.","accessory":false},{"id":100,"name":"Camisa Champagne","cat":"NIGHT","g":"M","img":"men/night_05.webp","desc":"Camisa de satén 100% seda color champagne, de cuello clásico, puños con botón y caída fluida; se lleva abierta. Pantalón negro de lana de tiro alto con doble pinza. Incluye camisa y pantalón.","accessory":false},{"id":101,"name":"Blazer Velluto","cat":"NIGHT","g":"M","img":"men/night_06.webp","desc":"Blazer negro de terciopelo de seda y viscosa, de una fila y solapa en pico. Musculosa negra de punto fino de seda y pantalón negro de lana de tiro alto con pinzas. Incluye blazer, musculosa y pantalón.","accessory":false},{"id":102,"name":"Cruzado Ivoire","cat":"NIGHT","g":"M","img":"men/night_07.webp","desc":"Traje cruzado marfil de lana fría: saco de solapa en pico con seis botones, que se lleva abierto, y pantalón de tiro alto con pinzas y pierna amplia. Musculosa marfil de punto de seda translúcido. Incluye saco, pantalón y musculosa.","accessory":false},{"id":103,"name":"Polo Noir","cat":"NIGHT","g":"M","img":"men/night_08.webp","desc":"Polo negro de punto de seda con canalé vertical, manga corta, cuello abierto y tapeta con botones. Pantalón negro de lana de tiro alto con pinzas y cinturón de cuero negro con hebilla plateada. Incluye polo, pantalón y cinturón.","accessory":false},{"id":104,"name":"Foulard Nero","cat":"NIGHT","g":"M","img":"men/night_09.webp","desc":"Saco negro de lana de una fila con solapa en pico, camisa negra de crepé de seda, pañuelo largo de gasa de seda negra con flecos que se lleva al cuello y pantalón negro de lana con pinzas. Incluye saco, camisa, pantalón y pañuelo.","accessory":false},{"id":105,"name":"Dinner Jacket Riviera","cat":"NIGHT","g":"M","img":"men/night_10.webp","desc":"Dinner jacket marfil de lana y seda, de una fila y solapa en pico, que se lleva abierto. Camisa negra de crepé de seda y pantalón negro de lana de tiro alto con pinzas. Incluye saco, camisa y pantalón.","accessory":false},{"id":106,"name":"Sweater Calado Egeo","cat":"ESSENTIALS","g":"M","img":"men/essentials_01.webp","desc":"Sweater marfil de punto calado de algodón orgánico, cuello redondo y puños acanalados. Pantalón marfil de gabardina de algodón de tiro alto con pinzas. Incluye sweater y pantalón.","accessory":false},{"id":107,"name":"Polo Marino","cat":"ESSENTIALS","g":"M","img":"men/essentials_02.webp","desc":"Polo azul marino de punto texturado de algodón mercerizado, manga corta y tapeta con tres botones. Pantalón color arena de lino y algodón con pinzas y cinturón de cuero negro. Incluye polo, pantalón y cinturón; anteojos no incluidos.","accessory":false},{"id":108,"name":"Camisa Lino Blanca","cat":"ESSENTIALS","g":"M","img":"men/essentials_03.webp","desc":"Camisa blanca de lino 100% lavado, cuello clásico y mangas largas que se llevan arremangadas. Pantalón crudo de lino de tiro alto con doble pinza. Incluye camisa y pantalón.","accessory":false},{"id":109,"name":"Remera Oliva","cat":"ESSENTIALS","g":"M","img":"men/essentials_04.webp","desc":"Remera verde oliva grisáceo de jersey de algodón pima, cuello redondo y manga corta. Pantalón crudo de gabardina de algodón con pinzas. Incluye remera y pantalón; la chaqueta que lleva en la mano es de styling.","accessory":false},{"id":110,"name":"Overshirt Nero","cat":"ESSENTIALS","g":"M","img":"men/essentials_05.webp","desc":"Sobrecamisa negra de sarga de algodón con bolsillo al pecho, que se lleva abierta sobre remera blanca de jersey de algodón. Pantalón negro de lana con pinzas. Incluye sobrecamisa, remera y pantalón.","accessory":false},{"id":111,"name":"Sweater Navy","cat":"ESSENTIALS","g":"M","img":"men/essentials_06.webp","desc":"Sweater azul marino de punto texturado de algodón y cashmere, cuello redondo. Pantalón crudo de sarga de algodón de pierna amplia. Incluye sweater y pantalón; anteojos no incluidos.","accessory":false},{"id":112,"name":"Overshirt Arena","cat":"ESSENTIALS","g":"M","img":"men/essentials_07.webp","desc":"Sobrecamisa color arena de sarga de algodón con dos bolsillos con solapa al pecho, abierta sobre remera blanca de jersey. Pantalón verde musgo de gabardina de algodón con pinzas. Incluye sobrecamisa, remera y pantalón.","accessory":false},{"id":113,"name":"Blazer Essential","cat":"ESSENTIALS","g":"M","img":"men/essentials_08.webp","desc":"Blazer azul medianoche de lana fría, de una fila y solapa en muesca. Remera blanca de jersey de algodón, pantalón al tono de lana con pinzas y cinturón de cuero negro. Incluye blazer, remera, pantalón y cinturón.","accessory":false},{"id":114,"name":"Hoodie Grigio","cat":"ESSENTIALS","g":"M","img":"men/essentials_09.webp","desc":"Buzo con capucha gris melange de felpa de algodón pesada, con cordón y puños acanalados. Pantalón al tono de felpa con pinzas y cintura elástica. Incluye buzo y pantalón.","accessory":false},{"id":115,"name":"Polo Bosco","cat":"ESSENTIALS","g":"M","img":"men/essentials_10.webp","desc":"Polo verde bosque de punto fino de algodón y seda, manga corta y cuello camisero abierto sin botones. Pantalón crudo de gabardina de algodón con pinzas. Incluye polo y pantalón.","accessory":false},{"id":116,"name":"Remera Textura","cat":"ESSENTIALS","g":"M","img":"men/essentials_11.webp","desc":"Remera marfil de algodón de punto texturado, cuello redondo y manga corta. Pantalón azul marino de lana de tiro alto con pinzas. Incluye remera y pantalón; anteojos no incluidos.","accessory":false},{"id":117,"name":"Lino Positano","cat":"DAY","g":"M","img":"men/day_01.webp","desc":"Camisa crema de lino 100% de trama abierta, cuello clásico y mangas arremangadas, que se lleva abierta. Pantalón al tono de lino de tiro alto con pinzas. Incluye camisa y pantalón.","accessory":false},{"id":118,"name":"Camisa Oliva Capri","cat":"DAY","g":"M","img":"men/day_02.webp","desc":"Camisa verde oliva de lino lavado, manga larga. Pantalón marfil de lino y algodón con pinzas y cinturón de cuero marrón. Incluye camisa, pantalón y cinturón; el bolso de cuero y los anteojos son de styling.","accessory":false},{"id":119,"name":"Rayas Portofino","cat":"DAY","g":"M","img":"men/day_03.webp","desc":"Camisa de lino y algodón a rayas verticales beige y marfil, que se lleva abierta sobre musculosa marfil de algodón acanalado. Pantalón marfil de lino con pinzas. Incluye camisa, musculosa y pantalón.","accessory":false},{"id":120,"name":"Polo Navy Amalfi","cat":"DAY","g":"M","img":"men/day_04.webp","desc":"Polo azul marino de punto de algodón con canalé vertical, manga corta y cuello abierto. Pantalón al tono de lana fría de tiro alto con pinzas. Incluye polo y pantalón.","accessory":false},{"id":121,"name":"Safari Ischia","cat":"DAY","g":"M","img":"men/day_05.webp","desc":"Sobrecamisa estilo safari color arena de sarga de algodón con dos bolsillos con solapa, abierta sobre remera blanca de jersey. Bermuda verde oliva de gabardina de algodón con pinzas. Incluye sobrecamisa, remera y bermuda.","accessory":false},{"id":122,"name":"Polo Crema Procida","cat":"DAY","g":"M","img":"men/day_06.webp","desc":"Polo crema de punto de algodón, manga corta y cuello abierto. Short marfil de lino con pinzas. Incluye polo y short; el bolso de lona y los anteojos son de styling.","accessory":false},{"id":123,"name":"Traje Lino Sorrento","cat":"DAY","g":"M","img":"men/day_07.webp","desc":"Traje beige de lino y lana: saco desestructurado de una fila con solapa en muesca y pantalón al tono con pinzas. Camisa blanca de lino, abierta en el cuello. Incluye saco, pantalón y camisa.","accessory":false},{"id":124,"name":"Chaqueta Navy Ravello","cat":"DAY","g":"M","img":"men/day_08.webp","desc":"Sobrecamisa azul marino de sarga de algodón con bolsillos al pecho, abierta sobre remera blanca de jersey. Pantalón marfil de gabardina de algodón con pinzas y pierna amplia. Incluye sobrecamisa, remera y pantalón; anteojos no incluidos.","accessory":false},{"id":125,"name":"Sweater Taupe","cat":"DAY","g":"M","img":"men/day_09.webp","desc":"Sweater taupe de punto fino de lino y algodón, cuello redondo. Pantalón marfil de lino con pinzas. Incluye sweater y pantalón.","accessory":false},{"id":126,"name":"Lino y Mar","cat":"DAY","g":"M","img":"men/day_10.webp","desc":"Camisa blanca de lino 100%, que se lleva abierta y arremangada. Short de baño azul marino con estampado de cuerdas marinas en marfil, de poliéster reciclado de secado rápido con forro de malla. Incluye camisa y short de baño; anteojos no incluidos.","accessory":false},{"id":127,"name":"Gasa Mykonos","cat":"RESORT","g":"M","img":"men/resort_01.webp","desc":"Camisa marfil de gasa de lino y algodón texturada, manga larga, que se lleva abierta. Pantalón al tono de lino con cintura de cordón. Incluye camisa y pantalón; anteojos no incluidos.","accessory":false},{"id":128,"name":"Palmera Hydra","cat":"RESORT","g":"M","img":"men/resort_02.webp","desc":"Camisa verde oliva de lino lavado, manga larga. Short de baño con estampado botánico de hojas en oliva y marfil, de poliéster reciclado de secado rápido. Incluye camisa y short de baño; anteojos no incluidos.","accessory":false},{"id":129,"name":"Crochet Paros","cat":"RESORT","g":"M","img":"men/resort_03.webp","desc":"Polo marfil tejido a crochet en algodón, calado, con manga corta y cuello camisero abierto en V. Pantalón marfil de lino con pinzas y cintura de cordón. Incluye polo y pantalón.","accessory":false},{"id":130,"name":"Bandana Naxos","cat":"RESORT","g":"M","img":"men/resort_04.webp","desc":"Camisa azul marino de lino 100%, que se lleva abierta. Short de baño con estampado bandana en azul marino y marfil, de poliéster reciclado de secado rápido. Incluye camisa y short de baño; el bolso de lona y los anteojos son de styling.","accessory":false},{"id":131,"name":"Safari Ibiza","cat":"RESORT","g":"M","img":"men/resort_05.webp","desc":"Camisa color arena de lino con dos bolsillos al pecho, abierta y arremangada. Short verde oliva de sarga de algodón con cintura de cordón marfil. Incluye camisa y short.","accessory":false},{"id":132,"name":"Bouclé Formentera","cat":"RESORT","g":"M","img":"men/resort_06.webp","desc":"Conjunto crema de algodón bouclé texturado: camisa de manga corta con cuello abierto y short con pinzas. Incluye camisa y short; anteojos no incluidos.","accessory":false},{"id":133,"name":"Noche Menorca","cat":"RESORT","g":"M","img":"men/resort_07.webp","desc":"Camisa azul noche de lino 100% de manga corta y cuello cubano, que se lleva abierta. Pantalón al tono de lino de tiro alto y pierna amplia. Incluye camisa y pantalón; el bolso tejido y los anteojos son de styling.","accessory":false},{"id":134,"name":"Lino Santorini","cat":"RESORT","g":"M","img":"men/resort_08.webp","desc":"Camisa marfil de lino 100%, de manga larga, que se lleva abierta. Pantalón marfil de lino de tiro alto con pinzas y pierna amplia. Incluye camisa y pantalón.","accessory":false},{"id":135,"name":"Lino Tabaco","cat":"RESORT","g":"M","img":"men/resort_09.webp","desc":"Camisa color tabaco de lino lavado, manga larga arremangada. Short marfil de gabardina de algodón con pinzas. Incluye camisa y short; la canasta de paja y los anteojos son de styling.","accessory":false},{"id":136,"name":"Polo Riviera","cat":"RESORT","g":"M","img":"men/resort_10.webp","desc":"Polo azul marino de punto de algodón con ribetes marfil en el cuello y las mangas. Pantalón marfil de lino de pierna amplia. Incluye polo y pantalón; anteojos no incluidos.","accessory":false},{"id":137,"name":"Seta Nera","cat":"NIGHT","g":"M","img":"men/night2_01.webp","desc":"Camisa negra de crepé de seda de cuello clásico, que se lleva abierta, y pantalón negro de satén de seda de tiro alto y pierna muy amplia, de caída fluida. Incluye camisa y pantalón.","accessory":false},{"id":138,"name":"Traje Avorio","cat":"NIGHT","g":"M","img":"men/night2_02.webp","desc":"Traje marfil de lana fría y seda: saco cruzado con solapa en pico y botones al tono, que se lleva abierto, y pantalón de tiro alto con pinzas y pierna amplia. Camisa marfil de seda con textura calada, abierta en el cuello. Incluye saco, pantalón y camisa; anteojos no incluidos.","accessory":false},{"id":139,"name":"Notte Total Black","cat":"NIGHT","g":"M","img":"men/night2_03.webp","desc":"Saco negro de lana de una fila con solapa en pico, camisa negra de crepé de seda abierta en el cuello y pantalón negro de lana de tiro alto con pinzas. Incluye saco, camisa y pantalón.","accessory":false},{"id":140,"name":"Seda Ivoire","cat":"NIGHT","g":"M","img":"men/night2_04.webp","desc":"Camisa marfil de crepé de seda con mangas arremangadas, que se lleva abierta. Pantalón negro de lana de tiro alto con pinzas y cinturón de cuero negro con hebilla plateada. Incluye camisa, pantalón y cinturón; el saco que lleva en la mano no se incluye.","accessory":false},{"id":141,"name":"Camisa Cioccolato","cat":"NIGHT","g":"M","img":"men/night2_05.webp","desc":"Camisa color chocolate de satén de seda, cuello clásico y manga larga, que se lleva abierta. Se vende la camisa.","accessory":false},{"id":142,"name":"Cruzado Nero","cat":"NIGHT","g":"M","img":"men/night2_06.webp","desc":"Saco cruzado negro de lana con solapa en pico y seis botones, camisa negra de crepé de seda y pantalón negro de lana de tiro alto con pinzas. Incluye saco, camisa y pantalón; anteojos no incluidos.","accessory":false},{"id":143,"name":"Gargantilla Nuit","cat":"NIGHT","g":"M","img":"men/night2_07.webp","desc":"Camisa negra de crepé de seda que se lleva abierta, pañuelo-gargantilla de seda negra anudado al cuello, fajín de satén negro y pantalón marfil de lana de tiro alto con pierna amplia. Incluye camisa, pañuelo, fajín y pantalón; el saco que lleva en la mano no se incluye.","accessory":false},{"id":144,"name":"Paisley Doré","cat":"NIGHT","g":"M","img":"men/night2_08.webp","desc":"Camisa negra de seda con estampado paisley en dorado, manga corta y cuello abierto. Pantalón negro de lana de tiro alto con pinzas. Incluye camisa y pantalón; anteojos no incluidos.","accessory":false},{"id":145,"name":"Traje Crema Atrani","cat":"NIGHT","g":"M","img":"men/night2_09.webp","desc":"Traje crema de lana fría: saco de una fila con solapa en muesca, que se lleva abierto, y pantalón de tiro alto con pinzas y pierna amplia. Musculosa blanca de punto acanalado de algodón y seda. Incluye saco, pantalón y musculosa.","accessory":false},{"id":146,"name":"Gasa Nera","cat":"NIGHT","g":"M","img":"men/night2_10.webp","desc":"Camisa negra de gasa de seda semitransparente, abierta en el pecho, y pantalón negro de satén de seda de pierna amplia. Incluye camisa y pantalón.","accessory":false},{"id":147,"name":"Calado Navy","cat":"NIGHT","g":"M","img":"men/night2_11.webp","desc":"Camisa azul marino de punto calado de algodón y seda, manga larga arremangada y cuello camisero, que se lleva abierta. Pantalón azul marino de lana de tiro alto. Incluye camisa y pantalón.","accessory":false},{"id":148,"name":"Calado Avorio","cat":"NIGHT","g":"M","img":"men/night2_12.webp","desc":"Camisa marfil tejida a crochet en algodón, calada, de manga larga y cuello camisero, que se lleva abierta. Pantalón marfil de lana y lino de tiro alto con pinzas. Incluye camisa y pantalón; anteojos no incluidos.","accessory":false},{"id":149,"name":"Satén Cacao","cat":"NIGHT","g":"M","img":"men/night2_13.webp","desc":"Camisa chocolate de satén de seda de cuello clásico, que se lleva abierta. Pantalón negro de lana de tiro alto con pinzas y pierna muy amplia. Incluye camisa y pantalón.","accessory":false},{"id":150,"name":"Punto Arenisca","cat":"DAY","g":"M","img":"men/day2_01.webp","desc":"Sweater crudo de punto texturado de algodón, cuello redondo y manga larga. Pantalón crudo de gabardina de algodón de pierna amplia. Incluye sweater y pantalón.","accessory":false},{"id":151,"name":"Utility Verde","cat":"DAY","g":"M","img":"men/day2_02.webp","desc":"Look monocromo verde oliva: sobrecamisa de sarga de algodón con bolsillos con solapa, que se lleva abierta sobre remera blanca de jersey, y pantalón al tono con pinzas. Incluye sobrecamisa, remera y pantalón; anteojos no incluidos.","accessory":false},{"id":152,"name":"Rayas Mercato","cat":"DAY","g":"M","img":"men/day2_03.webp","desc":"Camisa de popelín de algodón a rayas azules y blancas, que se lleva abierta y arremangada. Pantalón marfil de gabardina de algodón de tiro alto con pinzas y cinturón de cuero marrón. Incluye camisa, pantalón y cinturón.","accessory":false},{"id":153,"name":"Polo Brera","cat":"DAY","g":"M","img":"men/day2_04.webp","desc":"Polo azul marino de piqué de algodón, manga corta. Pantalón marfil de gabardina de algodón con pinzas. Incluye polo y pantalón; la gorra y el bolso de gamuza son de styling.","accessory":false},{"id":154,"name":"Overshirt Lucca","cat":"DAY","g":"M","img":"men/day2_05.webp","desc":"Sobrecamisa crema de lino y algodón, que se lleva abierta sobre remera blanca de jersey. Pantalón azul marino de gabardina de algodón con pinzas. Incluye sobrecamisa, remera y pantalón; anteojos no incluidos.","accessory":false},{"id":155,"name":"Navy Espresso","cat":"DAY","g":"M","img":"men/day2_06.webp","desc":"Sweater azul marino de punto de algodón y cashmere sobre camisa blanca de popelín cuyos puños asoman, y jean azul medio de pierna relajada. Incluye sweater, camisa y jean.","accessory":false},{"id":156,"name":"Chaqueta Camel Milano","cat":"DAY","g":"M","img":"men/day2_07.webp","desc":"Sobrecamisa camel de sarga de algodón, que se lleva abierta sobre remera blanca de jersey. Pantalón crudo de gabardina de algodón de tiro alto con pinzas. Incluye sobrecamisa, remera y pantalón.","accessory":false},{"id":157,"name":"Remera Musgo","cat":"DAY","g":"M","img":"men/day2_08.webp","desc":"Remera verde musgo de jersey de algodón pesado, cuello redondo. Pantalón marfil de gabardina de algodón con pinzas. Incluye remera y pantalón; el bolso de cuero y los anteojos son de styling.","accessory":false},{"id":158,"name":"Polo Calado Brisa","cat":"DAY","g":"M","img":"men/day2_09.webp","desc":"Polo crema de punto calado de algodón, manga corta y cuello camisero abierto. Jean azul medio de pierna recta. Incluye polo y jean.","accessory":false},{"id":159,"name":"Lino Total Crema","cat":"DAY","g":"M","img":"men/day2_10.webp","desc":"Camisa crema de lino 100% de trama abierta, que se lleva abierta y arremangada. Pantalón al tono de lino con pinzas y pierna amplia. Incluye camisa y pantalón; anteojos no incluidos.","accessory":false},{"id":160,"name":"Navy Porto Cervo","cat":"DAY","g":"M","img":"men/day2_11.webp","desc":"Camisa azul marino de lino, que se lleva abierta sobre remera blanca de jersey. Bermuda azul marino de lino con pinzas. Incluye camisa, remera y bermuda; el bolso de lona y los anteojos son de styling.","accessory":false},{"id":161,"name":"Lino Panarea","cat":"RESORT","g":"M","img":"men/resort2_01.webp","desc":"Camisa marfil de lino 100% con mangas arremangadas, que se lleva abierta. Pantalón marfil de lino de corte relajado. Incluye camisa y pantalón.","accessory":false},{"id":162,"name":"Oliva Salina","cat":"RESORT","g":"M","img":"men/resort2_02.webp","desc":"Camisa verde oliva de lino lavado, abierta y arremangada. Short crudo de lino con pinzas. Incluye camisa y short; la canasta tejida y los anteojos son de styling.","accessory":false},{"id":163,"name":"Crochet Lipari","cat":"RESORT","g":"M","img":"men/resort2_03.webp","desc":"Polo marfil tejido a crochet en algodón, calado, de manga corta y cuello camisero abierto. Pantalón marfil de lino de pierna amplia. Incluye polo y pantalón.","accessory":false},{"id":164,"name":"Hibisco Stromboli","cat":"RESORT","g":"M","img":"men/resort2_04.webp","desc":"Camisa de viscosa de manga corta con estampado floral en azul marino y marfil, que se lleva abierta. Short de baño azul marino de poliéster reciclado con cordón marfil. Incluye camisa y short de baño.","accessory":false},{"id":165,"name":"Pijama Taormina","cat":"RESORT","g":"M","img":"men/resort2_05.webp","desc":"Camisa marfil de sarga de seda de manga corta, cuello con solapa y ribete negro en contraste, y bolsillo al pecho. Pantalón negro de lino. Incluye camisa y pantalón; anteojos no incluidos.","accessory":false},{"id":166,"name":"Polo Alghero","cat":"RESORT","g":"M","img":"men/resort2_06.webp","desc":"Polo azul marino de punto de algodón, manga corta y tapeta con botones. Pantalón marfil de lino de tiro alto con pinzas y pierna amplia. Incluye polo y pantalón.","accessory":false},{"id":167,"name":"Traje Lino Ostuni","cat":"RESORT","g":"M","img":"men/resort2_07.webp","desc":"Traje marfil de lino: saco desestructurado de una fila, sin forro, y pantalón de tiro alto con pinzas. Musculosa blanca de algodón acanalado. Incluye saco, pantalón y musculosa.","accessory":false},{"id":168,"name":"Crochet Mallorca","cat":"RESORT","g":"M","img":"men/resort2_08.webp","desc":"Camisa chocolate de punto calado de algodón, manga larga y cuello camisero, que se lleva abierta. Short de baño con estampado floral en crudo y negro, de poliéster reciclado. Incluye camisa y short de baño; anteojos no incluidos.","accessory":false},{"id":169,"name":"Rayas Hvar","cat":"RESORT","g":"M","img":"men/resort2_09.webp","desc":"Camisa blanca de lino 100%, manga larga, que se lleva abierta. Short de lino a rayas verticales celeste y blanco. Incluye camisa y short.","accessory":false},{"id":170,"name":"Polo Kos","cat":"RESORT","g":"M","img":"men/resort2_10.webp","desc":"Polo taupe de punto de algodón, manga corta y cuello camisero abierto. Pantalón marfil de lino de tiro alto con pinzas y pierna amplia. Incluye polo y pantalón; el bolso de cuero es de styling.","accessory":false},{"id":171,"name":"Remera Pima","cat":"ESSENTIALS","g":"M","img":"men/essentials2_01.webp","desc":"Remera blanca de jersey de algodón pima, cuello redondo y manga corta. Jean azul medio de denim de algodón, corte recto. Incluye remera y jean; anteojos no incluidos.","accessory":false},{"id":172,"name":"Polo Carbone","cat":"ESSENTIALS","g":"M","img":"men/essentials2_02.webp","desc":"Polo negro de punto de algodón, manga corta. Pantalón marfil de gabardina de algodón con pinzas y cinturón de cuero marrón. Incluye polo, pantalón y cinturón; el bolso de cuero y los anteojos son de styling.","accessory":false},{"id":173,"name":"Oxford Celeste","cat":"ESSENTIALS","g":"M","img":"men/essentials2_03.webp","desc":"Camisa celeste de algodón oxford, arremangada y abierta en el cuello. Pantalón azul marino de lana de tiro alto con pinzas. Incluye camisa y pantalón.","accessory":false},{"id":174,"name":"Overshirt Musgo","cat":"ESSENTIALS","g":"M","img":"men/essentials2_04.webp","desc":"Sobrecamisa verde musgo de sarga de algodón, que se lleva abierta sobre remera blanca de jersey. Pantalón crudo de gabardina de algodón con pinzas. Incluye sobrecamisa, remera y pantalón; anteojos no incluidos.","accessory":false},{"id":175,"name":"Sweater Caffè","cat":"ESSENTIALS","g":"M","img":"men/essentials2_05.webp","desc":"Sweater azul marino de punto fino de algodón y cashmere, cuello redondo. Pantalón azul marino de lana. Incluye sweater y pantalón; anteojos no incluidos.","accessory":false},{"id":176,"name":"Chaqueta Harrington","cat":"ESSENTIALS","g":"M","img":"men/essentials2_06.webp","desc":"Chaqueta negra de algodón con cierre y cuello camisero, que se lleva abierta sobre remera blanca de jersey. Pantalón negro de lana con pinzas. Incluye chaqueta, remera y pantalón; la gorra y el diario son de styling.","accessory":false},{"id":177,"name":"Sweater Crudo","cat":"ESSENTIALS","g":"M","img":"men/essentials2_07.webp","desc":"Sweater crudo de punto texturado de algodón, cuello redondo. Pantalón taupe de gabardina de algodón con pinzas. Incluye sweater y pantalón; el bolso de gamuza es de styling.","accessory":false},{"id":178,"name":"Chino Oliva","cat":"ESSENTIALS","g":"M","img":"men/essentials2_08.webp","desc":"Remera blanca de jersey de algodón pesado, cuello redondo. Pantalón chino verde oliva de sarga de algodón, corte relajado. Incluye remera y pantalón; las zapatillas de cuero blanco y los anteojos no se incluyen.","accessory":false},{"id":179,"name":"Punto Medianoche","cat":"ESSENTIALS","g":"M","img":"men/essentials2_09.webp","desc":"Sweater azul marino de punto de algodón y cashmere, cuello redondo. Pantalón marfil de gabardina de algodón con pinzas y pierna amplia. Incluye sweater y pantalón; el bolso de cuero y los anteojos son de styling.","accessory":false},{"id":180,"name":"Remera Grafito","cat":"ESSENTIALS","g":"M","img":"men/essentials2_10.webp","desc":"Remera gris grafito de jersey de algodón pima, cuello redondo y manga corta. Pantalón azul marino de gabardina de algodón. Incluye remera y pantalón.","accessory":false},{"id":181,"name":"Medio Cierre Crudo","cat":"ESSENTIALS","g":"M","img":"men/essentials2_11.webp","desc":"Sweater crudo de medio cierre de punto acanalado de algodón y cashmere. Jean azul oscuro de denim rígido. Incluye sweater y jean; anteojos no incluidos.","accessory":false},{"id":182,"name":"Smoking Lentejuela","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_01.webp","desc":"Blazer negro de lana con solapa ancha de satén de seda, corte smoking, que se lleva abierto. Debajo, vestido columna negro de lentejuelas con escote en V profundo. Incluye blazer y vestido; la clutch es de styling.","accessory":false},{"id":183,"name":"Halter Zafiro","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_02.webp","desc":"Vestido largo azul zafiro de satén de seda, cuello halter anudado, cuerpo drapeado y falda con abertura alta en la pierna. Incluye el vestido; las joyas son de styling.","accessory":false},{"id":184,"name":"Terciopelo Rubí","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_03.webp","desc":"Vestido midi bordó de terciopelo de seda, breteles finos, escote drapeado en V y falda con frunce lateral. Incluye el vestido; las joyas son de styling.","accessory":false},{"id":185,"name":"Mini Plumas","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_04.webp","desc":"Blazer negro de lana de solapa ancha, que se lleva sobre los hombros. Minivestido negro de lentejuelas con escote en V y ruedo de plumas. Incluye blazer y vestido; la clutch es de styling.","accessory":false},{"id":186,"name":"Slip Champagne","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_05.webp","desc":"Vestido largo champagne de satén de seda, breteles finos, escote drapeado y falda cruzada con abertura lateral. Incluye el vestido; la clutch es de styling.","accessory":false},{"id":187,"name":"Encaje Alto","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_06.webp","desc":"Vestido midi negro de encaje de manga larga, cuello alto y silueta ajustada, con forro al tono. Incluye el vestido; la clutch es de styling.","accessory":false},{"id":188,"name":"Un Hombro Burdeos","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_07.webp","desc":"Vestido largo bordó de terciopelo de seda, un solo hombro con manga larga, cuerpo drapeado y abertura alta con lazo. Incluye el vestido.","accessory":false},{"id":189,"name":"Mono Halter","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_08.webp","desc":"Mono negro de crepé de seda, cuello halter anudado, perneras palazzo y cinturón ancho del mismo tejido con hebilla rectangular. Incluye el mono y el cinturón; la clutch es de styling.","accessory":false},{"id":190,"name":"Satén Índigo","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_09.webp","desc":"Vestido largo azul índigo de satén de seda, breteles finos, escote drapeado y falda con abertura alta. Incluye el vestido; la clutch es de styling.","accessory":false},{"id":191,"name":"Sastre Marfil","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_10.webp","desc":"Blazer marfil de lana de solapa ancha, que se lleva abierto, sobre bustier de encaje marfil con escote corazón. Pantalón marfil de lana de tiro alto con pinzas y pierna palazzo. Incluye blazer, bustier y pantalón; la clutch es de styling.","accessory":false},{"id":192,"name":"Columna Nuit","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_11.webp","desc":"Vestido largo columna azul noche, completamente cubierto de lentejuelas, con breteles finos y escote en V. Incluye el vestido; la clutch es de styling.","accessory":false},{"id":193,"name":"Capa Negra","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_12.webp","desc":"Vestido largo negro de crepé de seda con espalda descubierta y panel de capa que nace en un hombro y cae hasta el ruedo. Incluye el vestido; la clutch es de styling.","accessory":false},{"id":194,"name":"Smoking Zafiro","cat":"COCKTAIL","g":"M","img":"cocktail/men_01.webp","desc":"Smoking azul noche de lana: saco de una fila con solapa ancha de satén de seda, chaleco a juego y pantalón de tiro alto con pinzas. Camisa azul noche de popelín de algodón, abierta en el cuello, y pañuelo de bolsillo marfil. Incluye saco, chaleco, camisa, pantalón y pañuelo.","accessory":false},{"id":195,"name":"Traje Marfil","cat":"COCKTAIL","g":"M","img":"cocktail/men_02.webp","desc":"Traje marfil de lana fría: saco de una fila con solapa en muesca y pantalón de tiro alto con pinzas. Camisa marfil de crepé de seda, que se lleva abierta. Incluye saco, camisa y pantalón; los anteojos son de styling.","accessory":false},{"id":196,"name":"Terciopelo Burdeos","cat":"COCKTAIL","g":"M","img":"cocktail/men_03.webp","desc":"Blazer bordó de terciopelo de seda, de una fila. Camisa negra de crepé de seda, abierta en el cuello, y pantalón negro de lana de tiro alto con pinzas. Incluye blazer, camisa y pantalón.","accessory":false},{"id":197,"name":"Traje Cacao","cat":"COCKTAIL","g":"M","img":"cocktail/men_04.webp","desc":"Traje chocolate de lana: saco de una fila, chaleco y pantalón de tiro alto con pinzas. Camisa chocolate de satén de seda, abierta en el cuello. Incluye saco, chaleco, camisa y pantalón.","accessory":false},{"id":198,"name":"Cruzado Navy","cat":"COCKTAIL","g":"M","img":"cocktail/men_05.webp","desc":"Saco cruzado azul marino de lana, con solapa en pico y pañuelo de bolsillo estampado. Sweater negro de punto fino con cuello alto y pantalón azul marino de lana con pinzas. Incluye saco, sweater, pantalón y pañuelo; los anteojos son de styling.","accessory":false},{"id":199,"name":"Camisa Navy","cat":"COCKTAIL","g":"M","img":"cocktail/men_06.webp","desc":"Camisa azul marino de popelín de algodón, que se lleva abierta, con pantalón al tono de lana de tiro alto con pinzas. El saco a juego, del mismo paño, se lleva en la mano. Incluye saco, camisa y pantalón.","accessory":false},{"id":200,"name":"Blazer Puntitos","cat":"COCKTAIL","g":"M","img":"cocktail/men_07.webp","desc":"Blazer negro de lana de una fila. Camisa verde oliva de seda con microestampado de puntos, abierta en el cuello, y pantalón negro de lana con pinzas. Incluye blazer, camisa y pantalón.","accessory":false},{"id":201,"name":"Smoking Velluto","cat":"COCKTAIL","g":"M","img":"cocktail/men_08.webp","desc":"Smoking de terciopelo azul: saco con solapa de satén de seda, camisa blanca de popelín, moño negro de satén y pantalón negro de lana con banda lateral de satén. Incluye saco, camisa, moño y pantalón; los anteojos son de styling.","accessory":false},{"id":202,"name":"Camisa Blanca","cat":"COCKTAIL","g":"M","img":"cocktail/men_09.webp","desc":"Camisa blanca de popelín de algodón, que se lleva abierta y arremangada. Pantalón azul marino de lana de tiro alto con pinzas y pretina ancha. El saco a juego se lleva en la mano. Incluye saco, camisa y pantalón.","accessory":false},{"id":203,"name":"Traje Oliva","cat":"COCKTAIL","g":"M","img":"cocktail/men_10.webp","desc":"Traje verde oliva de lana: saco de una fila con solapa en muesca y pantalón de tiro alto con pinzas y pierna amplia. Camisa chocolate de crepé de seda, abierta en el cuello. Incluye saco, camisa y pantalón.","accessory":false}];
+
+const SYSTEMS={
+  shirt:{title:'Shirt System',label:'Camisería'},
+  blazer:{title:'Tailoring System',label:'Sastrería'},
+  dress:{title:'Dress System',label:'Vestido'},
+  trousers:{title:'Trouser System',label:'Pantalón'},
+  knit:{title:'Knit System',label:'Punto'},
+  swim:{title:'Swim System',label:'Baño'},
+  accessory:{title:'Accessory System',label:'Accesorio'},
+  halter:{title:'Halter System',label:'Halter'},
+  short:{title:'Short System',label:'Short'}
+};
+
+function base(p){return p.g==='M'?{
+  chest:100,waist:86,hip:102,back:46,front:48,shoulder:16,neck:20,sleeve:64,sleeveW:38,cuff:24,collar:42,yoke:18,inseam:80,rise:28,thigh:62,hem:44
+}:{
+  chest:92,waist:74,hip:98,back:42,front:44,shoulder:13.5,neck:18,sleeve:60,sleeveW:34,cuff:20,collar:38,yoke:16,inseam:78,rise:26,thigh:58,hem:42
+}}
+
+function round1(n){return Math.round(n*2)/2}
+
+function classifyPrimary(p){
+  const name=p.name.toLowerCase();
+  const t=(p.name+' '+p.desc).toLowerCase();
+  if(p.accessory||p.cat==='ACCESSORIES') return 'accessory';
+  if(/bikini|malla enteriza|short de baño|pareo|bandeau onyx|azul capri|black riviera/.test(t)) return 'swim';
+  if(/^vestido|enterizo|mono |caftán|túnica|slip |corsé|bustier|columna|crochet amalfi|crochet costa|crochet perla|oasis|nomad|encaje |terciopelo rubí|mini plumas|un hombro|satén índigo|capa negra|marfil nudo|oro disco|cristal champagne|espalda infinita|azul profundo|nocturne|sirena|noir cowl|ivory ceremony|golden hour|midnight lace|encaje medianoche|nova|luna|aria|kaia|siena|celine|mara|elle|véra|alba$|solé|terra|mare$|duna$|azur|brisa$|nero$|alma$|tao$|niza|santorini|bahía|lago|ibiza$/.test(name)||/\bvestido\b|\benterizo\b|\bmono\b|\bcaftán\b/.test(name)) return 'dress';
+  if(/blazer|smoking|dinner|traje |cruzado|tailoring|chaqueta|harrington|sastre |noir tailoring|urban black|linen riviera|foulard nero|velluto|dinner jacket/.test(t)||/\bsaco\b/.test(name)) return 'blazer';
+  if(/sweater|cárdigan|cardigan|polo |remera|musculosa|punto medianoche|medio cierre|soft stone|set cashmere/.test(t)) return 'knit';
+  if(/camisa|overshirt|oxford|silk retreat|riviera tank|chaleco|top /.test(t)) return 'shirt';
+  if(/pantalón|pantalon|short |jean|chino|denim/.test(name)) return 'trousers';
+  if(/halter|slip|bandeau|bustier/.test(t)) return 'halter';
+  if(/\bvestido\b|\benterizo\b|\bcaftán\b|\bmono\b/.test(t)) return 'dress';
+  if(/blazer|smoking|traje|saco |cruzado/.test(t)) return 'blazer';
+  if(/camisa|polo|remera|sweater|overshirt|musculosa/.test(t)) return /polo|remera|sweater|musculosa/.test(t)?'knit':'shirt';
+  if(/pantalón|short|jean|chino/.test(t)) return 'trousers';
+  return p.g==='M'?'shirt':'dress';
+}
+
+function parseIncludes(p){
+  const m=p.desc.match(/Incluye ([^.]+)\./i);
+  if(!m) return null;
+  return m[1]
+    .replace(/;[^,]*/g,'')
+    .split(/,| y | e /)
+    .map(s=>s.trim().toLowerCase())
+    .filter(Boolean)
+    .filter(s=>!/anteojos|bolso|clutch|joyas|canasta|gorra|diario|zapatillas|styling|no incluidos|no se incluyen|la chaqueta que lleva|el saco a juego.*mano/.test(s));
+}
+
+function mapInclude(token){
+  if(/saco|blazer|smoking|dinner|chaqueta|cruzado|traje|harrington/.test(token)) return {sys:'blazer',label:cap(token)};
+  if(/chaleco|bustier/.test(token)) return {sys:'shirt',label:cap(token)};
+  if(/camisa|overshirt|oxford|sobrecamisa|buzo/.test(token)) return {sys:'shirt',label:cap(token)};
+  if(/polo|sweater|remera|musculosa|cárdigan|cardigan|punto/.test(token)) return {sys:'knit',label:cap(token)};
+  if(/pantalón|pantalon|jean|chino/.test(token)) return {sys:'trousers',label:cap(token)};
+  if(/short de baño|bikini|malla|pareo/.test(token)) return {sys:'swim',label:cap(token)};
+  if(/short|bermuda/.test(token)) return {sys:'short',label:cap(token)};
+  if(/vestido|mono|enterizo|caftán|túnica|corsé|columna/.test(token)) return {sys:'dress',label:cap(token)};
+  if(/pañuelo|foulard|moño|cinturón|fajín|scarf|shawl/.test(token)) return {sys:'accessory',label:cap(token)};
+  if(/top|corpiño|halter/.test(token)) return {sys:'halter',label:cap(token)};
+  return null;
+}
+
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+
+function boardsFor(p){
+  const includes=parseIncludes(p);
+  if(includes&&includes.length){
+    const boards=[];
+    const seen=new Set();
+    for(const token of includes){
+      const mapped=mapInclude(token);
+      if(!mapped) continue;
+      const key=mapped.sys+'|'+mapped.label;
+      if(seen.has(key)) continue;
+      seen.add(key);
+      boards.push(mapped);
+    }
+    if(boards.length) return boards;
+  }
+  // multi-garment from description without "Incluye"
+  const t=p.desc.toLowerCase();
+  const multi=[];
+  if(/blazer|saco |smoking|traje /.test(t)) multi.push({sys:'blazer',label:'Saco / blazer'});
+  if(/\bcamisa\b/.test(t)) multi.push({sys:'shirt',label:'Camisa'});
+  if(/\bpolo\b|sweater|remera|musculosa|cárdigan|top tejido/.test(t)) multi.push({sys:'knit',label:'Punto / top'});
+  if(/\bpantalón\b|\bpantalon\b/.test(t)) multi.push({sys:'trousers',label:'Pantalón'});
+  if(/\bshort\b/.test(t)&&!/short de baño/.test(t)) multi.push({sys:'short',label:'Short'});
+  if(/\bvestido\b/.test(t)) multi.push({sys:'dress',label:'Vestido'});
+  if(multi.length>=2) return multi;
+  const sys=classifyPrimary(p);
+  return [{sys,label:SYSTEMS[sys].label}];
+}
+
+/* ---------- SVG helpers ---------- */
+function path(d){return `<path class="piece" d="${d}"/>`}
+function guide(d,cls='guide-red'){return `<path class="${cls}" d="${d}"/>`}
+function label(x,y,name,dia){
+  return `<text class="label-name" x="${x}" y="${y}">${name}</text>
+  <text class="label-dia" x="${x}" y="${y+14}">DIA. ${dia}</text>`;
+}
+function meas(x,y,t,anchor='middle'){
+  return `<text class="meas" x="${x}" y="${y}" text-anchor="${anchor}">${t}</text>`;
+}
+function circ(x,y,r=4){return `<circle class="btn" cx="${x}" cy="${y}" r="${r}"/>`}
+function line(x1,y1,x2,y2,cls='guide-blue'){return `<line class="${cls}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`}
+
+function renderSystem(sys,p,titleOverride){
+  const b=base(p);
+  const fn={
+    shirt:drawShirt,blazer:drawBlazer,dress:drawDress,trousers:drawTrousers,
+    knit:drawKnit,swim:drawSwim,accessory:drawAccessory,halter:drawHalter,short:drawShort
+  }[sys]||drawDress;
+  return fn(b,p,titleOverride||SYSTEMS[sys].title);
+}
+
+function drawShirt(b){
+  const L=round1(b.front+22);
+  const W=round1(b.chest/4+3);
+  const pieces=[];
+  const rows=[];
+  // Front
+  pieces.push(`
+    <g transform="translate(620,40)">
+      ${path('M40,18 C70,8 110,6 150,14 L168,70 C175,110 178,160 176,210 L174,340 C172,400 168,460 155,520 L40,520 L40,210 C40,150 38,90 40,18 Z')}
+      ${guide('M40,18 L40,520')}
+      ${guide('M92,70 L92,200')}
+      ${circ(92,120)}${circ(92,160)}
+      ${line(40,70,176,70)}${line(40,210,176,210)}
+      ${label(108,300,'Front',1)}
+      ${meas(108,12,round1(b.shoulder))}${meas(188,90,round1(b.neck/2), 'start')}
+      ${meas(188,210,W,'start')}${meas(188,400,round1(W+1),'start')}
+      ${meas(108,538,L)}${meas(28,270,round1(b.front),'end')}
+    </g>`);
+  rows.push(['Front','Ancho pecho (1/2)',W],['Front','Largo delantero',L],['Front','Caída de hombro',round1(b.shoulder)]);
+  // Back
+  pieces.push(`
+    <g transform="translate(40,40)">
+      ${path('M30,30 C70,10 120,8 160,22 L178,80 C182,130 184,190 182,250 L176,400 C170,470 160,520 140,540 L30,540 L30,250 C28,180 26,100 30,30 Z')}
+      ${guide('M95,30 L95,90')}${guide('M110,30 L110,85')}${guide('M125,30 L125,90')}
+      ${line(30,80,178,80)}${line(30,250,182,250)}
+      ${label(100,300,'Back',3)}
+      ${meas(100,16,round1(b.shoulder+1))}${meas(190,80,round1(b.yoke/2),'start')}
+      ${meas(100,558,round1(L+2))}${meas(100,556,'' )}
+      ${meas(18,300,round1(b.back),'end')}
+    </g>`);
+  rows.push(['Back','Ancho espalda (1/2)',round1(b.chest/4+2)],['Back','Largo espalda',round1(L+2)],['Back','Alto sisa',round1(b.yoke+4)]);
+  // Yoke
+  pieces.push(`
+    <g transform="translate(280,30)">
+      ${path('M20,40 C60,10 140,8 200,28 L210,70 L20,78 Z')}
+      ${guide('M115,20 L115,75')}
+      ${label(115,55,'Yoke',2)}
+      ${meas(115,8,round1(b.yoke+2))}${meas(220,55,round1(b.yoke/2),'start')}${meas(10,60,round1(7),'end')}
+    </g>`);
+  rows.push(['Yoke','Ancho canesú',round1(b.yoke+2)],['Yoke','Alto canesú',7]);
+  // Sleeve
+  pieces.push(`
+    <g transform="translate(300,140)">
+      ${path('M40,20 C80,0 140,0 180,22 L200,80 L170,360 L50,360 L20,80 Z')}
+      ${guide('M110,20 L110,360')}
+      ${line(30,80,190,80)}${line(50,360,170,360)}
+      ${label(110,200,'Sleeve',4)}
+      ${meas(110,8,round1(b.sleeveW/2))}${meas(210,80,round1(b.sleeveW/2),'start')}
+      ${meas(110,378,round1(b.cuff))}${meas(10,220,round1(b.sleeve),'end')}
+    </g>`);
+  rows.push(['Sleeve','Largo manga',b.sleeve],['Sleeve','Ancho sisa',round1(b.sleeveW/2)],['Sleeve','Ancho puño',b.cuff]);
+  // Cuff
+  pieces.push(`
+    <g transform="translate(40,300)">
+      ${path('M20,20 L140,20 L155,45 L140,70 L20,70 Z')}
+      ${guide('M80,20 L80,70')}${circ(125,45,3.5)}
+      ${label(75,50,'Cuff',5)}
+      ${meas(80,12,round1(b.cuff+2))}${meas(12,48,round1(6.5),'end')}${meas(160,48,round1(b.cuff/2),'start')}
+    </g>`);
+  rows.push(['Cuff','Largo puño',round1(b.cuff+2)],['Cuff','Alto puño',6.5]);
+  // Collar
+  pieces.push(`
+    <g transform="translate(220,540)">
+      ${path('M20,40 C80,10 220,8 360,35 L365,70 L20,78 Z')}
+      ${guide('M190,20 L190,75')}${circ(190,55,3.5)}
+      ${label(190,55,'Collar',6)}
+      ${meas(190,6,b.collar)}${meas(10,60,round1(8),'end')}${meas(375,55,round1(b.collar/2),'start')}
+    </g>`);
+  rows.push(['Collar','Largo cuello',b.collar],['Collar','Alto cuello',8]);
+  return {svg:wrapSVG(900,660,pieces.join('')),rows,title:'TheShirt System'};
+}
+
+function drawBlazer(b){
+  const L=round1(b.front+28);
+  const W=round1(b.chest/4+4);
+  const pieces=[];
+  const rows=[];
+  pieces.push(`
+    <g transform="translate(560,30)">
+      ${path('M50,20 C90,6 130,8 165,22 L185,85 C195,140 200,210 198,300 L190,520 L50,520 L50,300 C48,200 46,100 50,20 Z')}
+      ${guide('M50,20 L50,520')}${guide('M95,90 L70,300 L95,520')}
+      ${line(50,90,185,90)}${line(50,300,198,300)}
+      ${label(120,280,'Front',1)}${circ(78,220)}${circ(78,280)}
+      ${meas(120,10,round1(b.shoulder+1))}${meas(210,150,W,'start')}${meas(120,540,L)}${meas(38,280,round1(b.front+4),'end')}
+    </g>`);
+  rows.push(['Front','Ancho pecho (1/2)',W],['Front','Largo saco',L],['Front','Solapa (ancho)',9]);
+  pieces.push(`
+    <g transform="translate(40,30)">
+      ${path('M40,25 C90,8 150,8 195,28 L210,95 C215,160 216,240 212,330 L200,520 L40,520 L40,300 C38,190 36,100 40,25 Z')}
+      ${guide('M120,25 L120,100')}${line(40,95,210,95)}${line(40,330,212,330)}
+      ${label(120,290,'Back',2)}
+      ${meas(120,12,round1(b.shoulder+2))}${meas(220,160,round1(W+1),'start')}${meas(120,540,round1(L+1))}${meas(28,280,round1(b.back+2),'end')}
+    </g>`);
+  rows.push(['Back','Ancho espalda (1/2)',round1(W+1)],['Back','Largo espalda',round1(L+1)]);
+  pieces.push(`
+    <g transform="translate(300,80)">
+      ${path('M50,30 C95,5 155,5 200,32 L220,100 L185,420 L65,420 L30,100 Z')}
+      ${guide('M125,30 L125,420')}${line(40,100,210,100)}
+      ${label(125,230,'Sleeve',3)}
+      ${meas(125,16,round1(b.sleeveW/2+2))}${meas(125,438,round1(b.cuff+4))}${meas(18,250,round1(b.sleeve-2),'end')}
+    </g>`);
+  rows.push(['Sleeve','Largo manga',round1(b.sleeve-2)],['Sleeve','Boca manga',round1(b.cuff+4)]);
+  pieces.push(`
+    <g transform="translate(280,480)">
+      ${path('M30,40 C90,12 200,10 300,32 L305,75 L30,85 Z')}
+      ${guide('M165,20 L165,80')}
+      ${label(165,58,'Collar',4)}
+      ${meas(165,8,round1(b.collar+4))}${meas(18,65,round1(9),'end')}
+    </g>`);
+  rows.push(['Collar','Largo cuello',round1(b.collar+4)],['Collar','Alto cuello / solapa',9]);
+  pieces.push(`
+    <g transform="translate(40,420)">
+      ${path('M20,20 L120,20 L130,120 L20,160 Z')}
+      ${guide('M70,20 L70,140')}
+      ${label(70,90,'Facing',5)}
+      ${meas(70,12,14)}${meas(10,95,28,'end')}
+    </g>`);
+  rows.push(['Facing','Ancho vista',14],['Facing','Largo vista',28]);
+  return {svg:wrapSVG(900,620,pieces.join('')),rows,title:'TheTailoring System'};
+}
+
+function drawDress(b){
+  const L=round1(b.front+70);
+  const W=round1(b.chest/4+2);
+  const pieces=[];
+  const rows=[];
+  pieces.push(`
+    <g transform="translate(480,30)">
+      ${path('M80,40 C110,10 150,8 175,35 L195,90 C205,150 208,220 200,300 C195,400 205,500 220,600 L80,600 L70,300 C65,200 68,110 80,40 Z')}
+      ${guide('M80,40 L80,600')}${guide('M130,300 L200,300')}
+      ${line(75,90,195,90)}${line(70,300,200,300)}
+      ${label(135,360,'Front',1)}
+      ${meas(135,8,round1(b.shoulder-1))}${meas(215,160,W,'start')}${meas(215,300,round1(b.waist/4+2),'start')}${meas(230,500,round1(b.hip/4+3),'start')}${meas(150,618,L)}
+    </g>`);
+  rows.push(['Front','Ancho busto (1/2)',W],['Front','Cintura (1/2)',round1(b.waist/4+2)],['Front','Cadera (1/2)',round1(b.hip/4+3)],['Front','Largo',L]);
+  pieces.push(`
+    <g transform="translate(80,30)">
+      ${path('M70,35 C110,8 160,8 195,32 L215,95 C220,170 222,250 215,330 C210,430 220,520 230,600 L70,600 L60,330 C55,220 58,120 70,35 Z')}
+      ${guide('M140,35 L140,120')}${line(65,95,215,95)}${line(60,330,215,330)}
+      ${label(140,360,'Back',2)}
+      ${meas(140,8,round1(b.shoulder))}${meas(230,170,round1(W+1),'start')}${meas(150,618,round1(L+1))}${meas(48,300,round1(b.back),'end')}
+    </g>`);
+  rows.push(['Back','Ancho espalda (1/2)',round1(W+1)],['Back','Largo',round1(L+1)]);
+  pieces.push(`
+    <g transform="translate(300,80)">
+      ${path('M40,30 L160,30 L155,220 L45,220 Z')}
+      ${guide('M100,30 L100,220')}
+      ${label(100,130,'Facing',3)}
+      ${meas(100,18,18)}${meas(30,130,28,'end')}
+    </g>`);
+  rows.push(['Facing','Ancho',18],['Facing','Largo escote',28]);
+  pieces.push(`
+    <g transform="translate(280,360)">
+      ${path('M30,40 C70,10 150,10 200,40 L200,70 L30,70 Z')}
+      ${label(115,60,'Bias',4)}
+      ${meas(115,20,round1(b.neck+8))}${meas(20,58,3.5,'end')}
+    </g>`);
+  rows.push(['Bias','Largo bies / bretel',round1(b.neck+8)],['Bias','Ancho',3.5]);
+  return {svg:wrapSVG(900,680,pieces.join('')),rows,title:'TheDress System'};
+}
+
+function drawTrousers(b){
+  const pieces=[];
+  const rows=[];
+  pieces.push(`
+    <g transform="translate(120,30)">
+      ${path('M80,20 L200,20 L210,80 C220,140 230,200 225,300 L210,560 L70,560 L55,300 C50,200 55,100 80,20 Z')}
+      ${guide('M140,20 L140,560')}${guide('M80,20 C100,90 110,150 100,220')}
+      ${line(80,20,200,20)}${line(70,560,210,560)}
+      ${label(140,300,'Front',1)}
+      ${meas(140,10,round1(b.waist/4+2))}${meas(235,200,round1(b.thigh/2),'start')}${meas(140,578,round1(b.hem))}${meas(42,300,b.inseam,'end')}${meas(70,100,b.rise)}
+    </g>`);
+  rows.push(['Front','Cintura (1/4)',round1(b.waist/4+2)],['Front','Muslo',round1(b.thigh/2)],['Front','Tiro',b.rise],['Front','Entrepierna',b.inseam],['Front','Ruedo',b.hem]);
+  pieces.push(`
+    <g transform="translate(480,30)">
+      ${path('M70,20 L210,20 L225,90 C240,160 250,230 245,320 L225,560 L60,560 L45,320 C40,220 45,110 70,20 Z')}
+      ${guide('M145,20 L145,560')}${guide('M70,20 C95,100 110,170 95,240')}
+      ${line(70,20,210,20)}${line(60,560,225,560)}
+      ${label(145,300,'Back',2)}
+      ${meas(145,10,round1(b.waist/4+3))}${meas(255,220,round1(b.thigh/2+2),'start')}${meas(145,578,round1(b.hem+1))}${meas(32,300,round1(b.inseam-1),'end')}
+    </g>`);
+  rows.push(['Back','Cintura (1/4)',round1(b.waist/4+3)],['Back','Muslo',round1(b.thigh/2+2)],['Back','Entrepierna',round1(b.inseam-1)]);
+  pieces.push(`
+    <g transform="translate(300,520)">
+      ${path('M20,20 L260,20 L260,55 L20,55 Z')}
+      ${guide('M140,20 L140,55')}
+      ${label(140,42,'Waistband',3)}
+      ${meas(140,12,round1(b.waist+4))}${meas(10,42,4,'end')}
+    </g>`);
+  rows.push(['Waistband','Largo pretina',round1(b.waist+4)],['Waistband','Alto',4]);
+  return {svg:wrapSVG(900,620,pieces.join('')),rows,title:'TheTrouser System'};
+}
+
+function drawShort(b){
+  const d=drawTrousers({...b,inseam:round1(b.inseam*0.28),hem:round1(b.hem+4)});
+  d.title='TheShort System';
+  d.rows=d.rows.map(r=>r[0]==='Front'&&r[1]==='Entrepierna'?['Front','Entrepierna (short)',round1(b.inseam*0.28)]:r);
+  return d;
+}
+
+function drawKnit(b){
+  const L=round1(b.front+18);
+  const W=round1(b.chest/4+2);
+  const pieces=[];
+  const rows=[];
+  pieces.push(`
+    <g transform="translate(480,40)">
+      ${path('M70,50 C110,15 160,15 200,50 L215,100 L210,360 L60,360 L55,100 Z')}
+      ${guide('M70,50 L70,360')}${line(55,100,215,100)}
+      ${label(135,220,'Front',1)}
+      ${meas(135,20,round1(b.shoulder))}${meas(225,120,W,'start')}${meas(135,378,L)}
+    </g>`);
+  rows.push(['Front','Ancho (1/2)',W],['Front','Largo',L]);
+  pieces.push(`
+    <g transform="translate(80,40)">
+      ${path('M60,50 C110,12 170,12 215,48 L230,100 L220,360 L55,360 L50,100 Z')}
+      ${guide('M140,50 L140,120')}${line(50,100,230,100)}
+      ${label(140,220,'Back',2)}
+      ${meas(140,18,round1(b.shoulder+1))}${meas(240,120,round1(W+1),'start')}${meas(140,378,round1(L+1))}
+    </g>`);
+  rows.push(['Back','Ancho (1/2)',round1(W+1)],['Back','Largo',round1(L+1)]);
+  pieces.push(`
+    <g transform="translate(280,120)">
+      ${path('M40,40 C80,15 130,15 170,40 L185,90 L160,280 L50,280 L25,90 Z')}
+      ${guide('M105,40 L105,280')}
+      ${label(105,170,'Sleeve',3)}
+      ${meas(105,22,round1(b.sleeveW/2-2))}${meas(105,298,round1(b.cuff-2))}${meas(14,170,round1(b.sleeve*0.4),'end')}
+    </g>`);
+  rows.push(['Sleeve','Largo manga (corta)',round1(b.sleeve*0.4)],['Sleeve','Ancho sisa',round1(b.sleeveW/2-2)]);
+  pieces.push(`
+    <g transform="translate(300,440)">
+      ${path('M40,30 L200,30 L200,70 L40,70 Z')}
+      ${label(120,55,'Rib',4)}
+      ${meas(120,20,round1(b.neck+4))}${meas(30,55,4,'end')}
+    </g>`);
+  rows.push(['Rib','Cuello / pretina',round1(b.neck+4)],['Rib','Alto canalé',4]);
+  return {svg:wrapSVG(900,560,pieces.join('')),rows,title:'TheKnit System'};
+}
+
+function drawHalter(b){
+  const pieces=[];
+  const rows=[];
+  pieces.push(`
+    <g transform="translate(420,40)">
+      ${path('M120,20 C140,80 150,140 145,200 L200,280 L200,420 L60,420 L60,280 L115,200 C110,140 100,80 120,20 Z')}
+      ${guide('M120,20 L120,200')}${line(60,280,200,280)}
+      ${label(130,340,'Front',1)}
+      ${meas(130,12,round1(8))}${meas(215,300,round1(b.chest/4+1),'start')}${meas(130,438,round1(b.waist/4+3))}
+    </g>`);
+  rows.push(['Front','Ancho busto (1/2)',round1(b.chest/4+1)],['Front','Alto cuerpo',round1(36)]);
+  pieces.push(`
+    <g transform="translate(80,80)">
+      ${path('M80,40 L200,40 L210,200 L70,200 Z')}
+      ${guide('M140,40 L140,200')}
+      ${label(140,130,'Back',2)}
+      ${meas(140,28,round1(b.chest/4))}${meas(60,130,22,'end')}
+    </g>`);
+  rows.push(['Back','Ancho',round1(b.chest/4)],['Back','Alto',22]);
+  pieces.push(`
+    <g transform="translate(100,360)">
+      ${path('M20,30 L320,30 L320,55 L20,55 Z')}
+      ${label(170,48,'Tie',3)}
+      ${meas(170,20,round1(b.neck+40))}${meas(10,48,2.5,'end')}
+    </g>`);
+  rows.push(['Tie','Largo lazo / halter',round1(b.neck+40)],['Tie','Ancho',2.5]);
+  return {svg:wrapSVG(900,520,pieces.join('')),rows,title:'TheHalter System'};
+}
+
+function drawSwim(b){
+  const pieces=[];
+  const rows=[];
+  pieces.push(`
+    <g transform="translate(420,60)">
+      ${path('M90,40 C120,20 160,20 190,45 L200,120 C190,160 170,190 140,200 C110,190 90,160 80,120 Z')}
+      ${guide('M140,40 L140,200')}
+      ${label(140,130,'Front',1)}
+      ${meas(140,24,round1(b.chest/4-2))}${meas(140,218,round1(18))}
+    </g>`);
+  rows.push(['Front','Ancho copa / delantero',round1(b.chest/4-2)],['Front','Alto',18]);
+  pieces.push(`
+    <g transform="translate(100,60)">
+      ${path('M80,50 L200,50 L210,160 L70,160 Z')}
+      ${guide('M140,50 L140,160')}
+      ${label(140,115,'Back',2)}
+      ${meas(140,38,round1(b.chest/4-3))}${meas(60,115,16,'end')}
+    </g>`);
+  rows.push(['Back','Ancho',round1(b.chest/4-3)],['Back','Alto',16]);
+  pieces.push(`
+    <g transform="translate(120,320)">
+      ${path('M30,30 L300,30 L300,50 L30,50 Z')}
+      ${label(165,45,'Tie',3)}
+      ${meas(165,20,90)}${meas(20,45,2,'end')}
+    </g>`);
+  rows.push(['Tie','Largo lazos',90],['Tie','Ancho',2]);
+  pieces.push(`
+    <g transform="translate(480,300)">
+      ${path('M40,20 L180,20 L200,80 L160,160 L60,160 L20,80 Z')}
+      ${label(110,100,'Bottom',4)}
+      ${meas(110,12,round1(b.hip/4))}${meas(10,100,18,'end')}
+    </g>`);
+  rows.push(['Bottom','Cadera (1/4)',round1(b.hip/4)],['Bottom','Alto bombacha',18]);
+  return {svg:wrapSVG(900,520,pieces.join('')),rows,title:'TheSwim System'};
+}
+
+function drawAccessory(b,p){
+  const name=p.name.toLowerCase();
+  const pieces=[];
+  const rows=[];
+  if(/scarf|shawl|pañuelo|estola|foulard/.test(name+' '+p.desc)){
+    const w=/shawl|estola/.test(name)?70:90;
+    const h=/shawl|estola/.test(name)?200:90;
+    pieces.push(`
+      <g transform="translate(200,80)">
+        ${path(`M40,40 L${40+h*2},40 L${40+h*2},${40+w*1.2} L40,${40+w*1.2} Z`)}
+        ${guide(`M${40+h},40 L${40+h},${40+w*1.2}`)}
+        ${label(40+h,40+w*0.6,'Panel',1)}
+        ${meas(40+h,28,h)}${meas(28,40+w*0.6,w,'end')}
+      </g>`);
+    rows.push(['Panel','Largo',h],['Panel','Ancho',w]);
+  } else if(/belt|cinturón/.test(name+' '+p.desc)){
+    pieces.push(`
+      <g transform="translate(120,180)">
+        ${path('M40,40 L520,40 L520,85 L40,85 Z')}
+        ${guide('M280,40 L280,85')}${circ(500,62,6)}
+        ${label(280,68,'Belt',1)}
+        ${meas(280,28,round1(b.waist+20))}${meas(28,68,4,'end')}
+      </g>`);
+    rows.push(['Belt','Largo',round1(b.waist+20)],['Belt','Ancho',4]);
+  } else if(/bag|cartera|signature/.test(name+' '+p.desc)){
+    pieces.push(`
+      <g transform="translate(250,80)">
+        ${path('M80,60 L280,60 L300,280 L60,280 Z')}
+        ${path('M100,40 L260,40 L260,60 L100,60 Z')}
+        ${label(180,180,'Body',1)}
+        ${meas(180,48,28)}${meas(180,298,32)}${meas(48,180,26,'end')}
+      </g>`);
+    rows.push(['Body','Ancho',32],['Body','Alto',26],['Flap','Ancho',28]);
+  } else {
+    pieces.push(`
+      <g transform="translate(250,100)">
+        ${path('M60,80 L300,80 L300,160 L60,160 Z')}
+        ${path('M80,40 C120,20 160,20 200,40 L220,80 L60,80 Z')}
+        ${label(180,130,'Frame',1)}
+        ${meas(180,70,14)}${meas(180,178,16)}
+      </g>`);
+    rows.push(['Frame','Ancho frente',14],['Frame','Alto',4]);
+  }
+  return {svg:wrapSVG(900,420,pieces.join('')),rows,title:'TheAccessory System'};
+}
+
+function wrapSVG(w,h,inner){
+  return `<svg class="board" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama de moldes">${inner}</svg>`;
+}
+
+/* ---------- UI ---------- */
+let currentFilter='ALL';
+const params=new URLSearchParams(location.search);
+const idParam=Number(params.get('id')||0);
+
+function showList(){
+  history.replaceState(null,'',location.pathname);
+  document.getElementById('listView').hidden=false;
+  document.getElementById('detailView').hidden=true;
+  document.getElementById('backLink').href='index.html';
+  document.getElementById('backLink').textContent='← Volver a la tienda';
+  document.title='GRUT — Moldes · Talle M';
+}
+
+function openProduct(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(!p) return showList();
+  history.replaceState(null,'',location.pathname+'?id='+id);
+  document.getElementById('listView').hidden=true;
+  document.getElementById('detailView').hidden=false;
+  document.getElementById('backLink').href='moldes.html';
+  document.getElementById('backLink').textContent='← Todos los moldes';
+  document.getElementById('backLink').onclick=(e)=>{e.preventDefault();showList()};
+  document.title='GRUT — Moldes · '+p.name;
+  document.getElementById('dImg').src=A+p.img;
+  document.getElementById('dImg').alt=p.name;
+  document.getElementById('dCat').textContent=(p.g==='M'?'GRUT MEN / ':'GRUT / ')+p.cat+' · Talle M';
+  document.getElementById('dName').textContent=p.name;
+  document.getElementById('dDesc').textContent=p.desc;
+  document.getElementById('dShop').href='index.html#shop';
+  const boards=boardsFor(p);
+  document.getElementById('dMeta').innerHTML=[
+    `<span class="badge">Talle M</span>`,
+    `<span class="badge soft">${p.g==='M'?'Hombre':'Mujer'}</span>`,
+    ...boards.map(b=>`<span class="badge soft">${SYSTEMS[b.sys]?.label||b.sys}</span>`)
+  ].join('');
+  const allRows=[];
+  document.getElementById('boards').innerHTML=boards.map((b,i)=>{
+    const drawn=renderSystem(b.sys,p);
+    drawn.rows.forEach(r=>allRows.push([`${b.label} · ${r[0]}`,r[1],r[2]]));
+    return `<div class="board-wrap"><div class="board-title"><h2>${drawn.title}</h2><span>${b.label} · set ${i+1} · talle M · cm</span></div>${drawn.svg}</div>`;
+  }).join('');
+  document.getElementById('measBody').innerHTML=allRows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderList(){
+  const q=document.getElementById('search').value.toLowerCase();
+  const sort=document.getElementById('sort').value;
+  let data=PRODUCTS.filter(p=>{
+    if(currentFilter==='W'&&p.g==='M') return false;
+    if(currentFilter==='M'&&p.g!=='M') return false;
+    if(['DAY','NIGHT','RESORT','ESSENTIALS','COCKTAIL','ACCESSORIES'].includes(currentFilter)&&p.cat!==currentFilter) return false;
+    return p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q);
+  });
+  if(sort==='name') data.sort((a,b)=>a.name.localeCompare(b.name,'es'));
+  else if(sort==='system') data.sort((a,b)=>classifyPrimary(a).localeCompare(classifyPrimary(b))||a.name.localeCompare(b.name,'es'));
+  else data.sort((a,b)=>a.id-b.id);
+  document.getElementById('grid').innerHTML=data.length?data.map(p=>{
+    const boards=boardsFor(p);
+    const label=boards.map(b=>SYSTEMS[b.sys]?.label||b.sys).join(' · ');
+    return `<article class="card" onclick="openProduct(${p.id})">
+      <img loading="lazy" src="${A+p.img}" alt="${p.name}">
+      <div>
+        <span>${p.g==='M'?'MEN · ':''}${p.cat}</span>
+        <h3>${p.name}</h3>
+        <p>${label} · talle M</p>
+        <em>Ver moldes →</em>
+      </div>
+    </article>`;
+  }).join(''):'<p class="empty">No hay modelos con esos filtros.</p>';
+}
+
+(function initFilters(){
+  const cats=['ALL','W','M','DAY','NIGHT','RESORT','ESSENTIALS','COCKTAIL','ACCESSORIES'];
+  const labels={ALL:'Todos',W:'Women',M:'Men',DAY:'Day',NIGHT:'Night',RESORT:'Resort',ESSENTIALS:'Essentials',COCKTAIL:'Cocktail',ACCESSORIES:'Accessories'};
+  document.getElementById('filters').innerHTML=cats.map(c=>`<button data-cat="${c}" class="${c==='ALL'?'active':''}" onclick="currentFilter='${c}';document.querySelectorAll('#filters button').forEach(b=>b.classList.toggle('active',b.dataset.cat==='${c}'));renderList()">${labels[c]}</button>`).join('');
+})();
+
+if(idParam) openProduct(idParam); else renderList();
+</script>
+</body>
+</html>

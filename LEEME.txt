@@ -12,6 +12,8 @@ FUNCIONES:
 - Checkout de demostración SIN pagos, backend ni envío de pedidos
 - Newsletter demostrativo SIN almacenamiento remoto
 - Editorial con las dos modelos y las imágenes aportadas
+- moldes.html: ficha técnica de moldes por modelo (talle M), con piezas DIA. y cotas en cm
+- costos.html: costeo interno de confección (talle M)
 
 IMPORTANTE ANTES DE VENDER:
 - Confirmar catálogo, precios, materiales, talles, inventario y fotos finales.
