@@ -1,0 +1,305 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#f6f3ed"><title>GRUT — Costos de confección (uso interno)</title><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Italiana&display=swap');
+:root{--ink:#25231f;--muted:#77716a;--cream:#f6f3ed;--sand:#e8e0d6;--line:#ddd8d0;--pos:#2f6b3f;--neg:#a23b2a;--serif:'Italiana',Georgia,serif;--sans:'DM Sans',Arial,sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:13px}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.topline{height:29px;background:#272420;color:#f6f1e9;display:flex;align-items:center;justify-content:center;letter-spacing:2px;font-size:9px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 4.4%;border-bottom:1px solid var(--line);background:rgba(246,243,237,.97);position:sticky;top:0;z-index:5}
+.logo{font:44px/1 var(--serif);letter-spacing:6px;text-align:center}.logo small{display:block;font:9px var(--sans);letter-spacing:5px;margin-top:4px}
+.back{letter-spacing:2px;font-size:10px;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:3px}
+main{padding:50px 4.4% 80px}.eyebrow{letter-spacing:3px;font-size:10px;text-transform:uppercase;color:var(--muted)}
+h1{font:clamp(44px,6vw,80px)/1 var(--serif);margin:12px 0 14px}h2{font:38px var(--serif);margin:0 0 8px}
+.intro{max-width:760px;color:var(--muted);line-height:1.8}.intro a,.notice a,.bom a{border-bottom:1px solid currentColor}
+.params{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.param{background:#fff;border:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;gap:12px}.param label{letter-spacing:2px;font-size:9px;text-transform:uppercase;color:var(--muted);line-height:1.5}.param label small{display:block;letter-spacing:0;text-transform:none;font-size:11px}.param input{width:96px;text-align:right;border:1px solid var(--line);padding:7px 9px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0 34px}.card{background:#fff;border:1px solid var(--line);padding:20px}.card span{display:block;letter-spacing:2px;font-size:9px;text-transform:uppercase;color:var(--muted)}.card strong{display:block;font:34px var(--serif);margin-top:8px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-bottom:14px}.filters{display:flex;flex-wrap:wrap;gap:6px}.filters button{background:none;border:1px solid var(--line);padding:8px 13px;letter-spacing:1.5px;font-size:10px;text-transform:uppercase}.filters button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.controls input,.controls select{border:1px solid var(--line);background:#fff;padding:9px 12px}
+.table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:940px}th,td{padding:12px 14px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}th{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:500;background:#faf8f4}th:first-child,td:first-child{text-align:left}
+tr.row{cursor:pointer}tr.row:hover{background:#faf8f4}.prod{display:flex;gap:12px;align-items:center}.prod img{width:42px;height:56px;object-fit:cover}.prod img[src*="mediterranea/"],.prod img[src*="men/"],.prod img[src*="cocktail/"]{object-position:center 30%}.prod b{display:block;font-weight:500;font-size:14px}.prod small{color:var(--muted);letter-spacing:1.5px;font-size:9px}
+.pos{color:var(--pos)}.neg{color:var(--neg)}.toggle{color:var(--muted);font-size:11px;margin-left:6px}
+.tag{display:inline-block;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 6px;border:1px solid var(--line);color:var(--muted);margin-left:6px;vertical-align:middle}.tag.ixia{border-color:var(--ink);color:var(--ink)}
+tr.detail td{background:#fbfaf7;padding:0 14px 18px;white-space:normal}.bom{width:100%;min-width:0;margin-top:6px}.bom td,.bom th{padding:8px 10px}.bom td:first-child{white-space:normal}.bom small{display:block;color:var(--muted)}.includes{color:var(--muted);margin:14px 0 4px;line-height:1.6}
+tfoot td{font-weight:600;background:#faf8f4}
+.materials{margin-top:60px}.mat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;margin-top:18px}.mat{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);padding:10px 12px}.mat label{line-height:1.35}.mat small{display:block;color:var(--muted)}.mat input{width:104px;text-align:right;border:1px solid var(--line);padding:6px 8px}.mat-sub{margin:34px 0 0;font:26px var(--serif)}
+.reset{background:none;border:1px solid var(--ink);padding:9px 14px;letter-spacing:1.5px;font-size:10px;text-transform:uppercase;margin-top:16px}
+.notice{color:var(--muted);font-size:11px;line-height:1.7;margin-top:22px;max-width:900px}
+@media(max-width:700px){header{padding:14px 18px}.logo{font-size:34px}main{padding:36px 18px 60px}.cards{grid-template-columns:repeat(2,1fr)}.card strong{font-size:26px}}
+</style></head><body>
+<div class="topline">GRUT BUENOS AIRES · DOCUMENTO INTERNO · NO PUBLICAR</div>
+<header><a class="back" href="index.html">← Volver a la tienda</a><div class="logo">GRUT<small>BUENOS AIRES</small></div><a class="back" href="moldes.html">Moldes →</a></header>
+<main>
+<span class="eyebrow">Costeo por prenda · Talle M</span><h1>Costos de confección</h1>
+<p class="intro">Materiales necesarios para confeccionar cada pieza, costo de producción, precio de venta en la tienda y diferencia. Las telas de alta costura se cotizan con los precios por metro de <a href="https://ixiapuresilk.com/catalogo/" target="_blank" rel="noopener">IXIA Pure Silk</a> (en pesos, convertidos a USD). La mano de obra se calcula como un porcentaje del costo de la tela. Tocá una fila para ver el detalle.</p>
+<div class="params"><div class="param"><label for="tc">Tipo de cambio<small>ARS por USD · oficial venta</small></label><input id="tc" type="number" min="1" step="1" oninput="setParam('tc',this.value)"></div><div class="param"><label for="lab">Mano de obra<small>% del costo de la tela</small></label><input id="lab" type="number" min="0" step="1" oninput="setParam('labor',this.value)"></div></div>
+<div class="cards"><div class="card"><span>Piezas</span><strong id="kCount">–</strong></div><div class="card"><span>Costo promedio</span><strong id="kCost">–</strong></div><div class="card"><span>Precio promedio</span><strong id="kPrice">–</strong></div><div class="card"><span>Margen promedio</span><strong id="kMargin">–</strong></div></div>
+<div class="controls"><div class="filters" id="filters"></div><div><input id="search" type="search" placeholder="Buscar una pieza" oninput="render()"> <select id="sort" onchange="render()"><option value="id">Orden del catálogo</option><option value="margin-asc">Margen: menor a mayor</option><option value="margin-desc">Margen: mayor a menor</option><option value="cost-desc">Costo: mayor a menor</option><option value="diff-desc">Diferencia: mayor a menor</option></select></div></div>
+<div class="table-wrap"><table><thead><tr><th>Pieza</th><th>Tela</th><th>Avíos</th><th>Mano de obra</th><th>Costo total</th><th>Precio de venta</th><th>Diferencia</th><th>Margen</th></tr></thead><tbody id="rows"></tbody><tfoot id="foot"></tfoot></table></div>
+<section class="materials"><span class="eyebrow">Lista de precios</span><h2>Materiales</h2><p class="intro">Al cambiar un valor se recalculan todas las piezas que lo usan. Las telas de IXIA se editan en pesos por metro; el resto en USD.</p><h3 class="mat-sub">Telas IXIA Pure Silk</h3><div class="mat-grid" id="matsIxia"></div><h3 class="mat-sub">Otros materiales (estimados)</h3><div class="mat-grid" id="matsEst"></div><button class="reset" onclick="resetAll()">Restablecer valores</button></section>
+<p class="notice">Precios IXIA por metro relevados el 12/10/2026 en <a href="https://ixiapuresilk.com/" target="_blank" rel="noopener">ixiapuresilk.com</a>, sin el 10% de descuento por transferencia ni el 15% en showroom. Tipo de cambio inicial: dólar oficial venta ARS 1.535 (09/10/2026). Cuando IXIA no tiene la tela exacta se usa la más cercana de su catálogo y se aclara en el detalle; el color y el stock deben consultarse. IXIA no vende lana de sastrería, lino liso, denim, jersey, lycra, hilados ni cuero: esos valores son estimados. Cantidades para una unidad en talle M con desperdicio incluido, calculadas a partir de la silueta de cada foto; validar con moldería y una muestra. En los looks de varias prendas se costea el conjunto completo, sin cinturones, carteras ni bijouterie de styling. Margen = diferencia ÷ precio de venta. No incluye impuestos, envíos, comisiones ni costos fijos.</p>
+</main>
+<script>
+const IX='https://ixiapuresilk.com/product/';
+// tela:true = cuenta como tela para calcular la mano de obra
+const MATERIALS={
+saten:{n:'Satén Camille · 100% seda',u:'m',ars:386100,url:IX+'saten-camille/',tela:true,note:'Marfil, sin stock al relevar; otros colores a consultar'},
+sedaLisa:{n:'Gasa Amélie · 100% seda',u:'m',ars:152100,url:IX+'gasa-amelie/',tela:true,note:'Equivalente: IXIA no tiene crepé de seda liso'},
+gasaEst:{n:'Gasa Italiana Estampada Nocturne · 100% seda',u:'m',ars:234000,url:IX+'gasa-italiana-estampada-nocturne/',tela:true,note:'Estampado de referencia; IXIA no tiene el estampado exacto'},
+lent:{n:'Lentejuela Eclipse · tul bordado',u:'m',ars:315900,url:IX+'lentejuela-eclipse/',tela:true,note:'Lentejuela 7 mm; color a consultar'},
+flecos:{n:'Flecos de canutillos partidos · tul bordado',u:'m',ars:819000,url:IX+'flecos-de-canutillos-partidos-y-lentejuelas/',tela:true},
+redCristal:{n:'Red cristal facetado · cristales dorados',u:'m',ars:772326,url:IX+'red-de-algodon-bordada-co/',tela:true},
+redPrisma:{n:'Red Prisma · red lamé con cristales',u:'m',ars:503100,url:IX+'red-tejida-con-hilo-lame/',tela:true},
+encajeNegro:{n:'Encaje Élodie Negro',u:'m',ars:549900,url:IX+'encaje-elodie-negro/',tela:true,note:'Se vende por corte de 2,85 m'},
+encajeFlora:{n:'Encaje Flora · off-white con flores 3D',u:'m',ars:432900,url:IX+'encaje-flora/',tela:true},
+linoBordado:{n:'Lino bordado con hilo sedoso',u:'m',ars:421200,url:IX+'lino-bordado-con-hilobas/',tela:true},
+redRustica:{n:'Red rústica de algodón',u:'m',ars:198900,url:IX+'red-rusticade-algodon/',tela:true,note:'Reemplaza el crochet a mano; color a consultar'},
+macrame:{n:'Macramé INMA · algodón',u:'m',ars:339354,url:IX+'macrame-diseno-circular-t/',tela:true,note:'Reemplaza el crochet a mano'},
+lana:{n:'Lana para sastrería',u:'m',usd:32,tela:true},lino:{n:'Lino liso',u:'m',usd:16,tela:true},camiseria:{n:'Algodón de camisería',u:'m',usd:12,tela:true},denim:{n:'Denim',u:'m',usd:10,tela:true},jersey:{n:'Jersey acanalado de algodón',u:'m',usd:9,tela:true},lycra:{n:'Lycra de baño',u:'m',usd:18,tela:true},
+forro:{n:'Forro (habotai)',u:'m',usd:10,tela:true},tul:{n:'Tul / malla stretch para forrería',u:'m',usd:12,tela:true},
+algodon:{n:'Hilado de algodón para punto (100 g)',u:'ovillo',usd:6,tela:true},cashmere:{n:'Hilado cashmere blend (100 g)',u:'ovillo',usd:30,tela:true},
+twill:{n:'Twill de seda estampado',u:'m',usd:38,tela:true},jacquard:{n:'Jacquard de seda',u:'m',usd:40,tela:true},cuero:{n:'Cuero vacuno',u:'m²',usd:60,tela:true},acetato:{n:'Frente y patillas de acetato carey',u:'juego',usd:32,tela:true},
+gabardina:{n:'Gabardina / sarga de algodón',u:'m',usd:14,tela:true},terciopelo:{n:'Terciopelo de seda y viscosa',u:'m',usd:48,tela:true},felpa:{n:'Felpa de algodón pesada',u:'m',usd:14,tela:true},boucle:{n:'Algodón bouclé',u:'m',usd:24,tela:true},bano:{n:'Tela de baño estampada (poliéster reciclado)',u:'m',usd:14,tela:true},viscosa:{n:'Viscosa estampada',u:'m',usd:12,tela:true},pluma:{n:'Pluma para ruedo',u:'m',usd:55,tela:true},puntoSeda:{n:'Hilado de seda para punto (100 g)',u:'ovillo',usd:28,tela:true},
+hebilla:{n:'Hebilla metálica plateada',u:'u',usd:6},
+entretela:{n:'Entretela',u:'m',usd:5},varilla:{n:'Varillas de corsetería',u:'u',usd:1.2},cierre:{n:'Cierre invisible',u:'u',usd:1.5},boton:{n:'Botones',u:'u',usd:0.6},botonOro:{n:'Botón metálico dorado',u:'u',usd:3},aro:{n:'Aro metálico dorado',u:'u',usd:4},cordon:{n:'Cordón',u:'m',usd:0.8},elastico:{n:'Elástico',u:'m',usd:0.6},
+hebillaGRUT:{n:'Hebilla escultórica dorada GRUT',u:'u',usd:28},herrajes:{n:'Herrajes dorados para cartera',u:'juego',usd:18},lentes:{n:'Lentes de sol',u:'par',usd:12},bisagras:{n:'Bisagras metálicas',u:'par',usd:4},
+avios:{n:'Hilo, etiquetas y packaging GRUT',u:'u',usd:8}};
+const P=[
+[1,'Blazer Milano','DAY',3180,'bd1.webp','Blazer, top tejido y pantalón',[['lana',3.4],['forro',1.6],['cashmere',2],['entretela',0.8],['boton',5],['cierre',1]]],
+[2,'Vestido Sirena','NIGHT',3870,'bn2.webp','Vestido largo',[['saten',3],['cierre',1]]],
+[3,'Vestido Noir','NIGHT',3700,'bn1.webp','Minivestido',[['lent',1.3],['forro',1],['cierre',1]]],
+[4,'Camisa Portofino','RESORT',2140,'bd3.webp','Camisa y short',[['camiseria',2],['lino',1],['boton',10],['cierre',1]]],
+[5,'Vestido Alba','NIGHT',3870,'ln1.webp','Vestido largo',[['saten',3.2],['forro',1.5],['cierre',1]]],
+[6,'Set Cashmere','ESSENTIALS',2460,'bd10.webp','Cárdigan y short de punto',[['cashmere',7],['boton',3],['cordon',1.2],['elastico',0.8]]],
+[7,'Vestido Étoile','NIGHT',4880,'ln2.webp','Vestido largo bordado',[['flecos',2.2],['forro',1.6],['cierre',1]]],
+[8,'Vestido Rubí','NIGHT',4220,'ln3.webp','Vestido corsé',[['saten',3],['forro',1.2],['varilla',12],['entretela',0.5],['cierre',1]]],
+[9,'Linen Riviera','DAY',3060,'ld1.webp','Blazer, pantalón y top',[['lino',4],['forro',1.4],['jersey',0.5],['entretela',0.6],['boton',4],['cierre',1]]],
+[10,'Crochet Amalfi','RESORT',2280,'ld3.webp','Vestido largo calado',[['redRustica',2.6]]],
+[11,'Black Riviera','RESORT',1680,'ld4.webp','Bikini',[['lycra',1]]],
+[12,'Vestido Eclipse','NIGHT',4450,'bn3.webp','Vestido largo',[['sedaLisa',3.2],['forro',1.2],['cierre',1]]],
+[13,'Noir Tailoring','DAY',3480,'bd7.webp','Blazer, top y pantalón',[['lana',3.6],['forro',1.6],['jersey',0.4],['entretela',0.8],['boton',5],['cierre',1]]],
+[14,'Golden Hour','NIGHT',5190,'bn8.webp','Vestido largo bordado',[['redCristal',3],['forro',2],['cierre',1]]],
+[15,'Linen Escape','RESORT',2020,'bd9.webp','Camisa y short',[['lino',2.8],['boton',8],['cordon',1],['elastico',0.8]]],
+[16,'Soft Stone','ESSENTIALS',2370,'ld15.webp','Sweater y pantalón de punto',[['cashmere',8],['elastico',1]]],
+[17,'Ivory Ceremony','NIGHT',4100,'ln9.webp','Vestido largo',[['saten',3],['forro',1.2],['boton',2],['cierre',1]]],
+[18,'Midnight Lace','NIGHT',4740,'ln4.webp','Vestido largo de encaje',[['encajeNegro',2.8],['tul',1.5],['cierre',1]]],
+[19,'Silk Retreat','RESORT',2400,'ld7.webp','Top halter',[['saten',1]]],
+[20,'Urban Black','DAY',3370,'ld6.webp','Blazer, top y pantalón',[['lana',3.6],['forro',1.6],['jersey',0.4],['entretela',0.8],['boton',5],['cierre',1]]],
+[21,'Crochet Costa','RESORT',1950,'grut_resort_01.webp','Minivestido calado',[['macrame',1.4],['boton',6]]],
+[22,'Lino Mare','RESORT',1850,'grut_resort_02.webp','Camisa, corpiño y short',[['lino',3],['lycra',0.4],['boton',8],['cordon',1.2],['elastico',0.8]]],
+[23,'Rojo Riviera','RESORT',3450,'grut_resort_03.webp','Vestido largo',[['sedaLisa',3],['forro',1],['cierre',1]]],
+[24,'Noir Crochet','RESORT',2350,'grut_resort_04.webp','Enterizo calado',[['redRustica',1],['lycra',0.5],['aro',1]]],
+[25,'Azul Capri','RESORT',1750,'grut_resort_05.webp','Bikini y pareo',[['lycra',1],['gasaEst',1.6]]],
+[26,'Bandeau Onyx','RESORT',1450,'grut_resort_06.webp','Top bandeau y pareo',[['lycra',0.6],['sedaLisa',2]]],
+[27,'Lino Sol','RESORT',1690,'grut_resort_07.webp','Camisa y pantalón',[['lino',4.2],['boton',8],['cordon',1],['elastico',0.8]]],
+[28,'Crochet Perla','RESORT',2100,'grut_resort_08.webp','Salida de baño calada',[['redRustica',2.2]]],
+[29,'Halter Marina','RESORT',1890,'grut_resort_09.webp','Top halter y falda larga',[['sedaLisa',3.4],['cierre',1]]],
+[30,'Encaje Brisa','RESORT',2250,'grut_resort_10.webp','Camisa kimono y bikini',[['encajeFlora',2.2],['lycra',0.8]]],
+[31,'Riviera Tank','DAY',690,'grut_day_01.webp','Musculosa y pantalón',[['jersey',0.7],['lino',2],['boton',2],['cierre',1]]],
+[32,'Camisa Azure','DAY',1150,'grut_day_02.webp','Camisa y short',[['camiseria',2.2],['lino',1],['boton',9],['cordon',1.2],['elastico',0.8]]],
+[33,'Bordado Alba','DAY',1850,'grut_day_03.webp','Túnica bordada',[['linoBordado',2.6],['cordon',1]]],
+[34,'Lino Arena','DAY',1890,'grut_day_04.webp','Chaleco y pantalón',[['lino',3],['forro',0.6],['boton',6],['cierre',1]]],
+[35,'Pareó Cala','DAY',990,'grut_day_05.webp','Bikini y pareo calado',[['redRustica',1.4],['lycra',0.3]]],
+[36,'Denim Costa','DAY',1450,'grut_day_06.webp','Camisa y short de jean',[['lino',2],['denim',0.8],['boton',9],['cierre',1]]],
+[37,'Negro Minimal','DAY',1790,'grut_day_07.webp','Musculosa y pantalón',[['jersey',0.7],['lino',2.6],['boton',1],['cierre',1]]],
+[38,'Lino Relax','DAY',1750,'grut_day_08.webp','Camisa, corpiño y short',[['lino',3],['lycra',0.4],['boton',8],['cordon',1.2],['elastico',0.8]]],
+[39,'Rayas Amalfi','DAY',1850,'grut_day_09.webp','Sweater y short',[['algodon',7],['lino',1],['cordon',1.2],['elastico',0.8]]],
+[40,'Vestido Sombra','DAY',1290,'grut_day_10.webp','Vestido midi',[['sedaLisa',2.4],['forro',1.2],['cierre',1]]],
+[41,'Noir Cowl','NIGHT',650,'grut_night_01.webp','Vestido',[['saten',2.6],['cierre',1]]],
+[42,'Oro Disco','NIGHT',1190,'grut_night_02.webp','Minivestido',[['lent',1.4],['forro',1],['cierre',1]]],
+[43,'Corsé Carmesí','NIGHT',1350,'grut_night_03.webp','Vestido corsé',[['saten',2.6],['forro',1],['varilla',12],['entretela',0.5],['cierre',1]]],
+[44,'Halter Ébano','NIGHT',1590,'grut_night_04.webp','Vestido largo',[['sedaLisa',3],['forro',1],['aro',1],['cierre',1]]],
+[45,'Cristal Champagne','NIGHT',1650,'grut_night_05.webp','Vestido bordado',[['redPrisma',1.8],['tul',1.4],['cierre',1]]],
+[46,'Espalda Infinita','NIGHT',2450,'grut_night_06.webp','Minivestido',[['sedaLisa',1.8],['forro',1],['cierre',1]]],
+[47,'Marfil Nudo','NIGHT',2950,'grut_night_07.webp','Vestido largo',[['saten',3.4],['forro',1.4],['boton',2],['cierre',1]]],
+[48,'Encaje Medianoche','NIGHT',3290,'grut_night_08.webp','Vestido corsé de encaje',[['encajeNegro',2.6],['saten',0.6],['tul',1.2],['varilla',12],['cierre',1]]],
+[49,'Azul Profundo','NIGHT',3150,'grut_night_09.webp','Vestido largo',[['saten',3.2],['forro',1.2],['cierre',1]]],
+[50,'Blazer Nuit','NIGHT',2790,'grut_night_10.webp','Blazer vestido',[['lana',2],['forro',1.4],['entretela',0.8],['botonOro',1]]],
+[51,'Silk Scarf','ACCESSORIES',520,'grut_accessory_silk_scarf.webp','Pañuelo 90 × 90 cm',[['twill',1]]],
+[52,'Signature Bag','ACCESSORIES',680,'grut_accessory_signature_bag.webp','Cartera de hombro',[['cuero',0.6],['forro',0.5],['herrajes',1],['cierre',1]]],
+[53,'Leather Belt','ACCESSORIES',590,'grut_accessory_leather_belt.webp','Cinturón',[['cuero',0.15],['hebillaGRUT',1]]],
+[54,'Sunglasses','ACCESSORIES',650,'grut_accessory_sunglasses.webp','Anteojos de sol',[['acetato',1],['lentes',1],['bisagras',1]]],
+[55,'Silk Shawl','ACCESSORIES',560,'grut_accessory_silk_shawl.webp','Estola 70 × 200 cm',[['jacquard',2]]],
+[56,'Base','ESSENTIALS',1390,'mediterranea/essentials_01.webp','Musculosa y pantalón',[['jersey',0.7],['lino',2.6],['boton',1],['cierre',1]]],
+[57,'Urba','ESSENTIALS',1390,'mediterranea/essentials_02.webp','Musculosa y pantalón',[['jersey',0.7],['lana',1.8],['boton',1],['cierre',1]]],
+[58,'Livia','ESSENTIALS',1190,'mediterranea/essentials_03.webp','Camisa y short',[['lino',3],['boton',9],['cierre',1]]],
+[59,'Palma','ESSENTIALS',1690,'mediterranea/essentials_04.webp','Chaleco y pantalón',[['lino',3],['forro',0.6],['boton',6],['cierre',1]]],
+[60,'Nero','ESSENTIALS',1290,'mediterranea/essentials_05.webp','Vestido midi',[['sedaLisa',2.4],['forro',1.2],['cierre',1]]],
+[61,'Alma','ESSENTIALS',1490,'mediterranea/essentials_06.webp','Musculosa y falda larga',[['jersey',0.4],['lino',2.6]]],
+[62,'Tao','ESSENTIALS',1490,'mediterranea/essentials_07.webp','Top y falda larga',[['jersey',0.4],['lino',2.6]]],
+[63,'Duna','ESSENTIALS',1390,'mediterranea/essentials_08.webp','Camisa y short',[['lino',3],['boton',10],['cordon',1.2],['elastico',0.8]]],
+[64,'Brisa','ESSENTIALS',990,'mediterranea/essentials_09.webp','Musculosa y jean',[['jersey',0.7],['denim',1.6],['boton',1],['cierre',1]]],
+[65,'Arena','ESSENTIALS',1590,'mediterranea/essentials_10.webp','Camisa y pantalón',[['lino',4],['boton',8],['cierre',1]]],
+[66,'Porto','DAY',1490,'mediterranea/day_01.webp','Camisa y pantalón',[['lino',4.2],['boton',9],['cierre',1]]],
+[67,'Santorini','DAY',1290,'mediterranea/day_02.webp','Vestido midi',[['jersey',2]]],
+[68,'Capri','DAY',1690,'mediterranea/day_03.webp','Chaleco y pantalón',[['lino',3],['forro',0.6],['boton',5],['cierre',1]]],
+[69,'Niza','DAY',1190,'mediterranea/day_04.webp','Minivestido',[['lino',2.2],['forro',1],['cierre',1]]],
+[70,'Ibiza','DAY',1090,'mediterranea/day_05.webp','Top y short',[['jersey',0.4],['lino',1.2],['boton',1],['cierre',1]]],
+[71,'Costa','DAY',1190,'mediterranea/day_06.webp','Camisa y short',[['camiseria',2.2],['lino',1],['boton',10],['cierre',1]]],
+[72,'Bahía','DAY',1890,'mediterranea/day_07.webp','Vestido largo cruzado',[['lino',3.6],['boton',4]]],
+[73,'Riviera','DAY',1390,'mediterranea/day_08.webp','Top y pantalón',[['jersey',0.5],['lino',2.6],['boton',1],['cierre',1]]],
+[74,'Lago','DAY',2490,'mediterranea/day_09.webp','Vestido midi',[['saten',2.2],['cierre',1]]],
+[75,'Atenas','DAY',1590,'mediterranea/day_10.webp','Camisa, top y pantalón',[['lino',4.9],['boton',10],['cierre',1]]],
+[76,'Nova','NIGHT',3290,'mediterranea/night_01.webp','Vestido largo',[['saten',3],['cierre',1]]],
+[77,'Luna','NIGHT',3490,'mediterranea/night_02.webp','Vestido largo',[['saten',3],['cordon',1]]],
+[78,'Aria','NIGHT',3690,'mediterranea/night_03.webp','Vestido largo',[['saten',3.2],['forro',1],['entretela',0.4],['cierre',1]]],
+[79,'Kaia','NIGHT',3190,'mediterranea/night_04.webp','Vestido largo',[['sedaLisa',3],['forro',1],['cierre',1]]],
+[80,'Siena','NIGHT',3290,'mediterranea/night_05.webp','Vestido largo',[['saten',3.2],['cierre',1]]],
+[81,'Noir','NIGHT',3590,'mediterranea/night_06.webp','Vestido largo',[['saten',3.6],['cierre',1]]],
+[82,'Celine','NIGHT',3890,'mediterranea/night_07.webp','Vestido largo',[['saten',3.6],['cierre',1]]],
+[83,'Mara','NIGHT',3490,'mediterranea/night_08.webp','Vestido largo',[['saten',3.4],['cierre',1]]],
+[84,'Elle','NIGHT',2990,'mediterranea/night_09.webp','Vestido largo',[['saten',2.8],['cierre',1]]],
+[85,'Véra','NIGHT',3790,'mediterranea/night_10.webp','Vestido largo',[['saten',3.8],['cierre',1]]],
+[86,'Alba','RESORT',2290,'mediterranea/resort_01.webp','Vestido largo',[['sedaLisa',3.4],['forro',1.2]]],
+[87,'Nomad','RESORT',1990,'mediterranea/resort_02.webp','Caftán largo',[['sedaLisa',3.6]]],
+[88,'Oasis','RESORT',2490,'mediterranea/resort_03.webp','Vestido largo',[['redRustica',2.6]]],
+[89,'Solé','RESORT',2190,'mediterranea/resort_04.webp','Vestido largo',[['sedaLisa',3],['aro',1],['forro',1]]],
+[90,'Brisa','RESORT',1590,'mediterranea/resort_05.webp','Camisa vestido',[['lino',3.2],['boton',9]]],
+[91,'Terra','RESORT',2190,'mediterranea/resort_06.webp','Vestido largo',[['sedaLisa',3],['aro',1],['forro',1]]],
+[92,'Mare','RESORT',2390,'mediterranea/resort_07.webp','Vestido largo',[['gasaEst',3],['forro',1]]],
+[93,'Riviera','RESORT',1890,'mediterranea/resort_08.webp','Malla y pareo',[['lycra',0.8],['sedaLisa',2]]],
+[94,'Duna','RESORT',2690,'mediterranea/resort_09.webp','Vestido largo',[['macrame',2.6]]],
+[95,'Azur','RESORT',1690,'mediterranea/resort_10.webp','Camisa vestido',[['lino',3.4],['boton',8]]],
+[96,'Smoking Medianoche','NIGHT',4290,'men/night_01.webp','Saco cruzado, camisa y pantalón',[['lana',3.6],['forro',1.8],['entretela',1],['sedaLisa',2],['boton',16],['cierre',1]],'M'],
+[97,'Traje Marfil Amalfi','NIGHT',3890,'men/night_02.webp','Saco, camisa y pantalón',[['lana',3.4],['forro',1.6],['entretela',0.9],['sedaLisa',2],['boton',14],['cierre',1]],'M'],
+[98,'Camisa Nocturne','NIGHT',2690,'men/night_03.webp','Camisa, pantalón y cinturón',[['lent',2],['lana',1.4],['cuero',0.15],['hebilla',1],['boton',10],['cierre',1]],'M'],
+[99,'Traje Cacao','NIGHT',3790,'men/night_04.webp','Saco, camisa y pantalón',[['lana',3.4],['forro',1.6],['entretela',0.9],['sedaLisa',2],['boton',14],['cierre',1]],'M'],
+[100,'Camisa Champagne','NIGHT',2290,'men/night_05.webp','Camisa y pantalón',[['saten',2],['lana',1.4],['boton',10],['cierre',1]],'M'],
+[101,'Blazer Velluto','NIGHT',3490,'men/night_06.webp','Blazer, musculosa y pantalón',[['terciopelo',1.9],['forro',1.4],['entretela',0.6],['puntoSeda',2],['lana',1.4],['boton',7],['cierre',1]],'M'],
+[102,'Cruzado Ivoire','NIGHT',3990,'men/night_07.webp','Saco cruzado, musculosa y pantalón',[['lana',3.6],['forro',1.8],['entretela',1],['puntoSeda',2],['boton',10],['cierre',1]],'M'],
+[103,'Polo Noir','NIGHT',1990,'men/night_08.webp','Polo, pantalón y cinturón',[['puntoSeda',3],['lana',1.4],['cuero',0.15],['hebilla',1],['boton',3],['cierre',1]],'M'],
+[104,'Foulard Nero','NIGHT',3890,'men/night_09.webp','Saco, camisa, pantalón y pañuelo',[['lana',3.4],['forro',1.6],['entretela',0.9],['sedaLisa',3.6],['boton',14],['cierre',1]],'M'],
+[105,'Dinner Jacket Riviera','NIGHT',3590,'men/night_10.webp','Saco, camisa y pantalón',[['lana',3.4],['forro',1.6],['entretela',0.9],['sedaLisa',2],['boton',14],['cierre',1]],'M'],
+[106,'Sweater Calado Egeo','ESSENTIALS',1290,'men/essentials_01.webp','Sweater y pantalón',[['algodon',6],['gabardina',1.5],['boton',1],['cierre',1]],'M'],
+[107,'Polo Marino','ESSENTIALS',1190,'men/essentials_02.webp','Polo, pantalón y cinturón',[['algodon',4],['lino',1.5],['cuero',0.15],['hebilla',1],['boton',4],['cierre',1]],'M'],
+[108,'Camisa Lino Blanca','ESSENTIALS',1090,'men/essentials_03.webp','Camisa y pantalón',[['lino',3.4],['boton',12],['cierre',1]],'M'],
+[109,'Remera Oliva','ESSENTIALS',690,'men/essentials_04.webp','Remera y pantalón',[['jersey',1],['gabardina',1.5],['boton',1],['cierre',1]],'M'],
+[110,'Overshirt Nero','ESSENTIALS',1390,'men/essentials_05.webp','Sobrecamisa, remera y pantalón',[['gabardina',2],['jersey',1],['lana',1.4],['boton',9],['cierre',1]],'M'],
+[111,'Sweater Navy','ESSENTIALS',1390,'men/essentials_06.webp','Sweater y pantalón',[['cashmere',3],['algodon',3],['gabardina',1.5],['boton',1],['cierre',1]],'M'],
+[112,'Overshirt Arena','ESSENTIALS',1290,'men/essentials_07.webp','Sobrecamisa, remera y pantalón',[['gabardina',3.5],['jersey',1],['boton',10],['cierre',1]],'M'],
+[113,'Blazer Essential','ESSENTIALS',2490,'men/essentials_08.webp','Blazer, remera, pantalón y cinturón',[['lana',3.4],['forro',1.4],['entretela',0.6],['jersey',1],['cuero',0.15],['hebilla',1],['boton',7],['cierre',1]],'M'],
+[114,'Hoodie Grigio','ESSENTIALS',890,'men/essentials_09.webp','Buzo y pantalón',[['felpa',3.2],['cordon',1.4],['elastico',0.9]],'M'],
+[115,'Polo Bosco','ESSENTIALS',1090,'men/essentials_10.webp','Polo y pantalón',[['algodon',2],['puntoSeda',2],['gabardina',1.5],['boton',1],['cierre',1]],'M'],
+[116,'Remera Textura','ESSENTIALS',790,'men/essentials_11.webp','Remera y pantalón',[['jersey',1],['lana',1.5],['boton',1],['cierre',1]],'M'],
+[117,'Lino Positano','DAY',1290,'men/day_01.webp','Camisa y pantalón',[['lino',3.6],['boton',12],['cierre',1]],'M'],
+[118,'Camisa Oliva Capri','DAY',1290,'men/day_02.webp','Camisa, pantalón y cinturón',[['lino',3.4],['cuero',0.15],['hebilla',1],['boton',12],['cierre',1]],'M'],
+[119,'Rayas Portofino','DAY',1190,'men/day_03.webp','Camisa, musculosa y pantalón',[['lino',3.6],['jersey',0.6],['boton',12],['cierre',1]],'M'],
+[120,'Polo Navy Amalfi','DAY',1390,'men/day_04.webp','Polo y pantalón',[['algodon',5],['lana',1.5],['boton',3],['cierre',1]],'M'],
+[121,'Safari Ischia','DAY',1190,'men/day_05.webp','Sobrecamisa, remera y bermuda',[['gabardina',3],['jersey',1],['boton',10],['cierre',1]],'M'],
+[122,'Polo Crema Procida','DAY',890,'men/day_06.webp','Polo y short',[['algodon',4],['lino',1],['boton',1],['cierre',1]],'M'],
+[123,'Traje Lino Sorrento','DAY',2690,'men/day_07.webp','Saco, camisa y pantalón',[['lino',5.3],['forro',0.6],['entretela',0.6],['boton',18],['cierre',1]],'M'],
+[124,'Chaqueta Navy Ravello','DAY',1290,'men/day_08.webp','Sobrecamisa, remera y pantalón',[['gabardina',3.5],['jersey',1],['boton',10],['cierre',1]],'M'],
+[125,'Sweater Taupe','DAY',1190,'men/day_09.webp','Sweater y pantalón',[['algodon',5],['lino',1.5],['boton',1],['cierre',1]],'M'],
+[126,'Lino y Mar','DAY',890,'men/day_10.webp','Camisa y short de baño',[['lino',2],['bano',0.9],['tul',0.4],['cordon',1.2],['elastico',0.9],['boton',12]],'M'],
+[127,'Gasa Mykonos','RESORT',1190,'men/resort_01.webp','Camisa y pantalón',[['lino',3.6],['cordon',1.4],['boton',12]],'M'],
+[128,'Palmera Hydra','RESORT',890,'men/resort_02.webp','Camisa y short de baño',[['lino',2],['bano',0.9],['tul',0.4],['cordon',1.2],['elastico',0.9],['boton',12]],'M'],
+[129,'Crochet Paros','RESORT',1390,'men/resort_03.webp','Polo a crochet y pantalón',[['algodon',6],['lino',1.5],['cordon',1.4]],'M'],
+[130,'Bandana Naxos','RESORT',890,'men/resort_04.webp','Camisa y short de baño',[['lino',2],['bano',0.9],['tul',0.4],['cordon',1.2],['elastico',0.9],['boton',12]],'M'],
+[131,'Safari Ibiza','RESORT',890,'men/resort_05.webp','Camisa y short',[['lino',2],['gabardina',1],['cordon',1.2],['elastico',0.9],['boton',12]],'M'],
+[132,'Bouclé Formentera','RESORT',1290,'men/resort_06.webp','Camisa y short',[['boucle',2.6],['boton',7],['cierre',1]],'M'],
+[133,'Noche Menorca','RESORT',1190,'men/resort_07.webp','Camisa y pantalón',[['lino',3.2],['boton',7],['cierre',1]],'M'],
+[134,'Lino Santorini','RESORT',1290,'men/resort_08.webp','Camisa y pantalón',[['lino',3.6],['boton',12],['cierre',1]],'M'],
+[135,'Lino Tabaco','RESORT',990,'men/resort_09.webp','Camisa y short',[['lino',2],['gabardina',1],['boton',12],['cierre',1]],'M'],
+[136,'Polo Riviera','RESORT',1190,'men/resort_10.webp','Polo y pantalón',[['algodon',4],['lino',1.6],['boton',3],['cierre',1]],'M'],
+[137,'Seta Nera','NIGHT',2490,'men/night2_01.webp','Camisa y pantalón',[['sedaLisa',2],['saten',1.6],['boton',10],['cierre',1]],'M'],
+[138,'Traje Avorio','NIGHT',3990,'men/night2_02.webp','Saco cruzado, camisa y pantalón',[['lana',3.6],['forro',1.8],['entretela',1],['sedaLisa',2],['boton',16],['cierre',1]],'M'],
+[139,'Notte Total Black','NIGHT',3690,'men/night2_03.webp','Saco, camisa y pantalón',[['lana',3.4],['forro',1.6],['entretela',0.9],['sedaLisa',2],['boton',14],['cierre',1]],'M'],
+[140,'Seda Ivoire','NIGHT',2390,'men/night2_04.webp','Camisa, pantalón y cinturón',[['sedaLisa',2],['lana',1.4],['cuero',0.15],['hebilla',1],['boton',10],['cierre',1]],'M'],
+[141,'Camisa Cioccolato','NIGHT',1290,'men/night2_05.webp','Camisa',[['saten',2],['boton',10]],'M'],
+[142,'Cruzado Nero','NIGHT',3890,'men/night2_06.webp','Saco cruzado, camisa y pantalón',[['lana',3.6],['forro',1.8],['entretela',1],['sedaLisa',2],['boton',16],['cierre',1]],'M'],
+[143,'Gargantilla Nuit','NIGHT',2890,'men/night2_07.webp','Camisa, pañuelo, fajín y pantalón',[['sedaLisa',2.6],['saten',0.3],['lana',1.5],['boton',10],['cierre',1]],'M'],
+[144,'Paisley Doré','NIGHT',2190,'men/night2_08.webp','Camisa y pantalón',[['twill',1.8],['lana',1.4],['boton',8],['cierre',1]],'M'],
+[145,'Traje Crema Atrani','NIGHT',3490,'men/night2_09.webp','Saco, musculosa y pantalón',[['lana',3.4],['forro',1.4],['entretela',0.9],['puntoSeda',2],['boton',8],['cierre',1]],'M'],
+[146,'Gasa Nera','NIGHT',2290,'men/night2_10.webp','Camisa y pantalón',[['sedaLisa',2],['saten',1.6],['boton',10],['cierre',1]],'M'],
+[147,'Calado Navy','NIGHT',2190,'men/night2_11.webp','Camisa y pantalón',[['puntoSeda',4],['algodon',2],['lana',1.4],['boton',8],['cierre',1]],'M'],
+[148,'Calado Avorio','NIGHT',2190,'men/night2_12.webp','Camisa a crochet y pantalón',[['algodon',7],['lana',1.4],['boton',8],['cierre',1]],'M'],
+[149,'Satén Cacao','NIGHT',2590,'men/night2_13.webp','Camisa y pantalón',[['saten',2],['lana',1.6],['boton',10],['cierre',1]],'M'],
+[150,'Punto Arenisca','DAY',1290,'men/day2_01.webp','Sweater y pantalón',[['algodon',6],['gabardina',1.6],['boton',1],['cierre',1]],'M'],
+[151,'Utility Verde','DAY',1390,'men/day2_02.webp','Sobrecamisa, remera y pantalón',[['gabardina',3.5],['jersey',1],['boton',10],['cierre',1]],'M'],
+[152,'Rayas Mercato','DAY',1190,'men/day2_03.webp','Camisa, pantalón y cinturón',[['camiseria',1.8],['gabardina',1.5],['cuero',0.15],['hebilla',1],['boton',12],['cierre',1]],'M'],
+[153,'Polo Brera','DAY',1090,'men/day2_04.webp','Polo y pantalón',[['jersey',1.2],['gabardina',1.5],['boton',3],['cierre',1]],'M'],
+[154,'Overshirt Lucca','DAY',1290,'men/day2_05.webp','Sobrecamisa, remera y pantalón',[['lino',2],['jersey',1],['gabardina',1.5],['boton',8],['cierre',1]],'M'],
+[155,'Navy Espresso','DAY',1490,'men/day2_06.webp','Sweater, camisa y jean',[['cashmere',3],['algodon',3],['camiseria',1.8],['denim',1.6],['boton',17],['cierre',1]],'M'],
+[156,'Chaqueta Camel Milano','DAY',1290,'men/day2_07.webp','Sobrecamisa, remera y pantalón',[['gabardina',3.5],['jersey',1],['boton',8],['cierre',1]],'M'],
+[157,'Remera Musgo','DAY',690,'men/day2_08.webp','Remera y pantalón',[['jersey',1],['gabardina',1.5],['boton',1],['cierre',1]],'M'],
+[158,'Polo Calado Brisa','DAY',990,'men/day2_09.webp','Polo y jean',[['algodon',4],['denim',1.6],['boton',6],['cierre',1]],'M'],
+[159,'Lino Total Crema','DAY',1290,'men/day2_10.webp','Camisa y pantalón',[['lino',3.6],['boton',12],['cierre',1]],'M'],
+[160,'Navy Porto Cervo','DAY',1090,'men/day2_11.webp','Camisa, remera y bermuda',[['lino',3],['jersey',1],['boton',12],['cierre',1]],'M'],
+[161,'Lino Panarea','RESORT',1290,'men/resort2_01.webp','Camisa y pantalón',[['lino',3.6],['boton',12],['cierre',1]],'M'],
+[162,'Oliva Salina','RESORT',1090,'men/resort2_02.webp','Camisa y short',[['lino',3],['boton',12],['cierre',1]],'M'],
+[163,'Crochet Lipari','RESORT',1390,'men/resort2_03.webp','Polo a crochet y pantalón',[['algodon',6],['lino',1.5],['boton',1],['cierre',1]],'M'],
+[164,'Hibisco Stromboli','RESORT',890,'men/resort2_04.webp','Camisa y short de baño',[['viscosa',1.6],['bano',0.9],['tul',0.4],['cordon',1.2],['elastico',0.9],['boton',7]],'M'],
+[165,'Pijama Taormina','RESORT',1590,'men/resort2_05.webp','Camisa y pantalón',[['twill',1.8],['lino',1.4],['boton',7],['cierre',1]],'M'],
+[166,'Polo Alghero','RESORT',1290,'men/resort2_06.webp','Polo y pantalón',[['algodon',4],['lino',1.6],['boton',3],['cierre',1]],'M'],
+[167,'Traje Lino Ostuni','RESORT',2490,'men/resort2_07.webp','Saco, musculosa y pantalón',[['lino',3.3],['jersey',0.6],['entretela',0.4],['boton',5],['cierre',1]],'M'],
+[168,'Crochet Mallorca','RESORT',1190,'men/resort2_08.webp','Camisa y short de baño',[['algodon',6],['bano',0.9],['tul',0.4],['cordon',1.2],['elastico',0.9],['boton',8]],'M'],
+[169,'Rayas Hvar','RESORT',990,'men/resort2_09.webp','Camisa y short',[['lino',3],['boton',12],['cierre',1]],'M'],
+[170,'Polo Kos','RESORT',1290,'men/resort2_10.webp','Polo y pantalón',[['algodon',4],['lino',1.6],['boton',3],['cierre',1]],'M'],
+[171,'Remera Pima','ESSENTIALS',590,'men/essentials2_01.webp','Remera y jean',[['jersey',1],['denim',1.6],['boton',6],['cierre',1]],'M'],
+[172,'Polo Carbone','ESSENTIALS',1190,'men/essentials2_02.webp','Polo, pantalón y cinturón',[['algodon',4],['gabardina',1.5],['cuero',0.15],['hebilla',1],['boton',3],['cierre',1]],'M'],
+[173,'Oxford Celeste','ESSENTIALS',1090,'men/essentials2_03.webp','Camisa y pantalón',[['camiseria',1.8],['lana',1.5],['boton',12],['cierre',1]],'M'],
+[174,'Overshirt Musgo','ESSENTIALS',1290,'men/essentials2_04.webp','Sobrecamisa, remera y pantalón',[['gabardina',3.5],['jersey',1],['boton',8],['cierre',1]],'M'],
+[175,'Sweater Caffè','ESSENTIALS',1290,'men/essentials2_05.webp','Sweater y pantalón',[['cashmere',3],['algodon',3],['lana',1.5],['boton',1],['cierre',1]],'M'],
+[176,'Chaqueta Harrington','ESSENTIALS',1390,'men/essentials2_06.webp','Chaqueta, remera y pantalón',[['gabardina',3.5],['jersey',1],['cierre',2],['boton',1]],'M'],
+[177,'Sweater Crudo','ESSENTIALS',1190,'men/essentials2_07.webp','Sweater y pantalón',[['algodon',6],['gabardina',1.5],['boton',1],['cierre',1]],'M'],
+[178,'Chino Oliva','ESSENTIALS',790,'men/essentials2_08.webp','Remera y pantalón',[['jersey',1],['gabardina',1.6],['boton',1],['cierre',1]],'M'],
+[179,'Punto Medianoche','ESSENTIALS',1290,'men/essentials2_09.webp','Sweater y pantalón',[['cashmere',3],['algodon',3],['gabardina',1.5],['boton',1],['cierre',1]],'M'],
+[180,'Remera Grafito','ESSENTIALS',690,'men/essentials2_10.webp','Remera y pantalón',[['jersey',1],['gabardina',1.5],['boton',1],['cierre',1]],'M'],
+[181,'Medio Cierre Crudo','ESSENTIALS',1190,'men/essentials2_11.webp','Sweater y jean',[['cashmere',3],['algodon',4],['denim',1.6],['cierre',2],['boton',6]],'M'],
+[182,'Smoking Lentejuela','COCKTAIL',4290,'cocktail/cocktail_01.webp','Blazer y vestido',[['lana',1.8],['saten',0.4],['forro',1.2],['entretela',0.5],['lent',2.2],['boton',2],['cierre',2]]],
+[183,'Halter Zafiro','COCKTAIL',3690,'cocktail/cocktail_02.webp','Vestido largo',[['saten',3.2],['forro',1.2],['cierre',1]]],
+[184,'Terciopelo Rubí','COCKTAIL',3490,'cocktail/cocktail_03.webp','Vestido midi',[['terciopelo',3],['forro',1.4],['cierre',1]]],
+[185,'Mini Plumas','COCKTAIL',4190,'cocktail/cocktail_04.webp','Blazer y minivestido',[['lana',1.6],['saten',0.35],['forro',1.1],['entretela',0.4],['lent',1.1],['pluma',0.8],['boton',1]]],
+[186,'Slip Champagne','COCKTAIL',3390,'cocktail/cocktail_05.webp','Vestido largo',[['saten',2.8],['forro',1.2],['cierre',1]]],
+[187,'Encaje Alto','COCKTAIL',3890,'cocktail/cocktail_06.webp','Vestido midi',[['encajeNegro',2.6],['forro',1.6],['cierre',1]]],
+[188,'Un Hombro Burdeos','COCKTAIL',3590,'cocktail/cocktail_07.webp','Vestido largo',[['terciopelo',3.2],['forro',1.2],['cierre',1]]],
+[189,'Mono Halter','COCKTAIL',3290,'cocktail/cocktail_08.webp','Mono y cinturón',[['sedaLisa',3.2],['hebilla',1],['cierre',1]]],
+[190,'Satén Índigo','COCKTAIL',3490,'cocktail/cocktail_09.webp','Vestido largo',[['saten',3.2],['forro',1.2],['cierre',1]]],
+[191,'Sastre Marfil','COCKTAIL',4490,'cocktail/cocktail_10.webp','Blazer, bustier y pantalón',[['lana',2.8],['forro',1.6],['entretela',0.7],['encajeFlora',0.8],['boton',2],['cierre',1]]],
+[192,'Columna Nuit','COCKTAIL',4590,'cocktail/cocktail_11.webp','Vestido largo',[['lent',3.2],['forro',1.6],['cierre',1]]],
+[193,'Capa Negra','COCKTAIL',3890,'cocktail/cocktail_12.webp','Vestido largo con capa',[['sedaLisa',3.8],['forro',1.4],['cierre',1]]],
+[194,'Smoking Zafiro','COCKTAIL',4590,'cocktail/men_01.webp','Saco, chaleco, camisa y pantalón',[['lana',4],['saten',0.4],['camiseria',1.8],['forro',1.6],['entretela',0.9],['boton',12],['cierre',1]],'M'],
+[195,'Traje Marfil','COCKTAIL',3990,'cocktail/men_02.webp','Saco, camisa y pantalón',[['lana',3.2],['sedaLisa',2],['forro',1.4],['entretela',0.8],['boton',8],['cierre',1]],'M'],
+[196,'Terciopelo Burdeos','COCKTAIL',3890,'cocktail/men_03.webp','Blazer, camisa y pantalón',[['terciopelo',1.9],['sedaLisa',2],['lana',1.4],['forro',1.2],['entretela',0.5],['boton',10],['cierre',1]],'M'],
+[197,'Traje Cacao','COCKTAIL',4290,'cocktail/men_04.webp','Saco, chaleco, camisa y pantalón',[['lana',4],['saten',2],['forro',1.6],['entretela',1],['boton',14],['cierre',1]],'M'],
+[198,'Cruzado Navy','COCKTAIL',3690,'cocktail/men_05.webp','Saco, sweater y pantalón',[['lana',3.2],['cashmere',2],['algodon',2],['saten',0.2],['forro',1.4],['entretela',0.8],['boton',6],['cierre',1]],'M'],
+[199,'Camisa Navy','COCKTAIL',3190,'cocktail/men_06.webp','Saco, camisa y pantalón',[['lana',3],['camiseria',1.8],['forro',1.2],['entretela',0.6],['boton',12],['cierre',1]],'M'],
+[200,'Blazer Puntitos','COCKTAIL',2890,'cocktail/men_07.webp','Blazer, camisa y pantalón',[['lana',3],['twill',1.8],['forro',1.2],['entretela',0.5],['boton',10],['cierre',1]],'M'],
+[201,'Smoking Velluto','COCKTAIL',4290,'cocktail/men_08.webp','Saco, camisa, moño y pantalón',[['terciopelo',1.9],['saten',0.6],['camiseria',1.8],['lana',1.3],['forro',1.2],['entretela',0.5],['boton',8],['cierre',1]],'M'],
+[202,'Camisa Blanca','COCKTAIL',2990,'cocktail/men_09.webp','Saco, camisa y pantalón',[['lana',3],['camiseria',1.8],['forro',1.2],['entretela',0.6],['boton',12],['cierre',1]],'M'],
+[203,'Traje Oliva','COCKTAIL',3690,'cocktail/men_10.webp','Saco, camisa y pantalón',[['lana',3.2],['sedaLisa',2],['forro',1.4],['entretela',0.8],['boton',10],['cierre',1]],'M']
+].map(([id,name,cat,price,img,includes,bom,g='W'])=>({id,name,cat,price,img,includes,g,bom:[...bom,['avios',1]]}));
+const DEF={tc:1535,labor:50};const KEY='grut_costos_v2';
+let saved=Object.assign({mat:{}},JSON.parse(localStorage.getItem(KEY)||'{}'));saved.mat=saved.mat||{};
+let current='ALL',open=new Set();
+const tc=()=>saved.tc??DEF.tc,laborPct=()=>saved.labor??DEF.labor;
+const fmt=(n,d)=>n.toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d});const usd=n=>'USD '+fmt(n,0),usd2=n=>'USD '+fmt(n,2),ars=n=>'ARS '+fmt(n,0);
+const isIxia=k=>MATERIALS[k].ars!=null;
+const rawPrice=k=>saved.mat[k]??(isIxia(k)?MATERIALS[k].ars:MATERIALS[k].usd);
+const unitUsd=k=>isIxia(k)?rawPrice(k)/tc():rawPrice(k);
+function calc(p){let tela=0,avios=0;for(const [k,q] of p.bom){const v=unitUsd(k)*q;MATERIALS[k].tela?tela+=v:avios+=v}const lab=tela*laborPct()/100,cost=tela+avios+lab,diff=p.price-cost;return{tela,avios,lab,cost,diff,margin:diff/p.price}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(saved))}
+let line='ALL';function setFilter(c){current=c;render()}
+function toggle(id){open.has(id)?open.delete(id):open.add(id);render()}
+function setParam(k,v){let n=parseFloat(v);if(isNaN(n)||n<0||(k==='tc'&&n===0))return;saved[k]=n;persist();renderMats(true);render()}
+function setMat(k,v){let n=parseFloat(v);if(isNaN(n)||n<0)return;saved.mat[k]=n;persist();renderMats(true);render()}
+function resetAll(){if(!confirm('¿Restablecer precios, tipo de cambio y porcentaje de mano de obra?'))return;saved={mat:{}};persist();initParams();renderMats();render()}
+function initParams(){document.getElementById('tc').value=tc();document.getElementById('lab').value=laborPct()}
+const srcCell=k=>{const m=MATERIALS[k];return isIxia(k)?`<a href="${m.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${m.n}</a><span class="tag ixia">IXIA</span>${m.note?`<small>${m.note}</small>`:''}`:`${m.n}<span class="tag">Estimado</span>`};
+function render(){
+  const cats=['ALL','DAY','NIGHT','RESORT','ESSENTIALS','COCKTAIL','ACCESSORIES'];document.getElementById('filters').innerHTML=[['ALL','Women + Men'],['W','Women'],['M','Men']].map(([g,l])=>`<button class="${g===line?'active':''}" onclick="line='${g}';render()">${l}</button>`).join('')+'<span style="width:12px"></span>'+cats.map(c=>`<button class="${c===current?'active':''}" onclick="setFilter('${c}')">${c==='ALL'?'Todas':c.charAt(0)+c.slice(1).toLowerCase()}</button>`).join('');
+  const q=document.getElementById('search').value.toLowerCase();let data=P.filter(p=>(line==='ALL'||p.g===line)&&(current==='ALL'||p.cat===current)&&p.name.toLowerCase().includes(q)).map(p=>({p,c:calc(p)}));
+  const s=document.getElementById('sort').value;if(s==='margin-desc')data.sort((a,b)=>b.c.margin-a.c.margin);if(s==='margin-asc')data.sort((a,b)=>a.c.margin-b.c.margin);if(s==='cost-desc')data.sort((a,b)=>b.c.cost-a.c.cost);if(s==='diff-desc')data.sort((a,b)=>b.c.diff-a.c.diff);
+  document.getElementById('rows').innerHTML=data.map(({p,c})=>{const ix=p.bom.some(([k])=>isIxia(k));return `<tr class="row" onclick="toggle(${p.id})"><td><div class="prod"><img src="assets/${p.img}" alt="${p.name}" loading="lazy"><div><b>${p.name}${ix?'<span class="tag ixia">IXIA</span>':''}<span class="toggle">${open.has(p.id)?'▲':'▼'}</span></b><small>${p.g==='M'?'MEN ':''}${p.cat} · ${p.includes}</small></div></div></td><td>${usd2(c.tela)}</td><td>${usd2(c.avios)}</td><td>${usd2(c.lab)}</td><td>${usd2(c.cost)}</td><td>${usd(p.price)}</td><td class="${c.diff>=0?'pos':'neg'}">${usd2(c.diff)}</td><td class="${c.diff>=0?'pos':'neg'}">${(c.margin*100).toFixed(1)}%</td></tr>`+(open.has(p.id)?detail(p,c):'')}).join('')||'<tr><td colspan="8" style="text-align:center;color:var(--muted)">No hay piezas con esos filtros.</td></tr>';
+  footer(data);kpis(data);
+}
+function detail(p,c){return `<tr class="detail"><td colspan="8"><p class="includes">Incluye: ${p.includes}. Cantidades para talle M con desperdicio incluido.</p><table class="bom"><thead><tr><th>Material</th><th>Cantidad</th><th>Unidad</th><th>Precio unitario</th><th>Subtotal</th></tr></thead><tbody>${p.bom.map(([k,q])=>{const m=MATERIALS[k];const unit=isIxia(k)?`${ars(rawPrice(k))}<small>${usd2(unitUsd(k))}</small>`:usd2(unitUsd(k));return `<tr><td>${srcCell(k)}</td><td>${q.toLocaleString('es-AR')}</td><td>${m.u}</td><td>${unit}</td><td>${usd2(unitUsd(k)*q)}</td></tr>`}).join('')}<tr><td>Mano de obra<small>${fmt(laborPct(),0)}% del costo de la tela (${usd2(c.tela)})</small></td><td></td><td></td><td></td><td>${usd2(c.lab)}</td></tr></tbody></table></td></tr>`}
+function footer(data){if(!data.length){document.getElementById('foot').innerHTML='';return}const t=data.reduce((a,{p,c})=>({tela:a.tela+c.tela,avios:a.avios+c.avios,lab:a.lab+c.lab,cost:a.cost+c.cost,price:a.price+p.price,diff:a.diff+c.diff}),{tela:0,avios:0,lab:0,cost:0,price:0,diff:0});document.getElementById('foot').innerHTML=`<tr><td>Total (1 unidad de cada pieza)</td><td>${usd2(t.tela)}</td><td>${usd2(t.avios)}</td><td>${usd2(t.lab)}</td><td>${usd2(t.cost)}</td><td>${usd(t.price)}</td><td class="${t.diff>=0?'pos':'neg'}">${usd2(t.diff)}</td><td>${(t.diff/t.price*100).toFixed(1)}%</td></tr>`}
+function kpis(data){const n=data.length||1;const sc=data.reduce((s,d)=>s+d.c.cost,0),sp=data.reduce((s,d)=>s+d.p.price,0);document.getElementById('kCount').textContent=data.length;document.getElementById('kCost').textContent=usd(sc/n);document.getElementById('kPrice').textContent=usd(sp/n);document.getElementById('kMargin').textContent=sp?((sp-sc)/sp*100).toFixed(1)+'%':'–'}
+function renderMats(onlyLabels){
+  const entries=Object.entries(MATERIALS);
+  if(onlyLabels){entries.forEach(([k])=>{const el=document.getElementById('h_'+k);if(el)el.textContent=isIxia(k)?`por ${MATERIALS[k].u} · ${usd2(unitUsd(k))}`:`USD por ${MATERIALS[k].u}`});return}
+  const card=([k,m])=>`<div class="mat"><label for="m_${k}">${isIxia(k)?`<a href="${m.url}" target="_blank" rel="noopener">${m.n}</a>`:m.n}<small id="h_${k}"></small></label><input id="m_${k}" type="number" min="0" step="${isIxia(k)?100:0.1}" value="${rawPrice(k)}" oninput="setMat('${k}',this.value)"></div>`;
+  document.getElementById('matsIxia').innerHTML=entries.filter(([k])=>isIxia(k)).map(card).join('');
+  document.getElementById('matsEst').innerHTML=entries.filter(([k])=>!isIxia(k)).map(card).join('');
+  renderMats(true);
+}
+initParams();renderMats();render();
+</script>
+</body></html>
