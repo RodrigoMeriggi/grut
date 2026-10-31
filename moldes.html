@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#ebe6dc">
 <title>GRUT — Moldes · Talle M</title>
@@ -14,37 +14,41 @@
   --label:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',Arial,sans-serif;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:13px}
+html{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:13px;overflow-x:clip}
 button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
-img{display:block;object-fit:cover}
-.topline{height:29px;background:#272420;color:#f6f1e9;display:flex;align-items:center;justify-content:center;letter-spacing:2px;font-size:9px}
-header{display:flex;align-items:center;justify-content:space-between;padding:18px 4.4%;border-bottom:1px solid var(--line);background:rgba(235,230,220,.97);position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}
+img{display:block;object-fit:cover;max-width:100%}
+.topline{min-height:29px;padding:6px 12px;background:#272420;color:#f6f1e9;display:flex;align-items:center;justify-content:center;letter-spacing:2px;font-size:9px;text-align:center;line-height:1.4}
+header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px;padding:18px 4.4%;border-bottom:1px solid var(--line);background:rgba(235,230,220,.97);position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}
 .logo{font:44px/1 var(--serif);letter-spacing:6px;text-align:center}.logo small{display:block;font:9px var(--sans);letter-spacing:5px;margin-top:4px}
-.back{letter-spacing:2px;font-size:10px;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:3px}
-main{padding:48px 4.4% 90px}
+.back{letter-spacing:2px;font-size:10px;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:3px;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+header .back:last-child{justify-self:end;text-align:right}
+main{padding:48px 4.4% 90px;min-width:0}
 .eyebrow{letter-spacing:3px;font-size:10px;text-transform:uppercase;color:var(--muted)}
-h1{font:clamp(44px,6vw,84px)/.95 var(--serif);font-weight:400;margin:10px 0 14px}
+h1{font:clamp(36px,8vw,84px)/.95 var(--serif);font-weight:400;margin:10px 0 14px;overflow-wrap:anywhere}
 .intro{max-width:720px;color:var(--muted);line-height:1.8;margin:0}
-.controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin:34px 0 18px;padding-top:22px;border-top:1px solid var(--line)}
-.filters{display:flex;flex-wrap:wrap;gap:6px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:flex-start;margin:34px 0 18px;padding-top:22px;border-top:1px solid var(--line)}
+.filters{display:flex;flex-wrap:wrap;gap:6px;min-width:0;flex:1 1 280px}
 .filters button{background:none;border:1px solid var(--line);padding:8px 13px;letter-spacing:1.5px;font-size:10px;text-transform:uppercase}
 .filters button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
-.controls input,.controls select{border:1px solid var(--line);background:var(--sheet);padding:9px 12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.card{background:var(--sheet);border:1px solid var(--line);cursor:pointer;overflow:hidden;transition:border-color .2s}
+.controls-tools{display:flex;flex-wrap:wrap;gap:8px;flex:1 1 220px;min-width:0}
+.controls input,.controls select{border:1px solid var(--line);background:var(--sheet);padding:9px 12px;min-width:0;flex:1 1 140px;width:100%;max-width:100%}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px}
+.card{background:var(--sheet);border:1px solid var(--line);cursor:pointer;overflow:hidden;transition:border-color .2s;min-width:0}
 .card:hover{border-color:var(--ink)}
 .card img{width:100%;aspect-ratio:3/4;background:#ddd}
 .card img[src*="mediterranea/"],.card img[src*="men/"],.card img[src*="cocktail/"]{object-position:center 28%}
 .card>div{padding:14px 14px 16px}
 .card span{font-size:9px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase}
-.card h3{font:26px/1.1 var(--serif);font-weight:400;margin:8px 0 6px}
+.card h3{font:clamp(20px,2.4vw,26px)/1.1 var(--serif);font-weight:400;margin:8px 0 6px}
 .card p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
-.card em{display:block;margin-top:10px;font-style:normal;letter-spacing:1.5px;font-size:10px;text-transform:uppercase;border-bottom:1px solid currentColor;width:max-content;padding-bottom:2px}
+.card em{display:block;margin-top:10px;font-style:normal;letter-spacing:1.5px;font-size:10px;text-transform:uppercase;border-bottom:1px solid currentColor;width:max-content;max-width:100%;padding-bottom:2px}
 
-.detail-head{display:grid;grid-template-columns:140px 1fr auto;gap:28px;align-items:end;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--line)}
-.detail-head img{width:140px;aspect-ratio:3/4;border:1px solid var(--line);background:#ddd}
+.detail-head{display:grid;grid-template-columns:140px minmax(0,1fr) auto;gap:28px;align-items:end;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.detail-head img{width:140px;max-width:100%;aspect-ratio:3/4;border:1px solid var(--line);background:#ddd}
 .detail-head img[src*="mediterranea/"],.detail-head img[src*="men/"],.detail-head img[src*="cocktail/"]{object-position:center 28%}
 .detail-head h1{margin:8px 0 10px}
+.detail-head>div{min-width:0}
 .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .badge{border:1px solid var(--ink);padding:6px 10px;letter-spacing:1.6px;font-size:9px;text-transform:uppercase}
 .badge.soft{border-color:var(--line);color:var(--muted)}
@@ -53,11 +57,12 @@ h1{font:clamp(44px,6vw,84px)/.95 var(--serif);font-weight:400;margin:10px 0 14px
 .actions a{display:inline-block}
 .actions .ghost{border-color:var(--line);color:var(--muted)}
 
-.board-wrap{background:var(--sheet);border:1px solid var(--line);padding:18px;margin:22px 0 10px;overflow:auto}
-.board-title{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0 0 8px;padding:0 4px}
-.board-title h2{font:36px var(--serif);font-weight:400;margin:0}
+.board-wrap{background:var(--sheet);border:1px solid var(--line);padding:18px;margin:22px 0 10px;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.board-title{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0 0 8px;padding:0 4px;flex-wrap:wrap}
+.board-title h2{font:clamp(26px,5vw,36px) var(--serif);font-weight:400;margin:0}
 .board-title span{letter-spacing:2px;font-size:10px;text-transform:uppercase;color:var(--muted)}
-svg.board{width:100%;min-width:860px;height:auto;display:block;background:
+.board-hint{display:none;margin:0 0 8px;color:var(--muted);font-size:10px;letter-spacing:1.2px;text-transform:uppercase}
+svg.board{width:100%;min-width:720px;height:auto;display:block;background:
   linear-gradient(90deg,#00000008 1px,transparent 1px),
   linear-gradient(#00000008 1px,transparent 1px);
   background-size:28px 28px;background-position:-1px -1px}
@@ -75,26 +80,186 @@ svg.board .grain{stroke:var(--muted);stroke-width:1;stroke-dasharray:1 3;opacity
 .legend .r{border-color:var(--red);border-style:dashed;border-width:0;border-top-style:dashed;border-top-width:2px}
 .legend .b{border-color:var(--blue);border-top-style:dashed}
 
-.table-wrap{overflow:auto;border:1px solid var(--line);background:var(--sheet);margin-top:8px}
-table{width:100%;border-collapse:collapse;min-width:560px}
+.table-wrap{overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);background:var(--sheet);margin-top:8px;max-width:100%}
+table{width:100%;border-collapse:collapse;min-width:480px}
 th,td{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left}
 th{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:500;background:#faf7f1}
 td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums}
 .notice{color:var(--muted);font-size:11px;line-height:1.7;margin-top:28px;max-width:860px}
 .empty{padding:60px 0;text-align:center;color:var(--muted)}
 #listView[hidden],#detailView[hidden]{display:none!important}
+
+.spec-panel{background:var(--sheet);border:1px solid var(--line);padding:18px 20px;margin:18px 0 8px}
+.spec-panel h2{font:clamp(24px,5vw,32px) var(--serif);font-weight:400;margin:6px 0 12px}
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));gap:12px 18px;margin:0 0 14px}
+.spec-grid div{border-top:1px solid var(--line);padding-top:8px}
+.spec-grid strong{display:block;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:4px}
+.spec-grid span{font-size:13px;line-height:1.45;overflow-wrap:anywhere}
+.ai-box{width:100%;min-height:180px;border:1px solid var(--line);background:#faf7f1;padding:14px;font:12px/1.55 ui-monospace,Menlo,monospace;color:var(--ink);resize:vertical}
+.ai-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.ai-actions button{background:none;border:1px solid var(--ink);padding:10px 14px;letter-spacing:1.5px;font-size:10px;text-transform:uppercase}
+
+/* Navegación entre diseños */
+.pager{display:none;align-items:center;gap:8px;margin:0 0 18px;padding:10px;border:1px solid var(--line);background:var(--sheet)}
+.pager.is-on{display:flex}
+.pager button{flex:0 0 auto;min-width:44px;min-height:44px;border:1px solid var(--ink);background:none;padding:0 12px;letter-spacing:1.2px;font-size:11px;text-transform:uppercase}
+.pager button:disabled{opacity:.28;cursor:default}
+.pager-mid{flex:1;min-width:0;text-align:center}
+.pager-mid strong{display:block;font:20px/1.15 var(--serif);font-weight:400;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager-mid span{display:block;margin-top:4px;letter-spacing:1.5px;font-size:9px;text-transform:uppercase;color:var(--muted)}
+.pager select{width:100%;margin-top:8px;border:1px solid var(--line);background:#faf7f1;padding:10px 12px}
+.jump-mobile{display:none;margin:0 0 10px}
+.jump-mobile select{width:100%;border:1px solid var(--line);background:var(--sheet);padding:12px 14px;font-size:16px}
+.rail{display:none;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 0 14px;margin:0 0 8px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rail.is-on{display:flex}
+.rail button{flex:0 0 auto;width:72px;padding:0;border:1px solid var(--line);background:var(--sheet);text-align:left;overflow:hidden}
+.rail button.active{border-color:var(--ink)}
+.rail img{width:72px;aspect-ratio:3/4;background:#ddd}
+.rail span{display:block;padding:6px 6px 8px;font-size:9px;line-height:1.25;letter-spacing:.2px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dock{display:none;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(235,230,220,.96);border-top:1px solid var(--line);backdrop-filter:blur(14px);gap:8px;align-items:center}
+.dock button{flex:0 0 auto;min-width:52px;min-height:48px;border:1px solid var(--ink);background:var(--ink);color:#f6f1e9;padding:0 14px;letter-spacing:1.2px;font-size:11px;text-transform:uppercase}
+.dock button.ghost{background:none;color:var(--ink);border-color:var(--line)}
+.dock button:disabled{opacity:.28}
+.dock-mid{flex:1;min-width:0;text-align:center}
+.dock-mid strong{display:block;font:18px/1.1 var(--serif);font-weight:400;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dock-mid span{display:block;margin-top:3px;font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.hdr-list{display:none;background:none;border:0;padding:10px 0;letter-spacing:1.4px;font-size:11px;text-transform:uppercase;position:relative;z-index:1}
+#detailView{touch-action:pan-y}
+
+@media(max-width:1100px){
+  .grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
+}
 @media(max-width:800px){
-  header{padding:14px 18px}.logo{font-size:34px}main{padding:36px 18px 70px}
-  .detail-head{grid-template-columns:96px 1fr;gap:16px}
+  header{padding:12px 16px;gap:8px}
+  .logo{font-size:32px;letter-spacing:4px}
+  .logo small{letter-spacing:3px;font-size:8px}
+  .back{font-size:9px;letter-spacing:1.2px}
+  main{padding:28px 16px 64px}
+  .controls{margin-top:24px;gap:14px;flex-direction:column;align-items:stretch}
+  .filters{flex:none;width:auto;max-width:100%;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:thin}
+  .filters button{flex:0 0 auto}
+  .controls-tools{flex:none;width:100%}
+  .detail-head{grid-template-columns:88px minmax(0,1fr);gap:14px}
+  .detail-head img{width:88px}
   .actions{grid-column:1/-1;flex-direction:row;justify-content:flex-start;flex-wrap:wrap;align-items:center}
   .board-wrap{padding:10px}
+  .spec-panel{padding:14px}
+  .pager.is-on,.rail.is-on{display:flex}
+}
+/* —— Mobile first layout —— */
+@media(max-width:700px){
+  .topline{display:none}
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:8px 14px;min-height:48px;gap:8px;position:sticky;
+  }
+  .logo{
+    position:absolute;left:50%;transform:translateX(-50%);
+    font-size:22px;letter-spacing:3px;margin:0;pointer-events:none;
+  }
+  .logo small{display:none}
+  .back{
+    white-space:nowrap;border-bottom:0;text-decoration:none;
+    font-size:11px;letter-spacing:1px;padding:8px 0;line-height:1;position:relative;z-index:1;
+  }
+  header .link-costos{display:none}
+  body:not(.detail-mode) header{justify-content:flex-start}
+  body:not(.detail-mode) header .back:first-child{max-width:42%}
+  body.detail-mode header .back:first-child{
+    font-size:0;width:40px;height:40px;display:grid;place-items:center;
+    border:1px solid var(--line);background:var(--sheet);padding:0;
+  }
+  body.detail-mode header .back:first-child::before{content:'←';font-size:16px;letter-spacing:0}
+  body.detail-mode .hdr-list{display:block}
+
+  main{padding:16px 14px 24px}
+  .eyebrow{font-size:9px;letter-spacing:2px}
+  h1{font-size:32px;margin:6px 0 8px;line-height:1}
+  .list-intro{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:12px;line-height:1.5}
+  .controls{margin:14px 0 10px;padding-top:12px;gap:8px}
+  .controls-tools{flex-direction:column}
+  .controls input,.controls select{flex:none;width:100%;padding:12px;font-size:16px}
+  .filters{margin:0 -14px;padding:0 14px 2px;width:auto;max-width:none;mask-image:linear-gradient(90deg,#000 85%,transparent)}
+  .filters button{padding:10px 12px;font-size:11px}
+
+  .grid{grid-template-columns:1fr;gap:8px}
+  .card{display:grid;grid-template-columns:88px minmax(0,1fr);align-items:stretch}
+  .card img{aspect-ratio:3/4;height:100%;min-height:118px}
+  .card>div{padding:10px 12px;display:flex;flex-direction:column;justify-content:center;gap:2px}
+  .card h3{font-size:19px;margin:2px 0}
+  .card p{font-size:11px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .card em{margin-top:6px;font-size:9px}
+
+  body.detail-mode .pager,
+  body.detail-mode .rail{display:none!important}
+  body.detail-mode .jump-mobile.is-on{display:block;margin:0 0 10px}
+  body.detail-mode .jump-mobile select{padding:12px;font-size:16px}
+  .pager select{font-size:16px}
+  .ai-box{font-size:16px}
+
+  /* Detalle compacto: foto chica + texto, no hero a pantalla completa */
+  .detail-head{
+    grid-template-columns:96px minmax(0,1fr);
+    gap:12px;align-items:start;
+    margin-bottom:12px;padding-bottom:12px;
+  }
+  .detail-head img{
+    width:96px;max-width:96px;aspect-ratio:3/4;max-height:none;
+    object-fit:cover;object-position:center 20%;
+  }
+  .detail-head h1{font-size:26px;margin:2px 0 6px;line-height:1.05}
+  .detail-head .intro{
+    font-size:12px;line-height:1.45;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .meta{gap:5px;margin-top:6px}
+  .badge{padding:5px 7px;font-size:8px}
+  .actions{display:none}
+
+  .spec-panel{padding:12px;margin:8px 0}
+  .spec-panel h2{font-size:22px;margin:4px 0 8px}
+  .spec-grid{grid-template-columns:1fr;gap:8px}
+  .ai-box{min-height:110px;font-size:16px;padding:12px}
+  .ai-actions button{width:100%;padding:14px;font-size:12px}
+
+  .board-wrap{padding:8px;margin:10px 0 8px;overflow:auto;touch-action:pan-x pan-y}
+  .board-title{margin-bottom:4px}
+  .board-title h2{font-size:20px}
+  .board-hint{display:none}
+  svg.board{min-width:0!important;width:100%;max-width:100%}
+  table{min-width:0}
+  th,td{padding:9px 8px;font-size:12px}
+  .legend{gap:10px;font-size:10px;margin:10px 0 16px}
+  .notice{font-size:10px;margin-top:16px}
+
+  body.has-dock .dock.is-on{
+    display:grid;
+    grid-template-columns:48px minmax(0,1fr) 48px;
+    gap:8px;align-items:center;
+    padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+  }
+  body.has-dock main{padding-bottom:76px}
+  .dock button.ghost{display:none}
+  .dock #dockPrev,.dock #dockNext{min-width:48px;min-height:48px;padding:0;font-size:18px}
+  .dock-mid{text-align:center;padding:0 2px}
+  .dock-mid strong{font-size:14px}
+  .dock-mid span{margin-top:2px}
+}
+@media(max-width:380px){
+  .card{grid-template-columns:78px minmax(0,1fr)}
+  .card img{min-height:108px}
+  .detail-head{grid-template-columns:84px minmax(0,1fr);gap:10px}
+  .detail-head img{width:84px;max-width:84px}
+  .detail-head h1{font-size:22px}
 }
 @media print{
-  .topline,header,.controls,.actions,.filters{display:none!important}
-  body,main{background:#fff;padding:0}
-  .board-wrap{break-inside:avoid;border:0;padding:0}
+  .topline,header,.controls,.actions,.filters,.pager,.rail,.dock,.jump-mobile,.board-hint,.hdr-list{display:none!important}
+  body,main{background:#fff;padding:0;overflow:visible}
+  .board-wrap{break-inside:avoid;border:0;padding:0;overflow:visible}
   svg.board{background:none;min-width:0}
 }
+
 </style>
 </head>
 <body>
@@ -102,16 +267,17 @@ td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums}
 <header>
   <a class="back" id="backLink" href="index.html">← Volver a la tienda</a>
   <div class="logo">GRUT<small>BUENOS AIRES</small></div>
-  <a class="back" href="costos.html" style="justify-self:end">Costos →</a>
+  <a class="back link-costos" href="costos.html">Costos →</a>
+  <button type="button" class="hdr-list" id="hdrList" onclick="showList()">Lista</button>
 </header>
 <main>
 <section id="listView">
   <span class="eyebrow">Atelier · Moldería técnica</span>
   <h1>Moldes · Talle M</h1>
-  <p class="intro">Cada modelo GRUT tiene su ficha de moldes con las piezas de corte, cotas en centímetros y diagrama numerado, en el formato de sistema técnico de la maison. Base de construcción: talle M. Las medidas son estimaciones de atelier a partir de la silueta; validar con muestra antes de producción.</p>
+  <p class="intro list-intro">Cada modelo tiene moldes con escote, abertura, largo y tela exactos según la ficha y el BOM. Incluye cotas en cm, diagrama y una ficha lista para pegarle a la IA y generar el vestido. Base: talle M; validar con muestra antes de producción.</p>
   <div class="controls">
     <div class="filters" id="filters"></div>
-    <div>
+    <div class="controls-tools">
       <input id="search" type="search" placeholder="Buscar un modelo" oninput="renderList()">
       <select id="sort" onchange="renderList()">
         <option value="id">Orden del catálogo</option>
@@ -124,6 +290,19 @@ td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums}
 </section>
 
 <section id="detailView" hidden>
+  <nav class="pager" id="pager" aria-label="Navegar diseños">
+    <button type="button" id="prevBtn" onclick="navRelative(-1)" aria-label="Diseño anterior">←</button>
+    <div class="pager-mid">
+      <strong id="pagerName">—</strong>
+      <span id="pagerCount">—</span>
+      <select id="jumpSelect" aria-label="Saltar a un diseño" onchange="openProduct(Number(this.value))"></select>
+    </div>
+    <button type="button" id="nextBtn" onclick="navRelative(1)" aria-label="Diseño siguiente">→</button>
+  </nav>
+  <div class="jump-mobile" id="jumpMobile">
+    <select id="jumpSelectMobile" aria-label="Saltar a un diseño" onchange="openProduct(Number(this.value))"></select>
+  </div>
+  <div class="rail" id="rail" aria-label="Diseños cercanos"></div>
   <div class="detail-head">
     <img id="dImg" alt="">
     <div>
@@ -134,10 +313,11 @@ td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums}
     </div>
     <div class="actions">
       <button onclick="window.print()">Imprimir / PDF</button>
-      <button class="ghost" onclick="showList()">← Todos los moldes</button>
+      <button class="ghost nav-only-desktop" onclick="showList()">← Todos los moldes</button>
       <a class="ghost" id="dShop" href="index.html">Ver en tienda</a>
     </div>
   </div>
+  <div id="specPanel" class="spec-panel" hidden></div>
   <div id="boards"></div>
   <div class="legend">
     <span><i class="r"></i> Línea de construcción / pliegue</span>
@@ -147,9 +327,18 @@ td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums}
   <span class="eyebrow">Tabla de cotas</span>
   <h2 style="font:36px var(--serif);font-weight:400;margin:8px 0 12px">Medidas del sistema</h2>
   <div class="table-wrap"><table><thead><tr><th>Pieza</th><th>Cota</th><th>cm</th></tr></thead><tbody id="measBody"></tbody></table></div>
-  <p class="notice">Documento interno de moldería. Las piezas se dibujan a escala proporcional (misma escala en cm para contorno y cotas): el largo va en el pliegue o costura vertical; el ruedo, busto y cintura van en sus anchos. Formato técnico con DIA., guías rojas y ejes azules. No sustituyen un patrón CAD de producción: márgenes de costura, entretelas y prueba en tela se cierran en el atelier. Talle M · cm.</p>
+  <p class="notice">Documento interno de moldería. Las piezas se dibujan a escala proporcional (misma escala en cm para contorno y cotas): el largo va en el pliegue o costura vertical; el ruedo, busto y cintura van en sus anchos. Formato técnico con DIA., guías rojas y ejes azules. Escote, abertura, largo y tela se derivan de la ficha del modelo y del BOM de costos. Copiá la ficha para IA y validá con muestra en atelier. Márgenes 1 cm. Talle M · cm.</p>
 </section>
 </main>
+<nav class="dock" id="dock" aria-label="Navegación móvil">
+  <button type="button" class="ghost" onclick="showList()" aria-label="Volver al listado">Lista</button>
+  <button type="button" id="dockPrev" onclick="navRelative(-1)" aria-label="Anterior">←</button>
+  <div class="dock-mid">
+    <strong id="dockName">—</strong>
+    <span id="dockCount">—</span>
+  </div>
+  <button type="button" id="dockNext" onclick="navRelative(1)" aria-label="Siguiente">→</button>
+</nav>
 <script>
 const A='assets/';
 const PRODUCTS=[{"id":1,"name":"Blazer Milano","cat":"DAY","g":"W","img":"bd1.webp","desc":"Blazer marfil de sastrería relajada, con top tejido crema y pantalón amplio de tiro alto al tono.","accessory":false},{"id":2,"name":"Vestido Sirena","cat":"NIGHT","g":"W","img":"bn2.webp","desc":"Vestido slip de satén champagne con escote cowl, breteles finos y abertura lateral.","accessory":false},{"id":3,"name":"Vestido Noir","cat":"NIGHT","g":"W","img":"bn1.webp","desc":"Minivestido negro de lentejuelas con escote halter drapeado y profundo.","accessory":false},{"id":4,"name":"Camisa Portofino","cat":"RESORT","g":"W","img":"bd3.webp","desc":"Camisa oversize a rayas celeste y blanco, llevada abierta con short marfil y cinturón de cuero.","accessory":false},{"id":5,"name":"Vestido Alba","cat":"NIGHT","g":"W","img":"ln1.webp","desc":"Vestido largo negro satinado, escote halter profundo, cintura drapeada y abertura frontal.","accessory":false},{"id":6,"name":"Set Cashmere","cat":"ESSENTIALS","g":"W","img":"bd10.webp","desc":"Conjunto de punto gris piedra: cárdigan con cuello polo y short con cordón al tono.","accessory":false},{"id":7,"name":"Vestido Étoile","cat":"NIGHT","g":"W","img":"ln2.webp","desc":"Vestido champagne bordado con cristales y flecos, breteles finos y espalda descubierta.","accessory":false},{"id":8,"name":"Vestido Rubí","cat":"NIGHT","g":"W","img":"ln3.webp","desc":"Vestido strapless de satén borgoña con corsetería, falda drapeada y abertura lateral.","accessory":false},{"id":9,"name":"Linen Riviera","cat":"DAY","g":"W","img":"ld1.webp","desc":"Traje marfil de blazer y pantalón con pinzas, combinado con top corto al tono.","accessory":false},{"id":10,"name":"Crochet Amalfi","cat":"RESORT","g":"W","img":"ld3.webp","desc":"Vestido largo de crochet marfil, cuello halter y espalda descubierta.","accessory":false},{"id":11,"name":"Black Riviera","cat":"RESORT","g":"W","img":"ld4.webp","desc":"Bikini negro de corpiño triangular y bombacha con lazos laterales.","accessory":false},{"id":12,"name":"Vestido Eclipse","cat":"NIGHT","g":"W","img":"bn3.webp","desc":"Vestido negro con cuello halter tipo gargantilla, escote profundo, recortes laterales y falda cruzada con abertura.","accessory":false},{"id":13,"name":"Noir Tailoring","cat":"DAY","g":"W","img":"bd7.webp","desc":"Blazer negro oversize, top corto y pantalón de tiro alto con cinturón de cuero.","accessory":false},{"id":14,"name":"Golden Hour","cat":"NIGHT","g":"W","img":"bn8.webp","desc":"Vestido largo champagne dorado, completamente bordado con cristales, cuello halter y espalda descubierta.","accessory":false},{"id":15,"name":"Linen Escape","cat":"RESORT","g":"W","img":"bd9.webp","desc":"Camisa de lino blanco semitransparente con lazo al frente, sobre short al tono.","accessory":false},{"id":16,"name":"Soft Stone","cat":"ESSENTIALS","g":"W","img":"ld15.webp","desc":"Conjunto de punto gris piedra: sweater corto con escote en V y pantalón al tono.","accessory":false},{"id":17,"name":"Ivory Ceremony","cat":"NIGHT","g":"W","img":"ln9.webp","desc":"Vestido de satén marfil con cuello halter alto y hombros descubiertos.","accessory":false},{"id":18,"name":"Midnight Lace","cat":"NIGHT","g":"W","img":"ln4.webp","desc":"Vestido negro de encaje floral transparente, mangas largas y espalda descubierta.","accessory":false},{"id":19,"name":"Silk Retreat","cat":"RESORT","g":"W","img":"ld7.webp","desc":"Top halter marfil con nudo al frente, escote calado y lazo en la cintura.","accessory":false},{"id":20,"name":"Urban Black","cat":"DAY","g":"W","img":"ld6.webp","desc":"Blazer negro, top corto y pantalón negro con cinturón; sastrería urbana total black.","accessory":false},{"id":21,"name":"Crochet Costa","cat":"RESORT","g":"W","img":"grut_resort_01.webp","desc":"Minivestido de crochet marfil con cuello halter, escote en V y abotonadura al frente.","accessory":false},{"id":22,"name":"Lino Mare","cat":"RESORT","g":"W","img":"grut_resort_02.webp","desc":"Camisa de lino blanca abierta, corpiño triangular blanco y short de lino con cordón.","accessory":false},{"id":23,"name":"Rojo Riviera","cat":"RESORT","g":"W","img":"grut_resort_03.webp","desc":"Vestido rojo con cuello halter, escote profundo, nudo y recorte en la cintura, y falda cruzada con abertura.","accessory":false},{"id":24,"name":"Noir Crochet","cat":"RESORT","g":"W","img":"grut_resort_04.webp","desc":"Enterizo de crochet negro con breteles finos, aro central y recortes laterales.","accessory":false},{"id":25,"name":"Azul Capri","cat":"RESORT","g":"W","img":"grut_resort_05.webp","desc":"Bikini triangular con estampado floral azul y blanco, con pareo anudado al tono.","accessory":false},{"id":26,"name":"Bandeau Onyx","cat":"RESORT","g":"W","img":"grut_resort_06.webp","desc":"Top bandeau negro con pareo largo negro anudado a la cadera y abertura lateral.","accessory":false},{"id":27,"name":"Lino Sol","cat":"RESORT","g":"W","img":"grut_resort_07.webp","desc":"Camisa y pantalón amplio de lino crudo, con lazo al frente.","accessory":false},{"id":28,"name":"Crochet Perla","cat":"RESORT","g":"W","img":"grut_resort_08.webp","desc":"Salida de baño de crochet marfil calado, mangas largas y escote en V.","accessory":false},{"id":29,"name":"Halter Marina","cat":"RESORT","g":"W","img":"grut_resort_09.webp","desc":"Top negro de cuello halter cruzado con recorte al frente y falda larga negra.","accessory":false},{"id":30,"name":"Encaje Brisa","cat":"RESORT","g":"W","img":"grut_resort_10.webp","desc":"Camisa kimono de encaje blanco transparente sobre bikini color arena.","accessory":false},{"id":31,"name":"Riviera Tank","cat":"DAY","g":"W","img":"grut_day_01.webp","desc":"Musculosa blanca acanalada con pantalón marfil con pinzas y cinturón de cuero marrón.","accessory":false},{"id":32,"name":"Camisa Azure","cat":"DAY","g":"W","img":"grut_day_02.webp","desc":"Camisa oversize a rayas azul y blanco con short blanco de lino con cordón.","accessory":false},{"id":33,"name":"Bordado Alba","cat":"DAY","g":"W","img":"grut_day_03.webp","desc":"Túnica corta blanca con bordado calado, mangas largas y lazo en el escote.","accessory":false},{"id":34,"name":"Lino Arena","cat":"DAY","g":"W","img":"grut_day_04.webp","desc":"Chaleco de lino color arena con escote en V y pantalón amplio al tono.","accessory":false},{"id":35,"name":"Pareó Cala","cat":"DAY","g":"W","img":"grut_day_05.webp","desc":"Bikini de crochet marfil con pareo de crochet con flecos.","accessory":false},{"id":36,"name":"Denim Costa","cat":"DAY","g":"W","img":"grut_day_06.webp","desc":"Camisa de lino blanca anudada, short de jean claro desflecado y bolso de fibra natural.","accessory":false},{"id":37,"name":"Negro Minimal","cat":"DAY","g":"W","img":"grut_day_07.webp","desc":"Musculosa negra acanalada de cuello alto con pantalón amplio de lino marfil.","accessory":false},{"id":38,"name":"Lino Relax","cat":"DAY","g":"W","img":"grut_day_08.webp","desc":"Camisa de lino marfil abierta sobre corpiño triangular rojo, con short de lino blanco.","accessory":false},{"id":39,"name":"Rayas Amalfi","cat":"DAY","g":"W","img":"grut_day_09.webp","desc":"Sweater de punto marfil a rayas negras con short blanco.","accessory":false},{"id":40,"name":"Vestido Sombra","cat":"DAY","g":"W","img":"grut_day_10.webp","desc":"Vestido midi negro de breteles finos, nudo lateral y abertura.","accessory":false},{"id":41,"name":"Noir Cowl","cat":"NIGHT","g":"W","img":"grut_night_01.webp","desc":"Vestido negro de satén con cuello halter, escote cowl y laterales descubiertos.","accessory":false},{"id":42,"name":"Oro Disco","cat":"NIGHT","g":"W","img":"grut_night_02.webp","desc":"Minivestido de lentejuelas doradas con cuello halter y escote profundo.","accessory":false},{"id":43,"name":"Corsé Carmesí","cat":"NIGHT","g":"W","img":"grut_night_03.webp","desc":"Vestido strapless de satén carmesí con corsetería, drapeado y abertura.","accessory":false},{"id":44,"name":"Halter Ébano","cat":"NIGHT","g":"W","img":"grut_night_04.webp","desc":"Vestido negro de cuello halter cruzado, cintura descubierta, aro dorado en la cadera y abertura lateral.","accessory":false},{"id":45,"name":"Cristal Champagne","cat":"NIGHT","g":"W","img":"grut_night_05.webp","desc":"Vestido nude de malla transparente bordado con red de cristales, breteles finos.","accessory":false},{"id":46,"name":"Espalda Infinita","cat":"NIGHT","g":"W","img":"grut_night_06.webp","desc":"Minivestido negro de mangas largas y cuello alto, con espalda profundamente descubierta.","accessory":false},{"id":47,"name":"Marfil Nudo","cat":"NIGHT","g":"W","img":"grut_night_07.webp","desc":"Vestido largo de satén marfil con cuello halter alto, escote profundo y nudo en la cintura.","accessory":false},{"id":48,"name":"Encaje Medianoche","cat":"NIGHT","g":"W","img":"grut_night_08.webp","desc":"Vestido negro de encaje con corsé, breteles finos y falda de encaje transparente.","accessory":false},{"id":49,"name":"Azul Profundo","cat":"NIGHT","g":"W","img":"grut_night_09.webp","desc":"Vestido largo de satén azul noche con breteles finos y espalda cowl descubierta.","accessory":false},{"id":50,"name":"Blazer Nuit","cat":"NIGHT","g":"W","img":"grut_night_10.webp","desc":"Blazer negro entallado usado como vestido, cruzado con botón dorado y escote profundo.","accessory":false},{"id":51,"name":"Silk Scarf","cat":"ACCESSORIES","g":"W","img":"grut_accessory_silk_scarf.webp","desc":"Pañuelo de seda marfil con ribete negro y logo GRUT. Diseño conceptual; materiales y disponibilidad sujetos a validación.","accessory":true},{"id":52,"name":"Signature Bag","cat":"ACCESSORIES","g":"W","img":"grut_accessory_signature_bag.webp","desc":"Cartera de hombro de cuero granulado gris topo, con herrajes dorados y logo GRUT. Diseño conceptual; materiales y disponibilidad sujetos a validación.","accessory":true},{"id":53,"name":"Leather Belt","cat":"ACCESSORIES","g":"W","img":"grut_accessory_leather_belt.webp","desc":"Cinturón de cuero negro con hebilla dorada escultórica grabada GRUT. Diseño conceptual; materiales y disponibilidad sujetos a validación.","accessory":true},{"id":54,"name":"Sunglasses","cat":"ACCESSORIES","g":"W","img":"grut_accessory_sunglasses.webp","desc":"Anteojos de sol de acetato carey con lentes oscuras y logo GRUT en la patilla. Protección UV y fabricación pendientes de certificación.","accessory":true},{"id":55,"name":"Silk Shawl","cat":"ACCESSORIES","g":"W","img":"grut_accessory_silk_shawl.webp","desc":"Estola de seda marfil con textura jacquard, flecos y logo GRUT bordado. Diseño conceptual; materiales y disponibilidad sujetos a validación.","accessory":true},{"id":56,"name":"Base","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_01.webp","desc":"Musculosa blanca acanalada con pantalón amplio blanco de tiro alto con pinzas.","accessory":false},{"id":57,"name":"Urba","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_02.webp","desc":"Musculosa negra de cuello alto con pantalón amplio negro de tiro alto con pinzas.","accessory":false},{"id":58,"name":"Livia","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_03.webp","desc":"Camisa blanca de lino arremangada con short blanco de lino al tono.","accessory":false},{"id":59,"name":"Palma","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_04.webp","desc":"Chaleco de lino color arena con botones y escote en V, con pantalón amplio al tono.","accessory":false},{"id":60,"name":"Nero","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_05.webp","desc":"Vestido midi negro de breteles finos, escote en V y abertura en el ruedo.","accessory":false},{"id":61,"name":"Alma","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_06.webp","desc":"Musculosa corta blanca con falda larga cruzada blanca y abertura alta.","accessory":false},{"id":62,"name":"Tao","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_07.webp","desc":"Top corto negro sin mangas con falda larga cruzada negra y abertura lateral.","accessory":false},{"id":63,"name":"Duna","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_08.webp","desc":"Conjunto color arena de camisa utilitaria con bolsillos y short al tono.","accessory":false},{"id":64,"name":"Brisa","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_09.webp","desc":"Musculosa blanca acanalada con jean celeste de pierna ancha y tiro alto.","accessory":false},{"id":65,"name":"Arena","cat":"ESSENTIALS","g":"W","img":"mediterranea/essentials_10.webp","desc":"Camisa negra de manga corta arremangada con pantalón amplio negro con pinzas, llevado con cinturón.","accessory":false},{"id":66,"name":"Porto","cat":"DAY","g":"W","img":"mediterranea/day_01.webp","desc":"Camisa blanca de lino arremangada con pantalón amplio blanco de tiro alto.","accessory":false},{"id":67,"name":"Santorini","cat":"DAY","g":"W","img":"mediterranea/day_02.webp","desc":"Vestido midi negro sin mangas, escote redondo y ruedo asimétrico con abertura lateral.","accessory":false},{"id":68,"name":"Capri","cat":"DAY","g":"W","img":"mediterranea/day_03.webp","desc":"Chaleco marfil con botones y escote en V, con pantalón amplio al tono con pinzas.","accessory":false},{"id":69,"name":"Niza","cat":"DAY","g":"W","img":"mediterranea/day_04.webp","desc":"Minivestido marfil de breteles finos, corsage ajustado y falda con vuelo.","accessory":false},{"id":70,"name":"Ibiza","cat":"DAY","g":"W","img":"mediterranea/day_05.webp","desc":"Top corto negro de escote recto con short marfil de sastrería de tiro alto.","accessory":false},{"id":71,"name":"Costa","cat":"DAY","g":"W","img":"mediterranea/day_06.webp","desc":"Camisa a rayas azul y blanco con short blanco de tiro alto.","accessory":false},{"id":72,"name":"Bahía","cat":"DAY","g":"W","img":"mediterranea/day_07.webp","desc":"Vestido largo cruzado color arena, cuello camisero, mangas amplias, lazo en la cintura y abertura.","accessory":false},{"id":73,"name":"Riviera","cat":"DAY","g":"W","img":"mediterranea/day_08.webp","desc":"Top negro de escote recto y breteles anchos con pantalón amplio marfil de tiro alto.","accessory":false},{"id":74,"name":"Lago","cat":"DAY","g":"W","img":"mediterranea/day_09.webp","desc":"Vestido midi de satén bordó, breteles finos, escote en V y ruedo asimétrico.","accessory":false},{"id":75,"name":"Atenas","cat":"DAY","g":"W","img":"mediterranea/day_10.webp","desc":"Camisa blanca abierta sobre top corto blanco, con pantalón amplio blanco con pinzas.","accessory":false},{"id":76,"name":"Nova","cat":"NIGHT","g":"W","img":"mediterranea/night_01.webp","desc":"Vestido largo de satén negro, breteles finos, escote en V y abertura frontal alta.","accessory":false},{"id":77,"name":"Luna","cat":"NIGHT","g":"W","img":"mediterranea/night_02.webp","desc":"Vestido largo de satén marfil, breteles finos y espalda descubierta con lazo.","accessory":false},{"id":78,"name":"Aria","cat":"NIGHT","g":"W","img":"mediterranea/night_03.webp","desc":"Vestido largo de satén bordó de un solo hombro, drapeado en la cintura y abertura.","accessory":false},{"id":79,"name":"Kaia","cat":"NIGHT","g":"W","img":"mediterranea/night_04.webp","desc":"Vestido largo negro con cuello halter, recorte lateral en la cintura y espalda descubierta.","accessory":false},{"id":80,"name":"Siena","cat":"NIGHT","g":"W","img":"mediterranea/night_05.webp","desc":"Vestido largo de satén champagne, escote cruzado en V, breteles finos y abertura frontal.","accessory":false},{"id":81,"name":"Noir","cat":"NIGHT","g":"W","img":"mediterranea/night_06.webp","desc":"Vestido largo negro con cuello halter, espalda descubierta con drapeado cowl y panel de caída.","accessory":false},{"id":82,"name":"Celine","cat":"NIGHT","g":"W","img":"mediterranea/night_07.webp","desc":"Vestido largo de satén bronce, cuello halter cruzado, recorte en el abdomen, falda fruncida con abertura y panel de caída.","accessory":false},{"id":83,"name":"Mara","cat":"NIGHT","g":"W","img":"mediterranea/night_08.webp","desc":"Vestido largo de satén marfil, cuello halter con pañuelo anudado y caída fluida.","accessory":false},{"id":84,"name":"Elle","cat":"NIGHT","g":"W","img":"mediterranea/night_09.webp","desc":"Vestido largo de satén negro, escote en V profundo, breteles finos y falda cruzada con abertura.","accessory":false},{"id":85,"name":"Véra","cat":"NIGHT","g":"W","img":"mediterranea/night_10.webp","desc":"Vestido largo de satén bordó, cuello halter, espalda descubierta y pañuelo largo desde el cuello.","accessory":false},{"id":86,"name":"Alba","cat":"RESORT","g":"W","img":"mediterranea/resort_01.webp","desc":"Vestido largo de gasa blanca, cuello halter con escote calado, lazo en la cintura y abertura.","accessory":false},{"id":87,"name":"Nomad","cat":"RESORT","g":"W","img":"mediterranea/resort_02.webp","desc":"Caftán largo de gasa negra transparente, escote en V profundo, mangas amplias y abertura.","accessory":false},{"id":88,"name":"Oasis","cat":"RESORT","g":"W","img":"mediterranea/resort_03.webp","desc":"Vestido largo de crochet marfil, breteles finos, escote en V y tejido calado.","accessory":false},{"id":89,"name":"Solé","cat":"RESORT","g":"W","img":"mediterranea/resort_04.webp","desc":"Vestido largo terracota con cuello halter, aro en el escote, recorte en la cintura y falda cruzada con abertura.","accessory":false},{"id":90,"name":"Brisa","cat":"RESORT","g":"W","img":"mediterranea/resort_05.webp","desc":"Camisa vestido blanca, abierta y anudada en la cintura, con ruedo asimétrico.","accessory":false},{"id":91,"name":"Terra","cat":"RESORT","g":"W","img":"mediterranea/resort_06.webp","desc":"Vestido largo verde oliva con cuello halter, recorte en la cintura con aro y falda cruzada con abertura.","accessory":false},{"id":92,"name":"Mare","cat":"RESORT","g":"W","img":"mediterranea/resort_07.webp","desc":"Vestido largo marfil con cuello halter anudado y estampado de trazos negros.","accessory":false},{"id":93,"name":"Riviera","cat":"RESORT","g":"W","img":"mediterranea/resort_08.webp","desc":"Malla enteriza negra de escote en V profundo con pareo largo de gasa negra transparente.","accessory":false},{"id":94,"name":"Duna","cat":"RESORT","g":"W","img":"mediterranea/resort_09.webp","desc":"Vestido largo de crochet marfil, breteles finos, escote en V y flecos en el ruedo.","accessory":false},{"id":95,"name":"Azur","cat":"RESORT","g":"W","img":"mediterranea/resort_10.webp","desc":"Camisa vestido celeste de lino con mangas arremangadas, escote profundo y lazo en la cintura.","accessory":false},{"id":96,"name":"Smoking Medianoche","cat":"NIGHT","g":"M","img":"men/night_01.webp","desc":"Saco cruzado negro de lana grain de poudre con solapa en pico y seis botones, camisa negra de crepé de seda de cuello clásico que se lleva abierta y pantalón negro de lana de tiro alto con doble pinza y pierna amplia. Incluye saco, camisa y pantalón.","accessory":false},{"id":97,"name":"Traje Marfil Amalfi","cat":"NIGHT","g":"M","img":"men/night_02.webp","desc":"Traje marfil de lana fría y seda: saco de una fila con solapa ancha, que se lleva abierto, y pantalón de tiro alto con pinzas y pierna amplia. Camisa marfil de voile de seda semitransparente, abierta en el cuello. Incluye saco, pantalón y camisa.","accessory":false},{"id":98,"name":"Camisa Nocturne","cat":"NIGHT","g":"M","img":"men/night_03.webp","desc":"Camisa negra de georgette de seda bordada con microlentejuelas, cuello clásico y botones forrados; se lleva abierta. Pantalón negro de lana de tiro alto con pinzas y cinturón de cuero negro con hebilla plateada. Incluye camisa, pantalón y cinturón.","accessory":false},{"id":99,"name":"Traje Cacao","cat":"NIGHT","g":"M","img":"men/night_04.webp","desc":"Traje monocromo color chocolate de lana: saco de solapa en pico y pantalón de tiro alto con pinzas y pierna recta amplia. Camisa al tono de crepé de seda, abierta en el cuello. Incluye saco, pantalón y camisa.","accessory":false},{"id":100,"name":"Camisa Champagne","cat":"NIGHT","g":"M","img":"men/night_05.webp","desc":"Camisa de satén 100% seda color champagne, de cuello clásico, puños con botón y caída fluida; se lleva abierta. Pantalón negro de lana de tiro alto con doble pinza. Incluye camisa y pantalón.","accessory":false},{"id":101,"name":"Blazer Velluto","cat":"NIGHT","g":"M","img":"men/night_06.webp","desc":"Blazer negro de terciopelo de seda y viscosa, de una fila y solapa en pico. Musculosa negra de punto fino de seda y pantalón negro de lana de tiro alto con pinzas. Incluye blazer, musculosa y pantalón.","accessory":false},{"id":102,"name":"Cruzado Ivoire","cat":"NIGHT","g":"M","img":"men/night_07.webp","desc":"Traje cruzado marfil de lana fría: saco de solapa en pico con seis botones, que se lleva abierto, y pantalón de tiro alto con pinzas y pierna amplia. Musculosa marfil de punto de seda translúcido. Incluye saco, pantalón y musculosa.","accessory":false},{"id":103,"name":"Polo Noir","cat":"NIGHT","g":"M","img":"men/night_08.webp","desc":"Polo negro de punto de seda con canalé vertical, manga corta, cuello abierto y tapeta con botones. Pantalón negro de lana de tiro alto con pinzas y cinturón de cuero negro con hebilla plateada. Incluye polo, pantalón y cinturón.","accessory":false},{"id":104,"name":"Foulard Nero","cat":"NIGHT","g":"M","img":"men/night_09.webp","desc":"Saco negro de lana de una fila con solapa en pico, camisa negra de crepé de seda, pañuelo largo de gasa de seda negra con flecos que se lleva al cuello y pantalón negro de lana con pinzas. Incluye saco, camisa, pantalón y pañuelo.","accessory":false},{"id":105,"name":"Dinner Jacket Riviera","cat":"NIGHT","g":"M","img":"men/night_10.webp","desc":"Dinner jacket marfil de lana y seda, de una fila y solapa en pico, que se lleva abierto. Camisa negra de crepé de seda y pantalón negro de lana de tiro alto con pinzas. Incluye saco, camisa y pantalón.","accessory":false},{"id":106,"name":"Sweater Calado Egeo","cat":"ESSENTIALS","g":"M","img":"men/essentials_01.webp","desc":"Sweater marfil de punto calado de algodón orgánico, cuello redondo y puños acanalados. Pantalón marfil de gabardina de algodón de tiro alto con pinzas. Incluye sweater y pantalón.","accessory":false},{"id":107,"name":"Polo Marino","cat":"ESSENTIALS","g":"M","img":"men/essentials_02.webp","desc":"Polo azul marino de punto texturado de algodón mercerizado, manga corta y tapeta con tres botones. Pantalón color arena de lino y algodón con pinzas y cinturón de cuero negro. Incluye polo, pantalón y cinturón; anteojos no incluidos.","accessory":false},{"id":108,"name":"Camisa Lino Blanca","cat":"ESSENTIALS","g":"M","img":"men/essentials_03.webp","desc":"Camisa blanca de lino 100% lavado, cuello clásico y mangas largas que se llevan arremangadas. Pantalón crudo de lino de tiro alto con doble pinza. Incluye camisa y pantalón.","accessory":false},{"id":109,"name":"Remera Oliva","cat":"ESSENTIALS","g":"M","img":"men/essentials_04.webp","desc":"Remera verde oliva grisáceo de jersey de algodón pima, cuello redondo y manga corta. Pantalón crudo de gabardina de algodón con pinzas. Incluye remera y pantalón; la chaqueta que lleva en la mano es de styling.","accessory":false},{"id":110,"name":"Overshirt Nero","cat":"ESSENTIALS","g":"M","img":"men/essentials_05.webp","desc":"Sobrecamisa negra de sarga de algodón con bolsillo al pecho, que se lleva abierta sobre remera blanca de jersey de algodón. Pantalón negro de lana con pinzas. Incluye sobrecamisa, remera y pantalón.","accessory":false},{"id":111,"name":"Sweater Navy","cat":"ESSENTIALS","g":"M","img":"men/essentials_06.webp","desc":"Sweater azul marino de punto texturado de algodón y cashmere, cuello redondo. Pantalón crudo de sarga de algodón de pierna amplia. Incluye sweater y pantalón; anteojos no incluidos.","accessory":false},{"id":112,"name":"Overshirt Arena","cat":"ESSENTIALS","g":"M","img":"men/essentials_07.webp","desc":"Sobrecamisa color arena de sarga de algodón con dos bolsillos con solapa al pecho, abierta sobre remera blanca de jersey. Pantalón verde musgo de gabardina de algodón con pinzas. Incluye sobrecamisa, remera y pantalón.","accessory":false},{"id":113,"name":"Blazer Essential","cat":"ESSENTIALS","g":"M","img":"men/essentials_08.webp","desc":"Blazer azul medianoche de lana fría, de una fila y solapa en muesca. Remera blanca de jersey de algodón, pantalón al tono de lana con pinzas y cinturón de cuero negro. Incluye blazer, remera, pantalón y cinturón.","accessory":false},{"id":114,"name":"Hoodie Grigio","cat":"ESSENTIALS","g":"M","img":"men/essentials_09.webp","desc":"Buzo con capucha gris melange de felpa de algodón pesada, con cordón y puños acanalados. Pantalón al tono de felpa con pinzas y cintura elástica. Incluye buzo y pantalón.","accessory":false},{"id":115,"name":"Polo Bosco","cat":"ESSENTIALS","g":"M","img":"men/essentials_10.webp","desc":"Polo verde bosque de punto fino de algodón y seda, manga corta y cuello camisero abierto sin botones. Pantalón crudo de gabardina de algodón con pinzas. Incluye polo y pantalón.","accessory":false},{"id":116,"name":"Remera Textura","cat":"ESSENTIALS","g":"M","img":"men/essentials_11.webp","desc":"Remera marfil de algodón de punto texturado, cuello redondo y manga corta. Pantalón azul marino de lana de tiro alto con pinzas. Incluye remera y pantalón; anteojos no incluidos.","accessory":false},{"id":117,"name":"Lino Positano","cat":"DAY","g":"M","img":"men/day_01.webp","desc":"Camisa crema de lino 100% de trama abierta, cuello clásico y mangas arremangadas, que se lleva abierta. Pantalón al tono de lino de tiro alto con pinzas. Incluye camisa y pantalón.","accessory":false},{"id":118,"name":"Camisa Oliva Capri","cat":"DAY","g":"M","img":"men/day_02.webp","desc":"Camisa verde oliva de lino lavado, manga larga. Pantalón marfil de lino y algodón con pinzas y cinturón de cuero marrón. Incluye camisa, pantalón y cinturón; el bolso de cuero y los anteojos son de styling.","accessory":false},{"id":119,"name":"Rayas Portofino","cat":"DAY","g":"M","img":"men/day_03.webp","desc":"Camisa de lino y algodón a rayas verticales beige y marfil, que se lleva abierta sobre musculosa marfil de algodón acanalado. Pantalón marfil de lino con pinzas. Incluye camisa, musculosa y pantalón.","accessory":false},{"id":120,"name":"Polo Navy Amalfi","cat":"DAY","g":"M","img":"men/day_04.webp","desc":"Polo azul marino de punto de algodón con canalé vertical, manga corta y cuello abierto. Pantalón al tono de lana fría de tiro alto con pinzas. Incluye polo y pantalón.","accessory":false},{"id":121,"name":"Safari Ischia","cat":"DAY","g":"M","img":"men/day_05.webp","desc":"Sobrecamisa estilo safari color arena de sarga de algodón con dos bolsillos con solapa, abierta sobre remera blanca de jersey. Bermuda verde oliva de gabardina de algodón con pinzas. Incluye sobrecamisa, remera y bermuda.","accessory":false},{"id":122,"name":"Polo Crema Procida","cat":"DAY","g":"M","img":"men/day_06.webp","desc":"Polo crema de punto de algodón, manga corta y cuello abierto. Short marfil de lino con pinzas. Incluye polo y short; el bolso de lona y los anteojos son de styling.","accessory":false},{"id":123,"name":"Traje Lino Sorrento","cat":"DAY","g":"M","img":"men/day_07.webp","desc":"Traje beige de lino y lana: saco desestructurado de una fila con solapa en muesca y pantalón al tono con pinzas. Camisa blanca de lino, abierta en el cuello. Incluye saco, pantalón y camisa.","accessory":false},{"id":124,"name":"Chaqueta Navy Ravello","cat":"DAY","g":"M","img":"men/day_08.webp","desc":"Sobrecamisa azul marino de sarga de algodón con bolsillos al pecho, abierta sobre remera blanca de jersey. Pantalón marfil de gabardina de algodón con pinzas y pierna amplia. Incluye sobrecamisa, remera y pantalón; anteojos no incluidos.","accessory":false},{"id":125,"name":"Sweater Taupe","cat":"DAY","g":"M","img":"men/day_09.webp","desc":"Sweater taupe de punto fino de lino y algodón, cuello redondo. Pantalón marfil de lino con pinzas. Incluye sweater y pantalón.","accessory":false},{"id":126,"name":"Lino y Mar","cat":"DAY","g":"M","img":"men/day_10.webp","desc":"Camisa blanca de lino 100%, que se lleva abierta y arremangada. Short de baño azul marino con estampado de cuerdas marinas en marfil, de poliéster reciclado de secado rápido con forro de malla. Incluye camisa y short de baño; anteojos no incluidos.","accessory":false},{"id":127,"name":"Gasa Mykonos","cat":"RESORT","g":"M","img":"men/resort_01.webp","desc":"Camisa marfil de gasa de lino y algodón texturada, manga larga, que se lleva abierta. Pantalón al tono de lino con cintura de cordón. Incluye camisa y pantalón; anteojos no incluidos.","accessory":false},{"id":128,"name":"Palmera Hydra","cat":"RESORT","g":"M","img":"men/resort_02.webp","desc":"Camisa verde oliva de lino lavado, manga larga. Short de baño con estampado botánico de hojas en oliva y marfil, de poliéster reciclado de secado rápido. Incluye camisa y short de baño; anteojos no incluidos.","accessory":false},{"id":129,"name":"Crochet Paros","cat":"RESORT","g":"M","img":"men/resort_03.webp","desc":"Polo marfil tejido a crochet en algodón, calado, con manga corta y cuello camisero abierto en V. Pantalón marfil de lino con pinzas y cintura de cordón. Incluye polo y pantalón.","accessory":false},{"id":130,"name":"Bandana Naxos","cat":"RESORT","g":"M","img":"men/resort_04.webp","desc":"Camisa azul marino de lino 100%, que se lleva abierta. Short de baño con estampado bandana en azul marino y marfil, de poliéster reciclado de secado rápido. Incluye camisa y short de baño; el bolso de lona y los anteojos son de styling.","accessory":false},{"id":131,"name":"Safari Ibiza","cat":"RESORT","g":"M","img":"men/resort_05.webp","desc":"Camisa color arena de lino con dos bolsillos al pecho, abierta y arremangada. Short verde oliva de sarga de algodón con cintura de cordón marfil. Incluye camisa y short.","accessory":false},{"id":132,"name":"Bouclé Formentera","cat":"RESORT","g":"M","img":"men/resort_06.webp","desc":"Conjunto crema de algodón bouclé texturado: camisa de manga corta con cuello abierto y short con pinzas. Incluye camisa y short; anteojos no incluidos.","accessory":false},{"id":133,"name":"Noche Menorca","cat":"RESORT","g":"M","img":"men/resort_07.webp","desc":"Camisa azul noche de lino 100% de manga corta y cuello cubano, que se lleva abierta. Pantalón al tono de lino de tiro alto y pierna amplia. Incluye camisa y pantalón; el bolso tejido y los anteojos son de styling.","accessory":false},{"id":134,"name":"Lino Santorini","cat":"RESORT","g":"M","img":"men/resort_08.webp","desc":"Camisa marfil de lino 100%, de manga larga, que se lleva abierta. Pantalón marfil de lino de tiro alto con pinzas y pierna amplia. Incluye camisa y pantalón.","accessory":false},{"id":135,"name":"Lino Tabaco","cat":"RESORT","g":"M","img":"men/resort_09.webp","desc":"Camisa color tabaco de lino lavado, manga larga arremangada. Short marfil de gabardina de algodón con pinzas. Incluye camisa y short; la canasta de paja y los anteojos son de styling.","accessory":false},{"id":136,"name":"Polo Riviera","cat":"RESORT","g":"M","img":"men/resort_10.webp","desc":"Polo azul marino de punto de algodón con ribetes marfil en el cuello y las mangas. Pantalón marfil de lino de pierna amplia. Incluye polo y pantalón; anteojos no incluidos.","accessory":false},{"id":137,"name":"Seta Nera","cat":"NIGHT","g":"M","img":"men/night2_01.webp","desc":"Camisa negra de crepé de seda de cuello clásico, que se lleva abierta, y pantalón negro de satén de seda de tiro alto y pierna muy amplia, de caída fluida. Incluye camisa y pantalón.","accessory":false},{"id":138,"name":"Traje Avorio","cat":"NIGHT","g":"M","img":"men/night2_02.webp","desc":"Traje marfil de lana fría y seda: saco cruzado con solapa en pico y botones al tono, que se lleva abierto, y pantalón de tiro alto con pinzas y pierna amplia. Camisa marfil de seda con textura calada, abierta en el cuello. Incluye saco, pantalón y camisa; anteojos no incluidos.","accessory":false},{"id":139,"name":"Notte Total Black","cat":"NIGHT","g":"M","img":"men/night2_03.webp","desc":"Saco negro de lana de una fila con solapa en pico, camisa negra de crepé de seda abierta en el cuello y pantalón negro de lana de tiro alto con pinzas. Incluye saco, camisa y pantalón.","accessory":false},{"id":140,"name":"Seda Ivoire","cat":"NIGHT","g":"M","img":"men/night2_04.webp","desc":"Camisa marfil de crepé de seda con mangas arremangadas, que se lleva abierta. Pantalón negro de lana de tiro alto con pinzas y cinturón de cuero negro con hebilla plateada. Incluye camisa, pantalón y cinturón; el saco que lleva en la mano no se incluye.","accessory":false},{"id":141,"name":"Camisa Cioccolato","cat":"NIGHT","g":"M","img":"men/night2_05.webp","desc":"Camisa color chocolate de satén de seda, cuello clásico y manga larga, que se lleva abierta. Se vende la camisa.","accessory":false},{"id":142,"name":"Cruzado Nero","cat":"NIGHT","g":"M","img":"men/night2_06.webp","desc":"Saco cruzado negro de lana con solapa en pico y seis botones, camisa negra de crepé de seda y pantalón negro de lana de tiro alto con pinzas. Incluye saco, camisa y pantalón; anteojos no incluidos.","accessory":false},{"id":143,"name":"Gargantilla Nuit","cat":"NIGHT","g":"M","img":"men/night2_07.webp","desc":"Camisa negra de crepé de seda que se lleva abierta, pañuelo-gargantilla de seda negra anudado al cuello, fajín de satén negro y pantalón marfil de lana de tiro alto con pierna amplia. Incluye camisa, pañuelo, fajín y pantalón; el saco que lleva en la mano no se incluye.","accessory":false},{"id":144,"name":"Paisley Doré","cat":"NIGHT","g":"M","img":"men/night2_08.webp","desc":"Camisa negra de seda con estampado paisley en dorado, manga corta y cuello abierto. Pantalón negro de lana de tiro alto con pinzas. Incluye camisa y pantalón; anteojos no incluidos.","accessory":false},{"id":145,"name":"Traje Crema Atrani","cat":"NIGHT","g":"M","img":"men/night2_09.webp","desc":"Traje crema de lana fría: saco de una fila con solapa en muesca, que se lleva abierto, y pantalón de tiro alto con pinzas y pierna amplia. Musculosa blanca de punto acanalado de algodón y seda. Incluye saco, pantalón y musculosa.","accessory":false},{"id":146,"name":"Gasa Nera","cat":"NIGHT","g":"M","img":"men/night2_10.webp","desc":"Camisa negra de gasa de seda semitransparente, abierta en el pecho, y pantalón negro de satén de seda de pierna amplia. Incluye camisa y pantalón.","accessory":false},{"id":147,"name":"Calado Navy","cat":"NIGHT","g":"M","img":"men/night2_11.webp","desc":"Camisa azul marino de punto calado de algodón y seda, manga larga arremangada y cuello camisero, que se lleva abierta. Pantalón azul marino de lana de tiro alto. Incluye camisa y pantalón.","accessory":false},{"id":148,"name":"Calado Avorio","cat":"NIGHT","g":"M","img":"men/night2_12.webp","desc":"Camisa marfil tejida a crochet en algodón, calada, de manga larga y cuello camisero, que se lleva abierta. Pantalón marfil de lana y lino de tiro alto con pinzas. Incluye camisa y pantalón; anteojos no incluidos.","accessory":false},{"id":149,"name":"Satén Cacao","cat":"NIGHT","g":"M","img":"men/night2_13.webp","desc":"Camisa chocolate de satén de seda de cuello clásico, que se lleva abierta. Pantalón negro de lana de tiro alto con pinzas y pierna muy amplia. Incluye camisa y pantalón.","accessory":false},{"id":150,"name":"Punto Arenisca","cat":"DAY","g":"M","img":"men/day2_01.webp","desc":"Sweater crudo de punto texturado de algodón, cuello redondo y manga larga. Pantalón crudo de gabardina de algodón de pierna amplia. Incluye sweater y pantalón.","accessory":false},{"id":151,"name":"Utility Verde","cat":"DAY","g":"M","img":"men/day2_02.webp","desc":"Look monocromo verde oliva: sobrecamisa de sarga de algodón con bolsillos con solapa, que se lleva abierta sobre remera blanca de jersey, y pantalón al tono con pinzas. Incluye sobrecamisa, remera y pantalón; anteojos no incluidos.","accessory":false},{"id":152,"name":"Rayas Mercato","cat":"DAY","g":"M","img":"men/day2_03.webp","desc":"Camisa de popelín de algodón a rayas azules y blancas, que se lleva abierta y arremangada. Pantalón marfil de gabardina de algodón de tiro alto con pinzas y cinturón de cuero marrón. Incluye camisa, pantalón y cinturón.","accessory":false},{"id":153,"name":"Polo Brera","cat":"DAY","g":"M","img":"men/day2_04.webp","desc":"Polo azul marino de piqué de algodón, manga corta. Pantalón marfil de gabardina de algodón con pinzas. Incluye polo y pantalón; la gorra y el bolso de gamuza son de styling.","accessory":false},{"id":154,"name":"Overshirt Lucca","cat":"DAY","g":"M","img":"men/day2_05.webp","desc":"Sobrecamisa crema de lino y algodón, que se lleva abierta sobre remera blanca de jersey. Pantalón azul marino de gabardina de algodón con pinzas. Incluye sobrecamisa, remera y pantalón; anteojos no incluidos.","accessory":false},{"id":155,"name":"Navy Espresso","cat":"DAY","g":"M","img":"men/day2_06.webp","desc":"Sweater azul marino de punto de algodón y cashmere sobre camisa blanca de popelín cuyos puños asoman, y jean azul medio de pierna relajada. Incluye sweater, camisa y jean.","accessory":false},{"id":156,"name":"Chaqueta Camel Milano","cat":"DAY","g":"M","img":"men/day2_07.webp","desc":"Sobrecamisa camel de sarga de algodón, que se lleva abierta sobre remera blanca de jersey. Pantalón crudo de gabardina de algodón de tiro alto con pinzas. Incluye sobrecamisa, remera y pantalón.","accessory":false},{"id":157,"name":"Remera Musgo","cat":"DAY","g":"M","img":"men/day2_08.webp","desc":"Remera verde musgo de jersey de algodón pesado, cuello redondo. Pantalón marfil de gabardina de algodón con pinzas. Incluye remera y pantalón; el bolso de cuero y los anteojos son de styling.","accessory":false},{"id":158,"name":"Polo Calado Brisa","cat":"DAY","g":"M","img":"men/day2_09.webp","desc":"Polo crema de punto calado de algodón, manga corta y cuello camisero abierto. Jean azul medio de pierna recta. Incluye polo y jean.","accessory":false},{"id":159,"name":"Lino Total Crema","cat":"DAY","g":"M","img":"men/day2_10.webp","desc":"Camisa crema de lino 100% de trama abierta, que se lleva abierta y arremangada. Pantalón al tono de lino con pinzas y pierna amplia. Incluye camisa y pantalón; anteojos no incluidos.","accessory":false},{"id":160,"name":"Navy Porto Cervo","cat":"DAY","g":"M","img":"men/day2_11.webp","desc":"Camisa azul marino de lino, que se lleva abierta sobre remera blanca de jersey. Bermuda azul marino de lino con pinzas. Incluye camisa, remera y bermuda; el bolso de lona y los anteojos son de styling.","accessory":false},{"id":161,"name":"Lino Panarea","cat":"RESORT","g":"M","img":"men/resort2_01.webp","desc":"Camisa marfil de lino 100% con mangas arremangadas, que se lleva abierta. Pantalón marfil de lino de corte relajado. Incluye camisa y pantalón.","accessory":false},{"id":162,"name":"Oliva Salina","cat":"RESORT","g":"M","img":"men/resort2_02.webp","desc":"Camisa verde oliva de lino lavado, abierta y arremangada. Short crudo de lino con pinzas. Incluye camisa y short; la canasta tejida y los anteojos son de styling.","accessory":false},{"id":163,"name":"Crochet Lipari","cat":"RESORT","g":"M","img":"men/resort2_03.webp","desc":"Polo marfil tejido a crochet en algodón, calado, de manga corta y cuello camisero abierto. Pantalón marfil de lino de pierna amplia. Incluye polo y pantalón.","accessory":false},{"id":164,"name":"Hibisco Stromboli","cat":"RESORT","g":"M","img":"men/resort2_04.webp","desc":"Camisa de viscosa de manga corta con estampado floral en azul marino y marfil, que se lleva abierta. Short de baño azul marino de poliéster reciclado con cordón marfil. Incluye camisa y short de baño.","accessory":false},{"id":165,"name":"Pijama Taormina","cat":"RESORT","g":"M","img":"men/resort2_05.webp","desc":"Camisa marfil de sarga de seda de manga corta, cuello con solapa y ribete negro en contraste, y bolsillo al pecho. Pantalón negro de lino. Incluye camisa y pantalón; anteojos no incluidos.","accessory":false},{"id":166,"name":"Polo Alghero","cat":"RESORT","g":"M","img":"men/resort2_06.webp","desc":"Polo azul marino de punto de algodón, manga corta y tapeta con botones. Pantalón marfil de lino de tiro alto con pinzas y pierna amplia. Incluye polo y pantalón.","accessory":false},{"id":167,"name":"Traje Lino Ostuni","cat":"RESORT","g":"M","img":"men/resort2_07.webp","desc":"Traje marfil de lino: saco desestructurado de una fila, sin forro, y pantalón de tiro alto con pinzas. Musculosa blanca de algodón acanalado. Incluye saco, pantalón y musculosa.","accessory":false},{"id":168,"name":"Crochet Mallorca","cat":"RESORT","g":"M","img":"men/resort2_08.webp","desc":"Camisa chocolate de punto calado de algodón, manga larga y cuello camisero, que se lleva abierta. Short de baño con estampado floral en crudo y negro, de poliéster reciclado. Incluye camisa y short de baño; anteojos no incluidos.","accessory":false},{"id":169,"name":"Rayas Hvar","cat":"RESORT","g":"M","img":"men/resort2_09.webp","desc":"Camisa blanca de lino 100%, manga larga, que se lleva abierta. Short de lino a rayas verticales celeste y blanco. Incluye camisa y short.","accessory":false},{"id":170,"name":"Polo Kos","cat":"RESORT","g":"M","img":"men/resort2_10.webp","desc":"Polo taupe de punto de algodón, manga corta y cuello camisero abierto. Pantalón marfil de lino de tiro alto con pinzas y pierna amplia. Incluye polo y pantalón; el bolso de cuero es de styling.","accessory":false},{"id":171,"name":"Remera Pima","cat":"ESSENTIALS","g":"M","img":"men/essentials2_01.webp","desc":"Remera blanca de jersey de algodón pima, cuello redondo y manga corta. Jean azul medio de denim de algodón, corte recto. Incluye remera y jean; anteojos no incluidos.","accessory":false},{"id":172,"name":"Polo Carbone","cat":"ESSENTIALS","g":"M","img":"men/essentials2_02.webp","desc":"Polo negro de punto de algodón, manga corta. Pantalón marfil de gabardina de algodón con pinzas y cinturón de cuero marrón. Incluye polo, pantalón y cinturón; el bolso de cuero y los anteojos son de styling.","accessory":false},{"id":173,"name":"Oxford Celeste","cat":"ESSENTIALS","g":"M","img":"men/essentials2_03.webp","desc":"Camisa celeste de algodón oxford, arremangada y abierta en el cuello. Pantalón azul marino de lana de tiro alto con pinzas. Incluye camisa y pantalón.","accessory":false},{"id":174,"name":"Overshirt Musgo","cat":"ESSENTIALS","g":"M","img":"men/essentials2_04.webp","desc":"Sobrecamisa verde musgo de sarga de algodón, que se lleva abierta sobre remera blanca de jersey. Pantalón crudo de gabardina de algodón con pinzas. Incluye sobrecamisa, remera y pantalón; anteojos no incluidos.","accessory":false},{"id":175,"name":"Sweater Caffè","cat":"ESSENTIALS","g":"M","img":"men/essentials2_05.webp","desc":"Sweater azul marino de punto fino de algodón y cashmere, cuello redondo. Pantalón azul marino de lana. Incluye sweater y pantalón; anteojos no incluidos.","accessory":false},{"id":176,"name":"Chaqueta Harrington","cat":"ESSENTIALS","g":"M","img":"men/essentials2_06.webp","desc":"Chaqueta negra de algodón con cierre y cuello camisero, que se lleva abierta sobre remera blanca de jersey. Pantalón negro de lana con pinzas. Incluye chaqueta, remera y pantalón; la gorra y el diario son de styling.","accessory":false},{"id":177,"name":"Sweater Crudo","cat":"ESSENTIALS","g":"M","img":"men/essentials2_07.webp","desc":"Sweater crudo de punto texturado de algodón, cuello redondo. Pantalón taupe de gabardina de algodón con pinzas. Incluye sweater y pantalón; el bolso de gamuza es de styling.","accessory":false},{"id":178,"name":"Chino Oliva","cat":"ESSENTIALS","g":"M","img":"men/essentials2_08.webp","desc":"Remera blanca de jersey de algodón pesado, cuello redondo. Pantalón chino verde oliva de sarga de algodón, corte relajado. Incluye remera y pantalón; las zapatillas de cuero blanco y los anteojos no se incluyen.","accessory":false},{"id":179,"name":"Punto Medianoche","cat":"ESSENTIALS","g":"M","img":"men/essentials2_09.webp","desc":"Sweater azul marino de punto de algodón y cashmere, cuello redondo. Pantalón marfil de gabardina de algodón con pinzas y pierna amplia. Incluye sweater y pantalón; el bolso de cuero y los anteojos son de styling.","accessory":false},{"id":180,"name":"Remera Grafito","cat":"ESSENTIALS","g":"M","img":"men/essentials2_10.webp","desc":"Remera gris grafito de jersey de algodón pima, cuello redondo y manga corta. Pantalón azul marino de gabardina de algodón. Incluye remera y pantalón.","accessory":false},{"id":181,"name":"Medio Cierre Crudo","cat":"ESSENTIALS","g":"M","img":"men/essentials2_11.webp","desc":"Sweater crudo de medio cierre de punto acanalado de algodón y cashmere. Jean azul oscuro de denim rígido. Incluye sweater y jean; anteojos no incluidos.","accessory":false},{"id":182,"name":"Smoking Lentejuela","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_01.webp","desc":"Blazer negro de lana con solapa ancha de satén de seda, corte smoking, que se lleva abierto. Debajo, vestido columna negro de lentejuelas con escote en V profundo. Incluye blazer y vestido; la clutch es de styling.","accessory":false},{"id":183,"name":"Halter Zafiro","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_02.webp","desc":"Vestido largo azul zafiro de satén de seda, cuello halter anudado, cuerpo drapeado y falda con abertura alta en la pierna. Incluye el vestido; las joyas son de styling.","accessory":false},{"id":184,"name":"Terciopelo Rubí","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_03.webp","desc":"Vestido midi bordó de terciopelo de seda, breteles finos, escote drapeado en V y falda con frunce lateral. Incluye el vestido; las joyas son de styling.","accessory":false},{"id":185,"name":"Mini Plumas","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_04.webp","desc":"Blazer negro de lana de solapa ancha, que se lleva sobre los hombros. Minivestido negro de lentejuelas con escote en V y ruedo de plumas. Incluye blazer y vestido; la clutch es de styling.","accessory":false},{"id":186,"name":"Slip Champagne","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_05.webp","desc":"Vestido largo champagne de satén de seda, breteles finos, escote drapeado y falda cruzada con abertura lateral. Incluye el vestido; la clutch es de styling.","accessory":false},{"id":187,"name":"Encaje Alto","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_06.webp","desc":"Vestido midi negro de encaje de manga larga, cuello alto y silueta ajustada, con forro al tono. Incluye el vestido; la clutch es de styling.","accessory":false},{"id":188,"name":"Un Hombro Burdeos","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_07.webp","desc":"Vestido largo bordó de terciopelo de seda, un solo hombro con manga larga, cuerpo drapeado y abertura alta con lazo. Incluye el vestido.","accessory":false},{"id":189,"name":"Mono Halter","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_08.webp","desc":"Mono negro de crepé de seda, cuello halter anudado, perneras palazzo y cinturón ancho del mismo tejido con hebilla rectangular. Incluye el mono y el cinturón; la clutch es de styling.","accessory":false},{"id":190,"name":"Satén Índigo","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_09.webp","desc":"Vestido largo azul índigo de satén de seda, breteles finos, escote drapeado y falda con abertura alta. Incluye el vestido; la clutch es de styling.","accessory":false},{"id":191,"name":"Sastre Marfil","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_10.webp","desc":"Blazer marfil de lana de solapa ancha, que se lleva abierto, sobre bustier de encaje marfil con escote corazón. Pantalón marfil de lana de tiro alto con pinzas y pierna palazzo. Incluye blazer, bustier y pantalón; la clutch es de styling.","accessory":false},{"id":192,"name":"Columna Nuit","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_11.webp","desc":"Vestido largo columna azul noche, completamente cubierto de lentejuelas, con breteles finos y escote en V. Incluye el vestido; la clutch es de styling.","accessory":false},{"id":193,"name":"Capa Negra","cat":"COCKTAIL","g":"W","img":"cocktail/cocktail_12.webp","desc":"Vestido largo negro de crepé de seda con espalda descubierta y panel de capa que nace en un hombro y cae hasta el ruedo. Incluye el vestido; la clutch es de styling.","accessory":false},{"id":194,"name":"Smoking Zafiro","cat":"COCKTAIL","g":"M","img":"cocktail/men_01.webp","desc":"Smoking azul noche de lana: saco de una fila con solapa ancha de satén de seda, chaleco a juego y pantalón de tiro alto con pinzas. Camisa azul noche de popelín de algodón, abierta en el cuello, y pañuelo de bolsillo marfil. Incluye saco, chaleco, camisa, pantalón y pañuelo.","accessory":false},{"id":195,"name":"Traje Marfil","cat":"COCKTAIL","g":"M","img":"cocktail/men_02.webp","desc":"Traje marfil de lana fría: saco de una fila con solapa en muesca y pantalón de tiro alto con pinzas. Camisa marfil de crepé de seda, que se lleva abierta. Incluye saco, camisa y pantalón; los anteojos son de styling.","accessory":false},{"id":196,"name":"Terciopelo Burdeos","cat":"COCKTAIL","g":"M","img":"cocktail/men_03.webp","desc":"Blazer bordó de terciopelo de seda, de una fila. Camisa negra de crepé de seda, abierta en el cuello, y pantalón negro de lana de tiro alto con pinzas. Incluye blazer, camisa y pantalón.","accessory":false},{"id":197,"name":"Traje Cacao","cat":"COCKTAIL","g":"M","img":"cocktail/men_04.webp","desc":"Traje chocolate de lana: saco de una fila, chaleco y pantalón de tiro alto con pinzas. Camisa chocolate de satén de seda, abierta en el cuello. Incluye saco, chaleco, camisa y pantalón.","accessory":false},{"id":198,"name":"Cruzado Navy","cat":"COCKTAIL","g":"M","img":"cocktail/men_05.webp","desc":"Saco cruzado azul marino de lana, con solapa en pico y pañuelo de bolsillo estampado. Sweater negro de punto fino con cuello alto y pantalón azul marino de lana con pinzas. Incluye saco, sweater, pantalón y pañuelo; los anteojos son de styling.","accessory":false},{"id":199,"name":"Camisa Navy","cat":"COCKTAIL","g":"M","img":"cocktail/men_06.webp","desc":"Camisa azul marino de popelín de algodón, que se lleva abierta, con pantalón al tono de lana de tiro alto con pinzas. El saco a juego, del mismo paño, se lleva en la mano. Incluye saco, camisa y pantalón.","accessory":false},{"id":200,"name":"Blazer Puntitos","cat":"COCKTAIL","g":"M","img":"cocktail/men_07.webp","desc":"Blazer negro de lana de una fila. Camisa verde oliva de seda con microestampado de puntos, abierta en el cuello, y pantalón negro de lana con pinzas. Incluye blazer, camisa y pantalón.","accessory":false},{"id":201,"name":"Smoking Velluto","cat":"COCKTAIL","g":"M","img":"cocktail/men_08.webp","desc":"Smoking de terciopelo azul: saco con solapa de satén de seda, camisa blanca de popelín, moño negro de satén y pantalón negro de lana con banda lateral de satén. Incluye saco, camisa, moño y pantalón; los anteojos son de styling.","accessory":false},{"id":202,"name":"Camisa Blanca","cat":"COCKTAIL","g":"M","img":"cocktail/men_09.webp","desc":"Camisa blanca de popelín de algodón, que se lleva abierta y arremangada. Pantalón azul marino de lana de tiro alto con pinzas y pretina ancha. El saco a juego se lleva en la mano. Incluye saco, camisa y pantalón.","accessory":false},{"id":203,"name":"Traje Oliva","cat":"COCKTAIL","g":"M","img":"cocktail/men_10.webp","desc":"Traje verde oliva de lana: saco de una fila con solapa en muesca y pantalón de tiro alto con pinzas y pierna amplia. Camisa chocolate de crepé de seda, abierta en el cuello. Incluye saco, camisa y pantalón.","accessory":false}];
@@ -172,6 +361,487 @@ function base(p){return p.g==='M'?{
 }:{
   chest:92,waist:74,hip:98,back:42,front:44,shoulder:13.5,neck:18,sleeve:60,sleeveW:34,cuff:20,collar:38,yoke:16,inseam:78,rise:26,thigh:58,hem:42
 }}
+
+
+/* ========== CONSTRUCCIÓN EXACTA DE VESTIDOS (escote · abertura · tela) ========== */
+const MAT_NAMES={"saten": "Satén Camille · 100% seda", "sedaLisa": "Gasa Amélie · 100% seda", "gasaEst": "Gasa Italiana Estampada Nocturne · 100% seda", "lent": "Lentejuela Eclipse · tul bordado", "flecos": "Flecos de canutillos partidos · tul bordado", "redCristal": "Red cristal facetado · cristales dorados", "redPrisma": "Red Prisma · red lamé con cristales", "encajeNegro": "Encaje Élodie Negro", "encajeFlora": "Encaje Flora · off-white con flores 3D", "linoBordado": "Lino bordado con hilo sedoso", "redRustica": "Red rústica de algodón", "macrame": "Macramé INMA · algodón", "lana": "Lana para sastrería", "lino": "Lino liso", "camiseria": "Algodón de camisería", "denim": "Denim", "jersey": "Jersey acanalado de algodón", "lycra": "Lycra de baño", "forro": "Forro (habotai)", "tul": "Tul / malla stretch para forrería", "algodon": "Hilado de algodón para punto (100 g)", "cashmere": "Hilado cashmere blend (100 g)", "twill": "Twill de seda estampado", "jacquard": "Jacquard de seda", "cuero": "Cuero vacuno", "acetato": "Frente y patillas de acetato carey", "gabardina": "Gabardina / sarga de algodón", "terciopelo": "Terciopelo de seda y viscosa", "felpa": "Felpa de algodón pesada", "boucle": "Algodón bouclé", "bano": "Tela de baño estampada (poliéster reciclado)", "viscosa": "Viscosa estampada", "pluma": "Pluma para ruedo", "puntoSeda": "Hilado de seda para punto (100 g)", "hebilla": "Hebilla metálica plateada", "entretela": "Entretela", "varilla": "Varillas de corsetería", "cierre": "Cierre invisible", "boton": "Botones", "botonOro": "Botón metálico dorado", "aro": "Aro metálico dorado", "cordon": "Cordón", "elastico": "Elástico", "hebillaGRUT": "Hebilla escultórica dorada GRUT", "herrajes": "Herrajes dorados para cartera", "lentes": "Lentes de sol", "bisagras": "Bisagras metálicas", "avios": "Hilo, etiquetas y packaging GRUT"};
+const BOM={
+  1:[["lana",3.4],["forro",1.6],["cashmere",2],["entretela",0.8],["boton",5],["cierre",1]],
+  2:[["saten",3],["cierre",1]],
+  3:[["lent",1.3],["forro",1],["cierre",1]],
+  4:[["camiseria",2],["lino",1],["boton",10],["cierre",1]],
+  5:[["saten",3.2],["forro",1.5],["cierre",1]],
+  6:[["cashmere",7],["boton",3],["cordon",1.2],["elastico",0.8]],
+  7:[["flecos",2.2],["forro",1.6],["cierre",1]],
+  8:[["saten",3],["forro",1.2],["varilla",12],["entretela",0.5],["cierre",1]],
+  9:[["lino",4],["forro",1.4],["jersey",0.5],["entretela",0.6],["boton",4],["cierre",1]],
+  10:[["redRustica",2.6]],
+  11:[["lycra",1]],
+  12:[["sedaLisa",3.2],["forro",1.2],["cierre",1]],
+  13:[["lana",3.6],["forro",1.6],["jersey",0.4],["entretela",0.8],["boton",5],["cierre",1]],
+  14:[["redCristal",3],["forro",2],["cierre",1]],
+  15:[["lino",2.8],["boton",8],["cordon",1],["elastico",0.8]],
+  16:[["cashmere",8],["elastico",1]],
+  17:[["saten",3],["forro",1.2],["boton",2],["cierre",1]],
+  18:[["encajeNegro",2.8],["tul",1.5],["cierre",1]],
+  19:[["saten",1]],
+  20:[["lana",3.6],["forro",1.6],["jersey",0.4],["entretela",0.8],["boton",5],["cierre",1]],
+  21:[["macrame",1.4],["boton",6]],
+  22:[["lino",3],["lycra",0.4],["boton",8],["cordon",1.2],["elastico",0.8]],
+  23:[["sedaLisa",3],["forro",1],["cierre",1]],
+  24:[["redRustica",1],["lycra",0.5],["aro",1]],
+  25:[["lycra",1],["gasaEst",1.6]],
+  26:[["lycra",0.6],["sedaLisa",2]],
+  27:[["lino",4.2],["boton",8],["cordon",1],["elastico",0.8]],
+  28:[["redRustica",2.2]],
+  29:[["sedaLisa",3.4],["cierre",1]],
+  30:[["encajeFlora",2.2],["lycra",0.8]],
+  31:[["jersey",0.7],["lino",2],["boton",2],["cierre",1]],
+  32:[["camiseria",2.2],["lino",1],["boton",9],["cordon",1.2],["elastico",0.8]],
+  33:[["linoBordado",2.6],["cordon",1]],
+  34:[["lino",3],["forro",0.6],["boton",6],["cierre",1]],
+  35:[["redRustica",1.4],["lycra",0.3]],
+  36:[["lino",2],["denim",0.8],["boton",9],["cierre",1]],
+  37:[["jersey",0.7],["lino",2.6],["boton",1],["cierre",1]],
+  38:[["lino",3],["lycra",0.4],["boton",8],["cordon",1.2],["elastico",0.8]],
+  39:[["algodon",7],["lino",1],["cordon",1.2],["elastico",0.8]],
+  40:[["sedaLisa",2.4],["forro",1.2],["cierre",1]],
+  41:[["saten",2.6],["cierre",1]],
+  42:[["lent",1.4],["forro",1],["cierre",1]],
+  43:[["saten",2.6],["forro",1],["varilla",12],["entretela",0.5],["cierre",1]],
+  44:[["sedaLisa",3],["forro",1],["aro",1],["cierre",1]],
+  45:[["redPrisma",1.8],["tul",1.4],["cierre",1]],
+  46:[["sedaLisa",1.8],["forro",1],["cierre",1]],
+  47:[["saten",3.4],["forro",1.4],["boton",2],["cierre",1]],
+  48:[["encajeNegro",2.6],["saten",0.6],["tul",1.2],["varilla",12],["cierre",1]],
+  49:[["saten",3.2],["forro",1.2],["cierre",1]],
+  50:[["lana",2],["forro",1.4],["entretela",0.8],["botonOro",1]],
+  51:[["twill",1]],
+  52:[["cuero",0.6],["forro",0.5],["herrajes",1],["cierre",1]],
+  53:[["cuero",0.15],["hebillaGRUT",1]],
+  54:[["acetato",1],["lentes",1],["bisagras",1]],
+  55:[["jacquard",2]],
+  56:[["jersey",0.7],["lino",2.6],["boton",1],["cierre",1]],
+  57:[["jersey",0.7],["lana",1.8],["boton",1],["cierre",1]],
+  58:[["lino",3],["boton",9],["cierre",1]],
+  59:[["lino",3],["forro",0.6],["boton",6],["cierre",1]],
+  60:[["sedaLisa",2.4],["forro",1.2],["cierre",1]],
+  61:[["jersey",0.4],["lino",2.6]],
+  62:[["jersey",0.4],["lino",2.6]],
+  63:[["lino",3],["boton",10],["cordon",1.2],["elastico",0.8]],
+  64:[["jersey",0.7],["denim",1.6],["boton",1],["cierre",1]],
+  65:[["lino",4],["boton",8],["cierre",1]],
+  66:[["lino",4.2],["boton",9],["cierre",1]],
+  67:[["jersey",2]],
+  68:[["lino",3],["forro",0.6],["boton",5],["cierre",1]],
+  69:[["lino",2.2],["forro",1],["cierre",1]],
+  70:[["jersey",0.4],["lino",1.2],["boton",1],["cierre",1]],
+  71:[["camiseria",2.2],["lino",1],["boton",10],["cierre",1]],
+  72:[["lino",3.6],["boton",4]],
+  73:[["jersey",0.5],["lino",2.6],["boton",1],["cierre",1]],
+  74:[["saten",2.2],["cierre",1]],
+  75:[["lino",4.9],["boton",10],["cierre",1]],
+  76:[["saten",3],["cierre",1]],
+  77:[["saten",3],["cordon",1]],
+  78:[["saten",3.2],["forro",1],["entretela",0.4],["cierre",1]],
+  79:[["sedaLisa",3],["forro",1],["cierre",1]],
+  80:[["saten",3.2],["cierre",1]],
+  81:[["saten",3.6],["cierre",1]],
+  82:[["saten",3.6],["cierre",1]],
+  83:[["saten",3.4],["cierre",1]],
+  84:[["saten",2.8],["cierre",1]],
+  85:[["saten",3.8],["cierre",1]],
+  86:[["sedaLisa",3.4],["forro",1.2]],
+  87:[["sedaLisa",3.6]],
+  88:[["redRustica",2.6]],
+  89:[["sedaLisa",3],["aro",1],["forro",1]],
+  90:[["lino",3.2],["boton",9]],
+  91:[["sedaLisa",3],["aro",1],["forro",1]],
+  92:[["gasaEst",3],["forro",1]],
+  93:[["lycra",0.8],["sedaLisa",2]],
+  94:[["macrame",2.6]],
+  95:[["lino",3.4],["boton",8]],
+  96:[["lana",3.6],["forro",1.8],["entretela",1],["sedaLisa",2],["boton",16],["cierre",1]],
+  97:[["lana",3.4],["forro",1.6],["entretela",0.9],["sedaLisa",2],["boton",14],["cierre",1]],
+  98:[["lent",2],["lana",1.4],["cuero",0.15],["hebilla",1],["boton",10],["cierre",1]],
+  99:[["lana",3.4],["forro",1.6],["entretela",0.9],["sedaLisa",2],["boton",14],["cierre",1]],
+  100:[["saten",2],["lana",1.4],["boton",10],["cierre",1]],
+  101:[["terciopelo",1.9],["forro",1.4],["entretela",0.6],["puntoSeda",2],["lana",1.4],["boton",7],["cierre",1]],
+  102:[["lana",3.6],["forro",1.8],["entretela",1],["puntoSeda",2],["boton",10],["cierre",1]],
+  103:[["puntoSeda",3],["lana",1.4],["cuero",0.15],["hebilla",1],["boton",3],["cierre",1]],
+  104:[["lana",3.4],["forro",1.6],["entretela",0.9],["sedaLisa",3.6],["boton",14],["cierre",1]],
+  105:[["lana",3.4],["forro",1.6],["entretela",0.9],["sedaLisa",2],["boton",14],["cierre",1]],
+  106:[["algodon",6],["gabardina",1.5],["boton",1],["cierre",1]],
+  107:[["algodon",4],["lino",1.5],["cuero",0.15],["hebilla",1],["boton",4],["cierre",1]],
+  108:[["lino",3.4],["boton",12],["cierre",1]],
+  109:[["jersey",1],["gabardina",1.5],["boton",1],["cierre",1]],
+  110:[["gabardina",2],["jersey",1],["lana",1.4],["boton",9],["cierre",1]],
+  111:[["cashmere",3],["algodon",3],["gabardina",1.5],["boton",1],["cierre",1]],
+  112:[["gabardina",3.5],["jersey",1],["boton",10],["cierre",1]],
+  113:[["lana",3.4],["forro",1.4],["entretela",0.6],["jersey",1],["cuero",0.15],["hebilla",1],["boton",7],["cierre",1]],
+  114:[["felpa",3.2],["cordon",1.4],["elastico",0.9]],
+  115:[["algodon",2],["puntoSeda",2],["gabardina",1.5],["boton",1],["cierre",1]],
+  116:[["jersey",1],["lana",1.5],["boton",1],["cierre",1]],
+  117:[["lino",3.6],["boton",12],["cierre",1]],
+  118:[["lino",3.4],["cuero",0.15],["hebilla",1],["boton",12],["cierre",1]],
+  119:[["lino",3.6],["jersey",0.6],["boton",12],["cierre",1]],
+  120:[["algodon",5],["lana",1.5],["boton",3],["cierre",1]],
+  121:[["gabardina",3],["jersey",1],["boton",10],["cierre",1]],
+  122:[["algodon",4],["lino",1],["boton",1],["cierre",1]],
+  123:[["lino",5.3],["forro",0.6],["entretela",0.6],["boton",18],["cierre",1]],
+  124:[["gabardina",3.5],["jersey",1],["boton",10],["cierre",1]],
+  125:[["algodon",5],["lino",1.5],["boton",1],["cierre",1]],
+  126:[["lino",2],["bano",0.9],["tul",0.4],["cordon",1.2],["elastico",0.9],["boton",12]],
+  127:[["lino",3.6],["cordon",1.4],["boton",12]],
+  128:[["lino",2],["bano",0.9],["tul",0.4],["cordon",1.2],["elastico",0.9],["boton",12]],
+  129:[["algodon",6],["lino",1.5],["cordon",1.4]],
+  130:[["lino",2],["bano",0.9],["tul",0.4],["cordon",1.2],["elastico",0.9],["boton",12]],
+  131:[["lino",2],["gabardina",1],["cordon",1.2],["elastico",0.9],["boton",12]],
+  132:[["boucle",2.6],["boton",7],["cierre",1]],
+  133:[["lino",3.2],["boton",7],["cierre",1]],
+  134:[["lino",3.6],["boton",12],["cierre",1]],
+  135:[["lino",2],["gabardina",1],["boton",12],["cierre",1]],
+  136:[["algodon",4],["lino",1.6],["boton",3],["cierre",1]],
+  137:[["sedaLisa",2],["saten",1.6],["boton",10],["cierre",1]],
+  138:[["lana",3.6],["forro",1.8],["entretela",1],["sedaLisa",2],["boton",16],["cierre",1]],
+  139:[["lana",3.4],["forro",1.6],["entretela",0.9],["sedaLisa",2],["boton",14],["cierre",1]],
+  140:[["sedaLisa",2],["lana",1.4],["cuero",0.15],["hebilla",1],["boton",10],["cierre",1]],
+  141:[["saten",2],["boton",10]],
+  142:[["lana",3.6],["forro",1.8],["entretela",1],["sedaLisa",2],["boton",16],["cierre",1]],
+  143:[["sedaLisa",2.6],["saten",0.3],["lana",1.5],["boton",10],["cierre",1]],
+  144:[["twill",1.8],["lana",1.4],["boton",8],["cierre",1]],
+  145:[["lana",3.4],["forro",1.4],["entretela",0.9],["puntoSeda",2],["boton",8],["cierre",1]],
+  146:[["sedaLisa",2],["saten",1.6],["boton",10],["cierre",1]],
+  147:[["puntoSeda",4],["algodon",2],["lana",1.4],["boton",8],["cierre",1]],
+  148:[["algodon",7],["lana",1.4],["boton",8],["cierre",1]],
+  149:[["saten",2],["lana",1.6],["boton",10],["cierre",1]],
+  150:[["algodon",6],["gabardina",1.6],["boton",1],["cierre",1]],
+  151:[["gabardina",3.5],["jersey",1],["boton",10],["cierre",1]],
+  152:[["camiseria",1.8],["gabardina",1.5],["cuero",0.15],["hebilla",1],["boton",12],["cierre",1]],
+  153:[["jersey",1.2],["gabardina",1.5],["boton",3],["cierre",1]],
+  154:[["lino",2],["jersey",1],["gabardina",1.5],["boton",8],["cierre",1]],
+  155:[["cashmere",3],["algodon",3],["camiseria",1.8],["denim",1.6],["boton",17],["cierre",1]],
+  156:[["gabardina",3.5],["jersey",1],["boton",8],["cierre",1]],
+  157:[["jersey",1],["gabardina",1.5],["boton",1],["cierre",1]],
+  158:[["algodon",4],["denim",1.6],["boton",6],["cierre",1]],
+  159:[["lino",3.6],["boton",12],["cierre",1]],
+  160:[["lino",3],["jersey",1],["boton",12],["cierre",1]],
+  161:[["lino",3.6],["boton",12],["cierre",1]],
+  162:[["lino",3],["boton",12],["cierre",1]],
+  163:[["algodon",6],["lino",1.5],["boton",1],["cierre",1]],
+  164:[["viscosa",1.6],["bano",0.9],["tul",0.4],["cordon",1.2],["elastico",0.9],["boton",7]],
+  165:[["twill",1.8],["lino",1.4],["boton",7],["cierre",1]],
+  166:[["algodon",4],["lino",1.6],["boton",3],["cierre",1]],
+  167:[["lino",3.3],["jersey",0.6],["entretela",0.4],["boton",5],["cierre",1]],
+  168:[["algodon",6],["bano",0.9],["tul",0.4],["cordon",1.2],["elastico",0.9],["boton",8]],
+  169:[["lino",3],["boton",12],["cierre",1]],
+  170:[["algodon",4],["lino",1.6],["boton",3],["cierre",1]],
+  171:[["jersey",1],["denim",1.6],["boton",6],["cierre",1]],
+  172:[["algodon",4],["gabardina",1.5],["cuero",0.15],["hebilla",1],["boton",3],["cierre",1]],
+  173:[["camiseria",1.8],["lana",1.5],["boton",12],["cierre",1]],
+  174:[["gabardina",3.5],["jersey",1],["boton",8],["cierre",1]],
+  175:[["cashmere",3],["algodon",3],["lana",1.5],["boton",1],["cierre",1]],
+  176:[["gabardina",3.5],["jersey",1],["cierre",2],["boton",1]],
+  177:[["algodon",6],["gabardina",1.5],["boton",1],["cierre",1]],
+  178:[["jersey",1],["gabardina",1.6],["boton",1],["cierre",1]],
+  179:[["cashmere",3],["algodon",3],["gabardina",1.5],["boton",1],["cierre",1]],
+  180:[["jersey",1],["gabardina",1.5],["boton",1],["cierre",1]],
+  181:[["cashmere",3],["algodon",4],["denim",1.6],["cierre",2],["boton",6]],
+  182:[["lana",1.8],["saten",0.4],["forro",1.2],["entretela",0.5],["lent",2.2],["boton",2],["cierre",2]],
+  183:[["saten",3.2],["forro",1.2],["cierre",1]],
+  184:[["terciopelo",3],["forro",1.4],["cierre",1]],
+  185:[["lana",1.6],["saten",0.35],["forro",1.1],["entretela",0.4],["lent",1.1],["pluma",0.8],["boton",1]],
+  186:[["saten",2.8],["forro",1.2],["cierre",1]],
+  187:[["encajeNegro",2.6],["forro",1.6],["cierre",1]],
+  188:[["terciopelo",3.2],["forro",1.2],["cierre",1]],
+  189:[["sedaLisa",3.2],["hebilla",1],["cierre",1]],
+  190:[["saten",3.2],["forro",1.2],["cierre",1]],
+  191:[["lana",2.8],["forro",1.6],["entretela",0.7],["encajeFlora",0.8],["boton",2],["cierre",1]],
+  192:[["lent",3.2],["forro",1.6],["cierre",1]],
+  193:[["sedaLisa",3.8],["forro",1.4],["cierre",1]],
+  194:[["lana",4],["saten",0.4],["camiseria",1.8],["forro",1.6],["entretela",0.9],["boton",12],["cierre",1]],
+  195:[["lana",3.2],["sedaLisa",2],["forro",1.4],["entretela",0.8],["boton",8],["cierre",1]],
+  196:[["terciopelo",1.9],["sedaLisa",2],["lana",1.4],["forro",1.2],["entretela",0.5],["boton",10],["cierre",1]],
+  197:[["lana",4],["saten",2],["forro",1.6],["entretela",1],["boton",14],["cierre",1]],
+  198:[["lana",3.2],["cashmere",2],["algodon",2],["saten",0.2],["forro",1.4],["entretela",0.8],["boton",6],["cierre",1]],
+  199:[["lana",3],["camiseria",1.8],["forro",1.2],["entretela",0.6],["boton",12],["cierre",1]],
+  200:[["lana",3],["twill",1.8],["forro",1.2],["entretela",0.5],["boton",10],["cierre",1]],
+  201:[["terciopelo",1.9],["saten",0.6],["camiseria",1.8],["lana",1.3],["forro",1.2],["entretela",0.5],["boton",8],["cierre",1]],
+  202:[["lana",3],["camiseria",1.8],["forro",1.2],["entretela",0.6],["boton",12],["cierre",1]],
+  203:[["lana",3.2],["sedaLisa",2],["forro",1.4],["entretela",0.8],["boton",10],["cierre",1]],
+};
+
+const FABRIC_EASE={
+  saten:{ease:1.5,stretch:0,bias:true,grain:'al bies preferible en cowl/drape'},
+  sedaLisa:{ease:2,stretch:0,bias:true,grain:'recto o bies según caída'},
+  gasaEst:{ease:3,stretch:0,bias:true,grain:'recto; gasa fluye'},
+  lent:{ease:1,stretch:0,bias:false,grain:'recto; respetar dibujo'},
+  flecos:{ease:1,stretch:0,bias:false,grain:'recto; oriente de flecos'},
+  redCristal:{ease:0.5,stretch:5,bias:false,grain:'recto'},
+  redPrisma:{ease:0.5,stretch:5,bias:false,grain:'recto'},
+  encajeNegro:{ease:1,stretch:0,bias:false,grain:'recto; alinear motivos'},
+  encajeFlora:{ease:1,stretch:0,bias:false,grain:'recto; alinear flores'},
+  redRustica:{ease:2,stretch:8,bias:false,grain:'recto'},
+  macrame:{ease:2,stretch:5,bias:false,grain:'recto'},
+  lino:{ease:3,stretch:0,bias:false,grain:'recto'},
+  linoBordado:{ease:3,stretch:0,bias:false,grain:'recto'},
+  lycra:{ease:-2,stretch:30,bias:false,grain:'ancho elástico horizontal'},
+  jersey:{ease:0,stretch:20,bias:false,grain:'ancho elástico'},
+  terciopelo:{ease:2,stretch:0,bias:false,grain:'recto; nap en una dirección'},
+  forro:{ease:1,stretch:0,bias:false,grain:'recto'},
+  tul:{ease:0,stretch:15,bias:false,grain:'recto'},
+  lana:{ease:3,stretch:0,bias:false,grain:'recto'},
+  camiseria:{ease:3,stretch:0,bias:false,grain:'recto'},
+  pluma:{ease:0,stretch:0,bias:false,grain:'aplicado al ruedo'}
+};
+
+const NON_FABRIC=new Set(['cierre','boton','botonOro','aro','cordon','elastico','entretela','varilla','hebilla','hebillaGRUT','herrajes','lentes','bisagras','avios','cuero','acetato']);
+
+function fabricFor(p){
+  const bom=BOM[p.id]||[];
+  const fabrics=bom.filter(([k])=>!NON_FABRIC.has(k));
+  const lining=bom.find(([k])=>k==='forro'||k==='tul');
+  const main=fabrics.find(([k])=>k!=='forro'&&k!=='tul')||fabrics[0];
+  if(!main){
+    // infer from desc
+    const s=(p.desc||'').toLowerCase();
+    let key='sedaLisa';
+    if(/sat[eé]n|satin/.test(s)) key='saten';
+    else if(/lentejuela/.test(s)) key='lent';
+    else if(/encaje/.test(s)) key='encajeNegro';
+    else if(/crochet|macram[eé]/.test(s)) key='redRustica';
+    else if(/terciopelo|velvet/.test(s)) key='terciopelo';
+    else if(/lino/.test(s)) key='lino';
+    else if(/gasa/.test(s)) key='sedaLisa';
+    else if(/lycra|baño|bikini|malla/.test(s)) key='lycra';
+    const meta=FABRIC_EASE[key]||FABRIC_EASE.sedaLisa;
+    return {key,name:MAT_NAMES[key]||key,meters:null,lining:null,bom:bom.slice(),...meta};
+  }
+  const key=main[0];
+  const meta=FABRIC_EASE[key]||{ease:2,stretch:0,bias:false,grain:'recto'};
+  return {
+    key,name:MAT_NAMES[key]||key,meters:main[1],
+    lining:lining?{key:lining[0],name:MAT_NAMES[lining[0]]||lining[0],meters:lining[1]}:null,
+    bom:bom.map(([k,q])=>({key:k,name:MAT_NAMES[k]||k,qty:q})),
+    ...meta
+  };
+}
+
+function buildDressSpec(p){
+  const s=((p.name||'')+' '+(p.desc||'')).toLowerCase();
+  const fab=fabricFor(p);
+
+  // —— largo ——
+  let length='floor', lengthCm=140;
+  if(/minivestido|mini vestido|\bmini\b/.test(s)) { length='mini'; lengthCm=88; }
+  else if(/\bmidi\b/.test(s)) { length='midi'; lengthCm=112; }
+  else if(/vestido largo|largo de|caft[aá]n largo|falda larga|columna|piso|hasta el ruedo/.test(s) || /vestido|caft[aá]n|mono |enterizo|slip |cors[eé]|columna|capa /.test(s)) {
+    length='floor'; lengthCm=140;
+  } else if(/\bvestido\b/.test(s)) { length='floor'; lengthCm=140; }
+
+  // —— silueta / soporte ——
+  let support='straps'; // straps | thin_straps | halter | strapless | one_shoulder | boat | sleeves | caftan | shirt
+  if(/strapless|sin tirantes|cors[eé]|corsetería|corsage/.test(s) && !/breteles|halter/.test(s)) support='strapless';
+  else if(/un solo hombro|un hombro|de un solo hombro/.test(s)) support='one_shoulder';
+  else if(/cuello halter|escote halter|\bhalter\b|gargantilla/.test(s)) support='halter';
+  else if(/breteles finos|tirantes finos/.test(s)) support='thin_straps';
+  else if(/breteles|tirantes/.test(s)) support='straps';
+  else if(/mangas largas|manga larga/.test(s)) support='sleeves';
+  else if(/mangas amplias|manga amplia/.test(s)) support='wide_sleeves';
+  else if(/caft[aá]n|kimono|camisa vestido|cuello camisero/.test(s)) support='shirt';
+  else if(/bandeau|escote recto/.test(s) && !/breteles|halter/.test(s)) support='bandeau';
+
+  // —— escote ——
+  let neck={type:'round', depth:8, width:9, label:'Escote redondo'};
+  if(/escote cowl|drapeado cowl|\bcowl\b|espalda cowl/.test(s)) {
+    neck={type:'cowl', depth:16, width:11, label:'Escote cowl drapeado'};
+  } else if(/escote coraz[oó]n|sweetheart/.test(s)) {
+    neck={type:'sweetheart', depth:14, width:10, label:'Escote corazón'};
+  } else if(/escote en v profundo|v profundo|escote profundo/.test(s) || (/escote en v/.test(s) && /profundo/.test(s))) {
+    neck={type:'deep_v', depth:22, width:2.5, label:'Escote en V profundo'};
+  } else if(/escote cruzado en v|cruzado en v|escote en v|en v /.test(s)) {
+    neck={type:'v', depth:16, width:3, label:'Escote en V'};
+  } else if(/escote calado|calado/.test(s) && support==='halter') {
+    neck={type:'halter_cutout', depth:18, width:4, label:'Halter con escote calado'};
+  } else if(/gargantilla|halter alto|cuello alto/.test(s) && /halter/.test(s)) {
+    neck={type:'halter_high', depth:20, width:3, label:'Halter alto / gargantilla'};
+  } else if(/halter cruzado|cuello halter cruzado/.test(s)) {
+    neck={type:'halter_cross', depth:18, width:3.5, label:'Halter cruzado'};
+  } else if(support==='halter' || /escote halter|cuello halter/.test(s)) {
+    neck={type:'halter', depth:18, width:3, label:'Escote halter'};
+  } else if(support==='strapless') {
+    neck={type:'strapless', depth:0, width:11, label:'Escote strapless recto'};
+  } else if(support==='one_shoulder') {
+    neck={type:'one_shoulder', depth:6, width:12, label:'Un hombro'};
+  } else if(support==='bandeau' || /escote recto/.test(s)) {
+    neck={type:'straight', depth:0, width:11, label:'Escote recto / bandeau'};
+  } else if(/cuello alto|cuello polo/.test(s)) {
+    neck={type:'high', depth:2, width:8, label:'Cuello alto'};
+  } else if(/cuello camisero/.test(s)) {
+    neck={type:'shirt', depth:10, width:7, label:'Cuello camisero'};
+  } else if(/escote barco|barco/.test(s)) {
+    neck={type:'boat', depth:4, width:11, label:'Escote barco'};
+  } else if(support==='thin_straps' || support==='straps') {
+    // slip default: slightly open
+    if(/drapeado/.test(s)) neck={type:'cowl', depth:14, width:10, label:'Escote drapeado'};
+    else neck={type:'v', depth:12, width:4, label:'Escote en V suave'};
+  }
+
+  // override: if front says cowl specifically
+  if(/escote cowl/.test(s)) neck={type:'cowl', depth:16, width:11, label:'Escote cowl drapeado'};
+
+  // —— abertura ——
+  let opening={type:'none', height:0, place:'—', label:'Sin abertura'};
+  if(/falda cruzada|wrap|cruzada con abertura/.test(s)) {
+    const h=length==='mini'?28:length==='midi'?48:72;
+    opening={type:'wrap_side', height:h, place:'lateral (falda cruzada)', label:'Abertura lateral por falda cruzada'};
+  } else if(/abertura frontal|abertura al frente|abertura en el frente/.test(s) || (/abertura/.test(s) && /frontal|frente/.test(s))) {
+    const h=/alta/.test(s)?(length==='mini'?32:length==='midi'?55:78):(length==='mini'?22:length==='midi'?40:65);
+    opening={type:'front', height:h, place:'centro delantero', label:'Abertura frontal'};
+  } else if(/abertura lateral|abertura en la pierna|abertura alta/.test(s) || (/abertura/.test(s) && /lateral|pierna/.test(s))) {
+    const h=/alta/.test(s)?(length==='mini'?30:length==='midi'?52:75):(length==='mini'?24:length==='midi'?42:68);
+    opening={type:'side', height:h, place:'costado / pierna', label:'Abertura lateral'};
+  } else if(/abertura en el ruedo/.test(s)) {
+    const h=length==='mini'?18:length==='midi'?28:45;
+    opening={type:'hem', height:h, place:'ruedo', label:'Abertura en el ruedo'};
+  } else if(/\babertura\b/.test(s)) {
+    // abertura sin lado explícito: en vestido de noche/cocktail = lateral; essentials midi = ruedo
+    const sideish=length==='floor'||/noche|cocktail|sat[eé]n|cors[eé]|strapless|halter|drapeado/.test(s);
+    if(sideish){
+      const h=length==='mini'?26:length==='midi'?45:68;
+      opening={type:'side', height:h, place:'costado / pierna', label:'Abertura lateral'};
+    } else {
+      const h=length==='mini'?18:length==='midi'?28:45;
+      opening={type:'hem', height:h, place:'ruedo', label:'Abertura en el ruedo'};
+    }
+  } else if(/frunce lateral/.test(s)) {
+    opening={type:'side', height:length==='midi'?40:55, place:'lateral con frunce', label:'Abertura / frunce lateral'};
+  }
+
+  // —— espalda ——
+  let back={type:'closed', depth:4, label:'Espalda cerrada'};
+  if(/espalda profundamente descubierta|espalda descubierta profunda/.test(s)) {
+    back={type:'deep_open', depth:28, label:'Espalda profundamente descubierta'};
+  } else if(/espalda cowl|drapeado cowl/.test(s) && /espalda/.test(s)) {
+    back={type:'cowl', depth:18, label:'Espalda cowl descubierta'};
+  } else if(/espalda descubierta|espalda abierta|laterales descubiertos/.test(s) || support==='halter') {
+    back={type:'open', depth:22, label:'Espalda descubierta'};
+  } else if(/panel de caída|panel de capa|capa que nace/.test(s)) {
+    back={type:'cape', depth:8, label:'Espalda con panel / capa'};
+  } else if(support==='thin_straps'||support==='straps') {
+    back={type:'open', depth:12, label:'Espalda con breteles (escote moderado)'};
+  } else if(support==='strapless') {
+    back={type:'strapless', depth:0, label:'Espalda strapless'};
+  }
+
+  // —— extras ——
+  const wrap=/falda cruzada|falda.*cruzad|cruzada con abertura|\bwrap\b|slip.*abertura lateral|abertura lateral.*slip/.test(s);
+  const cutout=/recorte|cutout|cintura descubierta|recorte en (la )?cintura|recorte lateral|recorte en el abdomen|laterales descubiertos/.test(s);
+  const corset=/cors[eé]|corsetería|varilla|corsage/.test(s);
+  const draped=/drapeado|frunce|nudo en la cintura|nudo lateral/.test(s);
+  const ring=/aro (dorado|en|metálico)|aro en el escote|aro en la cadera/.test(s);
+  const scarf=/pa[nñ]uelo|foulard desde el cuello/.test(s);
+
+  // holgura según tela
+  const ease=fab.ease;
+  const stretch=fab.stretch;
+
+  // sistema de dibujo (prioridad: corsé → un hombro → halter → slip → caftán → mangas → columna)
+  let system='column';
+  if(support==='sleeves' || support==='wide_sleeves') system='sleeved';
+  if(support==='shirt' || /caft[aá]n/.test(s)) system='caftan';
+  if((neck.type==='cowl' || /\bslip\b|sirena|falda cruzada con abertura|escote drapeado y falda cruzada/.test(s))
+      && support!=='halter' && support!=='strapless' && support!=='one_shoulder') system='slip';
+  if(wrap && (support==='thin_straps'||support==='straps') && support!=='halter') system='slip';
+  if(support==='halter' || neck.type.startsWith('halter')) system=wrap?'halter_wrap':'halter';
+  if(support==='one_shoulder') system='one_shoulder';
+  if(support==='strapless' || corset) system='corset';
+
+  // Slip / abertura lateral ⇒ falda cruzada en el molde
+  let wrapOut=wrap;
+  let openingOut=opening;
+  if(system==='slip' && opening.type==='side'){
+    wrapOut=true;
+    openingOut={type:'wrap_side', height:opening.height, place:'lateral (falda cruzada)', label:'Abertura lateral por falda cruzada'};
+  }
+  if((system==='slip'||system==='halter_wrap') && openingOut.type==='wrap_side') wrapOut=true;
+
+  const bodiceH = support==='strapless' ? 28 : 38;
+  const skirtL = round1(lengthCm - (support==='strapless'?0:12));
+
+  return {
+    productId:p.id, name:p.name,
+    system, length, lengthCm, bodiceH, skirtL,
+    support, neck, opening:openingOut, back,
+    wrap:wrapOut, cutout, corset, draped, ring, scarf,
+    fabric:fab, ease, stretch,
+    seamAllowance:1.0,
+    size:'M',
+    notes: buildNotes({support,neck,opening,back,wrap,cutout,corset,fab,length,draped,ring})
+  };
+}
+
+function buildNotes(x){
+  const n=[];
+  n.push(`Escote: ${x.neck.label} (prof. ${x.neck.depth} cm).`);
+  n.push(`Abertura: ${x.opening.label}${x.opening.height?` · ${x.opening.height} cm desde el ruedo`:''}.`);
+  n.push(`Espalda: ${x.back.label}.`);
+  n.push(`Largo: ${x.length} (~${x.length==='mini'?88:x.length==='midi'?112:140} cm CF).`);
+  n.push(`Tela principal: ${x.fab.name}${x.fab.meters!=null?` · ${x.fab.meters} m`:''}.`);
+  if(x.fab.lining) n.push(`Forro: ${x.fab.lining.name} · ${x.fab.lining.meters} m.`);
+  n.push(`Holgura base: ${x.fab.ease} cm · stretch: ${x.fab.stretch}% · hilo: ${x.fab.grain}.`);
+  if(x.fab.bias) n.push('Corte al bies recomendado en zonas drapeadas.');
+  if(x.wrap) n.push('Falda cruzada: extender cruce ~18 cm + frunce en cintura.');
+  if(x.cutout) n.push('Recorte en cintura / abdomen: separar cuerpo y falda o marcar vaciado.');
+  if(x.corset) n.push('Corsetería: varillas + entretela; cuerpo estructurado.');
+  if(x.draped) n.push('Drapeado / frunce: holgura extra en zona marcada.');
+  if(x.ring) n.push('Aro metálico: ojales / anclaje en escote o cadera.');
+  n.push('Margen de costura: 1 cm (atelier). Validar con muestra.');
+  return n;
+}
+
+function isDressLike(p, sys){
+  if(sys==='dress'||sys==='slip'||sys==='halter') return true;
+  const s=(p.name+' '+p.desc).toLowerCase();
+  return /\bvestido\b|\benterizo\b|\bmono\b|\bcaft[aá]n\b|\bslip\b|\bcors[eé]\b|\bcolumna\b|\bbustier\b/.test(s);
+}
+
+function dressVariant(p){
+  const spec=buildDressSpec(p);
+  if(spec.system==='slip') return 'slip';
+  if(spec.system==='halter'||spec.system==='halter_wrap') return 'halter';
+  if(spec.system==='corset') return 'corset';
+  return 'dress';
+}
+
+function aiBrief(p, spec){
+  const lines=[
+    `MODELO GRUT: ${p.name} (id ${p.id}) · talle M mujer`,
+    `DESCRIPCIÓN: ${p.desc}`,
+    ``,
+    `CONSTRUCCIÓN EXACTA PARA GENERAR EL VESTIDO:`,
+    `· Sistema: ${spec.system}`,
+    `· Silueta / soporte: ${spec.support}`,
+    `· Largo: ${spec.length} (${spec.lengthCm} cm CF aprox.)`,
+    `· Escote: ${spec.neck.type} — ${spec.neck.label} · profundidad ${spec.neck.depth} cm · ancho 1/2 ${spec.neck.width} cm`,
+    `· Abertura: ${spec.opening.type} — ${spec.opening.label} · alto ${spec.opening.height} cm · lugar: ${spec.opening.place}`,
+    `· Espalda: ${spec.back.type} — ${spec.back.label} · profundidad ${spec.back.depth} cm`,
+    `· Falda cruzada: ${spec.wrap?'sí':'no'} · Recortes: ${spec.cutout?'sí':'no'} · Corsé: ${spec.corset?'sí':'no'} · Drapeado: ${spec.draped?'sí':'no'}`,
+    `· Tela: ${spec.fabric.name} (${spec.fabric.key})${spec.fabric.meters!=null?' · '+spec.fabric.meters+' m':''}`,
+    `· Forro: ${spec.fabric.lining?spec.fabric.lining.name+' · '+spec.fabric.lining.meters+' m':'no'}`,
+    `· Holgura: ${spec.ease} cm · stretch ${spec.stretch}% · grano: ${spec.fabric.grain}`,
+    `· Margen costura: ${spec.seamAllowance} cm`,
+    ``,
+    `NOTAS DE ATELIER:`,
+    ...spec.notes.map(n=>'· '+n),
+    ``,
+    `BOM:`,
+    ...(spec.fabric.bom||[]).map(b=>`· ${b.name}: ${b.qty}`),
+    ``,
+    `Generá el vestido respetando EXACTAMENTE escote, abertura, largo y tela indicados. No inventes otro escote ni omitas la abertura.`
+  ];
+  return lines.join('\n');
+}
 
 function round1(n){return Math.round(n*2)/2}
 
@@ -246,8 +916,13 @@ function boardsFor(p){
   if(/\bvestido\b/.test(t)) multi.push({sys:'dress',label:'Vestido'});
   if(multi.length>=2) return multi;
   let sys=classifyPrimary(p);
-  if(sys==='dress' && dressVariant(p)==='slip') sys='slip';
-  if(sys==='dress' && dressVariant(p)==='halter') sys='halter';
+  if(sys==='dress'||sys==='slip'||sys==='halter'){
+    const spec=buildDressSpec(p);
+    const map={slip:'slip',halter:'halter',halter_wrap:'halter',corset:'dress',one_shoulder:'dress',caftan:'dress',sleeved:'dress',column:'dress'};
+    sys=map[spec.system]||'dress';
+    const labels={slip:'Slip / Cowl',halter:'Halter',dress:'Vestido'};
+    return [{sys,label:labels[sys]||(SYSTEMS[sys]||SYSTEMS.dress).label,spec}];
+  }
   return [{sys,label:(SYSTEMS[sys]||SYSTEMS.dress).label}];
 }
 
@@ -277,344 +952,346 @@ function dimV(x,y1,y2,val,side='left'){
   return line(x,y1,x,y2)+meas(x+ox,mid+4,round1(val),ax);
 }
 
-function dressVariant(p){
-  const t=((p&&p.name)||'')+' '+((p&&p.desc)||'');
-  const s=t.toLowerCase();
-  // Slip champagne / cowl / abertura / breteles — Vestido Sirena y similares
-  if(/cowl|slip|abertura lateral|falda cruzada|escote drapeado|breteles finos.*abertura|abertura.*breteles|sirena|slip champagne|frunce lateral/.test(s))
-    return 'slip';
-  if(/halter|gargantilla|un solo hombro|un hombro|strapless|corsé|corsetería/.test(s))
-    return /halter|gargantilla/.test(s)?'halter':'dress';
-  return 'dress';
-}
-
 function renderSystem(sys,p){
   const b=base(p);
-  let use=sys;
-  if(sys==='dress'){
-    const v=dressVariant(p);
-    if(v==='slip') use='slip';
-    else if(v==='halter') use='halter';
-  }
+  // Solo el board de vestido / slip / halter usa el molde paramétrico (escote·abertura·tela)
+  if(sys==='dress'||sys==='slip'||sys==='halter') return drawDressExact(b,p);
   const fn={
-    shirt:drawShirt,blazer:drawBlazer,dress:drawDress,slip:drawSlipCowl,trousers:drawTrousers,
-    knit:drawKnit,swim:drawSwim,accessory:drawAccessory,halter:drawHalter,short:drawShort
-  }[use]||drawDress;
-  return fn(b,p);
+    shirt:drawShirt,blazer:drawBlazer,trousers:drawTrousers,
+    knit:drawKnit,swim:drawSwim,accessory:drawAccessory,short:drawShort
+  }[sys];
+  if(fn) return fn(b,p);
+  // fallback: si el modelo es un vestido mal clasificado
+  if(isDressLike(p,sys)) return drawDressExact(b,p);
+  return drawShirt(b,p);
 }
 
 
-/* ---- Slip / Cowl / falda cruzada con abertura (Vestido Sirena) ---- */
-function drawSlipCowl(b){
-  const bust=round1(b.chest/4+1.5);     // 1/2 delantero aprox al busto
-  const waist=round1(b.waist/4+1.5);
-  const hip=round1(b.hip/4+2);
-  const bodiceH=round1(38);             // escote a cintura
-  const cowlDrop=round1(16);            // caída del cowl
-  const skirtL=round1(102);             // cintura a piso
-  const slitH=round1(72);               // alto abertura desde ruedo
-  const strapW=1, strapL=round1(42);
-  const wrapExtra=round1(18);           // extensión del cruce
-  const rows=[], pieces=[];
-  const pad=26;
 
-  // DIA.1 FRONT BODICE — escote cowl (línea de doblez del drapeado)
-  {
-    const ox=40, oy=pad;
-    const xB=u(bust), xW=u(waist);
-    const yCowl=u(cowlDrop), yBust=u(cowlDrop+8), yWaist=u(bodiceH);
-    // Contorno: puntos de bretel arriba, cowl profundo (guía), costados al busto/cintura
-    const d=[
-      `M${u(2)},0`,                         // punto bretel izq
-      `L${xB-u(2)},0`,                      // punto bretel der
-      `C${xB+u(1)},${u(6)} ${xB+u(2)},${yBust*0.55} ${xB},${yBust}`,
-      `C${xB},${(yBust+yWaist)/2} ${xW+u(1)},${yWaist-u(3)} ${xW},${yWaist}`,
-      `L0,${yWaist}`,
-      `C${u(-0.5)},${(yBust+yWaist)/2} ${u(-1)},${yBust*0.55} ${u(1)},${yBust}`,
-      `C${u(2)},${yCowl*0.5} ${u(2)},${u(4)} ${u(2)},0`,
-      'Z'
-    ].join(' ');
-    pieces.push(`<g transform="translate(${ox},${oy})">
-      ${path(d)}
-      ${guide(`M${u(3)},${yCowl*0.35} Q${xB/2},${yCowl+u(2)} ${xB-u(3)},${yCowl*0.35}`)}
-      ${guide(`M${xB*0.35},0 L${xB*0.32},${yWaist}`)}
-      ${guide(`M${xB*0.65},0 L${xB*0.68},${yWaist}`)}
-      ${line(0,yBust,xB,yBust)}${line(0,yWaist,xW,yWaist)}
-      ${circ(u(2),0,3)}${circ(xB-u(2),0,3)}
-      ${label(xB*0.48,yWaist*0.62,'Front',1)}
-      ${textAnno(xB*0.48,yCowl+u(5),'cowl')}
-      ${dimH(u(2),xB-u(2),-10,round1(bust-2))}
-      ${dimH(0,xB,yBust-8,bust)}
-      ${dimH(0,xW,yWaist+14,waist)}
-      ${dimV(-12,0,yWaist,bodiceH,'left')}
-      ${dimV(xB+10,0,yCowl,cowlDrop,'right')}
-    </g>`);
-    rows.push(
-      ['Front','Ancho entre breteles',round1(bust-2)],
-      ['Front','Busto (1/2)',bust],
-      ['Front','Cintura (1/2)',waist],
-      ['Front','Alto cuerpo',bodiceH],
-      ['Front','Caída cowl',cowlDrop]
-    );
-  }
-
-  // DIA.2 BACK BODICE — escote bajo + puntos de bretel
-  {
-    const ox=280, oy=pad;
-    const xB=u(round1(bust+0.5)), xW=u(round1(waist+0.5));
-    const backH=round1(bodiceH-2), neckD=round1(8);
-    const yNeck=u(neckD), yWaist=u(backH);
-    const d=[
-      `M${u(2)},0 L${xB-u(2)},0`,
-      `C${xB+u(1)},${u(5)} ${xB+u(1.5)},${yNeck+u(4)} ${xB},${yNeck+u(6)}`,
-      `L${xW},${yWaist} L0,${yWaist}`,
-      `L${u(0.5)},${yNeck+u(6)} C${u(0)},${yNeck+u(2)} ${u(1)},${u(4)} ${u(2)},0 Z`
-    ].join(' ');
-    pieces.push(`<g transform="translate(${ox},${oy})">
-      ${path(d)}
-      ${guide(`M${u(3)},${yNeck} Q${xB/2},${yNeck+u(3)} ${xB-u(3)},${yNeck}`)}
-      ${circ(u(2),0,3)}${circ(xB-u(2),0,3)}
-      ${line(0,yWaist,xW,yWaist)}
-      ${label(xB*0.48,yWaist*0.58,'Back',2)}
-      ${dimH(u(2),xB-u(2),-10,round1(bust-1.5))}
-      ${dimH(0,xW,yWaist+14,round1(waist+0.5))}
-      ${dimV(-12,0,yWaist,backH,'left')}
-      ${dimV(xB+10,0,yNeck,neckD,'right')}
-    </g>`);
-    rows.push(
-      ['Back','Ancho entre breteles',round1(bust-1.5)],
-      ['Back','Cintura (1/2)',round1(waist+0.5)],
-      ['Back','Alto cuerpo',backH],
-      ['Back','Prof. escote espalda',neckD]
-    );
-  }
-
-  // DIA.5 STRAP (arriba a la derecha)
-  {
-    const ox=520, oy=pad;
-    const ww=u(strapL), hh=u(strapW+0.5);
-    pieces.push(`<g transform="translate(${ox},${oy})">
-      ${path(`M0,0 L${ww},0 L${ww},${hh} L0,${hh} Z`)}
-      ${label(ww/2,hh+u(4),'Strap',5)}
-      ${dimH(0,ww,-8,strapL)}
-      ${dimV(-10,0,hh,round1(strapW+0.5),'left')}
-      ${meas(ww/2,hh+u(9),'×2','middle')}
-    </g>`);
-    rows.push(['Strap','Largo (c/u)',strapL],['Strap','Ancho',round1(strapW+0.5)],['Strap','Cantidad',2]);
-  }
-
-  // DIA.3 SKIRT FRONT WRAP — frunce a un lado + abertura alta
-  {
-    const ox=40, oy=pad+u(bodiceH+10);
-    const xW=u(waist), xH=u(hip), xWrap=u(hip+wrapExtra), xHem=u(hip+wrapExtra+4);
-    const yHip=u(18), ySlit=u(skirtL-slitH), yHem=u(skirtL);
-    // lado izquierdo = costado con abertura; derecha = cruce/wrap
-    const d=[
-      `M0,0 L${xW},0`,
-      // cintura con marcas de frunce hacia la derecha
-      `L${xWrap},${u(2)}`,
-      `C${xWrap+u(2)},${yHip*0.5} ${xHem},${yHip} ${xHem},${yHip}`,
-      `L${xHem},${yHem}`,
-      `L${u(4)},${yHem}`,           // ruedo hasta la abertura
-      `L${u(2)},${ySlit}`,          // sube la abertura
-      `L0,${yHip}`,                 // costado hasta cadera
-      'Z'
-    ].join(' ');
-    pieces.push(`<g transform="translate(${ox},${oy})">
-      ${path(d)}
-      ${guide(`M${xW*0.55},0 L${xW*0.7},${yHip}`)}
-      ${guide(`M${xW*0.7},0 L${xW*0.85},${yHip}`)}
-      ${guide(`M${xW*0.85},0 L${xWrap*0.95},${yHip}`)}
-      ${guide(`M${u(2)},${ySlit} L${u(2)},${yHem}`)}
-      ${line(0,0,xW,0)}
-      ${label(xHem*0.42,yHem*0.45,'Skirt Front',3)}
-      ${textAnno(xWrap*0.75,yHip*0.55,'frunce')}
-      ${textAnno(u(8),ySlit+u(10),'abertura')}
-      ${dimH(0,xW,-8,waist)}
-      ${dimH(0,xHem,yHip-8,round1(hip+wrapExtra+4))}
-      ${dimH(u(4),xHem,yHem+14,round1(hip+wrapExtra))}
-      ${dimV(-12,0,yHem,skirtL,'left')}
-      ${dimV(xHem+10,ySlit,yHem,slitH,'right')}
-    </g>`);
-    rows.push(
-      ['Skirt Front','Cintura (1/2)',waist],
-      ['Skirt Front','Ancho con cruce',round1(hip+wrapExtra+4)],
-      ['Skirt Front','Largo falda',skirtL],
-      ['Skirt Front','Alto abertura',slitH],
-      ['Skirt Front','Extensión cruce',wrapExtra]
-    );
-  }
-
-  // DIA.4 SKIRT BACK
-  {
-    const ox=480, oy=pad+u(bodiceH+10);
-    const xW=u(round1(waist+0.5)), xH=u(round1(hip+1)), xHem=u(round1(hip+3));
-    const yHip=u(18), yHem=u(skirtL);
-    const d=[
-      `M0,0 L${xW},0`,
-      `C${xH},${u(6)} ${xH+u(1)},${yHip} ${xH},${yHip}`,
-      `L${xHem},${yHem} L0,${yHem} Z`
-    ].join(' ');
-    pieces.push(`<g transform="translate(${ox},${oy})">
-      ${path(d)}
-      ${guide(`M${xW/2},0 L${xHem/2},${yHem}`)}
-      ${line(0,0,xW,0)}
-      ${label(xHem*0.42,yHem*0.45,'Skirt Back',4)}
-      ${dimH(0,xW,-8,round1(waist+0.5))}
-      ${dimH(0,xH,yHip-8,round1(hip+1))}
-      ${dimH(0,xHem,yHem+14,round1(hip+3))}
-      ${dimV(-12,0,yHem,skirtL,'left')}
-    </g>`);
-    rows.push(
-      ['Skirt Back','Cintura (1/2)',round1(waist+0.5)],
-      ['Skirt Back','Cadera (1/2)',round1(hip+1)],
-      ['Skirt Back','Ruedo (1/2)',round1(hip+3)],
-      ['Skirt Back','Largo falda',skirtL]
-    );
-  }
-
-  const h=Math.ceil(pad*2+u(bodiceH+10+skirtL+8));
-  return {svg:wrapSVG(920,h,pieces.join('')), rows, title:'TheSlip System'};
-}
-
-function textAnno(x,y,t){
-  return `<text class="label-dia" x="${x}" y="${y}" text-anchor="middle" font-style="italic">${t}</text>`;
-}
-
-/* ---- Vestido columna / barco (como el look marfil) ---- */
-function drawDress(b){
-  // Mitad delantera sobre pliegue. Escala real en cm.
-  const bust=round1(b.chest/4+2);      // ~25 W / ~27 M
-  const waist=round1(b.waist/4+2);     // ~20.5
-  const hip=round1(b.hip/4+3);         // ~27.5
-  const hem=round1(hip+2);
-  const len=round1((b.g==='M'?b.front:b.front)+96); // piso ~140 mujer
-  const neckW=round1(b.neck/2+1);      // barco: ancho medio escote
-  const neckD=4;                       // profundidad escote barco
-  const sh=round1(bust-2);             // hombro a sisa (barco casi horizontal)
-  const armD=round1(b.yoke+5);         // profundidad sisa
+/* ---- Vestido paramétrico: respeta escote, abertura, largo y tela ---- */
+function drawDressExact(b, p){
+  const spec=buildDressSpec(p);
+  const ease=spec.ease;
+  const bust=round1(b.chest/4 + ease);
+  const waist=round1(b.waist/4 + ease);
+  const hip=round1(b.hip/4 + ease + 1);
+  const hem=round1(hip + (spec.length==='mini'?1:2));
+  const len=round1(spec.lengthCm);
+  const neck=spec.neck;
+  const open=spec.opening;
+  const backS=spec.back;
   const pad=28;
-  const rows=[];
-  const pieces=[];
+  const rows=[], pieces=[];
+  const fabricNote=spec.fabric.name.split('·')[0].trim();
 
-  // FRONT — CF a la izquierda (pliegue)
+  // title
+  const titleMap={slip:'TheSlip System',halter:'TheHalter System',halter_wrap:'TheHalter Wrap System',corset:'TheCorset System',one_shoulder:'TheOneShoulder System',caftan:'TheCaftan System',sleeved:'TheSleeved Dress System',column:'TheDress System'};
+  const title=titleMap[spec.system]||'TheDress System';
+
+  // —— FRONT ——
   {
     const ox=520, oy=pad;
     const cf=0;
-    const xNeck=u(neckW), xSh=u(sh), xBust=u(bust), xWaist=u(waist), xHip=u(hip), xHem=u(hem);
-    const yNeck=u(neckD), yArm=u(armD), yBust=u(armD+2), yWaist=u(armD+18), yHip=u(armD+38), yHem=u(len);
-    const d=[
-      `M${cf},${yNeck}`,
-      `L${xNeck},${yNeck*0.35}`,
-      `L${xSh},${u(1)}`,
-      `C${xSh+u(2)},${u(6)} ${xBust+u(1)},${yArm*0.55} ${xBust},${yArm}`,
-      `C${xBust+u(0.5)},${(yArm+yWaist)/2} ${xWaist+u(1)},${yWaist-u(4)} ${xWaist},${yWaist}`,
-      `C${xWaist+u(0.5)},${(yWaist+yHip)/2} ${xHip},${yHip-u(4)} ${xHip},${yHip}`,
-      `L${xHem},${yHem}`,
-      `L${cf},${yHem}`,
-      'Z'
-    ].join(' ');
+    const xNeck=u(neck.width), xBust=u(bust), xWaist=u(waist), xHip=u(hip), xHem=u(hem);
+    const yNeck=u(Math.max(neck.depth,0.5));
+    const armD = (spec.support==='strapless'||spec.support==='bandeau'||spec.support==='halter'||spec.support==='one_shoulder') ? round1(8) : round1(b.yoke+5);
+    const yArm=u(armD);
+    const yBust=u(Math.max(armD, neck.depth)+2);
+    const yWaist=u(spec.bodiceH);
+    const yHip=u(spec.bodiceH+18);
+    const yHem=u(len);
+    const ySlit = open.type!=='none' ? u(len - open.height) : null;
+
+    let d;
+    const sh = (spec.support==='halter'||spec.support==='strapless'||spec.support==='bandeau') ? round1(bust-3) : round1(bust-2);
+    const xSh=u(sh);
+
+    if(neck.type==='cowl'){
+      const yCowl=u(neck.depth);
+      d=[
+        `M${u(2)},0 L${xBust-u(2)},0`,
+        `C${xBust+u(1)},${u(6)} ${xBust+u(2)},${yBust*0.55} ${xBust},${yBust}`,
+        `C${xBust},${(yBust+yWaist)/2} ${xWaist+u(1)},${yWaist-u(3)} ${xWaist},${yWaist}`,
+        `C${xWaist},${(yWaist+yHip)/2} ${xHip},${yHip-u(4)} ${xHip},${yHip}`,
+        open.type==='front' ? `L${xHem},${ySlit} L${u(2)},${ySlit} L${u(2)},${yHem} L${cf},${yHem}` :
+        open.type==='side'||open.type==='wrap_side' ? `L${xHem},${yHem} L${u(3)},${yHem} L${u(2)},${ySlit} L${xHip*0.15},${yHip}` :
+        `L${xHem},${yHem} L${cf},${yHem}`,
+        `L${cf},${yWaist}`,
+        `C${u(-0.5)},${(yBust+yWaist)/2} ${u(-1)},${yBust*0.55} ${u(1)},${yBust}`,
+        `C${u(2)},${yCowl*0.5} ${u(2)},${u(4)} ${u(2)},0 Z`
+      ].join(' ');
+    } else if(neck.type==='strapless'||neck.type==='straight'){
+      d=[
+        `M${cf},0 L${xBust},0`,
+        `C${xBust+u(0.5)},${yWaist*0.45} ${xWaist+u(1)},${yWaist-u(3)} ${xWaist},${yWaist}`,
+        `C${xWaist},${(yWaist+yHip)/2} ${xHip},${yHip-u(3)} ${xHip},${yHip}`,
+        open.type==='front' ? `L${xHem},${ySlit} L${u(2)},${ySlit} L${u(2)},${yHem} L${cf},${yHem}` :
+        open.type==='side'||open.type==='wrap_side' ? `L${xHem},${yHem} L${u(3)},${yHem} L${u(2)},${ySlit} L0,${yHip}` :
+        `L${xHem},${yHem} L${cf},${yHem}`,
+        'Z'
+      ].join(' ');
+    } else if(neck.type.startsWith('halter')||spec.support==='halter'){
+      // punto cuello arriba, escote profundo
+      d=[
+        `M${u(neck.width)},0`,
+        `C${u(neck.width+2)},${u(8)} ${u(8)},${yNeck*0.55} ${u(2)},${yNeck}`,
+        `L${u(1)},${yBust}`,
+        `L${xBust},${yBust+u(2)}`,
+        `C${xBust},${(yBust+yWaist)/2} ${xWaist+u(1)},${yWaist-u(3)} ${xWaist},${yWaist}`,
+        `C${xWaist},${(yWaist+yHip)/2} ${xHip},${yHip-u(3)} ${xHip},${yHip}`,
+        open.type==='front' ? `L${xHem},${ySlit} L${u(2)},${ySlit} L${u(2)},${yHem} L${cf},${yHem}` :
+        open.type==='side'||open.type==='wrap_side' ? `L${xHem},${yHem} L${u(3)},${yHem} L${u(2)},${ySlit} L0,${yHip}` :
+        `L${xHem},${yHem} L${cf},${yHem}`,
+        `L${cf},${yNeck}`,
+        'Z'
+      ].join(' ');
+    } else if(neck.type==='one_shoulder'){
+      d=[
+        `M${cf},${u(2)} L${xBust},${u(1)}`,
+        `C${xBust+u(1)},${u(8)} ${xBust},${yArm} ${xBust},${yArm}`,
+        `C${xBust},${(yArm+yWaist)/2} ${xWaist},${yWaist-u(2)} ${xWaist},${yWaist}`,
+        `C${xWaist},${(yWaist+yHip)/2} ${xHip},${yHip-u(3)} ${xHip},${yHip}`,
+        open.type!=='none' && open.type!=='hem' ? (
+          open.type==='front' ? `L${xHem},${ySlit} L${u(2)},${ySlit} L${u(2)},${yHem} L${cf},${yHem}` :
+          `L${xHem},${yHem} L${u(3)},${yHem} L${u(2)},${ySlit} L0,${yHip}`
+        ) : `L${xHem},${yHem} L${cf},${yHem}`,
+        'Z'
+      ].join(' ');
+    } else if(neck.type==='deep_v'||neck.type==='v'||neck.type==='shirt'){
+      d=[
+        `M${cf},${yNeck}`,
+        `L${xNeck},${u(1)}`,
+        `L${xSh},${u(0.5)}`,
+        `C${xSh+u(2)},${u(6)} ${xBust+u(1)},${yArm*0.55} ${xBust},${yArm}`,
+        `C${xBust},${(yArm+yWaist)/2} ${xWaist+u(1)},${yWaist-u(3)} ${xWaist},${yWaist}`,
+        `C${xWaist},${(yWaist+yHip)/2} ${xHip},${yHip-u(3)} ${xHip},${yHip}`,
+        open.type==='front' ? `L${xHem},${ySlit} L${cf+u(1.5)},${ySlit} L${cf+u(1.5)},${yHem} L${cf},${yHem}` :
+        open.type==='side'||open.type==='wrap_side' ? `L${xHem},${yHem} L${u(3)},${yHem} L${u(2)},${ySlit} L0,${yHip}` :
+        open.type==='hem' ? `L${xHem},${yHem} L${u(open.height>0?4:0)},${yHem} L${u(2)},${ySlit} L${cf},${ySlit}` :
+        `L${xHem},${yHem} L${cf},${yHem}`,
+        'Z'
+      ].join(' ');
+    } else if(neck.type==='high'){
+      d=[
+        `M${cf},0 L${xNeck},0 L${xSh},0`,
+        `C${xSh+u(2)},${u(5)} ${xBust},${yArm*0.5} ${xBust},${yArm}`,
+        `C${xBust},${(yArm+yWaist)/2} ${xWaist},${yWaist-u(2)} ${xWaist},${yWaist}`,
+        `C${xWaist},${(yWaist+yHip)/2} ${xHip},${yHip-u(3)} ${xHip},${yHip}`,
+        `L${xHem},${yHem} L${cf},${yHem} Z`
+      ].join(' ');
+    } else if(neck.type==='boat'){
+      d=[
+        `M${cf},${yNeck} L${xNeck},${yNeck*0.35} L${xSh},${u(1)}`,
+        `C${xSh+u(2)},${u(6)} ${xBust+u(1)},${yArm*0.55} ${xBust},${yArm}`,
+        `C${xBust},${(yArm+yWaist)/2} ${xWaist},${yWaist-u(3)} ${xWaist},${yWaist}`,
+        `C${xWaist},${(yWaist+yHip)/2} ${xHip},${yHip-u(3)} ${xHip},${yHip}`,
+        open.type==='side'||open.type==='wrap_side' ? `L${xHem},${yHem} L${u(3)},${yHem} L${u(2)},${ySlit} L0,${yHip}` :
+        `L${xHem},${yHem} L${cf},${yHem}`,
+        'Z'
+      ].join(' ');
+    } else { // round / sweetheart default
+      const yTop = neck.type==='sweetheart' ? u(2) : yNeck;
+      d=[
+        `M${cf},${yNeck}`,
+        neck.type==='sweetheart'
+          ? `Q${xNeck*0.5},${u(neck.depth*0.3)} ${xNeck},${u(1)} L${xSh},${u(0.5)}`
+          : `Q${xNeck*0.6},${u(2)} ${xNeck},${u(1)} L${xSh},${u(0.5)}`,
+        `C${xSh+u(2)},${u(6)} ${xBust},${yArm*0.55} ${xBust},${yArm}`,
+        `C${xBust},${(yArm+yWaist)/2} ${xWaist},${yWaist-u(3)} ${xWaist},${yWaist}`,
+        `C${xWaist},${(yWaist+yHip)/2} ${xHip},${yHip-u(3)} ${xHip},${yHip}`,
+        open.type==='front' ? `L${xHem},${ySlit} L${u(2)},${ySlit} L${u(2)},${yHem} L${cf},${yHem}` :
+        open.type==='side'||open.type==='wrap_side' ? `L${xHem},${yHem} L${u(3)},${yHem} L${u(2)},${ySlit} L0,${yHip}` :
+        open.type==='hem' ? `L${xHem},${yHem} L${u(4)},${yHem} L${u(2)},${ySlit} L${cf},${ySlit}` :
+        `L${xHem},${yHem} L${cf},${yHem}`,
+        'Z'
+      ].join(' ');
+    }
+
+    // wrap extension visual
+    const wrapExtra = spec.wrap ? 18 : 0;
+    let extras='';
+    if(neck.type==='cowl'){
+      extras += guide(`M${u(3)},${u(neck.depth*0.35)} Q${xBust/2},${u(neck.depth+2)} ${xBust-u(3)},${u(neck.depth*0.35)}`);
+      extras += textAnno(xBust*0.48, u(neck.depth+5), 'cowl');
+    }
+    if(open.type!=='none' && ySlit!=null){
+      extras += guide(`M${u(2)},${ySlit} L${u(2)},${yHem}`);
+      extras += textAnno(u(10), ySlit+u(8), 'abertura');
+      extras += dimV(xHem+10, ySlit, yHem, open.height, 'right');
+    }
+    if(spec.cutout){
+      extras += guide(`M${u(4)},${yWaist-u(4)} L${xWaist-u(2)},${yWaist-u(4)} L${xWaist-u(2)},${yWaist+u(4)} L${u(4)},${yWaist+u(4)} Z`);
+      extras += textAnno(xWaist*0.5, yWaist-u(6), 'recorte');
+    }
+    if(spec.support==='thin_straps'||spec.support==='straps'){
+      extras += circ(u(2),0,3)+circ(xBust-u(2),0,3);
+    }
+    if(neck.type.startsWith('halter')||spec.support==='halter'){
+      extras += circ(u(neck.width),0,3.5);
+      extras += textAnno(u(neck.width+6), u(4), 'halter');
+    }
+
     pieces.push(`<g transform="translate(${ox},${oy})">
       ${path(d)}
-      ${guide(`M${cf},${yNeck} L${cf},${yHem}`)}
+      ${guide(`M${cf},${Math.max(yNeck,0)} L${cf},${yHem}`)}
       ${line(cf,yBust,xBust,yBust)}${line(cf,yWaist,xWaist,yWaist)}${line(cf,yHip,xHip,yHip)}
-      ${label(u(bust*0.45),u(len*0.55),'Front',1)}
-      ${dimH(cf,xSh, -6, sh)}
-      ${dimH(cf,xNeck, yNeck+14, neckW)}
-      ${dimV(xBust+10, yArm*0.15, yArm, armD, 'right')}
+      ${label(u(bust*0.42), u(len*0.48), 'Front', 1)}
+      ${textAnno(u(bust*0.42), u(len*0.52), fabricNote)}
+      ${extras}
+      ${dimH(cf, neck.type.startsWith('halter')?u(neck.width):xNeck, -8, neck.width)}
       ${dimH(cf,xBust, yBust-8, bust)}
       ${dimH(cf,xWaist, yWaist-8, waist)}
       ${dimH(cf,xHip, yHip-8, hip)}
       ${dimH(cf,xHem, yHem+16, hem)}
-      ${dimV(-12, yNeck, yHem, len, 'left')}
+      ${dimV(-12, Math.max(yNeck,0), yHem, len, 'left')}
+      ${neck.depth>1?dimV(xBust+10, 0, yNeck, neck.depth, 'right'):''}
     </g>`);
+
     rows.push(
-      ['Front','Ancho hombro (1/2)',sh],
-      ['Front','Escote barco (1/2)',neckW],
-      ['Front','Prof. sisa',armD],
-      ['Front','Busto (1/4 + holgura)',bust],
-      ['Front','Cintura (1/4 + holgura)',waist],
-      ['Front','Cadera (1/4 + holgura)',hip],
-      ['Front','Ruedo (1/4)',hem],
-      ['Front','Largo CF (pliegue)',len]
+      ['Front','Escote · '+neck.label, neck.depth],
+      ['Front','Ancho escote (1/2)', neck.width],
+      ['Front','Busto (1/4 + holgura tela)', bust],
+      ['Front','Cintura (1/4 + holgura)', waist],
+      ['Front','Cadera (1/4 + holgura)', hip],
+      ['Front','Ruedo (1/4)', hem],
+      ['Front','Largo CF', len],
+      ['Front','Tela', fabricNote]
     );
+    if(open.type!=='none') rows.push(['Front','Alto abertura ('+open.place+')', open.height]);
+    if(wrapExtra) rows.push(['Front','Extensión cruce wrap', wrapExtra]);
   }
 
-  // BACK — CB a la izquierda (costura / cierre)
+  // —— BACK ——
   {
     const ox=40, oy=pad;
     const bustB=round1(bust+0.5), waistB=round1(waist+0.5), hipB=round1(hip+0.5), hemB=round1(hem+0.5);
-    const neckWB=round1(neckW-0.5), neckDB=3, shB=round1(sh+0.5), armDB=round1(armD+0.5), lenB=round1(len+1);
-    const cf=0;
-    const xNeck=u(neckWB), xSh=u(shB), xBust=u(bustB), xWaist=u(waistB), xHip=u(hipB), xHem=u(hemB);
-    const yNeck=u(neckDB), yArm=u(armDB), yBust=u(armDB+2), yWaist=u(armDB+18), yHip=u(armDB+38), yHem=u(lenB);
-    const d=[
-      `M${cf},${yNeck}`,
-      `L${xNeck},${yNeck*0.4}`,
-      `L${xSh},${u(0.8)}`,
-      `C${xSh+u(2)},${u(6)} ${xBust+u(1)},${yArm*0.55} ${xBust},${yArm}`,
-      `C${xBust},${(yArm+yWaist)/2} ${xWaist+u(0.8)},${yWaist-u(3)} ${xWaist},${yWaist}`,
-      `C${xWaist},${(yWaist+yHip)/2} ${xHip},${yHip-u(3)} ${xHip},${yHip}`,
-      `L${xHem},${yHem}`,
-      `L${cf},${yHem}`,
-      'Z'
-    ].join(' ');
+    const lenB=round1(len+1);
+    const neckDB=backS.depth;
+    const xBust=u(bustB), xWaist=u(waistB), xHip=u(hipB), xHem=u(hemB);
+    const yNeck=u(neckDB), yWaist=u(spec.bodiceH), yHip=u(spec.bodiceH+18), yHem=u(lenB);
+    let d;
+    if(backS.type==='open'||backS.type==='deep_open'||backS.type==='cowl'||spec.support==='halter'){
+      // espalda baja / abierta — tiras o puntos
+      const topW = spec.support==='halter' ? u(6) : u(bustB-2);
+      d=[
+        `M${u(2)},0 L${topW},0`,
+        `C${xBust},${u(6)} ${xBust},${yNeck} ${xBust},${yNeck+u(4)}`,
+        `L${xWaist},${yWaist} L${xHip},${yHip} L${xHem},${yHem} L0,${yHem} L0,${yWaist}`,
+        `L${u(0.5)},${yNeck+u(4)} C${u(0)},${yNeck} ${u(1)},${u(4)} ${u(2)},0 Z`
+      ].join(' ');
+    } else {
+      d=[
+        `M0,${u(Math.min(neckDB,4))} L${u(8)},0 L${u(bustB-2)},0`,
+        `C${xBust+u(1)},${u(5)} ${xBust},${u(12)} ${xBust},${u(14)}`,
+        `L${xWaist},${yWaist} L${xHip},${yHip} L${xHem},${yHem} L0,${yHem} Z`
+      ].join(' ');
+    }
+    let extras='';
+    if(backS.type==='cowl'){
+      extras += guide(`M${u(3)},${yNeck} Q${xBust/2},${yNeck+u(6)} ${xBust-u(3)},${yNeck}`);
+      extras += textAnno(xBust*0.45, yNeck+u(8), 'cowl espalda');
+    }
+    if(backS.type==='cape'){
+      extras += guide(`M${u(4)},${u(2)} L${xHem*0.7},${yHem}`);
+      extras += textAnno(xHem*0.55, yHem*0.4, 'capa');
+    }
     pieces.push(`<g transform="translate(${ox},${oy})">
       ${path(d)}
-      ${guide(`M${cf},${yNeck} L${cf},${yHem}`)}
-      ${guide(`M${cf+u(1.2)},${yNeck} L${cf+u(1.2)},${u(armDB+22)}`)}
-      ${line(cf,yBust,xBust,yBust)}${line(cf,yWaist,xWaist,yWaist)}${line(cf,yHip,xHip,yHip)}
-      ${label(u(bustB*0.45),u(lenB*0.55),'Back',2)}
-      ${dimH(cf,xSh, -6, shB)}
-      ${dimH(cf,xBust, yBust-8, bustB)}
-      ${dimH(cf,xWaist, yWaist-8, waistB)}
-      ${dimH(cf,xHip, yHip-8, hipB)}
-      ${dimH(cf,xHem, yHem+16, hemB)}
-      ${dimV(-12, yNeck, yHem, lenB, 'left')}
-      ${dimV(xBust+10, yArm*0.15, yArm, armDB, 'right')}
+      ${guide(`M0,${yNeck} L0,${yHem}`)}
+      ${line(0,yWaist,xWaist,yWaist)}${line(0,yHip,xHip,yHip)}
+      ${label(u(bustB*0.42), u(lenB*0.48), 'Back', 2)}
+      ${extras}
+      ${dimH(0,xBust, yNeck+u(6), bustB)}
+      ${dimH(0,xWaist, yWaist-8, waistB)}
+      ${dimH(0,xHem, yHem+16, hemB)}
+      ${dimV(-12, 0, yHem, lenB, 'left')}
+      ${dimV(xBust+10, 0, yNeck, neckDB, 'right')}
     </g>`);
     rows.push(
-      ['Back','Ancho hombro (1/2)',shB],
-      ['Back','Busto (1/4)',bustB],
-      ['Back','Cintura (1/4)',waistB],
-      ['Back','Cadera (1/4)',hipB],
-      ['Back','Ruedo (1/4)',hemB],
-      ['Back','Largo CB',lenB],
-      ['Back','Prof. sisa',armDB]
+      ['Back','Prof. escote espalda', neckDB],
+      ['Back','Busto (1/4)', bustB],
+      ['Back','Cintura (1/4)', waistB],
+      ['Back','Largo CB', lenB],
+      ['Back','Tipo', backS.label]
     );
   }
 
-  // NECK FACING — sigue el escote barco
-  {
-    const ox=300, oy=pad;
-    const w=round1(neckW*2+sh*0.35), h=7;
-    const ww=u(w), hh=u(h), inner=u(h-3.5);
-    pieces.push(`<g transform="translate(${ox},${oy})">
-      ${path(`M0,${u(2)} Q${ww/2},0 ${ww},${u(2)} L${ww},${hh} Q${ww/2},${hh+u(1)} 0,${hh} Z`)}
-      ${guide(`M0,${inner} Q${ww/2},${inner-u(1.2)} ${ww},${inner}`)}
-      ${guide(`M${ww/2},${u(1)} L${ww/2},${hh}`)}
-      ${label(ww/2, hh*0.62,'Facing',3)}
-      ${dimH(0,ww,-8,w)}
-      ${dimV(-10,u(2),hh,h,'left')}
+  // —— STRAP / TIE si corresponde ——
+  let diaN=3;
+  if(spec.support==='thin_straps'||spec.support==='straps'){
+    const strapL=round1(42), strapW=spec.support==='thin_straps'?1:1.8;
+    pieces.push(`<g transform="translate(300,${pad})">
+      ${path(`M0,0 L${u(strapL)},0 L${u(strapL)},${u(strapW+0.5)} L0,${u(strapW+0.5)} Z`)}
+      ${label(u(strapL/2), u(strapW+4), 'Strap', diaN)}
+      ${dimH(0,u(strapL),-8,strapL)}
+      ${meas(u(strapL/2), u(strapW+9), '×2')}
     </g>`);
-    rows.push(['Facing','Largo vista escote',w],['Facing','Alto vista',h]);
+    rows.push(['Strap','Largo (c/u)',strapL],['Strap','Ancho',round1(strapW+0.5)],['Strap','Cantidad',2]);
+    diaN++;
+  }
+  if(spec.support==='halter'||neck.type.startsWith('halter')){
+    const tieL=round1(b.neck+40);
+    pieces.push(`<g transform="translate(280,${pad+u(12)})">
+      ${path(`M0,0 L${u(tieL*0.55)},0 L${u(tieL*0.55)},${u(2.5)} L0,${u(2.5)} Z`)}
+      ${label(u(tieL*0.275), u(1.9), 'Halter tie', diaN)}
+      ${dimH(0,u(tieL*0.55),-8,tieL)}
+    </g>`);
+    rows.push(['Halter tie','Largo',tieL],['Halter tie','Ancho',2.5]);
+    diaN++;
   }
 
-  // ARMHOLE FACING
-  {
-    const ox=310, oy=pad+u(18);
-    const w=round1(armD+2), h=4;
+  // —— WRAP SKIRT piece extra when wrap (separate for clarity if slip-like) ——
+  if(spec.wrap && (spec.system==='slip'||spec.system==='halter_wrap')){
+    const wrapExtra=18;
+    const skirtL=round1(spec.skirtL);
+    const slitH=open.height||72;
+    const ox=300, oy=pad+u(28);
+    const xW=u(waist), xHem=u(hip+wrapExtra+4);
+    const yHip=u(18), ySlit=u(skirtL-slitH), yHem=u(skirtL);
+    const d=[
+      `M0,0 L${xW},0 L${u(hip+wrapExtra)},${u(2)}`,
+      `C${xHem},${yHip*0.5} ${xHem},${yHip} ${xHem},${yHip}`,
+      `L${xHem},${yHem} L${u(4)},${yHem} L${u(2)},${ySlit} L0,${yHip} Z`
+    ].join(' ');
     pieces.push(`<g transform="translate(${ox},${oy})">
-      ${path(`M${u(2)},0 C${u(w*0.4)},${u(1)} ${u(w*0.7)},${u(h*0.2)} ${u(w)},${u(h*0.9)} L${u(w-1)},${u(h+3)} C${u(w*0.6)},${u(h+1)} ${u(w*0.3)},${u(h)} 0,${u(h+2)} Z`)}
-      ${label(u(w*0.45),u(h+0.5),'Armhole',4)}
-      ${dimH(0,u(w),-8,w)}
-      ${dimV(u(w)+8,0,u(h+3),round1(h+3),'right')}
+      ${path(d)}
+      ${guide(`M${u(2)},${ySlit} L${u(2)},${yHem}`)}
+      ${label(xHem*0.4, yHem*0.4, 'Skirt wrap', diaN)}
+      ${textAnno(u(10), ySlit+u(8), 'abertura')}
+      ${textAnno(xHem*0.7, yHip*0.5, 'frunce')}
+      ${dimH(0,xW,-8,waist)}
+      ${dimV(-12,0,yHem,skirtL,'left')}
+      ${dimV(xHem+8,ySlit,yHem,slitH,'right')}
     </g>`);
-    rows.push(['Armhole','Largo vista sisa',w],['Armhole','Ancho vista',round1(h+3)]);
+    rows.push(['Skirt wrap','Largo falda',skirtL],['Skirt wrap','Alto abertura',slitH],['Skirt wrap','Cruce',wrapExtra]);
+    diaN++;
   }
 
-  const boardH=Math.ceil(pad*2+u(len+8));
-  return {svg:wrapSVG(920, Math.max(boardH,520), pieces.join('')), rows, title:'TheDress System'};
+  // —— LINING note piece ——
+  if(spec.fabric.lining){
+    pieces.push(`<g transform="translate(280,${pad+u(spec.wrap?70:36)})">
+      ${path(`M0,0 L${u(40)},0 L${u(40)},${u(10)} L0,${u(10)} Z`)}
+      ${label(u(20), u(6), 'Lining', diaN)}
+      ${textAnno(u(20), u(12), spec.fabric.lining.name.split('·')[0].trim())}
+      ${dimH(0,u(40),-8, spec.fabric.lining.meters||0)}
+    </g>`);
+    rows.push(['Lining','Material', spec.fabric.lining.name],['Lining','Metros', spec.fabric.lining.meters]);
+  }
+
+  // fabric + construction rows
+  rows.push(['Tela','Principal', spec.fabric.name]);
+  if(spec.fabric.meters!=null) rows.push(['Tela','Metros talle M', spec.fabric.meters]);
+  rows.push(['Tela','Holgura (cm)', spec.ease],['Tela','Stretch %', spec.stretch],['Tela','Hilo / grano', 0]);
+  // last row for grain as text - use string in cm col via special
+  rows[rows.length-1][2]=spec.fabric.grain;
+  rows.push(['Construcción','Margen costura', spec.seamAllowance]);
+
+  const boardH=Math.ceil(pad*2+u(len+10));
+  return {svg:wrapSVG(920, Math.max(boardH, 560), pieces.join('')), rows, title, spec};
+}
+
+function textAnno(x,y,t){
+  return `<text class="label-dia" x="${x}" y="${y}" text-anchor="middle" font-style="italic">${t}</text>`;
 }
 
 /* ---- Camisa ---- */
@@ -938,53 +1615,6 @@ function drawKnit(b){
   return {svg:wrapSVG(900, Math.ceil(pad*2+u(len)+u(12)), pieces.join('')), rows, title:'TheKnit System'};
 }
 
-/* ---- Halter ---- */
-function drawHalter(b){
-  const bust=round1(b.chest/4+1);
-  const waist=round1(b.waist/4+2);
-  const bodyH=36;
-  const tieL=round1(b.neck+40);
-  const rows=[], pieces=[];
-  const pad=30;
-  {
-    const ox=480, oy=pad;
-    const xB=u(bust), xW=u(waist), yMid=u(22), yHem=u(bodyH);
-    pieces.push(`<g transform="translate(${ox},${oy})">
-      ${path(`M${u(8)},0 C${u(10)},${u(10)} ${u(11)},${u(18)} ${u(10)},${yMid} L${xB},${yMid+u(4)} L${xW},${yHem} L0,${yHem} L0,${yMid+u(4)} L${u(6)},${yMid} Z`)}
-      ${guide(`M${u(8)},0 L${u(8)},${yMid}`)}
-      ${line(0,yMid+u(4),xB,yMid+u(4))}
-      ${label(u(bust*0.4),u(bodyH*0.72),'Front',1)}
-      ${dimH(0,xB,yMid-4,bust)}
-      ${dimH(0,xW,yHem+14,waist)}
-      ${dimV(-12,0,yHem,bodyH,'left')}
-    </g>`);
-    rows.push(['Front','Busto (1/2)',bust],['Front','Cintura (1/2)',waist],['Front','Alto cuerpo',bodyH]);
-  }
-  {
-    const ox=80, oy=pad+u(4);
-    const w=round1(b.chest/4), h=22;
-    pieces.push(`<g transform="translate(${ox},${oy})">
-      ${path(`M0,0 L${u(w)},0 L${u(w+1)},${u(h)} L${u(-0.5)},${u(h)} Z`)}
-      ${guide(`M${u(w/2)},0 L${u(w/2)},${u(h)}`)}
-      ${label(u(w/2),u(h*0.55),'Back',2)}
-      ${dimH(0,u(w),-8,w)}
-      ${dimV(-12,0,u(h),h,'left')}
-    </g>`);
-    rows.push(['Back','Ancho',w],['Back','Alto',h]);
-  }
-  {
-    const ox=80, oy=pad+u(32);
-    pieces.push(`<g transform="translate(${ox},${oy})">
-      ${path(`M0,0 L${u(tieL)},0 L${u(tieL)},${u(2.5)} L0,${u(2.5)} Z`)}
-      ${label(u(tieL/2),u(1.9),'Tie',3)}
-      ${dimH(0,u(tieL),-8,tieL)}
-      ${dimV(-10,0,u(2.5),2.5,'left')}
-    </g>`);
-    rows.push(['Tie','Largo',tieL],['Tie','Ancho',2.5]);
-  }
-  return {svg:wrapSVG(900, 420, pieces.join('')), rows, title:'TheHalter System'};
-}
-
 /* ---- Baño ---- */
 function drawSwim(b){
   const cup=round1(b.chest/4-2);
@@ -1080,21 +1710,139 @@ function wrapSVG(w,h,inner){
 
 /* ---------- UI ---------- */
 let currentFilter='ALL';
+let currentId=0;
 const params=new URLSearchParams(location.search);
 const idParam=Number(params.get('id')||0);
 
+function filteredProducts(){
+  const q=(document.getElementById('search')?.value||'').toLowerCase();
+  const sort=document.getElementById('sort')?.value||'id';
+  let data=PRODUCTS.filter(p=>{
+    if(currentFilter==='W'&&p.g==='M') return false;
+    if(currentFilter==='M'&&p.g!=='M') return false;
+    if(['DAY','NIGHT','RESORT','ESSENTIALS','COCKTAIL','ACCESSORIES'].includes(currentFilter)&&p.cat!==currentFilter) return false;
+    if(!q) return true;
+    return p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q);
+  });
+  if(sort==='name') data.sort((a,b)=>a.name.localeCompare(b.name,'es'));
+  else if(sort==='system') data.sort((a,b)=>classifyPrimary(a).localeCompare(classifyPrimary(b))||a.name.localeCompare(b.name,'es'));
+  else data.sort((a,b)=>a.id-b.id);
+  return data;
+}
+
+function navIndex(list,id){
+  const i=list.findIndex(p=>p.id===id);
+  return i<0?0:i;
+}
+
+function syncNav(p){
+  const list=filteredProducts();
+  let idx=navIndex(list,p.id);
+  if(list[idx]?.id!==p.id){
+    // si el actual no está en el filtro, usar catálogo completo por id
+    const all=[...PRODUCTS].sort((a,b)=>a.id-b.id);
+    const ai=all.findIndex(x=>x.id===p.id);
+    updateNavChrome(all, ai<0?0:ai, p, true);
+    return;
+  }
+  updateNavChrome(list, idx, p, false);
+}
+
+function updateNavChrome(list, idx, p, fallback){
+  const total=list.length;
+  const label=fallback?`${idx+1} / ${total} · catálogo`:`${idx+1} / ${total}`;
+  const prev=list[idx-1], next=list[idx+1];
+  document.getElementById('pager').classList.add('is-on');
+  document.getElementById('jumpMobile').classList.add('is-on');
+  document.getElementById('rail').classList.add('is-on');
+  document.getElementById('dock').classList.add('is-on');
+  document.body.classList.add('has-dock','detail-mode');
+  document.getElementById('pagerName').textContent=p.name;
+  document.getElementById('pagerCount').textContent=label+(currentFilter!=='ALL'&&!fallback?` · ${currentFilter}`:'');
+  document.getElementById('dockName').textContent=p.name;
+  document.getElementById('dockCount').textContent=label;
+  document.getElementById('prevBtn').disabled=!prev;
+  document.getElementById('nextBtn').disabled=!next;
+  document.getElementById('dockPrev').disabled=!prev;
+  document.getElementById('dockNext').disabled=!next;
+
+  const opts=list.map((x,i)=>`<option value="${x.id}" ${x.id===p.id?'selected':''}>${String(i+1).padStart(2,'0')} · ${x.name}${x.g==='M'?' (Men)':''}</option>`).join('');
+  document.getElementById('jumpSelect').innerHTML=opts;
+  document.getElementById('jumpSelectMobile').innerHTML=opts;
+
+  const start=Math.max(0, idx-4);
+  const end=Math.min(list.length, start+9);
+  const slice=list.slice(start, end);
+  const rail=document.getElementById('rail');
+  rail.innerHTML=slice.map(x=>`<button type="button" class="${x.id===p.id?'active':''}" onclick="openProduct(${x.id})" aria-label="${x.name}">
+    <img loading="lazy" src="${A+x.img}" alt="">
+    <span>${x.name}</span>
+  </button>`).join('');
+  requestAnimationFrame(()=>{
+    const active=rail.querySelector('button.active');
+    if(active) active.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+  });
+}
+
+function clearNav(){
+  document.getElementById('pager').classList.remove('is-on');
+  document.getElementById('jumpMobile').classList.remove('is-on');
+  document.getElementById('rail').classList.remove('is-on');
+  document.getElementById('dock').classList.remove('is-on');
+  document.body.classList.remove('has-dock','detail-mode');
+}
+
+function navRelative(dir){
+  const list=filteredProducts();
+  let idx=navIndex(list, currentId);
+  if(list[idx]?.id!==currentId){
+    const all=[...PRODUCTS].sort((a,b)=>a.id-b.id);
+    idx=all.findIndex(x=>x.id===currentId);
+    const t=all[idx+dir];
+    if(t) openProduct(t.id);
+    return;
+  }
+  const t=list[idx+dir];
+  if(t) openProduct(t.id);
+}
+
+function resetMobileScale(){
+  if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  const base='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover';
+  const meta=document.querySelector('meta[name="viewport"]');
+  if(meta){
+    meta.setAttribute('content', base);
+    // reinyecta el meta para que Android Chrome suelte zoom residual
+    const next=meta.cloneNode(true);
+    next.setAttribute('content', base);
+    meta.parentNode.replaceChild(next, meta);
+  }
+  window.scrollTo(0,0);
+  if(window.visualViewport && visualViewport.scale>1.01){
+    // no hay API pública para resetear pinch-zoom; el replace del meta ayuda en varios WebViews
+  }
+}
+
 function showList(){
+  resetMobileScale();
   history.replaceState(null,'',location.pathname);
+  currentId=0;
+  clearNav();
   document.getElementById('listView').hidden=false;
   document.getElementById('detailView').hidden=true;
   document.getElementById('backLink').href='index.html';
   document.getElementById('backLink').textContent='← Volver a la tienda';
+  document.getElementById('backLink').onclick=null;
   document.title='GRUT — Moldes · Talle M';
+  renderList();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function openProduct(id){
   const p=PRODUCTS.find(x=>x.id===id);
   if(!p) return showList();
+  resetMobileScale();
+  currentId=p.id;
   history.replaceState(null,'',location.pathname+'?id='+id);
   document.getElementById('listView').hidden=true;
   document.getElementById('detailView').hidden=false;
@@ -1108,37 +1856,66 @@ function openProduct(id){
   document.getElementById('dName').textContent=p.name;
   document.getElementById('dDesc').textContent=p.desc;
   document.getElementById('dShop').href='index.html#shop';
+  syncNav(p);
   const boards=boardsFor(p);
+  const dressBoard=boards.find(b=>b.sys==='dress'||b.sys==='slip'||b.sys==='halter') || (isDressLike(p,classifyPrimary(p))?{sys:'dress'}:null);
+  const spec=dressBoard?buildDressSpec(p):null;
   document.getElementById('dMeta').innerHTML=[
     `<span class="badge">Talle M</span>`,
     `<span class="badge soft">${p.g==='M'?'Hombre':'Mujer'}</span>`,
-    ...boards.map(b=>`<span class="badge soft">${SYSTEMS[b.sys]?.label||b.sys}</span>`)
+    ...boards.map(b=>`<span class="badge soft">${SYSTEMS[b.sys]?.label||b.sys}</span>`),
+    ...(spec?[
+      `<span class="badge soft">${spec.neck.label}</span>`,
+      `<span class="badge soft">${spec.opening.label}</span>`,
+      `<span class="badge soft">${(spec.fabric.name||'').split('·')[0].trim()}</span>`
+    ]:[])
   ].join('');
+  const sp=document.getElementById('specPanel');
+  if(spec){
+    sp.hidden=false;
+    const brief=aiBrief(p,spec);
+    sp.innerHTML=`
+      <span class="eyebrow">Ficha de construcción · para IA</span>
+      <h2>Escote · abertura · tela</h2>
+      <div class="spec-grid">
+        <div><strong>Escote</strong><span>${spec.neck.label}<br>prof. ${spec.neck.depth} cm · ancho 1/2 ${spec.neck.width} cm</span></div>
+        <div><strong>Abertura</strong><span>${spec.opening.label}<br>${spec.opening.height?spec.opening.height+' cm · ':''}${spec.opening.place}</span></div>
+        <div><strong>Largo</strong><span>${spec.length} · ${spec.lengthCm} cm CF</span></div>
+        <div><strong>Espalda</strong><span>${spec.back.label}<br>prof. ${spec.back.depth} cm</span></div>
+        <div><strong>Tela</strong><span>${spec.fabric.name}${spec.fabric.meters!=null?' · '+spec.fabric.meters+' m':''}</span></div>
+        <div><strong>Forro</strong><span>${spec.fabric.lining?spec.fabric.lining.name+' · '+spec.fabric.lining.meters+' m':'—'}</span></div>
+        <div><strong>Holgura / stretch</strong><span>${spec.ease} cm · ${spec.stretch}% · ${spec.fabric.grain}</span></div>
+        <div><strong>Soporte</strong><span>${spec.support}${spec.wrap?' · falda cruzada':''}${spec.cutout?' · recortes':''}${spec.corset?' · corsé':''}</span></div>
+      </div>
+      <span class="eyebrow">Prompt listo para pegar en la IA</span>
+      <textarea class="ai-box" id="aiBrief" readonly>${brief.replace(/</g,'&lt;')}</textarea>
+      <div class="ai-actions">
+        <button type="button" onclick="navigator.clipboard.writeText(document.getElementById('aiBrief').value)">Copiar ficha para la IA</button>
+      </div>`;
+  } else {
+    sp.hidden=true; sp.innerHTML='';
+  }
   const allRows=[];
   document.getElementById('boards').innerHTML=boards.map((b,i)=>{
     const drawn=renderSystem(b.sys,p);
     drawn.rows.forEach(r=>allRows.push([`${b.label} · ${r[0]}`,r[1],r[2]]));
-    return `<div class="board-wrap"><div class="board-title"><h2>${drawn.title}</h2><span>${b.label} · set ${i+1} · talle M · cm</span></div>${drawn.svg}</div>`;
+    const sub=[b.label,'set '+(i+1),'talle M','cm'];
+    if(drawn.spec) sub.push(drawn.spec.neck.type, drawn.spec.opening.type!=='none'?drawn.spec.opening.type:'sin abertura');
+    return `<div class="board-wrap"><div class="board-title"><h2>${drawn.title}</h2><span>${sub.join(' · ')}</span></div>${drawn.svg}</div>`;
   }).join('');
   document.getElementById('measBody').innerHTML=allRows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function renderList(){
-  const q=document.getElementById('search').value.toLowerCase();
-  const sort=document.getElementById('sort').value;
-  let data=PRODUCTS.filter(p=>{
-    if(currentFilter==='W'&&p.g==='M') return false;
-    if(currentFilter==='M'&&p.g!=='M') return false;
-    if(['DAY','NIGHT','RESORT','ESSENTIALS','COCKTAIL','ACCESSORIES'].includes(currentFilter)&&p.cat!==currentFilter) return false;
-    return p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q);
-  });
-  if(sort==='name') data.sort((a,b)=>a.name.localeCompare(b.name,'es'));
-  else if(sort==='system') data.sort((a,b)=>classifyPrimary(a).localeCompare(classifyPrimary(b))||a.name.localeCompare(b.name,'es'));
-  else data.sort((a,b)=>a.id-b.id);
+  const data=filteredProducts();
   document.getElementById('grid').innerHTML=data.length?data.map(p=>{
     const boards=boardsFor(p);
-    const label=boards.map(b=>SYSTEMS[b.sys]?.label||b.sys).join(' · ');
+    let label=boards.map(b=>SYSTEMS[b.sys]?.label||b.sys).join(' · ');
+    if(boards.some(b=>b.sys==='dress'||b.sys==='slip'||b.sys==='halter')||isDressLike(p,classifyPrimary(p))){
+      const sp=buildDressSpec(p);
+      label=[sp.neck.label.split('·')[0].trim(), sp.opening.type==='none'?'sin abertura':sp.opening.label, (sp.fabric.name||'').split('·')[0].trim()].join(' · ');
+    }
     return `<article class="card" onclick="openProduct(${p.id})">
       <img loading="lazy" src="${A+p.img}" alt="${p.name}">
       <div>
@@ -1154,8 +1931,51 @@ function renderList(){
 (function initFilters(){
   const cats=['ALL','W','M','DAY','NIGHT','RESORT','ESSENTIALS','COCKTAIL','ACCESSORIES'];
   const labels={ALL:'Todos',W:'Women',M:'Men',DAY:'Day',NIGHT:'Night',RESORT:'Resort',ESSENTIALS:'Essentials',COCKTAIL:'Cocktail',ACCESSORIES:'Accessories'};
-  document.getElementById('filters').innerHTML=cats.map(c=>`<button data-cat="${c}" class="${c==='ALL'?'active':''}" onclick="currentFilter='${c}';document.querySelectorAll('#filters button').forEach(b=>b.classList.toggle('active',b.dataset.cat==='${c}'));renderList()">${labels[c]}</button>`).join('');
+  document.getElementById('filters').innerHTML=cats.map(c=>`<button type="button" data-cat="${c}" class="${c==='ALL'?'active':''}">${labels[c]}</button>`).join('');
+  document.getElementById('filters').addEventListener('click',e=>{
+    const btn=e.target.closest('button[data-cat]');
+    if(!btn) return;
+    currentFilter=btn.dataset.cat;
+    document.querySelectorAll('#filters button').forEach(b=>b.classList.toggle('active',b.dataset.cat===currentFilter));
+    renderList();
+    if(currentId) syncNav(PRODUCTS.find(p=>p.id===currentId)||PRODUCTS[0]);
+  });
 })();
+
+/* swipe horizontal para cambiar de diseño en el detalle */
+(function initSwipe(){
+  const el=document.getElementById('detailView');
+  let x0=null,y0=null,locked=null,block=false;
+  el.addEventListener('touchstart',e=>{
+    if(e.touches.length!==1) return;
+    const t=e.target;
+    block=!!(t.closest && t.closest('.board-wrap,.table-wrap,.rail,.ai-box,button,a,select,textarea,input'));
+    x0=e.touches[0].clientX; y0=e.touches[0].clientY; locked=null;
+  },{passive:true});
+  el.addEventListener('touchmove',e=>{
+    if(x0==null||e.touches.length!==1) return;
+    const dx=e.touches[0].clientX-x0, dy=e.touches[0].clientY-y0;
+    if(locked==null && (Math.abs(dx)>12||Math.abs(dy)>12)) locked=Math.abs(dx)>Math.abs(dy)?'x':'y';
+  },{passive:true});
+  el.addEventListener('touchend',e=>{
+    if(x0==null) return;
+    const t=e.changedTouches[0];
+    const dx=t.clientX-x0, dy=t.clientY-y0;
+    const wasX=locked==='x' || (locked==null && Math.abs(dx)>Math.abs(dy));
+    const skip=block;
+    x0=y0=locked=null; block=false;
+    if(skip||!wasX||Math.abs(dx)<56||Math.abs(dx)<Math.abs(dy)*1.2) return;
+    navRelative(dx<0?1:-1);
+  },{passive:true});
+})();
+
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('detailView').hidden) return;
+  if(e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+  if(e.key==='ArrowLeft') { e.preventDefault(); navRelative(-1); }
+  if(e.key==='ArrowRight'){ e.preventDefault(); navRelative(1); }
+  if(e.key==='Escape'){ e.preventDefault(); showList(); }
+});
 
 if(idParam) openProduct(idParam); else renderList();
 </script>
