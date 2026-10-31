@@ -17,8 +17,8 @@
   --label:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',Arial,sans-serif;
 }
 *{box-sizing:border-box}
-html{overflow-x:clip}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:13px;overflow-x:clip}
+html{overflow-x:clip;touch-action:manipulation}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:13px;overflow-x:clip;touch-action:manipulation}
 button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
 img{display:block;object-fit:cover;max-width:100%}
 .topline{min-height:29px;padding:6px 12px;background:#272420;color:#f6f1e9;display:flex;align-items:center;justify-content:center;letter-spacing:2px;font-size:9px;text-align:center;line-height:1.4}
@@ -1981,6 +1981,15 @@ document.addEventListener('keydown',e=>{
 });
 
 if(idParam) openProduct(idParam); else renderList();
+</script>
+<script>
+(function(){
+  function block(e){e.preventDefault()}
+  document.addEventListener('gesturestart',block,{passive:false});
+  document.addEventListener('gesturechange',block,{passive:false});
+  document.addEventListener('gestureend',block,{passive:false});
+  document.addEventListener('touchmove',function(e){if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false});
+})();
 </script>
 </body>
 </html>
