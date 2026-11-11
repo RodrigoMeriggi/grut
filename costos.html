@@ -322,6 +322,16 @@ const P=[
 [295,'Noué','SUMMER',1980,'summer/noue.webp','Top y short',[['lino',1.8],['forro',0.7],['hebilla',1]]],
 [296,'Sable','SUMMER',2180,'summer/sable.webp','Vestido',[['lino',2.4],['forro',1],['cierre',1]]],
 [297,'Ajour','SUMMER',2080,'summer/ajour.webp','Vestido',[['redRustica',1.7],['forro',0.4],['boton',6],['hebilla',1]]],
+[298,'Riviera','NAVY',2680,'navy/riviera.webp','Blazer, camisa y pantalón',[['lino',3.8],['forro',1.6],['entretela',0.8],['botonOro',6],['boton',8],['cierre',1],['hebilla',1]],'M'],
+[299,'Yacht Club','NAVY',1480,'navy/yacht.webp','Camisa y short',[['lino',2.4],['boton',8],['cierre',1],['hebilla',1]],'M'],
+[300,'Nautique','NAVY',1680,'navy/nautique.webp','Polo y pantalón',[['jersey',1.1],['lino',1.6],['boton',2],['cierre',1]],'M'],
+[301,'Capri','NAVY',1580,'navy/capri.webp','Camisa y short',[['lino',2.3],['boton',7],['cierre',1]],'M'],
+[302,'Marina','NAVY',2980,'navy/marina.webp','Saco, polo y pantalón',[['lino',4.2],['jersey',0.8],['forro',1.5],['entretela',0.8],['boton',6],['cierre',1]],'M'],
+[303,'Côte d’Azur','NAVY',1880,'navy/cote.webp','Camisa y pantalón',[['lino',3.2],['boton',6],['cierre',1]],'M'],
+[304,'Voyage','NAVY',1780,'navy/voyage.webp','Polo y pantalón',[['algodon',1.5],['gabardina',1.6],['boton',3],['cierre',1],['hebilla',1]],'M'],
+[305,'Portofino','NAVY',1880,'navy/portofino.webp','Camisa, sweater y short',[['lino',2.2],['algodon',0.7],['boton',8],['cierre',1]],'M'],
+[306,'Isola','NAVY',2280,'navy/isola.webp','Chaqueta y pantalón',[['gabardina',2.2],['lino',1.6],['boton',8],['cierre',1]],'M'],
+[307,'Terrasse','NAVY',1780,'navy/terrasse.webp','Camisa y pantalón',[['lino',3.3],['boton',7],['cierre',1]],'M'],
 ].map(([id,name,cat,price,img,includes,bom,g='W'])=>({id,name,cat,price,img,includes,g,bom:[...bom,['avios',1]]}));
 const DEF={tc:1535,labor:50};const KEY='grut_costos_v2';
 let saved=Object.assign({mat:{}},JSON.parse(localStorage.getItem(KEY)||'{}'));saved.mat=saved.mat||{};
@@ -341,7 +351,7 @@ function resetAll(){if(!confirm('¿Restablecer precios, tipo de cambio y porcent
 function initParams(){document.getElementById('tc').value=tc();document.getElementById('lab').value=laborPct()}
 const srcCell=k=>{const m=MATERIALS[k];return isIxia(k)?`<a href="${m.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${m.n}</a><span class="tag ixia">IXIA</span>${m.note?`<small>${m.note}</small>`:''}`:`${m.n}<span class="tag">Estimado</span>`};
 function render(){
-  const cats=['ALL','DAY','NIGHT','RESORT','ESSENTIALS','COCKTAIL','SUMMER','CASUAL','ACCESSORIES','FOOTWEAR'];document.getElementById('filters').innerHTML=[['ALL','Women + Men'],['W','Women'],['M','Men']].map(([g,l])=>`<button class="${g===line?'active':''}" onclick="line='${g}';render()">${l}</button>`).join('')+'<span style="width:12px"></span>'+cats.map(c=>`<button class="${c===current?'active':''}" onclick="setFilter('${c}')">${c==='ALL'?'Todas':c.charAt(0)+c.slice(1).toLowerCase()}</button>`).join('');
+  const cats=['ALL','DAY','NIGHT','RESORT','ESSENTIALS','COCKTAIL','NAVY','SUMMER','CASUAL','ACCESSORIES','FOOTWEAR'];document.getElementById('filters').innerHTML=[['ALL','Women + Men'],['W','Women'],['M','Men']].map(([g,l])=>`<button class="${g===line?'active':''}" onclick="line='${g}';render()">${l}</button>`).join('')+'<span style="width:12px"></span>'+cats.map(c=>`<button class="${c===current?'active':''}" onclick="setFilter('${c}')">${c==='ALL'?'Todas':c.charAt(0)+c.slice(1).toLowerCase()}</button>`).join('');
   const q=document.getElementById('search').value.toLowerCase();let data=P.filter(p=>(line==='ALL'||p.g===line)&&(current==='ALL'||p.cat===current)&&p.name.toLowerCase().includes(q)).map(p=>({p,c:calc(p)}));
   const s=document.getElementById('sort').value;if(s==='margin-desc')data.sort((a,b)=>b.c.margin-a.c.margin);if(s==='margin-asc')data.sort((a,b)=>a.c.margin-b.c.margin);if(s==='cost-desc')data.sort((a,b)=>b.c.cost-a.c.cost);if(s==='diff-desc')data.sort((a,b)=>b.c.diff-a.c.diff);
   document.getElementById('rows').innerHTML=data.map(({p,c})=>{const ix=p.bom.some(([k])=>isIxia(k));return `<tr class="row" onclick="toggle(${p.id})"><td><div class="prod"><img src="assets/${p.img}" alt="${p.name}" loading="lazy"><div><b>${p.name}${ix?'<span class="tag ixia">IXIA</span>':''}<span class="toggle">${open.has(p.id)?'▲':'▼'}</span></b><small>${p.g==='M'?'MEN ':''}${p.cat} · ${p.includes}</small></div></div></td><td>${usd2(c.tela)}</td><td>${usd2(c.avios)}</td><td>${usd2(c.lab)}</td><td>${usd2(c.cost)}</td><td>${usd(p.price)}</td><td class="${c.diff>=0?'pos':'neg'}">${usd2(c.diff)}</td><td class="${c.diff>=0?'pos':'neg'}">${(c.margin*100).toFixed(1)}%</td></tr>`+(open.has(p.id)?detail(p,c):'')}).join('')||'<tr><td colspan="8" style="text-align:center;color:var(--muted)">No hay piezas con esos filtros.</td></tr>';
