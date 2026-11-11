@@ -333,16 +333,16 @@ const P=[
 [306,'Isola','NAVY',2280,'navy/isola.webp','Chaqueta y pantalón',[['gabardina',2.2],['lino',1.6],['boton',8],['cierre',1]],'M'],
 [307,'Terrasse','NAVY',1780,'navy/terrasse.webp','Camisa y pantalón',[['lino',3.3],['boton',7],['cierre',1]],'M'],
 ,
-[308,"Aurélie",'BRIDAL',6480,'bridal/aurelie.webp',"Vestido",[["saten", 3.2], ["forro", 2.4], ["cierre", 1]]],
-[309,"Celeste",'BRIDAL',7280,'bridal/celeste.webp',"Vestido",[["saten", 4.2], ["forro", 2.6], ["cierre", 1]]],
-[310,"Étoile",'BRIDAL',8980,'bridal/etoile.webp',"Vestido",[["encajeFlora", 4.2], ["tul", 2.2], ["forro", 1.8], ["cierre", 1]]],
-[311,"Alba",'BRIDAL',6380,'bridal/alba.webp',"Vestido",[["saten", 3.2], ["forro", 2.2], ["cierre", 1]]],
-[312,"Serena",'BRIDAL',7680,'bridal/serena.webp',"Vestido",[["saten", 4.6], ["forro", 2.4], ["cierre", 1]]],
-[313,"Rosée",'BRIDAL',8680,'bridal/rosee.webp',"Vestido",[["encajeFlora", 5.2], ["tul", 2.4], ["forro", 2.2], ["cierre", 1]]],
-[314,"Lys",'BRIDAL',6980,'bridal/lys.webp',"Vestido",[["saten", 3.4], ["forro", 2.4], ["entretela", 0.6], ["cierre", 1]]],
-[315,"Solea",'BRIDAL',4280,'bridal/solea.webp',"Vestido",[["saten", 2.2], ["forro", 1.4], ["cierre", 1]]],
-[316,"Mirage",'BRIDAL',8480,'bridal/mirage.webp',"Vestido",[["encajeFlora", 4.8], ["tul", 2.6], ["forro", 2], ["cierre", 1]]],
-[317,"Opale",'BRIDAL',7880,'bridal/opale.webp',"Vestido",[["saten", 6.2], ["forro", 3.2], ["entretela", 0.8], ["cierre", 1]]]
+[308,"Aurélie",'BRIDAL',6480,'bridal/aurelie.webp?v=2',"Vestido",[["saten", 3.2], ["forro", 2.4], ["cierre", 1]]],
+[309,"Celeste",'BRIDAL',7280,'bridal/celeste.webp?v=2',"Vestido",[["saten", 4.2], ["forro", 2.6], ["cierre", 1]]],
+[310,"Étoile",'BRIDAL',8980,'bridal/etoile.webp?v=2',"Vestido",[["encajeFlora", 4.2], ["tul", 2.2], ["forro", 1.8], ["cierre", 1]]],
+[311,"Alba",'BRIDAL',6380,'bridal/alba.webp?v=2',"Vestido",[["saten", 3.2], ["forro", 2.2], ["cierre", 1]]],
+[312,"Serena",'BRIDAL',7680,'bridal/serena.webp?v=2',"Vestido",[["saten", 4.6], ["forro", 2.4], ["cierre", 1]]],
+[313,"Rosée",'BRIDAL',8680,'bridal/rosee.webp?v=2',"Vestido",[["encajeFlora", 5.2], ["tul", 2.4], ["forro", 2.2], ["cierre", 1]]],
+[314,"Lys",'BRIDAL',6980,'bridal/lys.webp?v=2',"Vestido",[["saten", 3.4], ["forro", 2.4], ["entretela", 0.6], ["cierre", 1]]],
+[315,"Solea",'BRIDAL',4280,'bridal/solea.webp?v=2',"Vestido",[["saten", 2.2], ["forro", 1.4], ["cierre", 1]]],
+[316,"Mirage",'BRIDAL',8480,'bridal/mirage.webp?v=2',"Vestido",[["encajeFlora", 4.8], ["tul", 2.6], ["forro", 2], ["cierre", 1]]],
+[317,"Opale",'BRIDAL',7880,'bridal/opale.webp?v=2',"Vestido",[["saten", 6.2], ["forro", 3.2], ["entretela", 0.8], ["cierre", 1]]]
 ].map(([id,name,cat,price,img,includes,bom,g='W'])=>({id,name,cat,price,img,includes,g,bom:[...bom,['avios',1]]}));
 const DEF={tc:1535,labor:50};const KEY='grut_costos_v2';
 let saved=Object.assign({mat:{}},JSON.parse(localStorage.getItem(KEY)||'{}'));saved.mat=saved.mat||{};
