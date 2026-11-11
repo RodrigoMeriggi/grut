@@ -316,6 +316,12 @@ const P=[
 [289,'Florencia','CASUAL',2080,'summer/florencia.webp','Mono',[['gabardina',3],['forro',1.2],['cierre',1],['hebilla',1]]],
 [290,'Ines','CASUAL',1880,'summer/ines.webp','Vestido',[['algodon',8]]],
 [291,'Renata','CASUAL',3480,'summer/renata.webp','Abrigo, sweater y pantalón',[['cuero',2.4],['forro',2.2],['jersey',0.5],['entretela',0.6],['boton',2],['cierre',1]]],
+[292,'Camila','CASUAL',2380,'summer/camila.webp','Vestido',[['lino',2.2],['forro',1.1],['entretela',0.3],['botonOro',9]]],
+[293,'Elena','CASUAL',2680,'summer/elena.webp','Vestido',[['lino',2.8],['forro',1.4],['cierre',1]]],
+[294,'Cacao','SUMMER',2380,'summer/cacao.webp','Top y short',[['saten',1.5],['forro',0.8],['hebilla',1]]],
+[295,'Noué','SUMMER',1980,'summer/noue.webp','Top y short',[['lino',1.8],['forro',0.7],['hebilla',1]]],
+[296,'Sable','SUMMER',2180,'summer/sable.webp','Vestido',[['lino',2.4],['forro',1],['cierre',1]]],
+[297,'Ajour','SUMMER',2080,'summer/ajour.webp','Vestido',[['redRustica',1.7],['forro',0.4],['boton',6],['hebilla',1]]],
 ].map(([id,name,cat,price,img,includes,bom,g='W'])=>({id,name,cat,price,img,includes,g,bom:[...bom,['avios',1]]}));
 const DEF={tc:1535,labor:50};const KEY='grut_costos_v2';
 let saved=Object.assign({mat:{}},JSON.parse(localStorage.getItem(KEY)||'{}'));saved.mat=saved.mat||{};
