@@ -481,7 +481,22 @@ const P=[
 [452,"Vertige",'ACCESSORIES',2200,'acc2027/mirage.webp?v=1',"Aros",[["cristalPave", 2],["joya", 2]]],
 [453,"Solstice",'ACCESSORIES',1400,'acc2027/solstice.webp?v=1',"Anillo",[["joya", 1],["herrajes", 1]],'M'],
 [454,"Pavé",'ACCESSORIES',2600,'acc2027/pave.webp?v=1',"Brazalete",[["cristalPave", 2],["herrajes", 1]]],
-[455,"Opaline",'ACCESSORIES',2400,'acc2027/opale.webp?v=1',"Anillo",[["joya", 1],["cristalPave", 1]]],
+[455,"Opaline",'ACCESSORIES',2400,'acc2027/opale.webp?v=1',"Anillo",[["joya", 1],
+[456,"Initiale",'ACCESSORIES',980,'acc2027/initiale.webp?v=1',"Cinturón",[["cuero", 0.12],["hebillaGRUT", 1]],'M'],
+[457,"Barrette",'ACCESSORIES',420,'acc2027/barrette.webp?v=1',"Pisacorbatas",[["herrajes", 1]],'M'],
+[458,"Saphir",'ACCESSORIES',2800,'acc2027/saphir.webp?v=1',"Pulseras",[["cristalPave", 2],["joya", 2]],'M'],
+[459,"Anneau",'ACCESSORIES',1600,'acc2027/anneau.webp?v=1',"Aros",[["joya", 2],["cristalPave", 1]],'M'],
+[460,"Chronos",'ACCESSORIES',3400,'acc2027/chronos.webp?v=1',"Reloj",[["herrajes", 2],["joya", 1]],'M'],
+[461,"Oxford",'ACCESSORIES',2200,'acc2027/oxford.webp?v=1',"Zapatos",[["cueroNapa", 0.32],["forroCabra", 0.18],["suelaCuero", 1],["plantilla", 1],["tacon10", 1]],'M'],
+[462,"Moine",'ACCESSORIES',2400,'acc2027/moine.webp?v=1',"Zapatos",[["cueroNapa", 0.32],["forroCabra", 0.18],["hebillaOro", 2],["suelaCuero", 1],["plantilla", 1],["tacon10", 1]],'M'],
+[463,"Mocassin",'ACCESSORIES',1800,'acc2027/mocassin.webp?v=1',"Mocasines",[["cueroNapa", 0.28],["forroCabra", 0.14],["herrajes", 1],["suelaCuero", 1],["plantilla", 1],["tacon10", 1]],'M'],
+[464,"Dandy",'ACCESSORIES',480,'acc2027/dandy.webp?v=1',"Moño",[["terciopelo", 0.25]],'M'],
+[465,"Opéra",'ACCESSORIES',720,'acc2027/opera.webp?v=1',"Faja",[["terciopelo", 0.5]],'M'],
+[466,"Gourmette",'ACCESSORIES',1400,'acc2027/gourmette.webp?v=1',"Pulsera",[["herrajes", 1],["joya", 1]],'M'],
+[467,"Médaillon",'ACCESSORIES',1800,'acc2027/medaillon.webp?v=1',"Collar",[["cadenaOro", 1],["cristalPave", 1],["joya", 1]],'M'],
+[468,"Broche",'ACCESSORIES',640,'acc2027/broche.webp?v=1',"Prendedor",[["herrajes", 1],["joya", 1]],'M'],
+[469,"Cadre",'ACCESSORIES',980,'acc2027/cadre.webp?v=1',"Anteojos",[["acetato", 1],["lentes", 1],["bisagras", 1]],'M'],
+[470,"Nuit",'ACCESSORIES',780,'acc2027/nuit.webp?v=1',"Pañuelo",[["twill", 1.0]],'M'],["cristalPave", 1]]],
 ].map(([id,name,cat,price,img,includes,bom,g='W'])=>({id,name,cat,price,img,includes,g,bom:[...bom,['avios',1]]}));
 const DEF={tc:1535,labor:50};const KEY='grut_costos_v2';
 let saved=Object.assign({mat:{}},JSON.parse(localStorage.getItem(KEY)||'{}'));saved.mat=saved.mat||{};
