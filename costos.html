@@ -12,7 +12,7 @@ h1{font:clamp(44px,6vw,80px)/1 var(--serif);margin:12px 0 14px}h2{font:38px var(
 .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-bottom:14px}.filters{display:flex;flex-wrap:wrap;gap:6px}.filters button{background:none;border:1px solid var(--line);padding:8px 13px;letter-spacing:1.5px;font-size:10px;text-transform:uppercase}.filters button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
 .controls input,.controls select{border:1px solid var(--line);background:#fff;padding:9px 12px}
 .table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:940px}th,td{padding:12px 14px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}th{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:500;background:#faf8f4}th:first-child,td:first-child{text-align:left}
-tr.row{cursor:pointer}tr.row:hover{background:#faf8f4}.prod{display:flex;gap:12px;align-items:center}.prod img{width:42px;height:56px;object-fit:cover}.prod img[src*="mediterranea/"],.prod img[src*="men/"],.prod img[src*="cocktail/"]{object-position:center 30%}.prod img[src*="footwear/"]{object-fit:contain;background:#241c18}.prod b{display:block;font-weight:500;font-size:14px}.prod small{color:var(--muted);letter-spacing:1.5px;font-size:9px}
+tr.row{cursor:pointer}tr.row:hover{background:#faf8f4}.prod{display:flex;gap:12px;align-items:center}.prod img{width:42px;height:56px;object-fit:cover}.prod img[src*="mediterranea/"],.prod img[src*="men/"],.prod img[src*="cocktail/"]{object-position:center 30%}.prod img[src*="footwear/"]{object-fit:contain;background:#241c18}.prod img[src*="acc2027/"]{object-fit:contain;background:#f3efe8}.prod b{display:block;font-weight:500;font-size:14px}.prod small{color:var(--muted);letter-spacing:1.5px;font-size:9px}
 .pos{color:var(--pos)}.neg{color:var(--neg)}.toggle{color:var(--muted);font-size:11px;margin-left:6px}
 .tag{display:inline-block;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 6px;border:1px solid var(--line);color:var(--muted);margin-left:6px;vertical-align:middle}.tag.ixia{border-color:var(--ink);color:var(--ink)}
 tr.detail td{background:#fbfaf7;padding:0 14px 18px;white-space:normal}.bom{width:100%;min-width:0;margin-top:6px}.bom td,.bom th{padding:8px 10px}.bom td:first-child{white-space:normal}.bom small{display:block;color:var(--muted)}.includes{color:var(--muted);margin:14px 0 4px;line-height:1.6}
@@ -437,6 +437,51 @@ const P=[
 [408,"Clubhouse",'EQUESTRIAN',7600,'equestrian/clubhouse.webp?v=1',"Blazer, sweater y pantalón",[["lana", 2.6],["cashmere", 4],["forro", 1.6],["entretela", 0.7],["botonOro", 6],["cierre", 1]]],
 [409,"Dressage",'EQUESTRIAN',11800,'equestrian/dressage.webp?v=1',"Vestido y abrigo",[["cashmere", 7],["lana", 2.6],["forro", 2.2],["cierre", 2]]],
 [410,"Shearling",'EQUESTRIAN',15800,'equestrian/shearling.webp?v=1',"Campera, sweater y pantalón",[["cordero", 2.8],["cashmere", 4],["lana", 1.5],["forro", 1.8],["cierre", 1]]],
+[411,"Clarté",'ACCESSORIES',4200,'acc2027/lumiere.webp?v=1',"Cartera",[["cueroNapa", 0.45],["forro", 0.35],["herrajes", 1],["cierre", 1]]],
+[412,"Vesper",'ACCESSORIES',2400,'acc2027/vesper.webp?v=1',"Clutch",[["saten", 0.35],["herrajes", 1],["cierre", 1]]],
+[413,"Baie",'ACCESSORIES',980,'acc2027/riviera.webp?v=1',"Anteojos",[["acetato", 1],["lentes", 1],["bisagras", 1]]],
+[414,"Ombre",'ACCESSORIES',920,'acc2027/eclipse.webp?v=1',"Anteojos",[["acetato", 1],["lentes", 1],["bisagras", 1]]],
+[415,"Nocturne",'ACCESSORIES',860,'acc2027/nocturne.webp?v=1',"Pañuelo",[["twill", 1.1]]],
+[416,"Lignage",'ACCESSORIES',480,'acc2027/heritage.webp?v=1',"Corbata",[["saten", 0.35]],'M'],
+[417,"Sienna",'ACCESSORIES',420,'acc2027/sienna.webp?v=1',"Moño",[["saten", 0.22]],'M'],
+[418,"Obsidian",'ACCESSORIES',890,'acc2027/obsidian.webp?v=1',"Cinturón",[["cueroNapa", 0.12],["hebillaGRUT", 1]],'M'],
+[419,"Aurelion",'ACCESSORIES',1280,'acc2027/aurelion.webp?v=1',"Gemelos",[["joya", 2],["herrajes", 1]],'M'],
+[420,"Vérité",'ACCESSORIES',3200,'acc2027/verite.webp?v=1',"Reloj",[["cuero", 0.04],["herrajes", 1],["joya", 1]],'M'],
+[421,"Perle",'ACCESSORIES',1680,'acc2027/elegance.webp?v=1',"Aros",[["joya", 2],["cadenaOro", 1]]],
+[422,"Carte",'ACCESSORIES',640,'acc2027/carte.webp?v=1',"Tarjetero",[["cuero", 0.08],["forro", 0.06]]],
+[423,"Onyx",'ACCESSORIES',980,'acc2027/onyx.webp?v=1',"Gemelos",[["joya", 2],["herrajes", 1]],'M'],
+[424,"Chevalier",'ACCESSORIES',2200,'acc2027/chevalier.webp?v=1',"Anillos",[["joya", 1],["cristalPave", 1],["herrajes", 1]],'M'],
+[425,"Lien",'ACCESSORIES',1400,'acc2027/lien.webp?v=1',"Pulseras",[["cuero", 0.04],["herrajes", 2]],'M'],
+[426,"Diamant",'ACCESSORIES',1600,'acc2027/diamant.webp?v=1',"Aros",[["cristalPave", 1],["joya", 1]],'M'],
+[427,"Buckle",'ACCESSORIES',780,'acc2027/buckle.webp?v=1',"Cinturón",[["cuero", 0.12],["herrajes", 1]],'M'],
+[428,"Bretelle",'ACCESSORIES',720,'acc2027/bretelle.webp?v=1',"Tiradores",[["cuero", 0.18],["herrajes", 1]],'M'],
+[429,"Smoking",'ACCESSORIES',640,'acc2027/smoking.webp?v=1',"Faja",[["saten", 0.45]],'M'],
+[430,"Seta",'ACCESSORIES',860,'acc2027/seta.webp?v=1',"Corbata y moño",[["saten", 0.5]],'M'],
+[431,"Pochette",'ACCESSORIES',420,'acc2027/pochette.webp?v=1',"Pañuelos",[["saten", 0.25]],'M'],
+[432,"Soie",'ACCESSORIES',780,'acc2027/soie.webp?v=1',"Pañuelo",[["twill", 1.0]],'M'],
+[433,"Piste",'ACCESSORIES',2100,'acc2027/aviator.webp?v=1',"Anteojos",[["acetato", 3],["lentes", 3],["bisagras", 3]],'M'],
+[434,"Chelsea",'ACCESSORIES',2400,'acc2027/chelsea.webp?v=1',"Botines",[["cueroNapa", 0.32],["forroCabra", 0.18],["suelaCuero", 1],["plantilla", 1],["tacon10", 1]],'M'],
+[435,"Croco",'ACCESSORIES',4800,'acc2027/croco.webp?v=1',"Bolso",[["cueroCroco", 0.55],["forro", 0.4],["herrajes", 1],["cierre", 1]],'M'],
+[436,"Céleste",'ACCESSORIES',720,'acc2027/celeste.webp?v=1',"Faja",[["saten", 0.5]],'M'],
+[437,"Ébène",'ACCESSORIES',820,'acc2027/noir.webp?v=1',"Cinturón",[["cuero", 0.12],["herrajes", 1]],'M'],
+[438,"Cognac",'ACCESSORIES',860,'acc2027/cognac.webp?v=1',"Cinturón",[["cueroNapa", 0.12],["hebillaOro", 1]],'M'],
+[439,"Empire",'ACCESSORIES',1680,'acc2027/imperia.webp?v=1',"Cinturón",[["cuero", 0.12],["hebillaGRUT", 1]],'M'],
+[440,"Satén",'ACCESSORIES',680,'acc2027/satenband.webp?v=1',"Faja",[["saten", 0.45]],'M'],
+[441,"Aurélia",'ACCESSORIES',920,'acc2027/aurelia.webp?v=1',"Fajín",[["saten", 0.8]]],
+[442,"Souverain",'ACCESSORIES',1480,'acc2027/monarch.webp?v=1',"Cinturón",[["cueroCroco", 0.12],["hebillaOro", 1]],'M'],
+[443,"Tresse",'ACCESSORIES',980,'acc2027/tresse.webp?v=1',"Cinturón",[["cueroNapa", 0.16],["hebillaOro", 1]],'M'],
+[444,"Velluto",'ACCESSORIES',1100,'acc2027/velluto.webp?v=1',"Cinturón",[["terciopelo", 0.25],["hebillaOro", 1]]],
+[445,"Réversible",'ACCESSORIES',890,'acc2027/reversible.webp?v=1',"Cinturón",[["cuero", 0.16],["herrajes", 1]],'M'],
+[446,"Lueur",'ACCESSORIES',2400,'acc2027/lumina.webp?v=1',"Aros",[["cristalPave", 2],["joya", 2]]],
+[447,"Torsade",'ACCESSORIES',1800,'acc2027/torsade.webp?v=1',"Brazalete",[["herrajes", 1],["joya", 1]]],
+[448,"Astre",'ACCESSORIES',3200,'acc2027/etoile.webp?v=1',"Anillo",[["cristalPave", 1],["joya", 1]]],
+[449,"Nacre",'ACCESSORIES',1540,'acc2027/serena.webp?v=1',"Aros",[["joya", 2],["cristalPave", 1]]],
+[450,"Carmín",'ACCESSORIES',2800,'acc2027/rubis.webp?v=1',"Anillo",[["cristalPave", 1],["joya", 2]]],
+[451,"Halo",'ACCESSORIES',1680,'acc2027/aura.webp?v=1',"Pulsera",[["cadenaOro", 1],["herrajes", 1]]],
+[452,"Vertige",'ACCESSORIES',2200,'acc2027/mirage.webp?v=1',"Aros",[["cristalPave", 2],["joya", 2]]],
+[453,"Solstice",'ACCESSORIES',1400,'acc2027/solstice.webp?v=1',"Anillo",[["joya", 1],["herrajes", 1]],'M'],
+[454,"Pavé",'ACCESSORIES',2600,'acc2027/pave.webp?v=1',"Brazalete",[["cristalPave", 2],["herrajes", 1]]],
+[455,"Opaline",'ACCESSORIES',2400,'acc2027/opale.webp?v=1',"Anillo",[["joya", 1],["cristalPave", 1]]],
 ].map(([id,name,cat,price,img,includes,bom,g='W'])=>({id,name,cat,price,img,includes,g,bom:[...bom,['avios',1]]}));
 const DEF={tc:1535,labor:50};const KEY='grut_costos_v2';
 let saved=Object.assign({mat:{}},JSON.parse(localStorage.getItem(KEY)||'{}'));saved.mat=saved.mat||{};
@@ -462,7 +507,7 @@ function render(){
   document.getElementById('rows').innerHTML=data.map(({p,c})=>{const ix=p.bom.some(([k])=>isIxia(k));return `<tr class="row" onclick="toggle(${p.id})"><td><div class="prod"><img src="assets/${p.img}" alt="${p.name}" loading="lazy"><div><b>${p.name}${ix?'<span class="tag ixia">IXIA</span>':''}<span class="toggle">${open.has(p.id)?'▲':'▼'}</span></b><small>${p.g==='M'?'MEN ':''}${p.cat} · ${p.includes}</small></div></div></td><td>${usd2(c.tela)}</td><td>${usd2(c.avios)}</td><td>${usd2(c.lab)}</td><td>${usd2(c.cost)}</td><td>${usd(p.price)}</td><td class="${c.diff>=0?'pos':'neg'}">${usd2(c.diff)}</td><td class="${c.diff>=0?'pos':'neg'}">${(c.margin*100).toFixed(1)}%</td></tr>`+(open.has(p.id)?detail(p,c):'')}).join('')||'<tr><td colspan="8" style="text-align:center;color:var(--muted)">No hay piezas con esos filtros.</td></tr>';
   footer(data);kpis(data);
 }
-function detail(p,c){return `<tr class="detail"><td colspan="8"><p class="includes">Incluye: ${p.includes}. Cantidades para ${p.cat==='FOOTWEAR'?'un par en talle 37':'talle M'} con desperdicio incluido.</p><table class="bom"><thead><tr><th>Material</th><th>Cantidad</th><th>Unidad</th><th>Precio unitario</th><th>Subtotal</th></tr></thead><tbody>${p.bom.map(([k,q])=>{const m=MATERIALS[k];const unit=isIxia(k)?`${ars(rawPrice(k))}<small>${usd2(unitUsd(k))}</small>`:usd2(unitUsd(k));return `<tr><td>${srcCell(k)}</td><td>${q.toLocaleString('es-AR')}</td><td>${m.u}</td><td>${unit}</td><td>${usd2(unitUsd(k)*q)}</td></tr>`}).join('')}<tr><td>Mano de obra<small>${fmt(laborPct(),0)}% del costo de la tela (${usd2(c.tela)})</small></td><td></td><td></td><td></td><td>${usd2(c.lab)}</td></tr></tbody></table></td></tr>`}
+function detail(p,c){return `<tr class="detail"><td colspan="8"><p class="includes">Incluye: ${p.includes}. Cantidades para ${(p.cat==='FOOTWEAR'||/botines/i.test(p.includes))?'un par en talle 37':'talle M'} con desperdicio incluido.</p><table class="bom"><thead><tr><th>Material</th><th>Cantidad</th><th>Unidad</th><th>Precio unitario</th><th>Subtotal</th></tr></thead><tbody>${p.bom.map(([k,q])=>{const m=MATERIALS[k];const unit=isIxia(k)?`${ars(rawPrice(k))}<small>${usd2(unitUsd(k))}</small>`:usd2(unitUsd(k));return `<tr><td>${srcCell(k)}</td><td>${q.toLocaleString('es-AR')}</td><td>${m.u}</td><td>${unit}</td><td>${usd2(unitUsd(k)*q)}</td></tr>`}).join('')}<tr><td>Mano de obra<small>${fmt(laborPct(),0)}% del costo de la tela (${usd2(c.tela)})</small></td><td></td><td></td><td></td><td>${usd2(c.lab)}</td></tr></tbody></table></td></tr>`}
 function footer(data){if(!data.length){document.getElementById('foot').innerHTML='';return}const t=data.reduce((a,{p,c})=>({tela:a.tela+c.tela,avios:a.avios+c.avios,lab:a.lab+c.lab,cost:a.cost+c.cost,price:a.price+p.price,diff:a.diff+c.diff}),{tela:0,avios:0,lab:0,cost:0,price:0,diff:0});document.getElementById('foot').innerHTML=`<tr><td>Total (1 unidad de cada pieza)</td><td>${usd2(t.tela)}</td><td>${usd2(t.avios)}</td><td>${usd2(t.lab)}</td><td>${usd2(t.cost)}</td><td>${usd(t.price)}</td><td class="${t.diff>=0?'pos':'neg'}">${usd2(t.diff)}</td><td>${(t.diff/t.price*100).toFixed(1)}%</td></tr>`}
 function kpis(data){const n=data.length||1;const sc=data.reduce((s,d)=>s+d.c.cost,0),sp=data.reduce((s,d)=>s+d.p.price,0);document.getElementById('kCount').textContent=data.length;document.getElementById('kCost').textContent=usd(sc/n);document.getElementById('kPrice').textContent=usd(sp/n);document.getElementById('kMargin').textContent=sp?((sp-sc)/sp*100).toFixed(1)+'%':'–'}
 function renderMats(onlyLabels){

@@ -1,1 +1,8 @@
 .DS_Store
+instagram/.env
+instagram/.venv/
+instagram/posts.csv
+instagram/publish_log.jsonl
+instagram/staging/
+__pycache__/
+*.pyc
