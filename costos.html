@@ -12,7 +12,7 @@ h1{font:clamp(44px,6vw,80px)/1 var(--serif);margin:12px 0 14px}h2{font:38px var(
 .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-bottom:14px}.filters{display:flex;flex-wrap:wrap;gap:6px}.filters button{background:none;border:1px solid var(--line);padding:8px 13px;letter-spacing:1.5px;font-size:10px;text-transform:uppercase}.filters button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
 .controls input,.controls select{border:1px solid var(--line);background:#fff;padding:9px 12px}
 .table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:940px}th,td{padding:12px 14px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}th{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:500;background:#faf8f4}th:first-child,td:first-child{text-align:left}
-tr.row{cursor:pointer}tr.row:hover{background:#faf8f4}.prod{display:flex;gap:12px;align-items:center}.prod img{width:42px;height:56px;object-fit:cover}.prod img[src*="mediterranea/"],.prod img[src*="men/"],.prod img[src*="cocktail/"]{object-position:center 30%}.prod img[src*="footwear/"]{object-fit:contain;background:#241c18}.prod img[src*="acc2027/"]{object-fit:contain;background:#f3efe8}.prod img[src*="gclub/"]{object-fit:contain;object-position:center top;background:#f3efe8}.prod b{display:block;font-weight:500;font-size:14px}.prod small{color:var(--muted);letter-spacing:1.5px;font-size:9px}
+tr.row{cursor:pointer}tr.row:hover{background:#faf8f4}.prod{display:flex;gap:12px;align-items:center}.prod img{width:42px;height:56px;object-fit:cover}.prod img[src*="mediterranea/"],.prod img[src*="men/"],.prod img[src*="cocktail/"]{object-position:center 30%}.prod img[src*="footwear/"]{object-fit:contain;background:#241c18}.prod img[src*="acc2027/"]{object-fit:contain;background:#f3efe8}.prod img[src*="gclub/"]{object-fit:contain;object-position:center top;background:#f3efe8}.prod img[src*="rivieramen/"]{object-fit:contain;object-position:center top;background:#f3efe8}.prod b{display:block;font-weight:500;font-size:14px}.prod small{color:var(--muted);letter-spacing:1.5px;font-size:9px}
 .pos{color:var(--pos)}.neg{color:var(--neg)}.toggle{color:var(--muted);font-size:11px;margin-left:6px}
 .tag{display:inline-block;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 6px;border:1px solid var(--line);color:var(--muted);margin-left:6px;vertical-align:middle}.tag.ixia{border-color:var(--ink);color:var(--ink)}
 tr.detail td{background:#fbfaf7;padding:0 14px 18px;white-space:normal}.bom{width:100%;min-width:0;margin-top:6px}.bom td,.bom th{padding:8px 10px}.bom td:first-child{white-space:normal}.bom small{display:block;color:var(--muted)}.includes{color:var(--muted);margin:14px 0 4px;line-height:1.6}
@@ -506,7 +506,37 @@ const P=[
 [477,"Zip",'GENTLEMAN',4800,'gclub/zip.webp?v=1',"Sweater y pantalón",[["cashmere", 5],["lana", 1.5],["cierre", 2]],'M'],
 [478,"Tux",'GENTLEMAN',8800,'gclub/tux.webp?v=1',"Smoking, camisa y pantalón",[["lana", 3.4],["saten", 0.4],["camiseria", 2.2],["forro", 1.8],["entretela", 1.0],["boton", 6],["cierre", 1]],'M'],
 [479,"Safari",'GENTLEMAN',6400,'gclub/safari.webp?v=1',"Sahariana, camisa y pantalón",[["lino", 4.2],["camiseria", 2.0],["forro", 1.4],["boton", 10],["cierre", 1]],'M'],
-[480,"Travel",'GENTLEMAN',5600,'gclub/travel.webp?v=1',"Chaleco, sweater y pantalón",[["plumon", 1],["lana", 1.2],["cashmere", 4],["forro", 1.0],["cierre", 1]],'M']],'M'],["cristalPave", 1]]],
+[480,"Travel",'GENTLEMAN',5600,'gclub/travel.webp?v=1',"Chaleco, sweater y pantalón",[["plumon", 1],
+[481,"Écru",'RIVIERA',2480,'rivieramen/ecru.webp?v=1',"Camisa de lino y pantalón",[["lino", 2.4],["lino", 1.6],["boton", 8],["cierre", 1]],'M'],
+[482,"Monte",'RIVIERA',1980,'rivieramen/monte.webp?v=1',"Polo y pantalón",[["algodon", 1.4],["lino", 1.6],["boton", 3],["cierre", 1]],'M'],
+[483,"Faraglioni",'RIVIERA',5200,'rivieramen/faraglioni.webp?v=1',"Blazer, camisa y pantalón",[["lino", 2.8],["camiseria", 2.0],["lino", 1.6],["forro", 1.4],["entretela", 0.8],["boton", 8],["cierre", 1]],'M'],
+[484,"Procida",'RIVIERA',2680,'rivieramen/procida.webp?v=1',"Camisa de lino y pantalón",[["lino", 2.4],["lino", 1.6],["boton", 8],["cierre", 1]],'M'],
+[485,"Positano",'RIVIERA',2280,'rivieramen/positano.webp?v=1',"Polo de punto y pantalón",[["algodon", 1.5],["lana", 1.5],["boton", 3],["cierre", 1]],'M'],
+[486,"Sorrento",'RIVIERA',2880,'rivieramen/sorrento.webp?v=1',"Camisa y pantalón",[["lino", 2.2],["lino", 1.6],["boton", 8],["cierre", 1]],'M'],
+[487,"Ischia",'RIVIERA',4200,'rivieramen/ischia.webp?v=1',"Campera, camisa y pantalón",[["lino", 2.2],["camiseria", 2.0],["lino", 1.5],["forro", 1.2],["cierre", 2],["boton", 6]],'M'],
+[488,"Golfo",'RIVIERA',5800,'rivieramen/golfo.webp?v=1',"Saco, camisa y pantalón",[["lino", 3.4],["camiseria", 2.2],["forro", 1.6],["entretela", 0.9],["boton", 6],["cierre", 1]],'M'],
+[489,"Short",'RIVIERA',2380,'rivieramen/short.webp?v=1',"Camisa de lino y short de sastrería",[["lino", 2.2],["lino", 1.1],["boton", 8],["cierre", 1]],'M'],
+[490,"Débardeur",'RIVIERA',1880,'rivieramen/debardeur.webp?v=1',"Tank de punto y pantalón",[["algodon", 1.0],["lino", 1.6],["cierre", 1]],'M'],
+[491,"Ligure",'RIVIERA',5600,'rivieramen/ligure.webp?v=1',"Saco, camisa y pantalón",[["lino", 3.4],["camiseria", 2.2],["forro", 1.6],["entretela", 0.9],["boton", 6],["cierre", 1]],'M'],
+[492,"Napolitain",'RIVIERA',1980,'rivieramen/napolitain.webp?v=1',"Polo y pantalón",[["algodon", 1.4],["lino", 1.6],["boton", 3],["cierre", 1]],'M'],
+[493,"Cielo",'RIVIERA',2580,'rivieramen/cielo.webp?v=1',"Camisa de lino y pantalón",[["lino", 2.4],["lino", 1.6],["boton", 8],["cierre", 1]],'M'],
+[494,"Ajouré",'RIVIERA',2480,'rivieramen/ajoure.webp?v=1',"Polo perforado y pantalón",[["algodon", 2.0],["lino", 1.6],["boton", 3],["cierre", 1]],'M'],
+[495,"Blouson",'RIVIERA',3800,'rivieramen/blouson.webp?v=1',"Campera, remera y pantalón",[["lino", 2.4],["algodon", 1.0],["lino", 1.5],["forro", 1.2],["cierre", 2],["boton", 6]],'M'],
+[496,"Olive",'RIVIERA',2480,'rivieramen/olive.webp?v=1',"Camisa de lino y pantalón",[["lino", 2.4],["lino", 1.6],["boton", 8],["cierre", 1]],'M'],
+[497,"Margherita",'RIVIERA',4200,'rivieramen/margherita.webp?v=1',"Cárdigan zip, camisa y pantalón",[["algodon", 4],["camiseria", 2.0],["lana", 1.5],["cierre", 2],["boton", 4]],'M'],
+[498,"Toscana",'RIVIERA',2380,'rivieramen/toscana.webp?v=1',"Camisa y pantalón",[["camiseria", 2.2],["lino", 1.6],["boton", 8],["cierre", 1]],'M'],
+[499,"Liguria",'RIVIERA',5400,'rivieramen/liguria.webp?v=1',"Sahariana y pantalón",[["lino", 3.2],["lino", 1.6],["forro", 1.2],["boton", 10],["cierre", 1]],'M'],
+[500,"Méditerranée",'RIVIERA',3200,'rivieramen/mediterranee.webp?v=1',"Camisa perforada y pantalón",[["lino", 2.6],["lino", 1.8],["boton", 8],["cierre", 1]],'M'],
+[501,"Blanc",'RIVIERA',2480,'rivieramen/blanc.webp?v=1',"Camisa de lino y pantalón",[["lino", 2.4],["lino", 1.6],["boton", 8],["cierre", 1]],'M'],
+[502,"Cyclades",'RIVIERA',2180,'rivieramen/cyclades.webp?v=1',"Polo y short de sastrería",[["algodon", 1.4],["lino", 1.1],["boton", 3],["cierre", 1]],'M'],
+[503,"Dune",'RIVIERA',2480,'rivieramen/dune.webp?v=1',"Camisa de lino y pantalón",[["lino", 2.4],["lino", 1.6],["boton", 8],["cierre", 1]],'M'],
+[504,"Croisette",'RIVIERA',6200,'rivieramen/croisette.webp?v=1',"Blazer, camisa y pantalón",[["lino", 2.8],["camiseria", 2.0],["lino", 1.6],["forro", 1.4],["entretela", 0.8],["botonOro", 6],["cierre", 1]],'M'],
+[505,"Vert",'RIVIERA',1980,'rivieramen/vert.webp?v=1',"Polo y pantalón",[["algodon", 1.4],["lino", 1.6],["boton", 3],["cierre", 1]],'M'],
+[506,"Rayure",'RIVIERA',2580,'rivieramen/rayure.webp?v=1',"Camisa a rayas y pantalón",[["lino", 2.4],["lino", 1.6],["boton", 8],["cierre", 1]],'M'],
+[507,"Over",'RIVIERA',3600,'rivieramen/over.webp?v=1',"Sobrecamisa, sweater y pantalón",[["lino", 2.2],["algodon", 3],["lino", 1.5],["boton", 6],["cierre", 1]],'M'],
+[508,"Côte",'RIVIERA',2680,'rivieramen/cote.webp?v=1',"Polo zip y pantalón",[["algodon", 1.6],["lana", 1.5],["cierre", 2]],'M'],
+[509,"Île",'RIVIERA',2280,'rivieramen/ile.webp?v=1',"Camisa de lino y short estampado",[["lino", 2.2],["lino", 1.2],["boton", 6],["cierre", 1]],'M'],
+[510,"Harbor",'RIVIERA',2800,'rivieramen/harbor.webp?v=1',"Sweater y pantalón",[["algodon", 4],["lino", 1.6],["cierre", 1]],'M'],["lana", 1.2],["cashmere", 4],["forro", 1.0],["cierre", 1]],'M']],'M'],["cristalPave", 1]]],
 ].map(([id,name,cat,price,img,includes,bom,g='W'])=>({id,name,cat,price,img,includes,g,bom:[...bom,['avios',1]]}));
 const DEF={tc:1535,labor:50};const KEY='grut_costos_v2';
 let saved=Object.assign({mat:{}},JSON.parse(localStorage.getItem(KEY)||'{}'));saved.mat=saved.mat||{};
