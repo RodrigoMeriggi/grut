@@ -358,6 +358,14 @@ const P=[
 [330,"Lumina",'CARPET',11800,'carpet/lumina.webp?v=1',"Vestido",[["encajeFlora", 5.4], ["tul", 3.4], ["forro", 2.2], ["cierre", 1]]],
 [331,"Soirée",'CARPET',11200,'carpet/soiree.webp?v=1',"Vestido",[["saten", 6.8], ["forro", 3.4], ["entretela", 0.8], ["cierre", 1]]],
 [332,"Sculpta",'CARPET',9600,'carpet/sculpta.webp?v=1',"Vestido",[["saten", 4.4], ["forro", 2.4], ["cierre", 1]]],
+[333,"Icon",'CARPET',6880,'rcmen/icon.webp?v=1',"Saco, camisa y pantalón",[["lana", 3.6], ["saten", 0.4], ["forro", 1.8], ["entretela", 1], ["camiseria", 2.2], ["boton", 8], ["cierre", 1]],'M'],
+[334,"Velours",'CARPET',7680,'rcmen/velours.webp?v=1',"Saco, camisa y pantalón",[["terciopelo", 2.2], ["lana", 1.5], ["saten", 0.35], ["forro", 1.8], ["entretela", 1], ["camiseria", 2.2], ["boton", 6], ["cierre", 1]],'M'],
+[335,"Graphite",'CARPET',6280,'rcmen/graphite.webp?v=1',"Saco, camisa y pantalón",[["lana", 3.4], ["forro", 1.6], ["entretela", 0.9], ["camiseria", 2.2], ["boton", 8], ["cierre", 1]],'M'],
+[336,"Burdeos",'CARPET',7180,'rcmen/burdeos.webp?v=1',"Saco, camisa y pantalón",[["lana", 3.8], ["forro", 1.8], ["entretela", 1], ["camiseria", 2.2], ["botonOro", 8], ["cierre", 1]],'M'],
+[337,"Eclipse",'CARPET',9280,'rcmen/eclipse.webp?v=1',"Saco, camisa y pantalón",[["lent", 2.4], ["lana", 1.6], ["forro", 1.6], ["entretela", 0.6], ["camiseria", 2], ["boton", 4], ["cierre", 1]],'M'],
+[338,"Emerald",'CARPET',7980,'rcmen/emerald.webp?v=1',"Saco, camisa y pantalón",[["terciopelo", 2.2], ["lana", 1.5], ["saten", 0.35], ["forro", 1.8], ["entretela", 1], ["camiseria", 2], ["boton", 4], ["cierre", 1]],'M'],
+[339,"Monarch",'CARPET',6680,'rcmen/monarch.webp?v=1',"Saco, sweater y pantalón",[["lana", 3.4], ["saten", 0.35], ["forro", 1.6], ["entretela", 0.9], ["puntoSeda", 4], ["boton", 4], ["cierre", 1]],'M'],
+[340,"Titan",'CARPET',6480,'rcmen/titan.webp?v=1',"Saco y pantalón",[["lana", 3.8], ["forro", 1.8], ["entretela", 1], ["hebillaGRUT", 1], ["boton", 4], ["cierre", 1]],'M'],
 ].map(([id,name,cat,price,img,includes,bom,g='W'])=>({id,name,cat,price,img,includes,g,bom:[...bom,['avios',1]]}));
 const DEF={tc:1535,labor:50};const KEY='grut_costos_v2';
 let saved=Object.assign({mat:{}},JSON.parse(localStorage.getItem(KEY)||'{}'));saved.mat=saved.mat||{};
