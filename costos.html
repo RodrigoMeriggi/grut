@@ -417,6 +417,16 @@ const P=[
 [388,"Boarding",'JET',9800,'jet/boarding.webp?v=1',"Sweater y falda",[["saten", 3.2],["cashmere", 3],["forro", 1.8],["cierre", 1]]],
 [389,"Cabin",'JET',8400,'jet/cabin.webp?v=1',"Abrigo, blazer, sweater y pantalón",[["lana", 7.2],["cashmere", 5],["forro", 4.2],["entretela", 1.6],["boton", 6],["cierre", 2]]],
 [390,"Classe",'JET',12800,'jet/classe.webp?v=1',"Abrigo, sweater y pantalón",[["cueroNapa", 3.6],["cashmere", 5],["lana", 1.6],["forro", 2.8],["cierre", 1]]],
+[391,"Departure",'JET',7600,'jet/departure.webp?v=1',"Abrigo, sweater y pantalón",[["lana", 5.4],["cashmere", 5],["forro", 3.0],["entretela", 1.0],["boton", 4],["cierre", 2]]],
+[392,"Layover",'JET',7400,'jet/layover.webp?v=1',"Abrigo, sweater y pantalón",[["lana", 5.2],["cashmere", 6],["forro", 2.8],["entretela", 0.9],["boton", 2],["cierre", 2]]],
+[393,"Gate",'JET',9200,'jet/gate.webp?v=1',"Camisa y pantalón",[["saten", 2.6],["lana", 1.6],["forro", 1.8],["boton", 8],["cierre", 1]]],
+[394,"Escala",'JET',11400,'jet/escala.webp?v=1',"Vestido",[["saten", 5.4],["forro", 2.8],["cierre", 1]]],
+[395,"Charter",'JET',6800,'jet/charter.webp?v=1',"Sweater y pantalón",[["lana", 1.6],["cashmere", 7],["cierre", 1]]],
+[396,"Escape",'JET',8800,'jet/escape.webp?v=1',"Chaqueta, sweater y pantalón",[["lana", 4.4],["cashmere", 4],["forro", 2.2],["entretela", 0.8],["boton", 2],["cierre", 1]]],
+[397,"Destino",'JET',12800,'jet/destino.webp?v=1',"Vestido",[["saten", 5.8],["forro", 3.0],["cierre", 1]]],
+[398,"Salón",'JET',8200,'jet/salon.webp?v=1',"Abrigo, sweater y pantalón",[["lana", 5.4],["cashmere", 5],["forro", 3.0],["entretela", 1.0],["boton", 4],["cierre", 2]]],
+[399,"Arrival",'JET',8400,'jet/arrival.webp?v=1',"Abrigo",[["lana", 5.4],["forro", 3.2],["entretela", 1.2],["boton", 8],["cierre", 1]]],
+[400,"Takeoff",'JET',11200,'jet/takeoff.webp?v=1',"Vestido",[["saten", 5.0],["forro", 2.6],["cierre", 1]]],
 ].map(([id,name,cat,price,img,includes,bom,g='W'])=>({id,name,cat,price,img,includes,g,bom:[...bom,['avios',1]]}));
 const DEF={tc:1535,labor:50};const KEY='grut_costos_v2';
 let saved=Object.assign({mat:{}},JSON.parse(localStorage.getItem(KEY)||'{}'));saved.mat=saved.mat||{};
