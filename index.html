@@ -67,10 +67,10 @@ body.men [data-only=W],body:not(.men) [data-only=M]{display:none!important}
 }
 
 .navdrop{position:relative}
-.navdrop-panel{display:none;position:absolute;top:calc(100% - 8px);left:-16px;min-width:188px;padding:8px 0;background:var(--cream);border:1px solid var(--line);box-shadow:0 18px 40px #00000018;z-index:40}
-.navdrop:hover .navdrop-panel,.navdrop.open .navdrop-panel,.navdrop:focus-within .navdrop-panel{display:flex;flex-direction:column}
+.navdrop-panel{display:none;position:absolute;top:calc(100% - 8px);left:-16px;width:460px;padding:8px 0;background:var(--cream);border:1px solid var(--line);box-shadow:0 18px 40px #00000018;z-index:40;column-count:2;column-gap:0}
+.navdrop:hover .navdrop-panel,.navdrop.open .navdrop-panel,.navdrop:focus-within .navdrop-panel{display:block}
 .navdrop.dismiss .navdrop-panel{display:none}
-.nav .navdrop-panel button{display:block;width:100%;text-align:left;padding:11px 18px}
+.nav .navdrop-panel button{display:block;width:100%;text-align:left;padding:8px 16px;break-inside:avoid}
 .nav .navdrop-panel button:hover{opacity:1;background:#efeae2}
 .navdrop.open .navdrop-btn,.navdrop:hover .navdrop-btn{border-bottom:1px solid currentColor}
 .mobile-menu .menu-label{margin:10px 15px 0;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
